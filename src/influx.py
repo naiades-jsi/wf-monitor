@@ -27,7 +27,7 @@ class InfluxCheck:
     def run(self) -> None:
         LOGGER.info("  Building query")
         q = self.queryEngine.bucket_query()
-        q = self.queryEngine.time_query(q, '-1y', '-0h')
+        q = self.queryEngine.time_query(q, '-1w', '-0h')
         q = self.queryEngine.filter_query(q, self.check["measurement"])
         q = self.queryEngine.filter_last(q)
         LOGGER.info("  Running query: %s", q)
@@ -41,6 +41,8 @@ class InfluxCheck:
 
         if results != []:
             LOGGER.info(results[0])
+        else:
+            LOGGER.error("No data in last week: %s", self.check.name)
 
     def check_last_ts(self, rJSON: dict) -> bool:
         try:
