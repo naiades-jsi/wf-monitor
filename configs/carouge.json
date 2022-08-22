@@ -1,0 +1,39 @@
+{    
+    "kafka": {
+        "group-id": "wf-monitoring",
+        "bootstrap_servers": [ "localhost:9092" ]        
+    },
+    "influx": {
+        "token": "ZykEIhhYe0KRjleAAjFX9LhEm_H7SeLiLe6Kc71f1452Lps7U6MECvOHw9UooSanWwm7SKqe0kTXDnOhoAMNNA==",
+        "url": "localhost:8086"
+    },
+    "workflow": [
+        {
+            "name": "Naiades Historic API",
+            "type": "naiades_historic",
+            "url": "http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:{0}?attrs=deviceState,owner,value&lastN=1",
+            "headers": {
+                "Fiware-Service": "carouge",
+                "Fiware-ServicePath": "/",
+                "Content-Type": "application/json"
+            },
+            "checks": [
+                { "name": "FlowerBed 1", "device": "Device-1f0d" },
+                { "name": "FlowerBed 2", "device": "Device-1f08" },
+                { "name": "FlowerBed 3", "device": "Device-1f10" },
+                { "name": "FlowerBed 4", "device": "Device-1f06" },
+                { "name": "FlowerBed 5", "device": "Device-1fxx" },
+                { "name": "FlowerBed 6", "device": "Device-1eff" },
+                { "name": "FlowerBed 7", "device": "Device-1f02" },
+                { "name": "FlowerBed 8", "device": "Device-1efe" }
+            ]
+        },
+        {
+            "name": "Source data",
+            "type": "influx",
+            "checks": [
+                { "name": "xxx", "organisation": "naiades", "measurement": ""}
+            ]
+        }
+    ]
+}
