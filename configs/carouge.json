@@ -22,7 +22,7 @@
                 { "name": "FlowerBed 2", "device": "Device-1f08", "alert_diff": 6, "error_diff": 24 },
                 { "name": "FlowerBed 3", "device": "Device-1f10", "alert_diff": 6, "error_diff": 24 },
                 { "name": "FlowerBed 4", "device": "Device-1f06", "alert_diff": 6, "error_diff": 24 },
-                { "name": "FlowerBed 5", "device": "Device_1efd", "alert_diff": 6, "error_diff": 24 },
+                { "name": "FlowerBed 5", "device": "Device-1efd", "alert_diff": 6, "error_diff": 24 },
                 { "name": "FlowerBed 6", "device": "Device-1eff", "alert_diff": 6, "error_diff": 24 },
                 { "name": "FlowerBed 7", "device": "Device-1f02", "alert_diff": 6, "error_diff": 24 },
                 { "name": "FlowerBed 8", "device": "Device-1efe", "alert_diff": 6, "error_diff": 24 }
@@ -49,14 +49,14 @@
             "organisation": "naiades",
             "bucket": "carouge",
             "checks": [
-                { "name": "Influx FlowerBed 1", "measurement": "device-1f0d", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx FlowerBed 2", "measurement": "device-1f08", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx FlowerBed 3", "measurement": "device-1f10", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx FlowerBed 4", "measurement": "device-1f06", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx FlowerBed 1", "measurement": "device_1f0d", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx FlowerBed 2", "measurement": "device_1f08", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx FlowerBed 3", "measurement": "device_1f10", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx FlowerBed 4", "measurement": "device_1f06", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Influx FlowerBed 5", "measurement": "device_1efd", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx FlowerBed 6", "measurement": "device-1eff", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx FlowerBed 7", "measurement": "device-1f02", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx FlowerBed 8", "measurement": "device-1efe", "alert_diff": 6, "error_diff": 24 }
+                { "name": "Influx FlowerBed 6", "measurement": "device_1eff", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx FlowerBed 7", "measurement": "device_1f02", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx FlowerBed 8", "measurement": "device_1efe", "alert_diff": 6, "error_diff": 24 }
             ]
         }
     ]

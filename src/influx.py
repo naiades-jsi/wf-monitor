@@ -27,12 +27,20 @@ class InfluxCheck:
     def run(self) -> None:
         LOGGER.info("  Building query")
         q = self.queryEngine.bucket_query()
-        q = self.queryEngine.time_query(q, '-2h', '-0h')
+        q = self.queryEngine.time_query(q, '-1y', '-0h')
         q = self.queryEngine.filter_query(q, self.check["measurement"])
         q = self.queryEngine.filter_last(q)
         LOGGER.info("  Running query: %s", q)
-        data = self.queryEngine.query_df(q)
-        LOGGER.info(data)
+        result = self.queryEngine.query(q)
+
+        # parse influx table
+        results = []
+        for table in result:
+            for record in table.records:
+                results.append([record.get_time(), record.get_value()])
+
+        if results != []:
+            LOGGER.info(results[0])
 
     def check_last_ts(self, rJSON: dict) -> bool:
         try:
