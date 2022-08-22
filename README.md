@@ -11,4 +11,4 @@ The script is run with the following command `python3 main.py -w [setup]`, where
 ## Tools for Influx
 
 Cronograph is running on IRCAI, where you can monitor Influx data.
-```docker run --network=host chronograf --influxdb-url=http://localhost:8086```
+```docker run -p 8880:8888 --network=influx_grafana_network chronograf --influxdb-url=http://influxdb:8086```
