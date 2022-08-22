@@ -45,13 +45,28 @@ class KafkaCheck:
 
         # consumer.seek_to_beginning(topic_partition)
         ts = 0
+        t_value = ""
+        wa_value = ""
         for message in self.consumer:
             try:
                 ts = message.value["timestamp"]
+                if self.section["subtype"] == "prediction":
+                    t_value = message.value["T"]
+                    wa_value = message.value["WA"]
+                # LOGGER.info(message.value)
             except Exception as e:
                 LOGGER.error(e)
             # LOGGER.info("  %s key=%s value=%s" % (message.topic, message.key, message.value))
         self.consumer.close()
+
+        if (t_value == -1):
+            LOGGER.warning("  No watering time was given!")
+
+        if (wa_value == -1):
+            LOGGER.warning("  No watering amount was given!")
+
+        if (wa_value == 0.0):
+            LOGGER.warning("  Watering amount was 0.0!")
 
         self.check_last_ts(ts)
 
@@ -59,9 +74,12 @@ class KafkaCheck:
     def check_last_ts(self, ts: int) -> bool:
         try:
             # extracting difference from now
-            ts = ts / 1000
+            if self.section["subtype"] == "fusion":
+                ts = ts / 1000
             nowts = datetime.timestamp(datetime.now())
             diff_hrs = (nowts - ts) / 60 / 60
+
+            # LOGGER.info("TS: %d, NOWTS: %d", ts, nowts)
 
             # check timestamp of now
             if diff_hrs > self.check["error_diff"]:
