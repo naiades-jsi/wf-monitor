@@ -5,6 +5,7 @@ import json
 # project imports
 from src.historic import HistoricCheck
 from src.influx import InfluxCheck
+from src.kafka import KafkaCheck
 
 # logging
 LOGGER = logging.getLogger(__name__)
@@ -37,6 +38,9 @@ class Workflow:
         #if (section["type"] == "naiades_historic"):
         #    myCheck = HistoricCheck(section, check)
         #    myCheck.run()
-        if (section["type"] == "influx"):
-            myCheck = InfluxCheck(section, check)
+        #if (section["type"] == "influx"):
+        #    myCheck = InfluxCheck(section, check)
+        #    myCheck.run()
+        if (section["type"] == "kafka"):
+            myCheck = KafkaCheck(section, check)
             myCheck.run()
