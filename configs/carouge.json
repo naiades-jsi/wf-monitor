@@ -18,14 +18,14 @@
                 "Content-Type": "application/json"
             },
             "checks": [
-                { "name": "FlowerBed 1", "device": "Device-1f0d" },
-                { "name": "FlowerBed 2", "device": "Device-1f08" },
-                { "name": "FlowerBed 3", "device": "Device-1f10" },
-                { "name": "FlowerBed 4", "device": "Device-1f06" },
-                { "name": "FlowerBed 5", "device": "Device-1fxx" },
-                { "name": "FlowerBed 6", "device": "Device-1eff" },
-                { "name": "FlowerBed 7", "device": "Device-1f02" },
-                { "name": "FlowerBed 8", "device": "Device-1efe" }
+                { "name": "FlowerBed 1", "device": "Device-1f0d", "alert_diff": 6, "error_diff": 24 },
+                { "name": "FlowerBed 2", "device": "Device-1f08", "alert_diff": 6, "error_diff": 24 },
+                { "name": "FlowerBed 3", "device": "Device-1f10", "alert_diff": 6, "error_diff": 24 },
+                { "name": "FlowerBed 4", "device": "Device-1f06", "alert_diff": 6, "error_diff": 24 },
+                { "name": "FlowerBed 5", "device": "Device-1fxx", "alert_diff": 6, "error_diff": 24 },
+                { "name": "FlowerBed 6", "device": "Device-1eff", "alert_diff": 6, "error_diff": 24 },
+                { "name": "FlowerBed 7", "device": "Device-1f02", "alert_diff": 6, "error_diff": 24 },
+                { "name": "FlowerBed 8", "device": "Device-1efe", "alert_diff": 6, "error_diff": 24 }
             ]
         },
         {
