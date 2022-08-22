@@ -40,17 +40,13 @@ class InfluxCheck:
                 results.append([record.get_time(), record.get_value()])
 
         if results != []:
-            LOGGER.info(results[0])
+            ts = results[0][0]
+            self.check_last_ts(ts)
         else:
-            LOGGER.error("No data in last week: %s", self.check.name)
+            LOGGER.error("  No data in last week: %s", self.check["name"])
 
-    def check_last_ts(self, rJSON: dict) -> bool:
+    def check_last_ts(self, dt: datetime) -> bool:
         try:
-            # extracting last timestamp from data
-            date_string = rJSON["index"][0]
-            datetime_pattern = re.compile(r'(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})')
-            datetime_string = datetime_pattern.search(date_string).group()
-            dt = datetime.strptime(datetime_string, '%Y-%m-%dT%H:%M:%S')
             # extracting difference from now
             ts = datetime.timestamp(dt)
             nowts = datetime.timestamp(datetime.now())
