@@ -44,15 +44,19 @@
         {
             "name": "Source data",
             "type": "influx",
+            "token": "ZykEIhhYe0KRjleAAjFX9LhEm_H7SeLiLe6Kc71f1452Lps7U6MECvOHw9UooSanWwm7SKqe0kTXDnOhoAMNNA==",
+            "url": "http://localhost:8086",
+            "organisation": "naiades",
+            "bucket": "carouge",
             "checks": [
-                { "name": "Influx FlowerBed 1", "measurement": "device-1f0d", "organisation": "naiades", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx FlowerBed 2", "measurement": "device-1f08", "organisation": "naiades", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx FlowerBed 3", "measurement": "device-1f10", "organisation": "naiades", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx FlowerBed 4", "measurement": "device-1f06", "organisation": "naiades", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx FlowerBed 5", "measurement": "device_1efd", "organisation": "naiades", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx FlowerBed 6", "measurement": "device-1eff", "organisation": "naiades", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx FlowerBed 7", "measurement": "device-1f02", "organisation": "naiades", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx FlowerBed 8", "measurement": "device-1efe", "organisation": "naiades",  "alert_diff": 6, "error_diff": 24 }
+                { "name": "Influx FlowerBed 1", "measurement": "device-1f0d", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx FlowerBed 2", "measurement": "device-1f08", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx FlowerBed 3", "measurement": "device-1f10", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx FlowerBed 4", "measurement": "device-1f06", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx FlowerBed 5", "measurement": "device_1efd", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx FlowerBed 6", "measurement": "device-1eff", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx FlowerBed 7", "measurement": "device-1f02", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx FlowerBed 8", "measurement": "device-1efe", "alert_diff": 6, "error_diff": 24 }
             ]
         }
     ]
