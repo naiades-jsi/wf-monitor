@@ -45,7 +45,7 @@
             "name": "Source data",
             "type": "influx",
             "checks": [
-                { "name": "xxx", "organisation": "naiades", "measurement": ""}
+                { "name": "Influx FlowerBed 1", "organisation": "naiades", "measurement": ""}
             ]
         }
     ]

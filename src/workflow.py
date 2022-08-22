@@ -1,10 +1,10 @@
 # imports
 import logging
 import json
-import requests
 
 # project imports
 from src.historic import HistoricCheck
+from src.influx import InfluxCheck
 
 # logging
 LOGGER = logging.getLogger(__name__)
@@ -34,6 +34,9 @@ class Workflow:
 
     def check_item(self, section: dict, check: dict) -> None:
         LOGGER.info("Checking: %s", check["name"])
-        if (section["type"] == "naiades_historic"):
-            myCheck = HistoricCheck(section, check)
+        # if (section["type"] == "naiades_historic"):
+        #    myCheck = HistoricCheck(section, check)
+        #    myCheck.run()
+        if (section["type"] == "influx"):
+            myCheck = InfluxCheck(section, check)
             myCheck.run()
