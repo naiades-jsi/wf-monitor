@@ -61,17 +61,34 @@
         },
         {
             "name": "Data Fusion on Kafka",
-            "type": "kafka",
+            "type": "kafkax",
+            "groupid": "wf-monitor-",
             "bootstrap_servers": "localhost:9092",
             "checks": [
-                { "name": "Kafka Fusion FlowerBed 1", "topic": "features_carouge_flowerbed1", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Kafka Fusion FlowerBed 2", "topic": "features_carouge_flowerbed2", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Kafka Fusion FlowerBed 3", "topic": "features_carouge_flowerbed3", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Kafka Fusion FlowerBed 4", "topic": "features_carouge_flowerbed4", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Kafka Fusion FlowerBed 5", "topic": "features_carouge_flowerbed5", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Kafka Fusion FlowerBed 6", "topic": "features_carouge_flowerbed6", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Kafka Fusion FlowerBed 7", "topic": "features_carouge_flowerbed7", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Kafka Fusion FlowerBed 8", "topic": "features_carouge_flowerbed8", "alert_diff": 6, "error_diff": 24 }
+                { "name": "Fusion FlowerBed 1", "topic": "features_carouge_flowerbed1", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Fusion FlowerBed 2", "topic": "features_carouge_flowerbed2", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Fusion FlowerBed 3", "topic": "features_carouge_flowerbed3", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Fusion FlowerBed 4", "topic": "features_carouge_flowerbed4", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Fusion FlowerBed 5", "topic": "features_carouge_flowerbed5", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Fusion FlowerBed 6", "topic": "features_carouge_flowerbed6", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Fusion FlowerBed 7", "topic": "features_carouge_flowerbed7", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Fusion FlowerBed 8", "topic": "features_carouge_flowerbed8", "alert_diff": 6, "error_diff": 24 }
+            ]
+        },
+        {
+            "name": "Predictions on Kafka",
+            "type": "kafka",
+            "groupid": "wf-monitor-",
+            "bootstrap_servers": "localhost:9092",
+            "checks": [
+                { "name": "Prediction FlowerBed 1", "measurement": "device_1f0d_pred_output", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Prediction FlowerBed 2", "measurement": "device_1f08_pred_output", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Prediction FlowerBed 3", "measurement": "device_1f10_pred_output", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Prediction FlowerBed 4", "measurement": "device_1f06_pred_output", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Prediction FlowerBed 5", "measurement": "device_1efd_pred_output", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Prediction FlowerBed 6", "measurement": "device_1eff_pred_output", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Prediction FlowerBed 7", "measurement": "device_1f02_pred_output", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Prediction FlowerBed 8", "measurement": "device_1efe_pred_output", "alert_diff": 6, "error_diff": 24 }
             ]
         }
     ]

@@ -9,7 +9,7 @@ import logging
 from src.workflow import Workflow
 
 # logging
-LOGGER = logging.getLogger(__name__)
+LOGGER = logging.getLogger("wf-monitor")
 logging.basicConfig(
     format="%(asctime)s %(name)-12s %(levelname)-8s %(message)s", level=logging.INFO)
 
