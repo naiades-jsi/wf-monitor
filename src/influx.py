@@ -1,41 +1,22 @@
 # imports
 import logging
 import json
-import requests
-from requests.exceptions import HTTPError
 from datetime import datetime
-import re # regular expressions
 
 # project imports
 
 # logging
 LOGGER = logging.getLogger(__name__)
 
-class HistoricCheck:
-    """Checking historic api for recent data."""
+class InfluxCheck:
+    """Checking InfluxDB for recent data."""
 
     def __init__(self, section, check) -> None:
         self.section = section
         self.check = check        
 
     def run(self) -> None:
-        try:
-            # make a requst
-            url = self.section["url"].format(self.check["device"])
-            response = requests.get(url, headers=self.section["headers"])
-            LOGGER.info("  Trying: %s", url)
-            rJSON = response.json()
-            
-            if (self.check_last_ts(rJSON) == False):
-                LOGGER.error("")
-
-        except HTTPError as http_e:
-            LOGGER.error(f'  HTTP error occurred: {http_e}')
-        except Exception as e:
-            LOGGER.error(f'  Other error occurred: {e}')
-        # this might be misleading for the user if any errors happen through checking
-        # else:
-        #    LOGGER.info("HTTP Request successful.")
+        LOGGER.info("Trying")
 
     def check_last_ts(self, rJSON: dict) -> bool:        
         try:

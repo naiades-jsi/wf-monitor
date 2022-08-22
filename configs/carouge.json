@@ -25,9 +25,22 @@
                 { "name": "FlowerBed 5", "device": "Device-1fxx", "alert_diff": 6, "error_diff": 24 },
                 { "name": "FlowerBed 6", "device": "Device-1eff", "alert_diff": 6, "error_diff": 24 },
                 { "name": "FlowerBed 7", "device": "Device-1f02", "alert_diff": 6, "error_diff": 24 },
-                { "name": "FlowerBed 8", "device": "Device-1efe", "alert_diff": 6, "error_diff": 24 }
+                { "name": "FlowerBed 8", "device": "Device-1efe", "alert_diff": 6, "error_diff": 24 }                
             ]
         },
+        {
+            "name": "Naiades Historic API Environmental",
+            "type": "naiades_historic",
+            "url": "http://test.naiades-project.eu:8668/v2/entities/urn:ngsi-ld:WeatherObserved:{0}?lastN=1",
+            "headers": {
+                "Fiware-Service": "carouge",
+                "Fiware-ServicePath": "/",
+                "Content-Type": "application/json"
+            },
+            "checks": [
+                { "name": "Environmental Station", "device": "EnvironmentalStation", "alert_diff": 6, "error_diff": 24 }                
+            ]
+        },        
         {
             "name": "Source data",
             "type": "influx",
