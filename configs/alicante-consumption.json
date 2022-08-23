@@ -49,6 +49,23 @@
                 { "name": "Influx Rambla Flow", "measurement": "rambla_flow", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Influx Weather Observed 1", "measurement": "weather_observed1", "alert_diff": 6, "error_diff": 24 }
             ]
+        },
+        {
+            "name": "Data Fusion on Kafka - Weather",
+            "type": "kafka",
+            "subtype": "features",
+            "time": "nano",
+            "groupid": "wf-monitor-",
+            "bootstrap_servers": "localhost:9092",
+            "checks": [
+                { "name": "Fusion Alipark", "topic": "features_alicante_alipark_forecasting_w", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Fusion Autobuses", "topic": "features_alicante_autobuses_forecasting_w", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Fusion Benalua", "topic": "features_alicante_benalua_forecasting_w", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Fusion Diputacion", "topic": "features_alicante_diputacion_forecasting_w", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Fusion Mercado", "topic": "features_alicante_mercado_forecasting_w", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Fusion Montaneta", "topic": "features_alicante_montaneta_forecasting_w", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Fusion Rambla", "topic": "features_alicante_rambla_forecasting_w", "alert_diff": 6, "error_diff": 24 }
+            ]
         }
     ]
 }

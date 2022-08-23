@@ -54,11 +54,11 @@ class InfluxCheck:
 
             # check timestamp of now
             if diff_hrs > self.check["error_diff"]:
-                LOGGER.error("  Timestamp bigger then limit: %fh", diff_hrs)
+                LOGGER.error("  Timestamp bigger then limit: %.2fh", diff_hrs)
             elif diff_hrs > self.check["alert_diff"]:
-                LOGGER.warning("  Timestamp bigger than limit: %fh", diff_hrs)
+                LOGGER.warning("  Timestamp bigger than limit: %.2fh", diff_hrs)
             else:
-                LOGGER.info("  Timestamp in the limits: %fh", diff_hrs)
+                LOGGER.info("  Timestamp in the limits: %.2fh", diff_hrs)
         except Exception as e:
             LOGGER.error(f'  Time checking error: {e}')
 
