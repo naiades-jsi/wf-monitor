@@ -20,7 +20,7 @@ class KafkaCheck:
         self.check = check
 
     def run(self) -> None:
-        LOGGER.info("  Queryjing topic for: %s", self.check["name"])
+        LOGGER.info("  Queryjing topic: %s", self.check["topic"])
 
         # read the last message's timestamp
         self.consumer = KafkaConsumer(
@@ -76,8 +76,11 @@ class KafkaCheck:
             # extracting difference from now
             if self.section["subtype"] == "fusion":
                 ts = ts / 1000
-            if "time" in self.section and self.section["time"] == "nano":
-                ts = ts / 1000
+            if "time" in self.section:
+                if self.section["time"] == "nano":
+                    ts = ts / 1000
+                if self.section["time"] == "pico":
+                    ts = ts / 1000000
             nowts = datetime.timestamp(datetime.now())
             diff_hrs = (nowts - ts) / 60 / 60
 
@@ -92,5 +95,3 @@ class KafkaCheck:
                 LOGGER.info("  Timestamp in the limits: %.2fh", diff_hrs)
         except Exception as e:
             LOGGER.error(f'  Time checking error: {e}')
-
-
