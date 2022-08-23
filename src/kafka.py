@@ -50,7 +50,7 @@ class KafkaCheck:
         for message in self.consumer:
             try:
                 ts = message.value["timestamp"]
-                if self.section["subtype"] == "prediction":
+                if self.section["subtype"] == "prediction-watering":
                     t_value = message.value["T"]
                     wa_value = message.value["WA"]
                 # LOGGER.info(message.value)

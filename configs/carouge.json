@@ -71,7 +71,7 @@
         {
             "name": "Predictions on Kafka",
             "type": "kafka",
-            "subtype": "prediction",
+            "subtype": "prediction-watering",
             "groupid": "wf-monitor-",
             "bootstrap_servers": "localhost:9092",
             "checks": [
