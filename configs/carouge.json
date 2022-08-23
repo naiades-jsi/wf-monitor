@@ -1,12 +1,4 @@
 {
-    "kafka": {
-        "group-id": "wf-monitoring",
-        "bootstrap_servers": [ "localhost:9092" ]
-    },
-    "influx": {
-        "token": "ZykEIhhYe0KRjleAAjFX9LhEm_H7SeLiLe6Kc71f1452Lps7U6MECvOHw9UooSanWwm7SKqe0kTXDnOhoAMNNA==",
-        "url": "localhost:8086"
-    },
     "workflow": [
         {
             "name": "Naiades Historic API",

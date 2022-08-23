@@ -17,6 +17,8 @@ class Workflow:
         config_directory = "configs"
         if (workflow == "carouge"):
             self.config_file = f"{config_directory}/carouge.json"
+        elif (workflow == "alicante-consumption"):
+            self.config_file = f"{config_directory}/alicante-consumption.json"
         else:
             LOGGER.error("No config was recognised: %s", workflow)
 
