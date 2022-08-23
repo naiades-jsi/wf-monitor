@@ -1,7 +1,7 @@
 {
     "workflow": [
         {
-            "name": "Naiades Historic API",
+            "name": "Naiades Historic API - Carouge",
             "type": "naiades_historic",
             "url": "http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:{0}?attrs=deviceState,owner,value&lastN=1",
             "headers": {

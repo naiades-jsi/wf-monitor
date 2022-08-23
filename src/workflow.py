@@ -15,10 +15,14 @@ class Workflow:
 
     def __init__(self, workflow: str = "carouge") -> None:
         config_directory = "configs"
+
+        # differentiate between different workflows
         if (workflow == "carouge"):
             self.config_file = f"{config_directory}/carouge.json"
         elif (workflow == "alicante-consumption"):
             self.config_file = f"{config_directory}/alicante-consumption.json"
+        elif (workflow == "salinity"):
+            self.config_file = f"{config_directory}/salinity.json"
         else:
             LOGGER.error("No config was recognised: %s", workflow)
 
