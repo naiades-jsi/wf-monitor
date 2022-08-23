@@ -3,21 +3,39 @@
         {
             "name": "Naiades Historic API - Salinity",
             "type": "naiades_historic",
-            "url": "http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:{0}?attrs=deviceState,owner,value&lastN=1",
+            "url": "http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:{0}?lastN=1",
             "headers": {
-                "Fiware-Service": "carouge",
+                "Fiware-Service": "alicante",
                 "Fiware-ServicePath": "/",
                 "Content-Type": "application/json"
             },
             "checks": [
-                { "name": "FlowerBed 1", "device": "Device-1f0d", "alert_diff": 6, "error_diff": 24 },
-                { "name": "FlowerBed 2", "device": "Device-1f08", "alert_diff": 6, "error_diff": 24 },
-                { "name": "FlowerBed 3", "device": "Device-1f10", "alert_diff": 6, "error_diff": 24 },
-                { "name": "FlowerBed 4", "device": "Device-1f06", "alert_diff": 6, "error_diff": 24 },
-                { "name": "FlowerBed 5", "device": "Device-1efd", "alert_diff": 6, "error_diff": 24 },
-                { "name": "FlowerBed 6", "device": "Device-1eff", "alert_diff": 6, "error_diff": 24 },
-                { "name": "FlowerBed 7", "device": "Device-1f02", "alert_diff": 6, "error_diff": 24 },
-                { "name": "FlowerBed 8", "device": "Device-1efe", "alert_diff": 6, "error_diff": 24 }
+                { "name": "Level EA001-202", "device": "EA001-202-Level", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Level EA001-36", "device": "EA001-36-Level", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Level EA002-26", "device": "EA002-26-Conductivity", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Level EA003-21", "device": "EA003-21-Conductivity", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Level EA003-36", "device": "EA003-36-Conductivity", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Level EA004-21", "device": "EA004-21-Conductivity", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Level EA005-21", "device": "EA005-21-Conductivity", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Level EA008-36", "device": "EA008-36-Conductivity", "alert_diff": 6, "error_diff": 24 }
+            ]
+        },
+        {
+            "name": "Influx data",
+            "type": "influx",
+            "token": "ZykEIhhYe0KRjleAAjFX9LhEm_H7SeLiLe6Kc71f1452Lps7U6MECvOHw9UooSanWwm7SKqe0kTXDnOhoAMNNA==",
+            "url": "http://localhost:8086",
+            "organisation": "naiades",
+            "bucket": "alicante",
+            "checks": [
+                { "name": "Influx Level EA001-202", "measurement": "salinity_EA001_202_level", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx Level EA001-36", "measurement": "salinity_EA001_36_level", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx Level EA002-26", "measurement": "salinity_EA002_26_conductivity", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx Level EA003-21", "measurement": "salinity_EA003_21_conductivity", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx Level EA003-36", "measurement": "salinity_EA003_36_conductivity", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx Level EA004-21", "measurement": "salinity_EA004_21_conductivity", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx Level EA005-21", "measurement": "salinity_EA005_21_conductivity", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx Level EA008-36", "measurement": "salinity_EA008_36_conductivity", "alert_diff": 6, "error_diff": 24 }
             ]
         }
     ]
