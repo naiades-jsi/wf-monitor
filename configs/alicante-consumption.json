@@ -18,6 +18,41 @@
                 { "name": "Montaneta Flow", "device": "Montaneta-Flow", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Rambla Flow", "device": "Rambla-Flow", "alert_diff": 6, "error_diff": 24 }
             ]
+        },
+        {
+            "name": "Naiades Historic API - Weather",
+            "type": "naiades_historic",
+            "url": "http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:WeatherObserved:{0}?lastN=1",
+            "headers": {
+                "Fiware-Service": "alicante",
+                "Fiware-ServicePath": "/",
+                "Content-Type": "application/json"
+            },
+            "checks": [
+                { "name": "Weather Observed 1", "device": "WeatherObserved-1", "alert_diff": 6, "error_diff": 24 }
+            ]
+        },
+        {
+            "name": "Influx data",
+            "type": "influx",
+            "token": "ZykEIhhYe0KRjleAAjFX9LhEm_H7SeLiLe6Kc71f1452Lps7U6MECvOHw9UooSanWwm7SKqe0kTXDnOhoAMNNA==",
+            "url": "http://localhost:8086",
+            "organisation": "naiades",
+            "bucket": "alicante",
+            "checks": [
+                { "name": "Influx Alipark Flow", "measurement": "alipark_flow", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx Autobuses Flow", "measurement": "autobuses_flow", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx Benalua Flow", "measurement": "benalua_flow", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx Diputacion Flow", "measurement": "diputacion_flow", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx Mercado Flow", "measurement": "mercado_flow", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx Montaneta Flow", "measurement": "montaneta_flow", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx Rambla Flow", "measurement": "rambla_flow", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx Weather Observed 1", "measurement": "weather_observed1", "alert_diff": 6, "error_diff": 24 }
+            ]
         }
     ]
 }
+
+
+
+

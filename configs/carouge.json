@@ -34,7 +34,7 @@
             ]
         },
         {
-            "name": "Source data",
+            "name": "Influx data",
             "type": "influx",
             "token": "ZykEIhhYe0KRjleAAjFX9LhEm_H7SeLiLe6Kc71f1452Lps7U6MECvOHw9UooSanWwm7SKqe0kTXDnOhoAMNNA==",
             "url": "http://localhost:8086",
