@@ -20,7 +20,7 @@ class KafkaCheck:
         self.check = check
 
     def run(self) -> None:
-        LOGGER.info("  Queryjing topic: %s", self.check["topic"])
+        LOGGER.info("  Querying topic: %s", self.check["topic"])
 
         # read the last message's timestamp
         self.consumer = KafkaConsumer(
