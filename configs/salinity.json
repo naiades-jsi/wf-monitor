@@ -10,13 +10,14 @@
                 "Content-Type": "application/json"
             },
             "checks": [
-                { "name": "Level EA001-202", "device": "EA001-202-Level", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Level not used EA001-202", "device": "EA001-202-Level", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Level EA001-36", "device": "EA001-36-Level", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Level EA002-26", "device": "EA002-26-Conductivity", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Level EA003-21", "device": "EA003-21-Conductivity", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Level EA003-36", "device": "EA003-36-Conductivity", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Level EA004-21", "device": "EA004-21-Conductivity", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Level EA005-21", "device": "EA005-21-Conductivity", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Level EA007-36", "device": "EA003-36-Conductivity", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Level EA008-36", "device": "EA008-36-Conductivity", "alert_diff": 6, "error_diff": 24 }
             ]
         },
@@ -28,15 +29,35 @@
             "organisation": "naiades",
             "bucket": "alicante",
             "checks": [
-                { "name": "Influx Level EA001-202", "measurement": "salinity_EA001_202_level", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx Level not used EA001-202", "measurement": "salinity_EA001_202_level", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Influx Level EA001-36", "measurement": "salinity_EA001_36_level", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Influx Level EA002-26", "measurement": "salinity_EA002_26_conductivity", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Influx Level EA003-21", "measurement": "salinity_EA003_21_conductivity", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Influx Level EA003-36", "measurement": "salinity_EA003_36_conductivity", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Influx Level EA004-21", "measurement": "salinity_EA004_21_conductivity", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Influx Level EA005-21", "measurement": "salinity_EA005_21_conductivity", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx Level EA007-36", "measurement": "salinity_EA007_36_conductivity", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Influx Level EA008-36", "measurement": "salinity_EA008_36_conductivity", "alert_diff": 6, "error_diff": 24 }
+            ]
+        },
+        {
+            "name": "Data Fusion on Kafka",
+            "type": "kafka",
+            "subtype": "features",
+            "time": "nano",
+            "groupid": "wf-monitor-",
+            "bootstrap_servers": "localhost:9092",
+            "checks": [
+                { "name": "Fusion EA002-26", "topic": "features_alicante_salinity_EA002_26_conductivity", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Fusion EA003-36", "topic": "features_alicante_salinity_EA003_36_conductivity", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Fusion EA003-21", "topic": "features_alicante_salinity_EA003_21_conductivity", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Fusion EA004-21", "topic": "features_alicante_salinity_EA004_21_conductivity", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Fusion EA005-21", "topic": "features_alicante_salinity_EA005_21_conductivity", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Fusion EA007-36", "topic": "features_alicante_salinity_EA007_36_conductivity", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Fusion EA008-36", "topic": "features_alicante_salinity_EA008_36_conductivity", "alert_diff": 6, "error_diff": 24 }
             ]
         }
     ]
 }
+
+

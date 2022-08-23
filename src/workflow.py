@@ -50,3 +50,12 @@ class Workflow:
         if (section["type"] == "kafka"):
             myCheck = KafkaCheck(section, check)
             myCheck.run()
+
+"""
+    'salinity_EA003_36_conductivity',
+    'salinity_EA003_21_conductivity',
+    'salinity_EA004_21_conductivity',
+    'salinity_EA007_36_conductivity',
+    'salinity_EA008_36_conductivity',
+    'salinity_EA005_21_conductivity'
+"""
