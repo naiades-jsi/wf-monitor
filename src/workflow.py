@@ -23,6 +23,10 @@ class Workflow:
             self.config_file = f"{config_directory}/alicante-consumption.json"
         elif (workflow == "salinity"):
             self.config_file = f"{config_directory}/salinity.json"
+        elif (workflow == "braila-consumption"):
+            self.config_file = f"{config_directory}/braila-consumption.json"
+        elif (workflow == "braila-anomaly"):
+            self.config_file = f"{config_directory}/braila-anomaly.json"
         else:
             LOGGER.error("No config was recognised: %s", workflow)
 
@@ -52,10 +56,16 @@ class Workflow:
             myCheck.run()
 
 """
-    'salinity_EA003_36_conductivity',
-    'salinity_EA003_21_conductivity',
-    'salinity_EA004_21_conductivity',
-    'salinity_EA007_36_conductivity',
-    'salinity_EA008_36_conductivity',
-    'salinity_EA005_21_conductivity'
+  measurements_analog = [
+    #'flow211106H360',
+    'flow211206H360',
+    'flow211306H360',
+    'flow318505H498'
+    ]
+measurements_presure = [
+    'pressure5770',
+    'pressure5771',
+    'pressure5772',
+    'pressure5773'
+    ]
 """
