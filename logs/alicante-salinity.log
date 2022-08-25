@@ -1,0 +1,134 @@
+2022-08-25 09:58:02,680 wf-monitor   INFO     Starting workflow monitoring tool for: salinity
+2022-08-25 09:58:02,680 src.workflow INFO     Loading config: configs/salinity.json
+2022-08-25 09:58:02,680 src.workflow INFO     Starting worklfow check
+2022-08-25 09:58:02,680 src.workflow INFO     Starting checks for: Naiades Historic API - Salinity
+2022-08-25 09:58:02,680 src.workflow INFO     Checking: Level not used EA001-202
+2022-08-25 09:58:02,767 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:EA001-202-Level?lastN=1
+2022-08-25 09:58:02,769 src.historic WARNING    Timestamp bigger than limit: 11.98h
+2022-08-25 09:58:02,769 src.workflow INFO     Checking: Level EA001-36
+2022-08-25 09:58:02,911 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:EA001-36-Level?lastN=1
+2022-08-25 09:58:02,912 src.historic WARNING    Timestamp bigger than limit: 11.98h
+2022-08-25 09:58:02,912 src.workflow INFO     Checking: Level EA002-26
+2022-08-25 09:58:03,041 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:EA002-26-Conductivity?lastN=1
+2022-08-25 09:58:03,041 src.historic WARNING    Timestamp bigger than limit: 12.00h
+2022-08-25 09:58:03,041 src.workflow INFO     Checking: Level EA003-21
+2022-08-25 09:58:03,133 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:EA003-21-Conductivity?lastN=1
+2022-08-25 09:58:03,133 src.historic WARNING    Timestamp bigger than limit: 11.97h
+2022-08-25 09:58:03,133 src.workflow INFO     Checking: Level EA003-36
+2022-08-25 09:58:03,253 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:EA003-36-Conductivity?lastN=1
+2022-08-25 09:58:03,253 src.historic WARNING    Timestamp bigger than limit: 11.98h
+2022-08-25 09:58:03,253 src.workflow INFO     Checking: Level EA004-21
+2022-08-25 09:58:03,359 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:EA004-21-Conductivity?lastN=1
+2022-08-25 09:58:03,359 src.historic WARNING    Timestamp bigger than limit: 11.97h
+2022-08-25 09:58:03,359 src.workflow INFO     Checking: Level EA005-21
+2022-08-25 09:58:03,442 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:EA005-21-Conductivity?lastN=1
+2022-08-25 09:58:03,442 src.historic WARNING    Timestamp bigger than limit: 11.97h
+2022-08-25 09:58:03,442 src.workflow INFO     Checking: Level EA007-36
+2022-08-25 09:58:03,570 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:EA003-36-Conductivity?lastN=1
+2022-08-25 09:58:03,570 src.historic WARNING    Timestamp bigger than limit: 11.98h
+2022-08-25 09:58:03,570 src.workflow INFO     Checking: Level EA008-36
+2022-08-25 09:58:03,713 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:EA008-36-Conductivity?lastN=1
+2022-08-25 09:58:03,713 src.historic WARNING    Timestamp bigger than limit: 11.98h
+2022-08-25 09:58:03,714 src.workflow INFO     Starting checks for: Influx data
+2022-08-25 09:58:03,714 src.workflow INFO     Checking: Influx Level not used EA001-202
+2022-08-25 09:58:03,714 src.influx   INFO       Building query
+2022-08-25 09:58:03,714 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "salinity_EA001_202_level")|> last()
+2022-08-25 09:58:03,725 src.influx   WARNING    Timestamp bigger than limit: 11.98h
+2022-08-25 09:58:03,725 src.workflow INFO     Checking: Influx Level EA001-36
+2022-08-25 09:58:03,725 src.influx   INFO       Building query
+2022-08-25 09:58:03,726 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "salinity_EA001_36_level")|> last()
+2022-08-25 09:58:03,734 src.influx   ERROR      Timestamp bigger then limit: 35.98h
+2022-08-25 09:58:03,734 src.workflow INFO     Checking: Influx Level EA002-26
+2022-08-25 09:58:03,734 src.influx   INFO       Building query
+2022-08-25 09:58:03,734 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "salinity_EA002_26_conductivity")|> last()
+2022-08-25 09:58:03,744 src.influx   WARNING    Timestamp bigger than limit: 12.00h
+2022-08-25 09:58:03,744 src.workflow INFO     Checking: Influx Level EA003-21
+2022-08-25 09:58:03,744 src.influx   INFO       Building query
+2022-08-25 09:58:03,744 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "salinity_EA003_21_conductivity")|> last()
+2022-08-25 09:58:03,752 src.influx   WARNING    Timestamp bigger than limit: 11.97h
+2022-08-25 09:58:03,753 src.workflow INFO     Checking: Influx Level EA003-36
+2022-08-25 09:58:03,753 src.influx   INFO       Building query
+2022-08-25 09:58:03,753 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "salinity_EA003_36_conductivity")|> last()
+2022-08-25 09:58:03,761 src.influx   ERROR      Timestamp bigger then limit: 35.97h
+2022-08-25 09:58:03,761 src.workflow INFO     Checking: Influx Level EA004-21
+2022-08-25 09:58:03,761 src.influx   INFO       Building query
+2022-08-25 09:58:03,761 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "salinity_EA004_21_conductivity")|> last()
+2022-08-25 09:58:03,769 src.influx   WARNING    Timestamp bigger than limit: 11.97h
+2022-08-25 09:58:03,769 src.workflow INFO     Checking: Influx Level EA005-21
+2022-08-25 09:58:03,769 src.influx   INFO       Building query
+2022-08-25 09:58:03,769 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "salinity_EA005_21_conductivity")|> last()
+2022-08-25 09:58:03,778 src.influx   WARNING    Timestamp bigger than limit: 11.97h
+2022-08-25 09:58:03,778 src.workflow INFO     Checking: Influx Level EA007-36
+2022-08-25 09:58:03,778 src.influx   INFO       Building query
+2022-08-25 09:58:03,778 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "salinity_EA007_36_conductivity")|> last()
+2022-08-25 09:58:03,786 src.influx   WARNING    Timestamp bigger than limit: 11.98h
+2022-08-25 09:58:03,787 src.workflow INFO     Checking: Influx Level EA008-36
+2022-08-25 09:58:03,787 src.influx   INFO       Building query
+2022-08-25 09:58:03,787 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "salinity_EA008_36_conductivity")|> last()
+2022-08-25 09:58:03,794 src.influx   WARNING    Timestamp bigger than limit: 11.98h
+2022-08-25 09:58:03,794 src.workflow INFO     Starting checks for: Data Fusion on Kafka
+2022-08-25 09:58:03,794 src.workflow INFO     Checking: Fusion Level EA002-26
+2022-08-25 09:58:03,794 src.kafka    INFO       Querying topic: features_alicante_salinity_EA001_36_level
+2022-08-25 09:58:04,204 src.kafka    INFO       Last offset: 73277
+2022-08-25 09:58:06,210 src.kafka    ERROR      Timestamp bigger then limit: 35.98h
+2022-08-25 09:58:06,211 src.workflow INFO     Checking: Fusion EA002-26
+2022-08-25 09:58:06,211 src.kafka    INFO       Querying topic: features_alicante_salinity_EA002_26_conductivity
+2022-08-25 09:58:06,620 src.kafka    INFO       Last offset: 4052292
+2022-08-25 09:58:15,595 src.kafka    WARNING    Timestamp bigger than limit: 11.85h
+2022-08-25 09:58:15,595 src.workflow INFO     Checking: Fusion EA003-36
+2022-08-25 09:58:15,595 src.kafka    INFO       Querying topic: features_alicante_salinity_EA003_36_conductivity
+2022-08-25 09:58:16,005 src.kafka    INFO       Last offset: 4062744
+2022-08-25 09:58:24,696 src.kafka    ERROR      Timestamp bigger then limit: 35.84h
+2022-08-25 09:58:24,696 src.workflow INFO     Checking: Fusion EA003-21
+2022-08-25 09:58:24,696 src.kafka    INFO       Querying topic: features_alicante_salinity_EA003_21_conductivity
+2022-08-25 09:58:25,105 src.kafka    INFO       Last offset: 4079877
+2022-08-25 09:58:33,918 src.kafka    WARNING    Timestamp bigger than limit: 11.85h
+2022-08-25 09:58:33,918 src.workflow INFO     Checking: Fusion EA004-21
+2022-08-25 09:58:33,918 src.kafka    INFO       Querying topic: features_alicante_salinity_EA004_21_conductivity
+2022-08-25 09:58:34,328 src.kafka    INFO       Last offset: 4079879
+2022-08-25 09:58:43,103 src.kafka    WARNING    Timestamp bigger than limit: 11.84h
+2022-08-25 09:58:43,103 src.workflow INFO     Checking: Fusion EA005-21
+2022-08-25 09:58:43,103 src.kafka    INFO       Querying topic: features_alicante_salinity_EA005_21_conductivity
+2022-08-25 09:58:43,513 src.kafka    INFO       Last offset: 4082183
+2022-08-25 09:58:51,912 src.kafka    WARNING    Timestamp bigger than limit: 11.50h
+2022-08-25 09:58:51,913 src.workflow INFO     Checking: Fusion EA007-36
+2022-08-25 09:58:51,913 src.kafka    INFO       Querying topic: features_alicante_salinity_EA007_36_conductivity
+2022-08-25 09:58:52,322 src.kafka    INFO       Last offset: 4077410
+2022-08-25 09:59:01,025 src.kafka    WARNING    Timestamp bigger than limit: 11.84h
+2022-08-25 09:59:01,026 src.workflow INFO     Checking: Fusion EA008-36
+2022-08-25 09:59:01,026 src.kafka    INFO       Querying topic: features_alicante_salinity_EA008_36_conductivity
+2022-08-25 09:59:01,435 src.kafka    INFO       Last offset: 4077475
+2022-08-25 09:59:10,289 src.kafka    WARNING    Timestamp bigger than limit: 11.85h
+2022-08-25 09:59:10,289 src.workflow INFO     Starting checks for: Anomalies on Kafka
+2022-08-25 09:59:10,290 src.workflow INFO     Checking: Anomalies Level EA001-36
+2022-08-25 09:59:10,290 src.kafka    INFO       Querying topic: anomalies_alicante_salinity_EA001_36_level_meta_signal
+2022-08-25 09:59:10,700 src.kafka    INFO       Last offset: 57455
+2022-08-25 09:59:12,737 src.kafka    ERROR      Timestamp bigger then limit: 36.00h
+2022-08-25 09:59:12,737 src.workflow INFO     Checking: Anomalies EA002-26
+2022-08-25 09:59:12,737 src.kafka    INFO       Querying topic: anomalies_alicante_salinity_EA002_26_conductivity_meta_signal
+2022-08-25 09:59:13,147 src.kafka    INFO       Last offset: 4378809
+2022-08-25 09:59:15,153 src.kafka    WARNING    Timestamp bigger than limit: 11.87h
+2022-08-25 09:59:15,153 src.workflow INFO     Checking: Anomalies EA003-36
+2022-08-25 09:59:15,153 src.kafka    INFO       Querying topic: anomalies_alicante_salinity_EA003_36_conductivity_meta_signal
+2022-08-25 09:59:15,563 src.kafka    INFO       Last offset: 4376071
+2022-08-25 09:59:17,640 src.kafka    ERROR      Timestamp bigger then limit: 35.86h
+2022-08-25 09:59:17,641 src.workflow INFO     Checking: Anomalies EA003-21
+2022-08-25 09:59:17,641 src.kafka    INFO       Querying topic: anomalies_alicante_salinity_EA003_21_conductivity_meta_signal
+2022-08-25 09:59:18,050 src.kafka    INFO       Last offset: 4113984
+2022-08-25 09:59:20,072 src.kafka    WARNING    Timestamp bigger than limit: 11.86h
+2022-08-25 09:59:20,072 src.workflow INFO     Checking: Anomalies EA004-21
+2022-08-25 09:59:20,072 src.kafka    INFO       Querying topic: anomalies_alicante_salinity_EA004_21_conductivity_meta_signal
+2022-08-25 09:59:20,481 src.kafka    INFO       Last offset: 4113920
+2022-08-25 09:59:22,504 src.kafka    WARNING    Timestamp bigger than limit: 11.85h
+2022-08-25 09:59:22,504 src.workflow INFO     Checking: Anomalies EA005-21
+2022-08-25 09:59:22,504 src.kafka    INFO       Querying topic: anomalies_alicante_salinity_EA005_21_conductivity_meta_signal
+2022-08-25 09:59:22,915 src.kafka    INFO       Last offset: 4108171
+2022-08-25 09:59:25,128 src.kafka    WARNING    Timestamp bigger than limit: 11.51h
+2022-08-25 09:59:25,129 src.workflow INFO     Checking: Anomalies EA007-36
+2022-08-25 09:59:25,129 src.kafka    INFO       Querying topic: anomalies_alicante_salinity_EA007_36_conductivity_meta_signal
+2022-08-25 09:59:25,539 src.kafka    INFO       Last offset: 4395957
+2022-08-25 09:59:27,561 src.kafka    WARNING    Timestamp bigger than limit: 11.85h
+2022-08-25 09:59:27,562 src.workflow INFO     Checking: Anomalies EA008-36
+2022-08-25 09:59:27,562 src.kafka    INFO       Querying topic: anomalies_alicante_salinity_EA008_36_conductivity_meta_signal
+2022-08-25 09:59:27,971 src.kafka    INFO       Last offset: 4396183
+2022-08-25 09:59:29,989 src.kafka    WARNING    Timestamp bigger than limit: 11.85h
