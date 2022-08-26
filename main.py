@@ -21,7 +21,7 @@ def main():
         "--workflow",
         dest="workflow",
         default="carouge",
-        help=u"Config file for the workflow. Option values can be:\n  carouge, alicante-consumption, alicante-salinity, braila-consumption, braila-anomaly, brala-state-analysis."
+        help=u"Config file for the workflow. Option values can be:\n  carouge, alicante-consumption, alicante-salinity, braila-consumption, braila-anomaly, braila-state-analysis."
     )
 
     # Display help if no arguments are defined
