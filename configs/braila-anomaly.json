@@ -1,1 +1,82 @@
-{}
+{
+    "workflow": [
+        {
+            "name": "Naiades Historic API - WaterDemand",
+            "type": "naiades_historic",
+            "url": "http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:{0}?lastN=1",
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "checks": [
+                { "name": "Water Demand 211206H360", "device": "WaterDemand-211206H360", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Water Demand 211306H360", "device": "WaterDemand-211306H360", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Water Demand 318505H498", "device": "WaterDemand-318505H498", "alert_diff": 6, "error_diff": 24 }
+            ]
+        },
+        {
+            "name": "Naiades Historic API - Pressure",
+            "type": "naiades_historic",
+            "url": "http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:Pressure:{0}?lastN=1",
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "checks": [
+                { "name": "Pressure-5770", "device": "Pressure-5770", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Pressure-5771", "device": "Pressure-5771", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Pressure-5772", "device": "Pressure-5772", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Pressure-5773", "device": "Pressure-5773", "alert_diff": 6, "error_diff": 24 }
+            ]
+        },
+        {
+            "name": "Influx data",
+            "type": "influx",
+            "token": "ZykEIhhYe0KRjleAAjFX9LhEm_H7SeLiLe6Kc71f1452Lps7U6MECvOHw9UooSanWwm7SKqe0kTXDnOhoAMNNA==",
+            "url": "http://localhost:8086",
+            "organisation": "naiades",
+            "bucket": "braila",
+            "checks": [
+                { "name": "Influx Flow 211206H360", "measurement": "flow211206H360", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx Flow 211306H360", "measurement": "flow211306H360", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx Flow 318505H498", "measurement": "flow318505H498", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx Pressure 5770", "measurement": "pressure5770", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx Pressure 5771", "measurement": "pressure5771", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx Pressure 5772", "measurement": "pressure5772", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx Pressure 5773", "measurement": "pressure5773", "alert_diff": 6, "error_diff": 24 }
+            ]
+        },
+        {
+            "name": "Data Fusion on Kafka",
+            "type": "kafka",
+            "subtype": "features",
+            "time": "nano",
+            "groupid": "wf-monitor-",
+            "bootstrap_servers": "localhost:9092",
+            "checks": [
+                { "name": "Features Pressure 5770", "topic": "features_braila_pressure5770_anomaly", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Features Pressure 5771", "topic": "features_braila_pressure5771_anomaly", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Features Pressure 5772", "topic": "features_braila_pressure5772_anomaly", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Features Pressure 5773", "topic": "features_braila_pressure5773_anomaly", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Features Flow 211206H360", "topic": "features_braila_flow211206H360_anomaly", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Features Flow 211306H360", "topic": "features_braila_flow211306H360_anomaly", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Features Flow 318505H498", "topic": "features_braila_flow318505H498_anomaly", "alert_diff": 6, "error_diff": 24 }
+            ]
+        },
+        {
+            "name": "Predictions on Kafka",
+            "type": "kafka",
+            "subtype": "prediction",
+            "time": "nano",
+            "groupid": "wf-monitor-",
+            "bootstrap_servers": "localhost:9092",
+            "checks": [
+                { "name": "Anomalies Pressure 5770", "topic": "anomalies_braila_pressure5770_meta_signal", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Anomalies Pressure 5771", "topic": "anomalies_braila_pressure5771_meta_signal", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Anomalies Pressure 5772", "topic": "anomalies_braila_pressure5772_meta_signal", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Anomalies Pressure 5773", "topic": "anomalies_braila_pressure5773_meta_signal", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Anomalies Flow 211206H360", "topic": "anomalies_braila_flow211206H360_meta_signal", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Anomalies Flow 211306H360", "topic": "anomalies_braila_flow211306H360_meta_signal", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Anomalies Flow 318505H498", "topic": "anomalies_braila_flow318505H498_meta_signal", "alert_diff": 6, "error_diff": 24 }
+            ]
+        }
+    ]
+}
