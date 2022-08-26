@@ -1,36 +1,52 @@
-2022-08-26 11:01:43,291 wf-monitor   INFO     Starting workflow monitoring tool for: braila-consumption
-2022-08-26 11:01:43,291 src.workflow INFO     Loading config: configs/braila-consumption.json
-2022-08-26 11:01:43,291 src.workflow INFO     Starting worklfow check
-2022-08-26 11:01:43,291 src.workflow INFO     Starting checks for: Influx data
-2022-08-26 11:01:43,291 src.workflow INFO     Checking: Influx Flow 211106H360
-2022-08-26 11:01:43,292 src.influx   INFO       Building query
-2022-08-26 11:01:43,292 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "flow211106H360")|> last()
-2022-08-26 11:01:43,303 src.influx   ERROR      No data in last week: Influx Flow 211106H360
-2022-08-26 11:01:43,303 src.workflow INFO     Checking: Influx Flow 211206H360
-2022-08-26 11:01:43,303 src.influx   INFO       Building query
-2022-08-26 11:01:43,303 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "flow211206H360")|> last()
-2022-08-26 11:01:43,311 src.influx   ERROR      No data in last week: Influx Flow 211206H360
-2022-08-26 11:01:43,311 src.workflow INFO     Checking: Influx Flow 211306H360
-2022-08-26 11:01:43,311 src.influx   INFO       Building query
-2022-08-26 11:01:43,311 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "flow211306H360")|> last()
-2022-08-26 11:01:43,319 src.influx   ERROR      No data in last week: Influx Flow 211306H360
-2022-08-26 11:01:43,319 src.workflow INFO     Checking: Influx Flow 318505H498
-2022-08-26 11:01:43,319 src.influx   INFO       Building query
-2022-08-26 11:01:43,319 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "flow318505H498")|> last()
-2022-08-26 11:01:43,328 src.influx   ERROR      No data in last week: Influx Flow 318505H498
-2022-08-26 11:01:43,328 src.workflow INFO     Checking: Influx Pressure 5770
-2022-08-26 11:01:43,328 src.influx   INFO       Building query
-2022-08-26 11:01:43,328 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "pressure5770")|> last()
-2022-08-26 11:01:43,335 src.influx   ERROR      No data in last week: Influx Pressure 5770
-2022-08-26 11:01:43,335 src.workflow INFO     Checking: Influx Pressure 5771
-2022-08-26 11:01:43,336 src.influx   INFO       Building query
-2022-08-26 11:01:43,336 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "pressure5771")|> last()
-2022-08-26 11:01:43,343 src.influx   ERROR      No data in last week: Influx Pressure 5771
-2022-08-26 11:01:43,343 src.workflow INFO     Checking: Influx Pressure 5772
-2022-08-26 11:01:43,343 src.influx   INFO       Building query
-2022-08-26 11:01:43,343 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "pressure5772")|> last()
-2022-08-26 11:01:43,350 src.influx   ERROR      No data in last week: Influx Pressure 5772
-2022-08-26 11:01:43,351 src.workflow INFO     Checking: Influx Pressure 5773
-2022-08-26 11:01:43,351 src.influx   INFO       Building query
-2022-08-26 11:01:43,351 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "pressure5773")|> last()
-2022-08-26 11:01:43,358 src.influx   ERROR      No data in last week: Influx Pressure 5773
+2022-08-26 13:33:54,454 wf-monitor   INFO     Starting workflow monitoring tool for: braila-consumption
+2022-08-26 13:33:54,454 src.workflow INFO     Loading config: configs/braila-consumption.json
+2022-08-26 13:33:54,454 src.workflow INFO     Starting worklfow check
+2022-08-26 13:33:54,454 src.workflow INFO     Starting checks for: Naiades Historic API - WaterDemand
+2022-08-26 13:33:54,454 src.workflow INFO     Checking: Water Demand 211206H360
+2022-08-26 13:33:55,728 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-211206H360?lastN=1
+2022-08-26 13:33:55,730 src.historic INFO       Timestamp in the limits: 0.00h
+2022-08-26 13:33:55,730 src.workflow INFO     Checking: Water Demand 211306H360
+2022-08-26 13:33:55,852 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-211306H360?lastN=1
+2022-08-26 13:33:55,852 src.historic INFO       Timestamp in the limits: 4.96h
+2022-08-26 13:33:55,852 src.workflow INFO     Checking: Water Demand 318505H498
+2022-08-26 13:33:55,972 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-318505H498?lastN=1
+2022-08-26 13:33:55,973 src.historic INFO       Timestamp in the limits: 2.76h
+2022-08-26 13:33:55,973 src.workflow INFO     Starting checks for: Influx data
+2022-08-26 13:33:55,973 src.workflow INFO     Checking: Influx Flow 211206H360
+2022-08-26 13:33:55,974 src.influx   INFO       Building query
+2022-08-26 13:33:55,974 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "flow211206H360")|> last()
+2022-08-26 13:33:55,984 src.influx   ERROR      No data in last week: Influx Flow 211206H360
+2022-08-26 13:33:55,985 src.workflow INFO     Checking: Influx Flow 211306H360
+2022-08-26 13:33:55,985 src.influx   INFO       Building query
+2022-08-26 13:33:55,985 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "flow211306H360")|> last()
+2022-08-26 13:33:55,994 src.influx   ERROR      No data in last week: Influx Flow 211306H360
+2022-08-26 13:33:55,994 src.workflow INFO     Checking: Influx Flow 318505H498
+2022-08-26 13:33:55,994 src.influx   INFO       Building query
+2022-08-26 13:33:55,994 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "flow318505H498")|> last()
+2022-08-26 13:33:56,003 src.influx   ERROR      No data in last week: Influx Flow 318505H498
+2022-08-26 13:33:56,003 src.workflow INFO     Starting checks for: Data Fusion on Kafka
+2022-08-26 13:33:56,003 src.workflow INFO     Checking: Features Flow 211206H360
+2022-08-26 13:33:56,003 src.kafka    INFO       Querying topic: features_braila_flow211206H360_forecasting
+2022-08-26 13:33:56,415 src.kafka    INFO       Last offset: 513
+2022-08-26 13:33:58,420 src.kafka    ERROR      Timestamp bigger then limit: 1443.42h
+2022-08-26 13:33:58,420 src.workflow INFO     Checking: Features Flow 211306H360
+2022-08-26 13:33:58,420 src.kafka    INFO       Querying topic: features_braila_flow211306H360_forecasting
+2022-08-26 13:33:58,830 src.kafka    INFO       Last offset: 577
+2022-08-26 13:34:00,836 src.kafka    ERROR      Timestamp bigger then limit: 1442.51h
+2022-08-26 13:34:00,836 src.workflow INFO     Checking: Features Flow 318505H498
+2022-08-26 13:34:00,836 src.kafka    INFO       Querying topic: features_braila_flow318505H498_forecasting
+2022-08-26 13:34:01,247 src.kafka    INFO       Last offset: 781
+2022-08-26 13:34:03,253 src.kafka    ERROR      Timestamp bigger then limit: 1443.36h
+2022-08-26 13:34:03,253 src.workflow INFO     Starting checks for: Predictions on Kafka
+2022-08-26 13:34:03,253 src.workflow INFO     Checking: Prediction Flow 211206H360
+2022-08-26 13:34:03,253 src.kafka    INFO       Querying topic: predictions_braila_flow211206H360_prediction
+2022-08-26 13:34:03,666 src.kafka    INFO       Last offset: 515
+2022-08-26 13:34:05,673 src.kafka    ERROR      Timestamp bigger then limit: 1443.42h
+2022-08-26 13:34:05,674 src.workflow INFO     Checking: Prediction Flow 211306H360
+2022-08-26 13:34:05,674 src.kafka    INFO       Querying topic: predictions_braila_flow211306H360_prediction
+2022-08-26 13:34:06,084 src.kafka    INFO       Last offset: 579
+2022-08-26 13:34:08,093 src.kafka    ERROR      Timestamp bigger then limit: 1442.51h
+2022-08-26 13:34:08,093 src.workflow INFO     Checking: Prediction Flow 318505H498
+2022-08-26 13:34:08,093 src.kafka    INFO       Querying topic: predictions_braila_flow318505H498_prediction
+2022-08-26 13:34:08,503 src.kafka    INFO       Last offset: 783
+2022-08-26 13:34:10,511 src.kafka    ERROR      Timestamp bigger then limit: 1443.37h

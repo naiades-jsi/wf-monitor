@@ -21,6 +21,10 @@ do
     python3 main.py -w braila-anomaly &> logs/braila-anomaly.log
 
     TIMESTAMP=$(date +"%F %T")
+    echo $TIMESTAMP "Running Braila State Analysis Monitor"
+    python3 main.py -w braila-state-analysis &> logs/braila-state-analysis.log
+
+    TIMESTAMP=$(date +"%F %T")
     echo $TIMESTAMP "Running Monitor Analysis and Report Tool"
     python3 anaylsis.py
     echo "Finished"

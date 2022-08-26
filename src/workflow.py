@@ -6,6 +6,7 @@ import json
 from src.historic import HistoricCheck
 from src.influx import InfluxCheck
 from src.kafka import KafkaCheck
+from src.sat import StateAnalysisCheck
 
 # logging
 LOGGER = logging.getLogger(__name__)
@@ -27,6 +28,8 @@ class Workflow:
             self.config_file = f"{config_directory}/braila-consumption.json"
         elif (workflow == "braila-anomaly"):
             self.config_file = f"{config_directory}/braila-anomaly.json"
+        elif (workflow == "braila-state-analysis"):
+            self.config_file = f"{config_directory}/braila-state-analysis.json"
         else:
             LOGGER.error("No config was recognised: %s", workflow)
 
@@ -35,6 +38,7 @@ class Workflow:
             self.config = json.load(json_file)
 
     def check(self) -> None:
+        """Starting the workflow check"""
         LOGGER.info("Starting worklfow check")
 
         for section in self.config["workflow"]:
@@ -44,6 +48,7 @@ class Workflow:
                 self.check_item(section, check)
 
     def check_item(self, section: dict, check: dict) -> None:
+        """Starting check of a particular section"""
         LOGGER.info("Checking: %s", check["name"])
         if (section["type"] == "naiades_historic"):
             myCheck = HistoricCheck(section, check)
@@ -54,18 +59,6 @@ class Workflow:
         if (section["type"] == "kafka"):
             myCheck = KafkaCheck(section, check)
             myCheck.run()
-
-"""
-  measurements_analog = [
-    #'flow211106H360',
-    'flow211206H360',
-    'flow211306H360',
-    'flow318505H498'
-    ]
-measurements_presure = [
-    'pressure5770',
-    'pressure5771',
-    'pressure5772',
-    'pressure5773'
-    ]
-"""
+        if (section["type"] == "stateanalysis"):
+            myCheck = StateAnalysisCheck(section, check)
+            myCheck.run()
