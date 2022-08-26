@@ -1,0 +1,11 @@
+2022-08-26 11:01:43,920 wf-monitor   INFO     Starting workflow monitoring tool for: braila-anomaly
+2022-08-26 11:01:43,921 src.workflow INFO     Loading config: configs/braila-anomaly.json
+2022-08-26 11:01:43,921 src.workflow INFO     Starting worklfow check
+Traceback (most recent call last):
+  File "main.py", line 43, in <module>
+    main()
+  File "main.py", line 38, in main
+    wf.check()
+  File "/home/wf-monitor/src/workflow.py", line 40, in check
+    for section in self.config["workflow"]:
+KeyError: 'workflow'

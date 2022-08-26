@@ -21,7 +21,7 @@ class Workflow:
             self.config_file = f"{config_directory}/carouge.json"
         elif (workflow == "alicante-consumption"):
             self.config_file = f"{config_directory}/alicante-consumption.json"
-        elif (workflow == "salinity"):
+        elif (workflow == "alicante-salinity"):
             self.config_file = f"{config_directory}/salinity.json"
         elif (workflow == "braila-consumption"):
             self.config_file = f"{config_directory}/braila-consumption.json"

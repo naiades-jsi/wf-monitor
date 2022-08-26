@@ -1,0 +1,36 @@
+2022-08-26 11:01:43,291 wf-monitor   INFO     Starting workflow monitoring tool for: braila-consumption
+2022-08-26 11:01:43,291 src.workflow INFO     Loading config: configs/braila-consumption.json
+2022-08-26 11:01:43,291 src.workflow INFO     Starting worklfow check
+2022-08-26 11:01:43,291 src.workflow INFO     Starting checks for: Influx data
+2022-08-26 11:01:43,291 src.workflow INFO     Checking: Influx Flow 211106H360
+2022-08-26 11:01:43,292 src.influx   INFO       Building query
+2022-08-26 11:01:43,292 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "flow211106H360")|> last()
+2022-08-26 11:01:43,303 src.influx   ERROR      No data in last week: Influx Flow 211106H360
+2022-08-26 11:01:43,303 src.workflow INFO     Checking: Influx Flow 211206H360
+2022-08-26 11:01:43,303 src.influx   INFO       Building query
+2022-08-26 11:01:43,303 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "flow211206H360")|> last()
+2022-08-26 11:01:43,311 src.influx   ERROR      No data in last week: Influx Flow 211206H360
+2022-08-26 11:01:43,311 src.workflow INFO     Checking: Influx Flow 211306H360
+2022-08-26 11:01:43,311 src.influx   INFO       Building query
+2022-08-26 11:01:43,311 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "flow211306H360")|> last()
+2022-08-26 11:01:43,319 src.influx   ERROR      No data in last week: Influx Flow 211306H360
+2022-08-26 11:01:43,319 src.workflow INFO     Checking: Influx Flow 318505H498
+2022-08-26 11:01:43,319 src.influx   INFO       Building query
+2022-08-26 11:01:43,319 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "flow318505H498")|> last()
+2022-08-26 11:01:43,328 src.influx   ERROR      No data in last week: Influx Flow 318505H498
+2022-08-26 11:01:43,328 src.workflow INFO     Checking: Influx Pressure 5770
+2022-08-26 11:01:43,328 src.influx   INFO       Building query
+2022-08-26 11:01:43,328 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "pressure5770")|> last()
+2022-08-26 11:01:43,335 src.influx   ERROR      No data in last week: Influx Pressure 5770
+2022-08-26 11:01:43,335 src.workflow INFO     Checking: Influx Pressure 5771
+2022-08-26 11:01:43,336 src.influx   INFO       Building query
+2022-08-26 11:01:43,336 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "pressure5771")|> last()
+2022-08-26 11:01:43,343 src.influx   ERROR      No data in last week: Influx Pressure 5771
+2022-08-26 11:01:43,343 src.workflow INFO     Checking: Influx Pressure 5772
+2022-08-26 11:01:43,343 src.influx   INFO       Building query
+2022-08-26 11:01:43,343 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "pressure5772")|> last()
+2022-08-26 11:01:43,350 src.influx   ERROR      No data in last week: Influx Pressure 5772
+2022-08-26 11:01:43,351 src.workflow INFO     Checking: Influx Pressure 5773
+2022-08-26 11:01:43,351 src.influx   INFO       Building query
+2022-08-26 11:01:43,351 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "pressure5773")|> last()
+2022-08-26 11:01:43,358 src.influx   ERROR      No data in last week: Influx Pressure 5773
