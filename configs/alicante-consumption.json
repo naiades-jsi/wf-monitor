@@ -92,13 +92,13 @@
             "groupid": "wf-monitor-",
             "bootstrap_servers": "localhost:9092",
             "checks": [
-                { "name": "Fusion Alipark", "topic": "features_alicante_alipark_forecasting", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Fusion Autobuses", "topic": "features_alicante_autobuses_forecasting", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Fusion Benalua", "topic": "features_alicante_benalua_forecasting", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Fusion Diputacion", "topic": "features_alicante_diputacion_forecasting", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Fusion Mercado", "topic": "features_alicante_mercado_forecasting", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Fusion Montaneta", "topic": "features_alicante_montaneta_forecasting", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Fusion Rambla", "topic": "features_alicante_rambla_forecasting", "alert_diff": 6, "error_diff": 24 }
+                { "name": "Fusion Alipark", "topic": "features_alicante_alipark_flow_forecasting", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Fusion Autobuses", "topic": "features_alicante_autobuses_flow_forecasting", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Fusion Benalua", "topic": "features_alicante_benalua_flow_forecasting", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Fusion Diputacion", "topic": "features_alicante_diputacion_flow_forecasting", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Fusion Mercado", "topic": "features_alicante_mercado_flow_forecasting", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Fusion Montaneta", "topic": "features_alicante_montaneta_flow_forecasting", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Fusion Rambla", "topic": "features_alicante_rambla_flow_forecasting", "alert_diff": 6, "error_diff": 24 }
             ]
         },
         {

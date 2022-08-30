@@ -1,23 +1,23 @@
-2022-08-26 14:17:13,349 wf-monitor   INFO     Starting workflow monitoring tool for: braila-state-analysis
-2022-08-26 14:17:13,349 src.workflow INFO     Loading config: configs/braila-state-analysis.json
-2022-08-26 14:17:13,349 src.workflow INFO     Starting worklfow check
-2022-08-26 14:17:13,349 src.workflow INFO     Starting checks for: Naiades Historic API - WaterDemand
-2022-08-26 14:17:13,349 src.workflow INFO     Checking: Water Demand 211206H360
-2022-08-26 14:17:14,097 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-211206H360?lastN=1
-2022-08-26 14:17:14,099 src.historic INFO       Timestamp in the limits: 0.00h
-2022-08-26 14:17:14,099 src.workflow INFO     Checking: Water Demand 211306H360
-2022-08-26 14:17:14,218 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-211306H360?lastN=1
-2022-08-26 14:17:14,219 src.historic INFO       Timestamp in the limits: 5.68h
-2022-08-26 14:17:14,219 src.workflow INFO     Checking: Water Demand 318505H498
-2022-08-26 14:17:14,342 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-318505H498?lastN=1
-2022-08-26 14:17:14,343 src.historic INFO       Timestamp in the limits: 3.48h
-2022-08-26 14:17:14,343 src.workflow INFO     Starting checks for: StreamStory Data API - WaterDemand
-2022-08-26 14:17:14,343 src.workflow INFO     Checking: Water Demand 211206H360
-2022-08-26 14:17:14,464 src.sat      INFO       Trying: http://atena.ijs.si:8081/braila-flow211206H360/series/last
-2022-08-26 14:17:14,465 src.sat      INFO       Timestamp in the limits: 0.47h
-2022-08-26 14:17:14,465 src.workflow INFO     Checking: Water Demand 211306H360
-2022-08-26 14:17:14,579 src.sat      INFO       Trying: http://atena.ijs.si:8081/braila-flow211306H360/series/last
-2022-08-26 14:17:14,580 src.sat      INFO       Timestamp in the limits: 5.68h
-2022-08-26 14:17:14,580 src.workflow INFO     Checking: Water Demand 318505H498
-2022-08-26 14:17:14,689 src.sat      INFO       Trying: http://atena.ijs.si:8081/braila-flow318505H498/series/last
-2022-08-26 14:17:14,689 src.sat      INFO       Timestamp in the limits: 3.48h
+2022-08-30 07:44:25,868 wf-monitor   INFO     Starting workflow monitoring tool for: braila-state-analysis
+2022-08-30 07:44:25,868 src.workflow INFO     Loading config: configs/braila-state-analysis.json
+2022-08-30 07:44:25,868 src.workflow INFO     Starting worklfow check
+2022-08-30 07:44:25,868 src.workflow INFO     Starting checks for: Naiades Historic API - WaterDemand
+2022-08-30 07:44:25,868 src.workflow INFO     Checking: Water Demand 211206H360
+2022-08-30 07:44:25,995 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-211206H360?lastN=1
+2022-08-30 07:44:25,999 src.historic INFO       Timestamp in the limits: 0.00h
+2022-08-30 07:44:25,999 src.workflow INFO     Checking: Water Demand 211306H360
+2022-08-30 07:44:26,122 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-211306H360?lastN=1
+2022-08-30 07:44:26,122 src.historic WARNING    Timestamp bigger than limit: 6.09h
+2022-08-30 07:44:26,123 src.workflow INFO     Checking: Water Demand 318505H498
+2022-08-30 07:44:26,248 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-318505H498?lastN=1
+2022-08-30 07:44:26,249 src.historic INFO       Timestamp in the limits: 0.02h
+2022-08-30 07:44:26,249 src.workflow INFO     Starting checks for: StreamStory Data API - WaterDemand
+2022-08-30 07:44:26,249 src.workflow INFO     Checking: Water Demand 211206H360
+2022-08-30 07:44:26,381 src.sat      INFO       Trying: http://atena.ijs.si:8081/braila-flow211206H360/series/last
+2022-08-30 07:44:26,381 src.sat      WARNING    Timestamp bigger than limit: 15.88h
+2022-08-30 07:44:26,381 src.workflow INFO     Checking: Water Demand 211306H360
+2022-08-30 07:44:26,497 src.sat      INFO       Trying: http://atena.ijs.si:8081/braila-flow211306H360/series/last
+2022-08-30 07:44:26,498 src.sat      WARNING    Timestamp bigger than limit: 6.09h
+2022-08-30 07:44:26,498 src.workflow INFO     Checking: Water Demand 318505H498
+2022-08-30 07:44:26,610 src.sat      INFO       Trying: http://atena.ijs.si:8081/braila-flow318505H498/series/last
+2022-08-30 07:44:26,611 src.sat      INFO       Timestamp in the limits: 0.94h
