@@ -34,20 +34,28 @@ class KafkaCheck:
         tp = TopicPartition(self.check["topic"], 0)
         assigned_topic = [tp]
         self.consumer.assign(assigned_topic)
-        last_offset = self.consumer.position(tp)
+        # last_offset = self.consumer.position(tp)
         #options = {}
         #options[0] = OffsetAndMetadata(last_offset, tp)
-        self.consumer.commit({
-            tp: OffsetAndMetadata(last_offset - 1, None)
-        })
+        #self.consumer.commit({
+        #    tp: OffsetAndMetadata(last_offset - 30, None)
+        #})
+        self.consumer.seek_to_end(tp)
+        last_offset = self.consumer.position(tp)
+        self.consumer.seek(tp, last_offset - 3)
+        new_offset = self.consumer.position(tp)
 
+        #msgs = self.consumer.poll(500)
+        # LOGGER.info(msgs)
         LOGGER.info("  Last offset: %d", last_offset)
 
         # consumer.seek_to_beginning(topic_partition)
-        ts = 0
+        ts = -1
         t_value = ""
         wa_value = ""
+
         for message in self.consumer:
+            # LOGGER.info(message)
             try:
                 ts = message.value["timestamp"]
                 if self.section["subtype"] == "prediction-watering":
@@ -67,8 +75,10 @@ class KafkaCheck:
 
         if (wa_value == 0.0):
             LOGGER.warning("  Watering amount was 0.0!")
-
-        self.check_last_ts(ts)
+        if (ts != -1):
+            self.check_last_ts(ts)
+        else:
+            LOGGER.error("No message in consumer!")
 
 
     def check_last_ts(self, ts: int) -> bool:

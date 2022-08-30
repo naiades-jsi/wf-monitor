@@ -1,113 +1,113 @@
-2022-08-30 07:43:50,424 wf-monitor   INFO     Starting workflow monitoring tool for: braila-anomaly
-2022-08-30 07:43:50,424 src.workflow INFO     Loading config: configs/braila-anomaly.json
-2022-08-30 07:43:50,425 src.workflow INFO     Starting worklfow check
-2022-08-30 07:43:50,425 src.workflow INFO     Starting checks for: Naiades Historic API - WaterDemand
-2022-08-30 07:43:50,425 src.workflow INFO     Checking: Water Demand 211206H360
-2022-08-30 07:43:50,557 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-211206H360?lastN=1
-2022-08-30 07:43:50,559 src.historic INFO       Timestamp in the limits: 0.01h
-2022-08-30 07:43:50,559 src.workflow INFO     Checking: Water Demand 211306H360
-2022-08-30 07:43:50,696 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-211306H360?lastN=1
-2022-08-30 07:43:50,696 src.historic WARNING    Timestamp bigger than limit: 6.08h
-2022-08-30 07:43:50,697 src.workflow INFO     Checking: Water Demand 318505H498
-2022-08-30 07:43:50,817 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-318505H498?lastN=1
-2022-08-30 07:43:50,818 src.historic INFO       Timestamp in the limits: 0.01h
-2022-08-30 07:43:50,818 src.workflow INFO     Starting checks for: Naiades Historic API - Pressure
-2022-08-30 07:43:50,818 src.workflow INFO     Checking: Pressure-5770
-2022-08-30 07:43:50,926 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:Pressure:Pressure-5770?lastN=1
-2022-08-30 07:43:50,927 src.historic WARNING    Timestamp bigger than limit: 16.84h
-2022-08-30 07:43:50,927 src.workflow INFO     Checking: Pressure-5771
-2022-08-30 07:43:51,040 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:Pressure:Pressure-5771?lastN=1
-2022-08-30 07:43:51,040 src.historic WARNING    Timestamp bigger than limit: 16.84h
-2022-08-30 07:43:51,040 src.workflow INFO     Checking: Pressure-5772
-2022-08-30 07:43:51,152 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:Pressure:Pressure-5772?lastN=1
-2022-08-30 07:43:51,153 src.historic WARNING    Timestamp bigger than limit: 16.82h
-2022-08-30 07:43:51,153 src.workflow INFO     Checking: Pressure-5773
-2022-08-30 07:43:51,265 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:Pressure:Pressure-5773?lastN=1
-2022-08-30 07:43:51,265 src.historic WARNING    Timestamp bigger than limit: 16.84h
-2022-08-30 07:43:51,265 src.workflow INFO     Starting checks for: Influx data
-2022-08-30 07:43:51,265 src.workflow INFO     Checking: Influx Flow 211206H360
-2022-08-30 07:43:51,266 src.influx   INFO       Building query
-2022-08-30 07:43:51,266 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "flow211206H360")|> last()
-2022-08-30 07:43:51,278 src.influx   INFO       Timestamp in the limits: 0.65h
-2022-08-30 07:43:51,279 src.workflow INFO     Checking: Influx Flow 211306H360
-2022-08-30 07:43:51,279 src.influx   INFO       Building query
-2022-08-30 07:43:51,279 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "flow211306H360")|> last()
-2022-08-30 07:43:51,290 src.influx   WARNING    Timestamp bigger than limit: 6.08h
-2022-08-30 07:43:51,290 src.workflow INFO     Checking: Influx Flow 318505H498
-2022-08-30 07:43:51,290 src.influx   INFO       Building query
-2022-08-30 07:43:51,290 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "flow318505H498")|> last()
-2022-08-30 07:43:51,300 src.influx   INFO       Timestamp in the limits: 0.65h
-2022-08-30 07:43:51,300 src.workflow INFO     Checking: Influx Pressure 5770
-2022-08-30 07:43:51,301 src.influx   INFO       Building query
-2022-08-30 07:43:51,301 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "pressure5770")|> last()
-2022-08-30 07:43:51,310 src.influx   WARNING    Timestamp bigger than limit: 16.85h
-2022-08-30 07:43:51,311 src.workflow INFO     Checking: Influx Pressure 5771
-2022-08-30 07:43:51,311 src.influx   INFO       Building query
-2022-08-30 07:43:51,311 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "pressure5771")|> last()
-2022-08-30 07:43:51,319 src.influx   WARNING    Timestamp bigger than limit: 16.84h
-2022-08-30 07:43:51,320 src.workflow INFO     Checking: Influx Pressure 5772
-2022-08-30 07:43:51,320 src.influx   INFO       Building query
-2022-08-30 07:43:51,320 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "pressure5772")|> last()
-2022-08-30 07:43:51,328 src.influx   WARNING    Timestamp bigger than limit: 16.82h
-2022-08-30 07:43:51,328 src.workflow INFO     Checking: Influx Pressure 5773
-2022-08-30 07:43:51,328 src.influx   INFO       Building query
-2022-08-30 07:43:51,328 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "pressure5773")|> last()
-2022-08-30 07:43:51,336 src.influx   WARNING    Timestamp bigger than limit: 16.84h
-2022-08-30 07:43:51,336 src.workflow INFO     Starting checks for: Data Fusion on Kafka
-2022-08-30 07:43:51,336 src.workflow INFO     Checking: Features Pressure 5770
-2022-08-30 07:43:51,336 src.kafka    INFO       Querying topic: features_braila_pressure5770_anomaly
-2022-08-30 07:43:51,748 src.kafka    INFO       Last offset: 339
-2022-08-30 07:43:53,753 src.kafka    WARNING    Timestamp bigger than limit: 16.80h
-2022-08-30 07:43:53,753 src.workflow INFO     Checking: Features Pressure 5771
-2022-08-30 07:43:53,753 src.kafka    INFO       Querying topic: features_braila_pressure5771_anomaly
-2022-08-30 07:43:54,165 src.kafka    INFO       Last offset: 615
-2022-08-30 07:43:56,170 src.kafka    WARNING    Timestamp bigger than limit: 16.80h
-2022-08-30 07:43:56,170 src.workflow INFO     Checking: Features Pressure 5772
-2022-08-30 07:43:56,171 src.kafka    INFO       Querying topic: features_braila_pressure5772_anomaly
-2022-08-30 07:43:56,584 src.kafka    INFO       Last offset: 571
-2022-08-30 07:43:58,591 src.kafka    WARNING    Timestamp bigger than limit: 16.80h
-2022-08-30 07:43:58,591 src.workflow INFO     Checking: Features Pressure 5773
-2022-08-30 07:43:58,591 src.kafka    INFO       Querying topic: features_braila_pressure5773_anomaly
-2022-08-30 07:43:59,005 src.kafka    INFO       Last offset: 244
-2022-08-30 07:44:01,010 src.kafka    WARNING    Timestamp bigger than limit: 16.79h
-2022-08-30 07:44:01,010 src.workflow INFO     Checking: Features Flow 211206H360
-2022-08-30 07:44:01,010 src.kafka    INFO       Querying topic: features_braila_flow211206H360_anomaly
-2022-08-30 07:44:01,422 src.kafka    INFO       Last offset: 1748
-2022-08-30 07:44:03,429 src.kafka    WARNING    Timestamp bigger than limit: 15.84h
-2022-08-30 07:44:03,429 src.workflow INFO     Checking: Features Flow 211306H360
-2022-08-30 07:44:03,429 src.kafka    INFO       Querying topic: features_braila_flow211306H360_anomaly
-2022-08-30 07:44:03,841 src.kafka    INFO       Last offset: 1518
-2022-08-30 07:44:05,844 src.kafka    ERROR      Timestamp bigger then limit: 461623.73h
-2022-08-30 07:44:05,844 src.workflow INFO     Checking: Features Flow 318505H498
-2022-08-30 07:44:05,844 src.kafka    INFO       Querying topic: features_braila_flow318505H498_anomaly
-2022-08-30 07:44:06,257 src.kafka    INFO       Last offset: 2000
-2022-08-30 07:44:08,259 src.kafka    ERROR      Timestamp bigger then limit: 461623.74h
-2022-08-30 07:44:08,259 src.workflow INFO     Starting checks for: Predictions on Kafka
-2022-08-30 07:44:08,260 src.workflow INFO     Checking: Anomalies Pressure 5770
-2022-08-30 07:44:08,260 src.kafka    INFO       Querying topic: anomalies_braila_pressure5770_meta_signal
-2022-08-30 07:44:08,671 src.kafka    INFO       Last offset: 339
-2022-08-30 07:44:10,677 src.kafka    WARNING    Timestamp bigger than limit: 16.80h
-2022-08-30 07:44:10,677 src.workflow INFO     Checking: Anomalies Pressure 5771
-2022-08-30 07:44:10,677 src.kafka    INFO       Querying topic: anomalies_braila_pressure5771_meta_signal
-2022-08-30 07:44:11,088 src.kafka    INFO       Last offset: 615
-2022-08-30 07:44:13,094 src.kafka    WARNING    Timestamp bigger than limit: 16.80h
-2022-08-30 07:44:13,095 src.workflow INFO     Checking: Anomalies Pressure 5772
-2022-08-30 07:44:13,095 src.kafka    INFO       Querying topic: anomalies_braila_pressure5772_meta_signal
-2022-08-30 07:44:13,506 src.kafka    INFO       Last offset: 571
-2022-08-30 07:44:15,513 src.kafka    WARNING    Timestamp bigger than limit: 16.80h
-2022-08-30 07:44:15,513 src.workflow INFO     Checking: Anomalies Pressure 5773
-2022-08-30 07:44:15,513 src.kafka    INFO       Querying topic: anomalies_braila_pressure5773_meta_signal
-2022-08-30 07:44:15,924 src.kafka    INFO       Last offset: 244
-2022-08-30 07:44:17,930 src.kafka    WARNING    Timestamp bigger than limit: 16.80h
-2022-08-30 07:44:17,930 src.workflow INFO     Checking: Anomalies Flow 211206H360
-2022-08-30 07:44:17,931 src.kafka    INFO       Querying topic: anomalies_braila_flow211206H360_meta_signal
-2022-08-30 07:44:18,341 src.kafka    INFO       Last offset: 1748
-2022-08-30 07:44:20,349 src.kafka    WARNING    Timestamp bigger than limit: 15.84h
-2022-08-30 07:44:20,349 src.workflow INFO     Checking: Anomalies Flow 211306H360
-2022-08-30 07:44:20,349 src.kafka    INFO       Querying topic: anomalies_braila_flow211306H360_meta_signal
-2022-08-30 07:44:20,763 src.kafka    INFO       Last offset: 1519
-2022-08-30 07:44:22,765 src.kafka    ERROR      Timestamp bigger then limit: 461623.74h
-2022-08-30 07:44:22,765 src.workflow INFO     Checking: Anomalies Flow 318505H498
-2022-08-30 07:44:22,766 src.kafka    INFO       Querying topic: anomalies_braila_flow318505H498_meta_signal
-2022-08-30 07:44:23,179 src.kafka    INFO       Last offset: 2001
-2022-08-30 07:44:25,181 src.kafka    ERROR      Timestamp bigger then limit: 461623.74h
+2022-08-30 14:01:21,742 wf-monitor   INFO     Starting workflow monitoring tool for: braila-anomaly
+2022-08-30 14:01:21,743 src.workflow INFO     Loading config: configs/braila-anomaly.json
+2022-08-30 14:01:21,743 src.workflow INFO     Starting worklfow check
+2022-08-30 14:01:21,743 src.workflow INFO     Starting checks for: Naiades Historic API - WaterDemand
+2022-08-30 14:01:21,743 src.workflow INFO     Checking: Water Demand 211206H360
+2022-08-30 14:01:21,878 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-211206H360?lastN=1
+2022-08-30 14:01:21,881 src.historic INFO       Timestamp in the limits: 4.43h
+2022-08-30 14:01:21,881 src.workflow INFO     Checking: Water Demand 211306H360
+2022-08-30 14:01:22,037 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-211306H360?lastN=1
+2022-08-30 14:01:22,038 src.historic INFO       Timestamp in the limits: 2.64h
+2022-08-30 14:01:22,038 src.workflow INFO     Checking: Water Demand 318505H498
+2022-08-30 14:01:22,160 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-318505H498?lastN=1
+2022-08-30 14:01:22,160 src.historic INFO       Timestamp in the limits: 0.03h
+2022-08-30 14:01:22,160 src.workflow INFO     Starting checks for: Naiades Historic API - Pressure
+2022-08-30 14:01:22,160 src.workflow INFO     Checking: Pressure-5770
+2022-08-30 14:01:22,274 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:Pressure:Pressure-5770?lastN=1
+2022-08-30 14:01:22,274 src.historic INFO       Timestamp in the limits: 0.00h
+2022-08-30 14:01:22,274 src.workflow INFO     Checking: Pressure-5771
+2022-08-30 14:01:22,383 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:Pressure:Pressure-5771?lastN=1
+2022-08-30 14:01:22,384 src.historic WARNING    Timestamp bigger than limit: 23.13h
+2022-08-30 14:01:22,384 src.workflow INFO     Checking: Pressure-5772
+2022-08-30 14:01:22,494 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:Pressure:Pressure-5772?lastN=1
+2022-08-30 14:01:22,494 src.historic WARNING    Timestamp bigger than limit: 23.11h
+2022-08-30 14:01:22,494 src.workflow INFO     Checking: Pressure-5773
+2022-08-30 14:01:22,606 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:Pressure:Pressure-5773?lastN=1
+2022-08-30 14:01:22,606 src.historic WARNING    Timestamp bigger than limit: 23.13h
+2022-08-30 14:01:22,606 src.workflow INFO     Starting checks for: Influx data
+2022-08-30 14:01:22,606 src.workflow INFO     Checking: Influx Flow 211206H360
+2022-08-30 14:01:22,607 src.influx   INFO       Building query
+2022-08-30 14:01:22,607 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "flow211206H360")|> last()
+2022-08-30 14:01:22,623 src.influx   INFO       Timestamp in the limits: 4.43h
+2022-08-30 14:01:22,623 src.workflow INFO     Checking: Influx Flow 211306H360
+2022-08-30 14:01:22,624 src.influx   INFO       Building query
+2022-08-30 14:01:22,624 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "flow211306H360")|> last()
+2022-08-30 14:01:22,637 src.influx   INFO       Timestamp in the limits: 2.64h
+2022-08-30 14:01:22,637 src.workflow INFO     Checking: Influx Flow 318505H498
+2022-08-30 14:01:22,637 src.influx   INFO       Building query
+2022-08-30 14:01:22,637 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "flow318505H498")|> last()
+2022-08-30 14:01:22,652 src.influx   INFO       Timestamp in the limits: 0.94h
+2022-08-30 14:01:22,652 src.workflow INFO     Checking: Influx Pressure 5770
+2022-08-30 14:01:22,652 src.influx   INFO       Building query
+2022-08-30 14:01:22,652 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "pressure5770")|> last()
+2022-08-30 14:01:22,664 src.influx   WARNING    Timestamp bigger than limit: 23.14h
+2022-08-30 14:01:22,665 src.workflow INFO     Checking: Influx Pressure 5771
+2022-08-30 14:01:22,665 src.influx   INFO       Building query
+2022-08-30 14:01:22,665 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "pressure5771")|> last()
+2022-08-30 14:01:22,676 src.influx   WARNING    Timestamp bigger than limit: 23.13h
+2022-08-30 14:01:22,676 src.workflow INFO     Checking: Influx Pressure 5772
+2022-08-30 14:01:22,677 src.influx   INFO       Building query
+2022-08-30 14:01:22,677 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "pressure5772")|> last()
+2022-08-30 14:01:22,691 src.influx   WARNING    Timestamp bigger than limit: 23.11h
+2022-08-30 14:01:22,691 src.workflow INFO     Checking: Influx Pressure 5773
+2022-08-30 14:01:22,691 src.influx   INFO       Building query
+2022-08-30 14:01:22,691 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "pressure5773")|> last()
+2022-08-30 14:01:22,702 src.influx   WARNING    Timestamp bigger than limit: 23.13h
+2022-08-30 14:01:22,702 src.workflow INFO     Starting checks for: Data Fusion on Kafka
+2022-08-30 14:01:22,702 src.workflow INFO     Checking: Features Pressure 5770
+2022-08-30 14:01:22,702 src.kafka    INFO       Querying topic: features_braila_pressure5770_anomaly
+2022-08-30 14:01:23,114 src.kafka    INFO       Last offset: 338
+2022-08-30 14:01:25,121 src.kafka    WARNING    Timestamp bigger than limit: 23.09h
+2022-08-30 14:01:25,121 src.workflow INFO     Checking: Features Pressure 5771
+2022-08-30 14:01:25,121 src.kafka    INFO       Querying topic: features_braila_pressure5771_anomaly
+2022-08-30 14:01:25,534 src.kafka    INFO       Last offset: 614
+2022-08-30 14:01:27,539 src.kafka    WARNING    Timestamp bigger than limit: 23.09h
+2022-08-30 14:01:27,539 src.workflow INFO     Checking: Features Pressure 5772
+2022-08-30 14:01:27,539 src.kafka    INFO       Querying topic: features_braila_pressure5772_anomaly
+2022-08-30 14:01:27,951 src.kafka    INFO       Last offset: 570
+2022-08-30 14:01:29,962 src.kafka    WARNING    Timestamp bigger than limit: 23.09h
+2022-08-30 14:01:29,962 src.workflow INFO     Checking: Features Pressure 5773
+2022-08-30 14:01:29,962 src.kafka    INFO       Querying topic: features_braila_pressure5773_anomaly
+2022-08-30 14:01:30,373 src.kafka    INFO       Last offset: 243
+2022-08-30 14:01:32,378 src.kafka    WARNING    Timestamp bigger than limit: 23.09h
+2022-08-30 14:01:32,378 src.workflow INFO     Checking: Features Flow 211206H360
+2022-08-30 14:01:32,378 src.kafka    INFO       Querying topic: features_braila_flow211206H360_anomaly
+2022-08-30 14:01:32,791 src.kafka    INFO       Last offset: 1747
+2022-08-30 14:01:34,800 src.kafka    INFO       Timestamp in the limits: 4.38h
+2022-08-30 14:01:34,800 src.workflow INFO     Checking: Features Flow 211306H360
+2022-08-30 14:01:34,800 src.kafka    INFO       Querying topic: features_braila_flow211306H360_anomaly
+2022-08-30 14:01:35,211 src.kafka    INFO       Last offset: 1517
+2022-08-30 14:01:37,213 src.kafka    ERROR      Timestamp bigger then limit: 461630.03h
+2022-08-30 14:01:37,214 src.workflow INFO     Checking: Features Flow 318505H498
+2022-08-30 14:01:37,214 src.kafka    INFO       Querying topic: features_braila_flow318505H498_anomaly
+2022-08-30 14:01:37,628 src.kafka    INFO       Last offset: 1999
+2022-08-30 14:01:39,630 src.kafka    ERROR      Timestamp bigger then limit: 461630.03h
+2022-08-30 14:01:39,630 src.workflow INFO     Starting checks for: Predictions on Kafka
+2022-08-30 14:01:39,630 src.workflow INFO     Checking: Anomalies Pressure 5770
+2022-08-30 14:01:39,630 src.kafka    INFO       Querying topic: anomalies_braila_pressure5770_meta_signal
+2022-08-30 14:01:40,040 src.kafka    INFO       Last offset: 338
+2022-08-30 14:01:42,047 src.kafka    WARNING    Timestamp bigger than limit: 23.09h
+2022-08-30 14:01:42,047 src.workflow INFO     Checking: Anomalies Pressure 5771
+2022-08-30 14:01:42,047 src.kafka    INFO       Querying topic: anomalies_braila_pressure5771_meta_signal
+2022-08-30 14:01:42,458 src.kafka    INFO       Last offset: 614
+2022-08-30 14:01:44,465 src.kafka    WARNING    Timestamp bigger than limit: 23.09h
+2022-08-30 14:01:44,465 src.workflow INFO     Checking: Anomalies Pressure 5772
+2022-08-30 14:01:44,465 src.kafka    INFO       Querying topic: anomalies_braila_pressure5772_meta_signal
+2022-08-30 14:01:44,876 src.kafka    INFO       Last offset: 570
+2022-08-30 14:01:46,883 src.kafka    WARNING    Timestamp bigger than limit: 23.09h
+2022-08-30 14:01:46,883 src.workflow INFO     Checking: Anomalies Pressure 5773
+2022-08-30 14:01:46,884 src.kafka    INFO       Querying topic: anomalies_braila_pressure5773_meta_signal
+2022-08-30 14:01:47,295 src.kafka    INFO       Last offset: 243
+2022-08-30 14:01:49,301 src.kafka    WARNING    Timestamp bigger than limit: 23.09h
+2022-08-30 14:01:49,301 src.workflow INFO     Checking: Anomalies Flow 211206H360
+2022-08-30 14:01:49,301 src.kafka    INFO       Querying topic: anomalies_braila_flow211206H360_meta_signal
+2022-08-30 14:01:49,712 src.kafka    INFO       Last offset: 1747
+2022-08-30 14:01:51,720 src.kafka    INFO       Timestamp in the limits: 4.39h
+2022-08-30 14:01:51,720 src.workflow INFO     Checking: Anomalies Flow 211306H360
+2022-08-30 14:01:51,720 src.kafka    INFO       Querying topic: anomalies_braila_flow211306H360_meta_signal
+2022-08-30 14:01:52,131 src.kafka    INFO       Last offset: 1518
+2022-08-30 14:01:54,133 src.kafka    ERROR      Timestamp bigger then limit: 461630.03h
+2022-08-30 14:01:54,133 src.workflow INFO     Checking: Anomalies Flow 318505H498
+2022-08-30 14:01:54,134 src.kafka    INFO       Querying topic: anomalies_braila_flow318505H498_meta_signal
+2022-08-30 14:01:54,545 src.kafka    INFO       Last offset: 2000
+2022-08-30 14:01:56,548 src.kafka    ERROR      Timestamp bigger then limit: 461630.03h
