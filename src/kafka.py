@@ -31,22 +31,17 @@ class KafkaCheck:
             enable_auto_commit = False,
             consumer_timeout_ms = 2000)
 
+        # assign to a topic
         tp = TopicPartition(self.check["topic"], 0)
         assigned_topic = [tp]
         self.consumer.assign(assigned_topic)
-        # last_offset = self.consumer.position(tp)
-        #options = {}
-        #options[0] = OffsetAndMetadata(last_offset, tp)
-        #self.consumer.commit({
-        #    tp: OffsetAndMetadata(last_offset - 30, None)
-        #})
+
+        # hack for obtaining last position
         self.consumer.seek_to_end(tp)
         last_offset = self.consumer.position(tp)
         self.consumer.seek(tp, last_offset - 3)
         new_offset = self.consumer.position(tp)
 
-        #msgs = self.consumer.poll(500)
-        # LOGGER.info(msgs)
         LOGGER.info("  Last offset: %d", last_offset)
 
         # consumer.seek_to_beginning(topic_partition)
