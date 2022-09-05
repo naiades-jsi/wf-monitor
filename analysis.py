@@ -84,6 +84,66 @@ def find_problems(df):
     new_df = pd.DataFrame(data={'Time': time, 'Type': type, 'Action': action, 'Location': location, 'Problem': problem})
     return new_df
 
+def extract_time(df,i):
+    problem = df['Problem'][i]
+    if 'Timestamp bigger' in problem:
+        time = problem.split(':')[1].strip()
+        time = float(time[:-1])
+        return time
+    return None
+
+def analyse_df(df):
+    '''1) adds a column (calculate time spent for a task)  and returns this dataframe
+    2) returns additional df with locations and error counts'''
+    time_spent = []
+    for index in range(len(df)):
+        time_1 = extract_time(df,index)
+        time = time_1
+        if index!=0 and time_1:
+            #find previous (warning/error) note from the same location
+            location = df['Location'][index]
+            j=index-1
+            current_location = df['Location'][j]
+            while j>0 and location!=current_location:
+                j-=1
+                current_location = df['Location'][j]
+
+            #calculate difference between the times
+            if current_location==location:
+                time_2 = extract_time(df,j)
+                if time_2:
+                    time = time_1-time_2
+            else:
+                time = time_1
+        time_spent.append(time)
+    df['Time_spent'] = time_spent
+
+    location = []
+    warning_count = []
+    error_count = []
+    for i in range(len(df)):
+        current_location = df['Location'][i]
+        current_type = df['Type'][i]
+        if current_location in location:
+            j = location.index(current_location)
+            if current_type == 'ERROR':
+                error_count[j]+=1
+            else: #current_type == 'WARNING':
+                warning_count[j]+=1
+        else:
+            location.append(current_location)
+            if current_type == 'ERROR':
+                error_count.append(1)
+                warning_count.append(0)
+            else: #current_type == 'WARNING':
+                error_count.append(0)
+                warning_count.append(1)
+    new_df = pd.DataFrame(data={'Location': location, 'Error_count': error_count, 'Warning_count': warning_count})
+
+    return df, new_df
+
+#testing:
 example_file = os.path.join(os.getcwd(),'logs', "alicante-consumption.log")
 df = to_df(example_file)
-print(find_problems(df).head(50))
+df = find_problems(df)
+print(analyse_df(df)[0].head(50))
