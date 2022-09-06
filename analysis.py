@@ -6,20 +6,39 @@ import time
 import logging
 import os
 import pandas as pd
+import logging
+
+# logging
+LOGGER = logging.getLogger("wf-monitor")
+logging.basicConfig(
+    format="%(asctime)s %(name)-12s %(levelname)-8s %(message)s", level=logging.INFO)
 
 def to_df(infile):
-    '''converts log file to pandas dataframe'''
-    time = []
+    '''converts log file to pandas dataframe
+
+    Parameters
+    ----------
+    infile : {string}  Absolute name of the log file.
+
+    Returns
+    -------
+    df : pandas dataframe
+        ...
+    '''
+
+    time = []               # array of ...
     file_loc = []
     type = []
     message = []
-    
+
     with open(infile) as f:
         for line in f:
-            if len(line)!=0:
-                #2022-08-30 15:52:17,689 src.workflow INFO     Loading config: configs/alicante-consumption.json
+            # parsing log lines; only if length is bigger than 0
+            if len(line) != 0:
 
-                no_time = line.split(',',1)
+
+                #2022-08-30 15:52:17,689 src.workflow INFO     Loading config: configs/alicante-consumption.json
+                no_time = line.split(',', 1)
                 time.append(no_time[0])
                 no_time_str = no_time[1].strip()
                 #689 src.workflow INFO     Loading config: configs/alicante-consumption.json
@@ -68,7 +87,7 @@ def find_problems(df):
                 checking = df['Message'][checking_index].split(':',1)[1].strip()
                 location.append(checking.split(' ')[0])
                 action.append(checking.split(' ')[1])
-            
+
             elif df['File_loc'][index] == 'src.influx':
                 checking_index = index-3
                 checking = df['Message'][checking_index].split(':',1)[1].strip()
@@ -80,7 +99,7 @@ def find_problems(df):
                 checking = df['Message'][checking_index].split(':',1)[1].strip()
                 location.append(checking.split(' ')[-1])
                 action.append(checking.split(' ')[0])
-            
+
     new_df = pd.DataFrame(data={'Time': time, 'Type': type, 'Action': action, 'Location': location, 'Problem': problem})
     return new_df
 
@@ -171,7 +190,7 @@ def analyse_df(df):
                     time_2 = current_time
         if is_different:
             time = time_1-time_2
-        
+
         #if index!=0 and time_1:
         #    #find previous (warning/error) note from the same location
         #    location = df['Location'][index]
@@ -218,9 +237,12 @@ def analyse_df(df):
 
 
 #testing
-example_file = os.path.join(os.getcwd(),'logs', "alicante-consumption.log")
-df = to_df(example_file)
-df = find_problems(df)
-#df = analyse_df(df)[0]
-#print(analyse_df(df)[0].head(42))
-print(df.head(40))
+try:
+    example_file = os.path.join(os.getcwd(), 'logs', "alicante-consumption1.log")
+    df = to_df(example_file)
+    df = find_problems(df)
+    #df = analyse_df(df)[0]
+    #print(analyse_df(df)[0].head(42))
+    print(df.head(40))
+except Exception as e:
+    LOGGER.error("Exception while opening file %s: %s", example_file)
