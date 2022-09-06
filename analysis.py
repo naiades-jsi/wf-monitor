@@ -137,7 +137,7 @@ def previous_time(df,i):
 
     Returns
     -------
-    float: Time_spent value from the last row with the same location and action previous to the current one 
+    float: Time_spent value from the last row with the same location and action previous to the current one
     (API --> Influx --> Fusion --> Prediction)
     '''
     action = df['Action'][i]
