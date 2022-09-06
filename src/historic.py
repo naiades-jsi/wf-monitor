@@ -53,7 +53,7 @@ class HistoricCheck:
             if diff_hrs > self.check["error_diff"]:
                 LOGGER.error("  Timestamp bigger then limit: %.2fh", diff_hrs)
             elif diff_hrs > self.check["alert_diff"]:
-                LOGGER.warning("  Timestamp bigger than limit: %.2fh", diff_hrs)
+                LOGGER.warning("  Timestamp bigger then limit: %.2fh", diff_hrs)
             else:
                 LOGGER.info("  Timestamp in the limits: %.2fh", diff_hrs)
         except Exception as e:
