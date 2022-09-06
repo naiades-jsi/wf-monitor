@@ -40,7 +40,10 @@ class KafkaCheck:
         self.consumer.seek_to_end(tp)
         last_offset = self.consumer.position(tp)
         try:
-            self.consumer.seek(tp, last_offset - 3)
+            next_offset = last_offset - 3
+            if next_offset < 0:
+                next_offset = 0
+            self.consumer.seek(tp, next_offset)
             new_offset = self.consumer.position(tp)
         except AssertionError as e:
             LOGGER.error(f"Topic {self.check['topic']} is empty. {e}")
