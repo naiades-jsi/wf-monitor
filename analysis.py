@@ -92,6 +92,64 @@ def extract_time(df,i):
         return time
     return None
 
+#def analyse_df(df):
+#    '''1) adds a column (calculate time spent for a task)  and returns this dataframe
+#    2) returns additional df with locations and error counts'''
+#    time_spent = []
+#    for index in range(len(df)):
+#        time_1 = extract_time(df,index)
+#        time = time_1
+#        if index!=0 and time_1:
+#            #find previous (warning/error) note from the same location
+#            location = df['Location'][index]
+#            j=index-1
+#            current_location = df['Location'][j]
+#            while j>0 and location!=current_location:
+#                j-=1
+#                current_location = df['Location'][j]
+#
+#            #calculate difference between the times
+#            if current_location==location:
+#                time_2 = extract_time(df,j)
+#                if time_2:
+#                    time = time_1-time_2
+#            else:
+#                time = time_1
+#        time_spent.append(time)
+#    df['Time_spent'] = time_spent
+#
+#    location = []
+#    warning_count = []
+#    error_count = []
+#    for i in range(len(df)):
+#        current_location = df['Location'][i]
+#        current_type = df['Type'][i]
+#        if current_location in location:
+#            j = location.index(current_location)
+#            if current_type == 'ERROR':
+#                error_count[j]+=1
+#            else: #current_type == 'WARNING':
+#                warning_count[j]+=1
+#        else:
+#            location.append(current_location)
+#            if current_type == 'ERROR':
+#                error_count.append(1)
+#                warning_count.append(0)
+#            else: #current_type == 'WARNING':
+#                error_count.append(0)
+#                warning_count.append(1)
+#    new_df = pd.DataFrame(data={'Location': location, 'Error_count': error_count, 'Warning_count': warning_count})
+#
+#    return df, new_df
+
+
+
+def one_location(df,location):
+    for i in range(len(df)):
+        if location not in df['Location'][i]:
+            df = df.drop([i])
+    return df
+
 def analyse_df(df):
     '''1) adds a column (calculate time spent for a task)  and returns this dataframe
     2) returns additional df with locations and error counts'''
@@ -99,22 +157,37 @@ def analyse_df(df):
     for index in range(len(df)):
         time_1 = extract_time(df,index)
         time = time_1
-        if index!=0 and time_1:
-            #find previous (warning/error) note from the same location
-            location = df['Location'][index]
-            j=index-1
-            current_location = df['Location'][j]
-            while j>0 and location!=current_location:
-                j-=1
-                current_location = df['Location'][j]
 
-            #calculate difference between the times
-            if current_location==location:
-                time_2 = extract_time(df,j)
-                if time_2:
-                    time = time_1-time_2
-            else:
-                time = time_1
+        #find out if there is previous problem and calculate the difference in times
+        current_location = df['Location'][index]
+        current_location_df = one_location(df,current_location)
+        time_2 = time_1
+        is_different = False
+        for i in range(len(current_location_df)):
+            current_time = extract_time(current_location_df,i)
+            if current_time:
+                if current_time < time_1 and current_time > time_2:
+                    is_different = True
+                    time_2 = current_time
+        if is_different:
+            time = time_1-time_2
+        
+        #if index!=0 and time_1:
+        #    #find previous (warning/error) note from the same location
+        #    location = df['Location'][index]
+        #    j=index-1
+        #    current_location = df['Location'][j]
+        #    while j>0 and location!=current_location:
+        #        j-=1
+        #        current_location = df['Location'][j]
+#
+        #    #calculate difference between the times
+        #    if current_location==location:
+        #        time_2 = extract_time(df,j)
+        #        if time_2:
+        #            time = time_1-time_2
+        #    else:
+        #        time = time_1
         time_spent.append(time)
     df['Time_spent'] = time_spent
 
@@ -142,8 +215,12 @@ def analyse_df(df):
 
     return df, new_df
 
-#testing:
+
+
+#testing
 example_file = os.path.join(os.getcwd(),'logs', "alicante-consumption.log")
 df = to_df(example_file)
 df = find_problems(df)
-print(analyse_df(df)[0].head(50))
+#df = analyse_df(df)[0]
+#print(analyse_df(df)[0].head(42))
+print(df.head(40))
