@@ -70,7 +70,8 @@ def find_problems(df):
     Returns
     -------
     df : pandas dataframe
-    copy of the original df, but only the rows where 'ERROR' or 'WARNING' occurred
+    Copy of the original df, but only the rows where 'ERROR' or 'WARNING' occurred
+    "Message" column translated to "Column" column
     '''
     time = []
     type = []
@@ -96,7 +97,7 @@ def find_problems(df):
                 checking_index = index-3
                 checking = df['Message'][checking_index].split(':',1)[1].strip()
                 location.append(checking.split(' ')[1])
-                action.append(checking.split(' ')[2])
+                action.append(checking.split(' ')[0] + ' ' + checking.split(' ')[2])
 
             else: #df['file_loc'][index] == 'src.kafka'
                 checking_index = index-3
@@ -127,22 +128,42 @@ def extract_time(df,i):
     return None
 
 
-def one_location(df,location):
+def previous_time(df,i):
     '''
     Parameters
     ----------
     df : pandas dataframe \n
-    location: {str} name of the location (city)
+    i: index of the row
 
     Returns
     -------
-    df : pandas dataframe \n
-    copy of the original df, but only the rows of the location
+    float: Time_spent value from the last row with the same location and action previous to the current one 
+    (API --> Influx --> Fusion --> Prediction)
     '''
-    for i in range(len(df)):
-        if location not in df['Location'][i]:
-            df = df.drop([i])
-    return df
+    action = df['Action'][i]
+    location = df['Location'][i]
+    if action == 'Flow':
+        return 0
+    elif action == 'Influx Flow':
+        index = i-1
+        while index>0:
+            if df['Action'][index] == 'Flow' and df['Location'][index] == location:
+                return extract_time(df, index)
+            index -= 1
+    elif action == 'Fusion':
+        index = i-1
+        while index>0:
+            if df['Action'][index] == 'Influx Flow' and df['Location'][index] == location:
+                return extract_time(df, index)
+            index -= 1
+    else: # action == 'Prediction
+        index = i-1
+        while index>0:
+            if df['Action'][index] == 'Fusion' and df['Location'][index] == location:
+                return extract_time(df, index)
+            index -= 1
+
+    return 0 #error?
 
 def analyse_df(df):
     '''
@@ -157,25 +178,13 @@ def analyse_df(df):
     new_df : pandas dataframe \n
     Presents error and warning counts for each location
     '''
-    
+
     time_spent = []
     for index in range(len(df)):
         time_1 = extract_time(df,index)
-        time = time_1
+        time_2 = previous_time(df,index)
+        time = time_1-time_2
 
-        #find out if there is previous problem and calculate the difference in times
-        current_location = df['Location'][index]
-        current_location_df = one_location(df,current_location)
-        time_2 = 0
-        is_different = False
-        for i,row  in current_location_df.iterrows():
-            current_time = extract_time(current_location_df,i)
-            if current_time:
-                if current_time < time_1 and current_time > time_2:
-                    is_different = True
-                    time_2 = current_time
-        if is_different:
-            time = time_1-time_2
         time_spent.append(time)
     df['Time_spent'] = time_spent
 
@@ -203,11 +212,37 @@ def analyse_df(df):
 
     return df, new_df
 
+def correct_type(df):
+    '''
+    Parameters
+    ----------
+    df : pandas dataframe
+
+    Returns
+    -------
+    df : pandas dataframe \n
+    Same df with corrected "Type" column (if WARNING or ERROR don't look like a problem anymore)
+    '''
+    for i, row in df.iterrows():
+        if df['Action'][i] != 'Flow':
+            time = df['Time_spent'][i]
+            if time < -1 or time > 1:
+                df['Type'][i] = 'ERROR'
+            else:
+                df['Type'][i] = 'INFO'
+    return df
 
 
+
+example_file = os.path.join(os.getcwd(), 'logs', "alicante-consumption.log")
+df = to_df(example_file)
+df = find_problems(df)
+df = analyse_df(df)[0]
+df = correct_type(df)
+print(df.head(50))
 #testing
 try:
-    example_file = os.path.join(os.getcwd(), 'logs', "alicante-consumption1.log")
+    example_file = os.path.join(os.getcwd(), 'logs', "alicante-consumption.log")
     df = to_df(example_file)
     df = find_problems(df)
     df = analyse_df(df)[0]
