@@ -30,6 +30,8 @@ class Workflow:
             self.config_file = f"{config_directory}/braila-anomaly.json"
         elif (workflow == "braila-state-analysis"):
             self.config_file = f"{config_directory}/braila-state-analysis.json"
+        elif (workflow == "braila-leakage"):
+            self.config_file = f"{config_directory}/braila-leakage.json"
         else:
             LOGGER.error("No config was recognised: %s", workflow)
 

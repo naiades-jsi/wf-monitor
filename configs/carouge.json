@@ -30,7 +30,7 @@
                 "Content-Type": "application/json"
             },
             "checks": [
-                { "name": "Environmental Station", "device": "EnvironmentalStation", "alert_diff": 6, "error_diff": 24 }
+                { "name": "SuisseMeteo Weather Observation", "device": "WeatherObserved", "alert_diff": 6, "error_diff": 24 }
             ]
         },
         {
@@ -48,7 +48,8 @@
                 { "name": "Influx FlowerBed 5", "measurement": "device_1efd", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Influx FlowerBed 6", "measurement": "device_1eff", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Influx FlowerBed 7", "measurement": "device_1f02", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx FlowerBed 8", "measurement": "device_1efe", "alert_diff": 6, "error_diff": 24 }
+                { "name": "Influx FlowerBed 8", "measurement": "device_1efe", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Influx Weather Oserved", "measurement": "weather_observed", "alert_diff": 6, "error_diff": 24 }
             ]
         },
         {

@@ -39,8 +39,11 @@ class KafkaCheck:
         # hack for obtaining last position
         self.consumer.seek_to_end(tp)
         last_offset = self.consumer.position(tp)
-        self.consumer.seek(tp, last_offset - 3)
-        new_offset = self.consumer.position(tp)
+        try:
+            self.consumer.seek(tp, last_offset - 3)
+            new_offset = self.consumer.position(tp)
+        except AssertionError as e:
+            LOGGER.error(f"Topic {self.check['topic']} is empty. {e}")
 
         LOGGER.info("  Last offset: %d", last_offset)
 
