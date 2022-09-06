@@ -14,16 +14,14 @@ logging.basicConfig(
     format="%(asctime)s %(name)-12s %(levelname)-8s %(message)s", level=logging.INFO)
 
 def to_df(infile):
-    '''converts log file to pandas dataframe
-
+    '''
     Parameters
     ----------
     infile : {string}  Absolute name of the log file.
 
     Returns
     -------
-    df : pandas dataframe
-        ...
+    df : pandas dataframe (keeping all the data from the infile)
     '''
 
     time = []               # array of ...
@@ -63,11 +61,17 @@ def to_df(infile):
     return df
 
 
-
-
-
 def find_problems(df):
-    '''returns new dataframe presenting errors and warnings'''
+    '''
+    Parameters
+    ----------
+    df : pandas dataframe
+
+    Returns
+    -------
+    df : pandas dataframe
+    copy of the original df, but only the rows where 'ERROR' or 'WARNING' occurred
+    '''
     time = []
     type = []
 
@@ -104,6 +108,17 @@ def find_problems(df):
     return new_df
 
 def extract_time(df,i):
+    '''
+    Parameters
+    ----------
+    df : pandas dataframe
+    i : index of the row
+
+    Returns
+    -------
+    None; if cell not of the form: "Timestamp bigger than: ... " \n
+    numerical value; else
+    '''
     problem = df['Problem'][i]
     if 'Timestamp bigger' in problem:
         time = problem.split(':')[1].strip()
@@ -111,67 +126,38 @@ def extract_time(df,i):
         return time
     return None
 
-#def analyse_df(df):
-#    '''1) adds a column (calculate time spent for a task)  and returns this dataframe
-#    2) returns additional df with locations and error counts'''
-#    time_spent = []
-#    for index in range(len(df)):
-#        time_1 = extract_time(df,index)
-#        time = time_1
-#        if index!=0 and time_1:
-#            #find previous (warning/error) note from the same location
-#            location = df['Location'][index]
-#            j=index-1
-#            current_location = df['Location'][j]
-#            while j>0 and location!=current_location:
-#                j-=1
-#                current_location = df['Location'][j]
-#
-#            #calculate difference between the times
-#            if current_location==location:
-#                time_2 = extract_time(df,j)
-#                if time_2:
-#                    time = time_1-time_2
-#            else:
-#                time = time_1
-#        time_spent.append(time)
-#    df['Time_spent'] = time_spent
-#
-#    location = []
-#    warning_count = []
-#    error_count = []
-#    for i in range(len(df)):
-#        current_location = df['Location'][i]
-#        current_type = df['Type'][i]
-#        if current_location in location:
-#            j = location.index(current_location)
-#            if current_type == 'ERROR':
-#                error_count[j]+=1
-#            else: #current_type == 'WARNING':
-#                warning_count[j]+=1
-#        else:
-#            location.append(current_location)
-#            if current_type == 'ERROR':
-#                error_count.append(1)
-#                warning_count.append(0)
-#            else: #current_type == 'WARNING':
-#                error_count.append(0)
-#                warning_count.append(1)
-#    new_df = pd.DataFrame(data={'Location': location, 'Error_count': error_count, 'Warning_count': warning_count})
-#
-#    return df, new_df
-
-
 
 def one_location(df,location):
+    '''
+    Parameters
+    ----------
+    df : pandas dataframe \n
+    location: {str} name of the location (city)
+
+    Returns
+    -------
+    df : pandas dataframe \n
+    copy of the original df, but only the rows of the location
+    '''
     for i in range(len(df)):
         if location not in df['Location'][i]:
             df = df.drop([i])
     return df
 
 def analyse_df(df):
-    '''1) adds a column (calculate time spent for a task)  and returns this dataframe
-    2) returns additional df with locations and error counts'''
+    '''
+    Parameters
+    ----------
+    df : pandas dataframe
+
+    Returns
+    -------
+    df : pandas datafram \n
+    Copy of the original df but with an added column (calculated time spent for a task) \n
+    new_df : pandas dataframe \n
+    Presents error and warning counts for each location
+    '''
+    
     time_spent = []
     for index in range(len(df)):
         time_1 = extract_time(df,index)
@@ -180,9 +166,9 @@ def analyse_df(df):
         #find out if there is previous problem and calculate the difference in times
         current_location = df['Location'][index]
         current_location_df = one_location(df,current_location)
-        time_2 = time_1
+        time_2 = 0
         is_different = False
-        for i in range(len(current_location_df)):
+        for i,row  in current_location_df.iterrows():
             current_time = extract_time(current_location_df,i)
             if current_time:
                 if current_time < time_1 and current_time > time_2:
@@ -190,23 +176,6 @@ def analyse_df(df):
                     time_2 = current_time
         if is_different:
             time = time_1-time_2
-
-        #if index!=0 and time_1:
-        #    #find previous (warning/error) note from the same location
-        #    location = df['Location'][index]
-        #    j=index-1
-        #    current_location = df['Location'][j]
-        #    while j>0 and location!=current_location:
-        #        j-=1
-        #        current_location = df['Location'][j]
-#
-        #    #calculate difference between the times
-        #    if current_location==location:
-        #        time_2 = extract_time(df,j)
-        #        if time_2:
-        #            time = time_1-time_2
-        #    else:
-        #        time = time_1
         time_spent.append(time)
     df['Time_spent'] = time_spent
 
@@ -241,8 +210,6 @@ try:
     example_file = os.path.join(os.getcwd(), 'logs', "alicante-consumption1.log")
     df = to_df(example_file)
     df = find_problems(df)
-    #df = analyse_df(df)[0]
-    #print(analyse_df(df)[0].head(42))
-    print(df.head(40))
+    df = analyse_df(df)[0]
 except Exception as e:
-    LOGGER.error("Exception while opening file %s: %s", example_file)
+    LOGGER.error("Exception while opening file %s: %s", example_file, str(e))
