@@ -1,5 +1,6 @@
 # Python module imports
 import argparse
+from cmath import nan
 import json
 import sys
 import time
@@ -11,7 +12,7 @@ import logging
 # logging
 LOGGER = logging.getLogger("wf-monitor")
 logging.basicConfig(
-    format="%(asctime)s %(name)-12s %(levelname)-8s %(message)s", level=logging.INFO)
+    format = "%(asctime)s %(name)-12s %(levelname)-8s %(message)s", level = logging.INFO)
 
 def to_df(infile):
     '''
@@ -34,34 +35,29 @@ def to_df(infile):
             # parsing log lines; only if length is bigger than 0
             if len(line) != 0:
 
-
                 #2022-08-30 15:52:17,689 src.workflow INFO     Loading config: configs/alicante-consumption.json
                 no_time = line.split(',', 1)
                 time.append(no_time[0])
                 no_time_str = no_time[1].strip()
                 #689 src.workflow INFO     Loading config: configs/alicante-consumption.json
-
-                no_index = no_time_str.split(' ',1)
+                no_index = no_time_str.split(' ', 1)
                 no_index_str = no_index[1].strip()
                 #src.workflow INFO     Loading config: configs/alicante-consumption.json
-
-                no_file_loc = no_index_str.split(' ',1)
+                no_file_loc = no_index_str.split(' ', 1)
                 file_loc.append(no_file_loc[0])
                 no_file_loc_str = no_file_loc[1].strip()
                 #INFO     Loading config: configs/alicante-consumption.json
-
-                no_type = no_file_loc_str.split(' ',1)
+                no_type = no_file_loc_str.split(' ', 1)
                 type.append(no_type[0])
                 no_type_str = no_type[1]
                 #Loading config: configs/alicante-consumption.json
-
                 message.append(no_type_str)
 
-    df = pd.DataFrame(data={'Time':time, 'File_loc': file_loc, 'Type':type, 'Message': message})
+    df = pd.DataFrame(data={'Time': time, 'File_loc': file_loc, 'Type':type, 'Message': message})
     return df
 
 
-def find_problems(df):
+def find_problems(df): #"Location" column: delete words such as 'Noise', 'Prediction', 'Flow', 'Influx'... 
     '''
     Parameters
     ----------
@@ -69,9 +65,9 @@ def find_problems(df):
 
     Returns
     -------
-    df : pandas dataframe
-    Copy of the original df, but only the rows where 'ERROR' or 'WARNING' occurred
-    "Message" column translated to "Column" column
+    df : pandas dataframe \n
+    Copy of the original df, but only the rows where 'ERROR' or 'WARNING' occurred. \n
+    The "Message" column translated to "Column". Added "Location" and "Action" columns.
     '''
     time = []
     type = []
@@ -88,31 +84,28 @@ def find_problems(df):
             problem.append(df['Message'][index])
 
             if df['File_loc'][index] == 'src.historic':
-                checking_index = index-2
-                checking = df['Message'][checking_index].split(':',1)[1].strip()
-                location.append(checking.split(' ')[0])
-                action.append(checking.split(' ')[1])
+                action.append('API')
+                checking_index = index-2                
 
             elif df['File_loc'][index] == 'src.influx':
+                action.append('Influx')
                 checking_index = index-3
-                checking = df['Message'][checking_index].split(':',1)[1].strip()
-                location.append(checking.split(' ')[1])
-                action.append(checking.split(' ')[0] + ' ' + checking.split(' ')[2])
 
             else: #df['file_loc'][index] == 'src.kafka'
+                action.append('Kafka')
                 checking_index = index-3
-                checking = df['Message'][checking_index].split(':',1)[1].strip()
-                location.append(checking.split(' ')[-1])
-                action.append(checking.split(' ')[0])
+            
+            checking = df['Message'][checking_index].replace('Checking: ','')
+            location.append(checking)
 
     new_df = pd.DataFrame(data={'Time': time, 'Type': type, 'Action': action, 'Location': location, 'Problem': problem})
     return new_df
 
-def extract_time(df,i):
+def extract_time(df, i):
     '''
     Parameters
     ----------
-    df : pandas dataframe
+    df : pandas dataframe \n
     i : index of the row
 
     Returns
@@ -128,42 +121,54 @@ def extract_time(df,i):
     return None
 
 
-def previous_time(df,i):
-    '''
-    Parameters
-    ----------
-    df : pandas dataframe \n
-    i: index of the row
+#def previous_time(df, i):
+#    '''
+#    Parameters
+#    ----------
+#    df : pandas dataframe \n
+#    i: index of the row
+#
+#    Returns
+#    -------
+#    float: Time_spent value from the last row with the same location and action previous to the current one 
+#    (API --> Influx --> Fusion --> Prediction)
+#    '''
+#    action = df['Action'][i]
+#    location = df['Location'][i]
+#    if action == 'Flow':
+#        return 0
+#    elif action == 'Influx Flow':
+#        index = i-1
+#        while not index < 0:
+#            if df['Action'][index] == 'Flow' and df['Location'][index] == location:
+#                return extract_time(df, index)
+#            index -= 1
+#    elif action == 'Fusion':
+#        index = i-1
+#        while not index < 0:
+#            if df['Action'][index] == 'Influx Flow' and df['Location'][index] == location:
+#                return extract_time(df, index)
+#            index -= 1
+#    else: # action == 'Prediction
+#        index = i-1
+#        while not index < 0:
+#            if df['Action'][index] == 'Fusion' and df['Location'][index] == location:
+#                return extract_time(df, index)
+#            index -= 1
+#
+#    return 0 #error?
 
-    Returns
-    -------
-    float: Time_spent value from the last row with the same location and action previous to the current one 
-    (API --> Influx --> Fusion --> Prediction)
-    '''
-    action = df['Action'][i]
-    location = df['Location'][i]
-    if action == 'Flow':
+def previous_time(df, i): #not ok for kafka...
+    if df['Action'][i] == 'API':
         return 0
-    elif action == 'Influx Flow':
-        index = i-1
-        while index>0:
-            if df['Action'][index] == 'Flow' and df['Location'][index] == location:
-                return extract_time(df, index)
-            index -= 1
-    elif action == 'Fusion':
-        index = i-1
-        while index>0:
-            if df['Action'][index] == 'Influx Flow' and df['Location'][index] == location:
-                return extract_time(df, index)
-            index -= 1
-    else: # action == 'Prediction
-        index = i-1
-        while index>0:
-            if df['Action'][index] == 'Fusion' and df['Location'][index] == location:
-                return extract_time(df, index)
-            index -= 1
+    location = df['Location'][i].split(' ')[-1]
+    index = i
+    while index!=0:
+        index -= 1
+        if location in df['Location'][index]:
+            return extract_time(df, index)
 
-    return 0 #error?
+    return 0
 
 def analyse_df(df):
     '''
@@ -181,10 +186,12 @@ def analyse_df(df):
 
     time_spent = []
     for index in range(len(df)):
-        time_1 = extract_time(df,index)
-        time_2 = previous_time(df,index)
-        time = time_1-time_2
-
+        time_1 = extract_time(df, index)
+        time_2 = previous_time(df, index)
+        if time_1:
+            time = time_1 - time_2
+        else:
+            time = None
         time_spent.append(time)
     df['Time_spent'] = time_spent
 
@@ -197,9 +204,9 @@ def analyse_df(df):
         if current_location in location:
             j = location.index(current_location)
             if current_type == 'ERROR':
-                error_count[j]+=1
+                error_count[j] += 1
             else: #current_type == 'WARNING':
-                warning_count[j]+=1
+                warning_count[j] += 1
         else:
             location.append(current_location)
             if current_type == 'ERROR':
@@ -208,7 +215,7 @@ def analyse_df(df):
             else: #current_type == 'WARNING':
                 error_count.append(0)
                 warning_count.append(1)
-    new_df = pd.DataFrame(data={'Location': location, 'Error_count': error_count, 'Warning_count': warning_count})
+    new_df = pd.DataFrame(data = {'Location': location, 'Error_count': error_count, 'Warning_count': warning_count})
 
     return df, new_df
 
@@ -224,27 +231,30 @@ def correct_type(df):
     Same df with corrected "Type" column (if WARNING or ERROR don't look like a problem anymore)
     '''
     for i, row in df.iterrows():
-        if df['Action'][i] != 'Flow':
+        if df['Action'][i] != 'API':
             time = df['Time_spent'][i]
-            if time < -1 or time > 1:
+            if time == None or time < -1 or time > 1:
                 df['Type'][i] = 'ERROR'
             else:
                 df['Type'][i] = 'INFO'
     return df
 
 
-
-example_file = os.path.join(os.getcwd(), 'logs', "alicante-consumption.log")
-df = to_df(example_file)
-df = find_problems(df)
-df = analyse_df(df)[0]
-df = correct_type(df)
-print(df.head(50))
-#testing
-try:
-    example_file = os.path.join(os.getcwd(), 'logs', "alicante-consumption.log")
+for file_name in ['alicante-consumption.log', 'alicante-salinity.log', 'braila-anomaly.log', 'braila-consumption.log', 'braila-leakage.log', 'braila-state-analysis.log', 'carouge.log']:
+    example_file = os.path.join(os.getcwd(), 'logs', file_name)
     df = to_df(example_file)
     df = find_problems(df)
     df = analyse_df(df)[0]
-except Exception as e:
-    LOGGER.error("Exception while opening file %s: %s", example_file, str(e))
+    df = correct_type(df)
+    print(df.head(50))
+#testing
+#try:
+#    for file_name in ['alicante-salinity.log']: # ['alicante-consumption.log', 'alicante-salinity.log', 'braila-anomaly.log', 'braila-consumption.log', 'braila-leakage.log', 'braila-state-analysis.log', 'carouge.log']:
+#        example_file = os.path.join(os.getcwd(), 'logs', file_name)
+#        df = to_df(example_file)
+#        df = find_problems(df)
+#        df = analyse_df(df)[0]
+#        df = correct_type(df)
+#        #print(df.head(50))
+#except Exception as e:
+#    LOGGER.error("Exception while opening file %s: %s", file_name, str(e))
