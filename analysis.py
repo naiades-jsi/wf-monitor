@@ -159,6 +159,16 @@ def extract_time(df, i):
 #    return 0 #error?
 
 def previous_time(df, i): #not ok for kafka...
+    '''
+    Parameters
+    ----------
+    df : pandas dataframe \n
+    i: index of the row
+
+    Returns
+    -------
+    float: Time_spent value from the last row with the same location and defined time in "Problem" column
+    '''
     if df['Action'][i] == 'API':
         return 0
     location = df['Location'][i].split(' ')[-1]
@@ -166,7 +176,9 @@ def previous_time(df, i): #not ok for kafka...
     while index!=0:
         index -= 1
         if location in df['Location'][index]:
-            return extract_time(df, index)
+            if extract_time(df, index):
+                return extract_time(df, index)
+            return previous_time(df, index)
 
     return 0
 
@@ -188,10 +200,10 @@ def analyse_df(df):
     for index in range(len(df)):
         time_1 = extract_time(df, index)
         time_2 = previous_time(df, index)
-        if time_1:
+        if time_2 and time_1:
             time = time_1 - time_2
         else:
-            time = None
+            time = time_1
         time_spent.append(time)
     df['Time_spent'] = time_spent
 
@@ -233,28 +245,27 @@ def correct_type(df):
     for i, row in df.iterrows():
         if df['Action'][i] != 'API':
             time = df['Time_spent'][i]
-            if time == None or time < -1 or time > 1:
-                df['Type'][i] = 'ERROR'
+            if pd.isna(time) or time < -1 or time > 1:
+                df.at[i,'Type'] = 'ERROR'
             else:
-                df['Type'][i] = 'INFO'
+                df.at[i,'Type'] = 'INFO'
     return df
 
 
-for file_name in ['alicante-consumption.log', 'alicante-salinity.log', 'braila-anomaly.log', 'braila-consumption.log', 'braila-leakage.log', 'braila-state-analysis.log', 'carouge.log']:
-    example_file = os.path.join(os.getcwd(), 'logs', file_name)
-    df = to_df(example_file)
-    df = find_problems(df)
-    df = analyse_df(df)[0]
-    df = correct_type(df)
-    print(df.head(50))
+#for file_name in ['alicante-salinity.log']: #['alicante-consumption.log', 'alicante-salinity.log', 'braila-anomaly.log', 'braila-consumption.log', 'braila-leakage.log', 'braila-state-analysis.log', 'carouge.log']:
+#    example_file = os.path.join(os.getcwd(), 'logs', file_name)
+#    df = to_df(example_file)
+#    df = find_problems(df)
+#    df = analyse_df(df)[0]
+#    df = correct_type(df)
+#    print(df.head(50))
 #testing
-#try:
-#    for file_name in ['alicante-salinity.log']: # ['alicante-consumption.log', 'alicante-salinity.log', 'braila-anomaly.log', 'braila-consumption.log', 'braila-leakage.log', 'braila-state-analysis.log', 'carouge.log']:
-#        example_file = os.path.join(os.getcwd(), 'logs', file_name)
-#        df = to_df(example_file)
-#        df = find_problems(df)
-#        df = analyse_df(df)[0]
-#        df = correct_type(df)
-#        #print(df.head(50))
-#except Exception as e:
-#    LOGGER.error("Exception while opening file %s: %s", file_name, str(e))
+try:
+    for file_name in ['alicante-consumption.log', 'alicante-salinity.log', 'braila-anomaly.log', 'braila-consumption.log', 'braila-leakage.log', 'braila-state-analysis.log', 'carouge.log']:
+        example_file = os.path.join(os.getcwd(), 'logs', file_name)
+        df = to_df(example_file)
+        df = find_problems(df)
+        df = analyse_df(df)[0]
+        df = correct_type(df)
+except Exception as e:
+    LOGGER.error("Exception while opening file %s: %s", file_name, str(e))
