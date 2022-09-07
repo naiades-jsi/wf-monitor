@@ -171,11 +171,27 @@ def previous_time(df, i): #not ok for kafka...
     '''
     if df['Action'][i] == 'API':
         return 0
-    location = df['Location'][i].split(' ')[-1]
+    
+    location = df['Location'][i].split(' ')[-1]   
+
+    
     index = i
     while index!=0:
         index -= 1
         if location in df['Location'][index]:
+            if df['Location'][i] == 'Kafka': #specifically for alicante-consumption.log because there are two fusion-prediction pairs
+                if 'Prediction' in location:
+                    if 'Prediction' not in df['Location'][index]:
+                        if extract_time(df, index):
+                            return extract_time(df, index)
+                    return previous_time(df, index)
+                elif 'Fusion' in location:
+                    if df['Action'][index] != 'Kafka': #should be from 'Influx' (possibly 'API' ?)
+                        if extract_time(df, index):
+                            return extract_time(df, index)
+                    return previous_time(df, index)
+
+
             if extract_time(df, index):
                 return extract_time(df, index)
             return previous_time(df, index)
@@ -252,7 +268,7 @@ def correct_type(df):
     return df
 
 
-#for file_name in ['alicante-salinity.log']: #['alicante-consumption.log', 'alicante-salinity.log', 'braila-anomaly.log', 'braila-consumption.log', 'braila-leakage.log', 'braila-state-analysis.log', 'carouge.log']:
+#for file_name in ['alicante-consumption.log']: #['alicante-consumption.log', 'alicante-salinity.log', 'braila-anomaly.log', 'braila-consumption.log', 'braila-leakage.log', 'braila-state-analysis.log', 'carouge.log']:
 #    example_file = os.path.join(os.getcwd(), 'logs', file_name)
 #    df = to_df(example_file)
 #    df = find_problems(df)
