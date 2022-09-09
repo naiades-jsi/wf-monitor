@@ -14,6 +14,7 @@ LOGGER = logging.getLogger("wf-monitor")
 logging.basicConfig(
     format = "%(asctime)s %(name)-12s %(levelname)-8s %(message)s", level = logging.INFO)
 
+
 def to_df(infile):
     '''
     Parameters
@@ -25,7 +26,7 @@ def to_df(infile):
     df : pandas dataframe (keeping all the data from the infile)
     '''
 
-    time = []               # array of ...
+    time = []
     file_loc = []
     type = []
     message = []
@@ -35,29 +36,30 @@ def to_df(infile):
             # parsing log lines; only if length is bigger than 0
             if len(line) != 0:
 
-                #2022-08-30 15:52:17,689 src.workflow INFO     Loading config: configs/alicante-consumption.json
+                # 2022-08-30 15:52:17,689 src.workflow INFO     Loading config: configs/alicante-consumption.json
+                
                 no_time = line.split(',', 1)
-                time.append(no_time[0])
-                no_time_str = no_time[1].strip()
-                #689 src.workflow INFO     Loading config: configs/alicante-consumption.json
+                time.append(no_time[0]) # 2022-08-30 15:52:17
+                no_time_str = no_time[1].strip() # 689 src.workflow INFO     Loading config: configs/alicante-consumption.json
+                
                 no_index = no_time_str.split(' ', 1)
-                no_index_str = no_index[1].strip()
-                #src.workflow INFO     Loading config: configs/alicante-consumption.json
+                no_index_str = no_index[1].strip() # src.workflow INFO     Loading config: configs/alicante-consumption.json
+                
                 no_file_loc = no_index_str.split(' ', 1)
-                file_loc.append(no_file_loc[0])
-                no_file_loc_str = no_file_loc[1].strip()
-                #INFO     Loading config: configs/alicante-consumption.json
+                file_loc.append(no_file_loc[0]) # src.workflow
+                no_file_loc_str = no_file_loc[1].strip() # INFO     Loading config: configs/alicante-consumption.json
+                
                 no_type = no_file_loc_str.split(' ', 1)
-                type.append(no_type[0])
-                no_type_str = no_type[1]
-                #Loading config: configs/alicante-consumption.json
-                message.append(no_type_str)
+                type.append(no_type[0]) # INFO
+                no_type_str = no_type[1] # Loading config: configs/alicante-consumption.json
+                
+                message.append(no_type_str) # Loading config: configs/alicante-consumption.json
 
     df = pd.DataFrame(data={'Time': time, 'File_loc': file_loc, 'Type':type, 'Message': message})
     return df
 
 
-def find_problems(df): #"Location" column: delete words such as 'Noise', 'Prediction', 'Flow', 'Influx'... 
+def find_problems(df):
     '''
     Parameters
     ----------
@@ -69,6 +71,7 @@ def find_problems(df): #"Location" column: delete words such as 'Noise', 'Predic
     Copy of the original df, but only the rows where 'ERROR' or 'WARNING' occurred. \n
     The "Message" column translated to "Column". Added "Location" and "Action" columns.
     '''
+
     time = []
     type = []
 
@@ -101,6 +104,7 @@ def find_problems(df): #"Location" column: delete words such as 'Noise', 'Predic
     new_df = pd.DataFrame(data={'Time': time, 'Type': type, 'Action': action, 'Location': location, 'Problem': problem})
     return new_df
 
+
 def extract_time(df, i):
     '''
     Parameters
@@ -113,6 +117,7 @@ def extract_time(df, i):
     None; if cell not of the form: "Timestamp bigger than: ... " \n
     numerical value; else
     '''
+
     problem = df['Problem'][i]
     if 'Timestamp bigger' in problem:
         time = problem.split(':')[1].strip()
@@ -121,44 +126,7 @@ def extract_time(df, i):
     return None
 
 
-#def previous_time(df, i):
-#    '''
-#    Parameters
-#    ----------
-#    df : pandas dataframe \n
-#    i: index of the row
-#
-#    Returns
-#    -------
-#    float: Time_spent value from the last row with the same location and action previous to the current one 
-#    (API --> Influx --> Fusion --> Prediction)
-#    '''
-#    action = df['Action'][i]
-#    location = df['Location'][i]
-#    if action == 'Flow':
-#        return 0
-#    elif action == 'Influx Flow':
-#        index = i-1
-#        while not index < 0:
-#            if df['Action'][index] == 'Flow' and df['Location'][index] == location:
-#                return extract_time(df, index)
-#            index -= 1
-#    elif action == 'Fusion':
-#        index = i-1
-#        while not index < 0:
-#            if df['Action'][index] == 'Influx Flow' and df['Location'][index] == location:
-#                return extract_time(df, index)
-#            index -= 1
-#    else: # action == 'Prediction
-#        index = i-1
-#        while not index < 0:
-#            if df['Action'][index] == 'Fusion' and df['Location'][index] == location:
-#                return extract_time(df, index)
-#            index -= 1
-#
-#    return 0 #error?
-
-def previous_time(df, i): #not ok for kafka...
+def previous_time(df, i):
     '''
     Parameters
     ----------
@@ -169,12 +137,12 @@ def previous_time(df, i): #not ok for kafka...
     -------
     float: Time_spent value from the last row with the same location and defined time in "Problem" column
     '''
+
     if df['Action'][i] == 'API':
         return 0
     
     location = df['Location'][i].split(' ')[-1]   
 
-    
     index = i
     while index!=0:
         index -= 1
@@ -191,12 +159,11 @@ def previous_time(df, i): #not ok for kafka...
                             return extract_time(df, index)
                     return previous_time(df, index)
 
-
             if extract_time(df, index):
                 return extract_time(df, index)
             return previous_time(df, index)
-
     return 0
+
 
 def analyse_df(df):
     '''
@@ -247,6 +214,7 @@ def analyse_df(df):
 
     return df, new_df
 
+
 def correct_type(df):
     '''
     Parameters
@@ -258,23 +226,16 @@ def correct_type(df):
     df : pandas dataframe \n
     Same df with corrected "Type" column (if WARNING or ERROR don't look like a problem anymore)
     '''
+
     for i, row in df.iterrows():
         if df['Action'][i] != 'API':
             time = df['Time_spent'][i]
             if pd.isna(time) or time < -1 or time > 1:
-                df.at[i,'Type'] = 'ERROR'
+                df.at[i, 'Type'] = 'ERROR'
             else:
-                df.at[i,'Type'] = 'INFO'
+                df.at[i, 'Type'] = 'INFO'
     return df
 
-
-#for file_name in ['alicante-consumption.log']: #['alicante-consumption.log', 'alicante-salinity.log', 'braila-anomaly.log', 'braila-consumption.log', 'braila-leakage.log', 'braila-state-analysis.log', 'carouge.log']:
-#    example_file = os.path.join(os.getcwd(), 'logs', file_name)
-#    df = to_df(example_file)
-#    df = find_problems(df)
-#    df = analyse_df(df)[0]
-#    df = correct_type(df)
-#    print(df.head(50))
 #testing
 try:
     for file_name in ['alicante-consumption.log', 'alicante-salinity.log', 'braila-anomaly.log', 'braila-consumption.log', 'braila-leakage.log', 'braila-state-analysis.log', 'carouge.log']:
