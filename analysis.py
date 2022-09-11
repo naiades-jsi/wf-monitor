@@ -9,6 +9,7 @@ import os
 import pandas as pd
 import logging
 import yagmail
+from pretty_html_table import build_table
 
 # logging
 LOGGER = logging.getLogger("wf-monitor")
@@ -231,7 +232,7 @@ def correct_type(df):
             else: #current_type == 'WARNING':
                 error_count.append(0)
                 warning_count.append(1)
-    new_df = pd.DataFrame(data = {'Location': location, 'Error_count': error_count, 'Warning_count': warning_count})
+    new_df = pd.DataFrame(data = {'Location': location, 'Error': error_count, 'Warning': warning_count})
 
     return df, new_df
 
@@ -257,29 +258,51 @@ except Exception as e:
 
 #create and send report via email
 
-#def create_msg():
-#    msg = '''
-#    ...
-#    {}
-#    ...
-#    '''
-#    for file in os.path.join(os.getcwd(), 'logs'):
-#        partial_report = 
-#
-#def create_report_files():
-#    return None
-#
-#sender_add='lana.prijon@gmail.com' #the sender's mail id
-#receiver_add='lana.prijon@gmail.com' #the receiver's mail id
-#password='...' #password to log in
-#
-#def main():
-#    msg = create_msg()
-#    report_files = create_report_files()
-#    yag = yagmail.SMTP(sender_add, password)
-#    yag.send(
-#        to = receiver_add,
-#        subject = "Report",
-#        contents = msg,
-#        attachments = report_files,
-#    )
+def create_msg():
+    msg = ''
+    for filename in os.listdir('logs'):
+        file = os.path.join('logs', filename)
+        df = to_df(file)
+        df = find_problems(df)
+        df = analyse_df(df)
+        df = correct_type(df)[1]
+        
+        file_name = filename.strip('.log').upper()
+        table = df.to_html(index=False, justify='center')
+        if len(df) == 0:
+            partial_report = f'<p><b>{file_name}:</b> <br> No errors...</p>'
+        else:
+            partial_report = f'<p><b>{file_name}:</b> <br> {table}</p>'
+        msg += partial_report
+    
+    html = '''\
+    <html>
+        <head></head>
+        <body>
+            <p>...Report...<br>
+                {msg}
+            </p>
+        </body>
+    </html>
+    '''.format(msg = msg)
+    return html
+
+
+def create_report_files():
+    return None
+
+
+sender_add='lana.prijon@gmail.com' #the sender's mail id
+receiver_add='lana.prijon@gmail.com' #the receiver's mail id
+password='...' #password to log in
+
+def main():
+    msg = create_msg()
+    report_files = create_report_files()
+    yag = yagmail.SMTP(sender_add, password)
+    yag.send(
+        to = receiver_add,
+        subject = "Report",
+        contents = msg,
+        attachments = report_files,
+    )
