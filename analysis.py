@@ -8,6 +8,7 @@ import logging
 import os
 import pandas as pd
 import logging
+import yagmail
 
 # logging
 LOGGER = logging.getLogger("wf-monitor")
@@ -87,18 +88,16 @@ def find_problems(df):
             problem.append(df['Message'][index])
 
             if df['File_loc'][index] == 'src.historic':
-                action.append('API')
-                checking_index = index-2                
-
+                action.append('API')               
             elif df['File_loc'][index] == 'src.influx':
                 action.append('Influx')
-                checking_index = index-3
-
             else: #df['file_loc'][index] == 'src.kafka'
                 action.append('Kafka')
-                checking_index = index-3
             
-            checking = df['Message'][checking_index].replace('Checking: ','')
+            i=index
+            while df['File_loc'][i] != 'src.workflow':
+                i -= 1
+            checking = df['Message'][i].replace('Checking: ','')
             location.append(checking)
 
     new_df = pd.DataFrame(data={'Time': time, 'Type': type, 'Action': action, 'Location': location, 'Problem': problem})
@@ -174,9 +173,7 @@ def analyse_df(df):
     Returns
     -------
     df : pandas datafram \n
-    Copy of the original df but with an added column (calculated time spent for a task) \n
-    new_df : pandas dataframe \n
-    Presents error and warning counts for each location
+    Copy of the original df but with an added column (calculated time spent for a task) 
     '''
 
     time_spent = []
@@ -189,6 +186,30 @@ def analyse_df(df):
             time = time_1
         time_spent.append(time)
     df['Time_spent'] = time_spent
+    return df
+
+
+def correct_type(df):
+    '''
+    Parameters
+    ----------
+    df : pandas dataframe
+
+    Returns
+    -------
+    df : pandas dataframe \n
+    Same df with corrected "Type" column (if WARNING or ERROR don't look like a problem anymore)\n
+    new_df : pandas dataframe \n
+    Presents error and warning counts for each location
+    '''
+
+    for i, row in df.iterrows():
+        if df['Action'][i] != 'API':
+            time = df['Time_spent'][i]
+            if pd.isna(time) or time < -1 or time > 1:
+                df.at[i, 'Type'] = 'ERROR'
+            else:
+                df.at[i, 'Type'] = 'INFO'
 
     location = []
     warning_count = []
@@ -214,27 +235,13 @@ def analyse_df(df):
 
     return df, new_df
 
-
-def correct_type(df):
-    '''
-    Parameters
-    ----------
-    df : pandas dataframe
-
-    Returns
-    -------
-    df : pandas dataframe \n
-    Same df with corrected "Type" column (if WARNING or ERROR don't look like a problem anymore)
-    '''
-
-    for i, row in df.iterrows():
-        if df['Action'][i] != 'API':
-            time = df['Time_spent'][i]
-            if pd.isna(time) or time < -1 or time > 1:
-                df.at[i, 'Type'] = 'ERROR'
-            else:
-                df.at[i, 'Type'] = 'INFO'
-    return df
+#for file_name in ['alicante-consumption.log', 'alicante-salinity.log', 'braila-anomaly.log', 'braila-consumption.log', 'braila-leakage.log', 'braila-state-analysis.log', 'carouge.log']:
+#    example_file = os.path.join(os.getcwd(), 'logs', file_name)
+#    df = to_df(example_file)
+#    df = find_problems(df)
+#    df = analyse_df(df)
+#    df = correct_type(df)
+#    print(df[1])
 
 #testing
 try:
@@ -242,7 +249,37 @@ try:
         example_file = os.path.join(os.getcwd(), 'logs', file_name)
         df = to_df(example_file)
         df = find_problems(df)
-        df = analyse_df(df)[0]
+        df = analyse_df(df)
         df = correct_type(df)
 except Exception as e:
     LOGGER.error("Exception while opening file %s: %s", file_name, str(e))
+
+
+#create and send report via email
+
+#def create_msg():
+#    msg = '''
+#    ...
+#    {}
+#    ...
+#    '''
+#    for file in os.path.join(os.getcwd(), 'logs'):
+#        partial_report = 
+#
+#def create_report_files():
+#    return None
+#
+#sender_add='lana.prijon@gmail.com' #the sender's mail id
+#receiver_add='lana.prijon@gmail.com' #the receiver's mail id
+#password='...' #password to log in
+#
+#def main():
+#    msg = create_msg()
+#    report_files = create_report_files()
+#    yag = yagmail.SMTP(sender_add, password)
+#    yag.send(
+#        to = receiver_add,
+#        subject = "Report",
+#        contents = msg,
+#        attachments = report_files,
+#    )
