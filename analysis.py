@@ -212,37 +212,39 @@ def correct_type(df):
             else:
                 df.at[i, 'Type'] = 'INFO'
 
-    location = []
+    locations = []
     warning_count = []
     error_count = []
-    for i in range(len(df)):
+    for i, row in df.iterrows():
         current_location = df['Location'][i]
         current_type = df['Type'][i]
-        if current_location in location:
-            j = location.index(current_location)
+        if current_location in locations:
+            j = locations.index(current_location)
             if current_type == 'ERROR':
                 error_count[j] += 1
-            else: #current_type == 'WARNING':
+            elif current_type == 'WARNING':
                 warning_count[j] += 1
         else:
-            location.append(current_location)
             if current_type == 'ERROR':
+                locations.append(current_location)
                 error_count.append(1)
                 warning_count.append(0)
-            else: #current_type == 'WARNING':
+            elif current_type == 'WARNING':
+                locations.append(current_location)
                 error_count.append(0)
                 warning_count.append(1)
-    new_df = pd.DataFrame(data = {'Location': location, 'Error': error_count, 'Warning': warning_count})
+    new_df = pd.DataFrame(data = {'Location': locations, 'Error': error_count, 'Warning': warning_count})
 
     return df, new_df
 
-#for file_name in ['alicante-consumption.log', 'alicante-salinity.log', 'braila-anomaly.log', 'braila-consumption.log', 'braila-leakage.log', 'braila-state-analysis.log', 'carouge.log']:
-#    example_file = os.path.join(os.getcwd(), 'logs', file_name)
-#    df = to_df(example_file)
-#    df = find_problems(df)
-#    df = analyse_df(df)
-#    df = correct_type(df)
-#    print(df[1])
+for file_name in ['alicante-salinity.log', 'braila-anomaly.log', 'braila-consumption.log', 'braila-leakage.log', 'braila-state-analysis.log', 'carouge.log']:
+    example_file = os.path.join(os.getcwd(), 'logs', file_name)
+    df = to_df(example_file)
+    df = find_problems(df)
+    df = analyse_df(df)
+    print(df.head(50))
+    df = correct_type(df)
+    print(df[1].head(50))
 
 #testing
 try:
@@ -292,11 +294,7 @@ def create_report_files():
     return None
 
 
-sender_add='lana.prijon@gmail.com' #the sender's mail id
-receiver_add='lana.prijon@gmail.com' #the receiver's mail id
-password='...' #password to log in
-
-def main():
+def main(sender_add, receiver_add, password):
     msg = create_msg()
     report_files = create_report_files()
     yag = yagmail.SMTP(sender_add, password)
