@@ -237,6 +237,8 @@ def correct_type(df):
 
     return df, new_df
 
+
+#testing
 for file_name in ['alicante-salinity.log', 'braila-anomaly.log', 'braila-consumption.log', 'braila-leakage.log', 'braila-state-analysis.log', 'carouge.log']:
     example_file = os.path.join(os.getcwd(), 'logs', file_name)
     df = to_df(example_file)
@@ -245,8 +247,6 @@ for file_name in ['alicante-salinity.log', 'braila-anomaly.log', 'braila-consump
     print(df.head(50))
     df = correct_type(df)
     print(df[1].head(50))
-
-#testing
 try:
     for file_name in ['alicante-consumption.log', 'alicante-salinity.log', 'braila-anomaly.log', 'braila-consumption.log', 'braila-leakage.log', 'braila-state-analysis.log', 'carouge.log']:
         example_file = os.path.join(os.getcwd(), 'logs', file_name)
@@ -258,9 +258,19 @@ except Exception as e:
     LOGGER.error("Exception while opening file %s: %s", file_name, str(e))
 
 
-#create and send report via email
+#create and send a report via email
 
 def create_msg():
+    '''
+    Parameters
+    ----------
+    None
+
+    Returns
+    -------
+    str: A message ready to be sent in an email written as html. Includes tables with reportes of errors and warnings for each .log file in 'logs' folder.
+    '''
+
     msg = ''
     for filename in os.listdir('logs'):
         file = os.path.join('logs', filename)
@@ -289,17 +299,29 @@ def create_msg():
     '''.format(msg = msg)
     return html
 
-
+#if rather sent in an attachment?... could be clearer
 def create_report_files():
     return None
 
 
-def main(sender_add, receiver_add, password):
+def main(sender_address, receiver_address, password):
+    '''
+    Parameters
+    ----------
+    sender_address: Email address from which the email report is sent \n
+    receiver_address: Email address of the receiver \n
+    password: Password of the sender_address. '2-Step Verification': Go to the Google account (https://myaccount.google.com/), click 'Security' and then enable '2-Step Verification'. After that go to back to 'App Passwords' and follow the instructions to create a new password (you will get a 16-character code). This is the required password. 
+
+    Returns
+    -------
+    None
+    '''
+
     msg = create_msg()
     report_files = create_report_files()
-    yag = yagmail.SMTP(sender_add, password)
+    yag = yagmail.SMTP(sender_address, password)
     yag.send(
-        to = receiver_add,
+        to = receiver_address,
         subject = "Report",
         contents = msg,
         attachments = report_files,
