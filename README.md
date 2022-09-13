@@ -10,6 +10,8 @@ The script is run with the following command `python3 main.py -w [setup]`, where
 * `alicante-consumption` - monitoring of Alicante consumption workflow
 * `braila-anomaly` - monitoring of Braila anomaly detection workflow
 * `braila-consumption` - monitoring of Braila consumption workflow
+* `braila-state-analysis` - monitoring of the Braila state analysis tool workflow
+* `braila-leakage` - monitoring of the Braila leakege workflow
 
 The analysis script is run with command `python3 analysis.py`.
 
