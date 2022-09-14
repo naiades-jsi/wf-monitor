@@ -199,9 +199,9 @@ def correct_type(df):
     Returns
     -------
     df : pandas dataframe \n
-    Same df with corrected "Type" column (if WARNING or ERROR don't look like a problem anymore)\n
+    Same df with corrected "Type" column (if WARNING or ERROR don't look like a problem anymore).\n
     new_df : pandas dataframe \n
-    Presents error and warning counts for each location
+    Presents error and warning counts for each location, as well as description of the problem.
     '''
 
     for i, row in df.iterrows():
@@ -215,6 +215,7 @@ def correct_type(df):
     locations = []
     warning_count = []
     error_count = []
+    problems = [] #list of lists of problems for each location
     for i, row in df.iterrows():
         current_location = df['Location'][i]
         current_type = df['Type'][i]
@@ -222,21 +223,51 @@ def correct_type(df):
             j = locations.index(current_location)
             if current_type == 'ERROR':
                 error_count[j] += 1
+                problems[j].append(df['Problem'][i])
             elif current_type == 'WARNING':
                 warning_count[j] += 1
+                problems[j].append(df['Problem'][i])
         else:
             if current_type == 'ERROR':
                 locations.append(current_location)
                 error_count.append(1)
                 warning_count.append(0)
+                problems.append([df['Problem'][i]])
             elif current_type == 'WARNING':
                 locations.append(current_location)
                 error_count.append(0)
                 warning_count.append(1)
-    new_df = pd.DataFrame(data = {'Location': locations, 'Error': error_count, 'Warning': warning_count})
+                problems.append([df['Problem'][i]])
+
+    #convert list of problems to string
+    problems_str = []
+    for problem_list in problems:
+        problem_str = ''
+        for problem in problem_list:
+            problem_str += '; ' + problem
+        problems_str.append(problem_str[2:])
+    new_df = pd.DataFrame(data = {'Location': locations, 'Error': error_count, 'Warning': warning_count, 'problem': problems_str})
 
     return df, new_df
 
+
+def count_errors(df, column_name):
+    '''
+    Parameters
+    ----------
+    df : pandas dataframe
+    column_name : name of the column in df
+
+    Returns
+    -------
+    int : Sum of the cells in 'column_name' column.
+    '''    
+
+    sum = 0
+    for i, row in df.iterrows():
+        n = int(df[column_name][i])
+        sum += n
+    return sum
 
 #testing
 for file_name in ['alicante-salinity.log', 'braila-anomaly.log', 'braila-consumption.log', 'braila-leakage.log', 'braila-state-analysis.log', 'carouge.log']:
@@ -260,7 +291,7 @@ except Exception as e:
 
 #create and send a report via email
 
-def create_msg():
+def create_msg_tables():
     '''
     Parameters
     ----------
@@ -299,9 +330,74 @@ def create_msg():
     '''.format(msg = msg)
     return html
 
-#if rather sent in an attachment?... could be clearer
-def create_report_files():
-    return None
+def create_msg():
+    '''
+    Parameters
+    ----------
+    None
+
+    Returns
+    -------
+    str: A message ready to be sent in an email written as html. Includes number of errors and warnings for each .log file in 'logs' folder.
+    '''
+
+    msg = ''
+    for filename in os.listdir('logs'):
+        file = os.path.join('logs', filename)
+        df = to_df(file)
+        df = find_problems(df)
+        df = analyse_df(df)
+        df = correct_type(df)[1]
+        
+        file_name = filename.strip('.log').upper()
+        num_errors = count_errors(df, 'Error')
+        num_warnings = count_errors(df, 'Warning')
+        if len(df) == 0:
+            partial_report = f'<p><b>{file_name}:</b> <br> No errors...</p>'
+        elif num_errors == 0:
+            partial_report = f'<p><b>{file_name}:</b> <br> {num_warnings} warnings...</p>'
+        elif num_warnings == 0:
+            partial_report = f'<p><b>{file_name}:</b> <br> {num_errors} errors...'
+        else:
+            partial_report = f'<p><b>{file_name}:</b> <br> {num_errors} errors and {num_warnings} warnings...</p>'
+        msg += partial_report
+    
+    html = '''\
+    <html>
+        <head></head>
+        <body>
+            <p>...Report...<br>
+                {msg}
+            </p>
+        </body>
+    </html>
+    '''.format(msg = msg)
+    return html
+
+
+def create_attachments():
+    '''
+    Parameters
+    ----------
+    None
+
+    Returns
+    -------
+    list: For each file in 'logs' folder a new excel file is created and a list of filenames of all those excel files is returned.
+    '''
+
+    attachments = []
+    for filename in os.listdir('logs'):
+        file = os.path.join('logs', filename)
+        df = to_df(file)
+        df = find_problems(df)
+        df = analyse_df(df)
+        df = correct_type(df)[1]
+        if len(df) != 0:
+            file_name = filename.strip('.log') + '.xlsx'
+            df.to_excel(file_name)
+            attachments.append(file_name)
+    return attachments
 
 
 def main(sender_address, receiver_address, password):
@@ -318,11 +414,13 @@ def main(sender_address, receiver_address, password):
     '''
 
     msg = create_msg()
-    report_files = create_report_files()
+    attachments = create_attachments()
     yag = yagmail.SMTP(sender_address, password)
     yag.send(
         to = receiver_address,
         subject = "Report",
         contents = msg,
-        attachments = report_files,
+        attachments = attachments,
     )
+    for filename in attachments:
+        os.remove(filename)
