@@ -30,7 +30,7 @@ do
 
     TIMESTAMP=$(date +"%F %T")
     echo $TIMESTAMP "Running Monitor Analysis and Report Tool"
-    python3 anaylsis.py
+    python3 analysis.py
     echo "Finished"
     echo ""
 

@@ -3,6 +3,8 @@ import time
 import analysis
 import subprocess
 
+#data = 
+
 # email info
 sender_address = '...'
 receiver_address = '...'

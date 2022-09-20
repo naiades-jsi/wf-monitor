@@ -1,6 +1,12 @@
 {
     "tasks": [
         { "scheduledAt": "09:00", "command": "python3 main.py -w carouge" },
+        { "scheduledAt": "09:00", "command": "python3 main.py -w alicante-consumption" },
+        { "scheduledAt": "09:00", "command": "python3 main.py -w alicante-salinity" },
+        { "scheduledAt": "09:00", "command": "python3 main.py -w braila-consumption" },
+        { "scheduledAt": "09:00", "command": "python3 main.py -w braila-anomaly" },
+        { "scheduledAt": "09:00", "command": "python3 main.py -w braila-state-analysis" },
+        { "scheduledAt": "09:00", "command": "python3 main.py -w braila-leakage" },
         { "scheduledAt": "12:00", "command": "python3 analysis.py" }
     ]
 }
