@@ -1,1 +1,6 @@
-{}
+{
+    "tasks": [
+        { "scheduledAt": "09:00", "command": "python3 main.py -w carouge" },
+        { "scheduledAt": "12:00", "command": "python3 analysis.py" }
+    ]
+}
