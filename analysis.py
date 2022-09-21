@@ -330,6 +330,7 @@ def create_msg_tables():
     '''.format(msg = msg)
     return html
 
+
 def create_msg():
     '''
     Parameters
@@ -341,6 +342,11 @@ def create_msg():
     str: A message ready to be sent in an email written as html. Includes number of errors and warnings for each .log file in 'logs' folder.
     '''
 
+    # get data from scheduler.json
+    config_file = os.path.join(os.getcwd(), 'configs', 'scheduler.json')
+    with open(config_file, "r") as json_file:
+        data = json.load(json_file)
+    
     msg = ''
     for filename in os.listdir('logs'):
         file = os.path.join('logs', filename)
@@ -352,14 +358,21 @@ def create_msg():
         file_name = filename.strip('.log').upper()
         num_errors = count_errors(df, 'Error')
         num_warnings = count_errors(df, 'Warning')
+
+        # get time of last update, if not foun->update_time="???"
+        update_time = "???"
+        for section in data["tasks"]:
+            if section["name"].upper() == file_name:
+                update_time = section["last_update"]
+
         if len(df) == 0:
-            partial_report = f'<p><b>{file_name}:</b> <br> No errors...</p>'
+            partial_report = f'<p><b>{file_name} ({update_time}):</b> <br> No errors...</p>'
         elif num_errors == 0:
-            partial_report = f'<p><b>{file_name}:</b> <br> {num_warnings} warnings...</p>'
+            partial_report = f'<p><b>{file_name} ({update_time}):</b> <br> {num_warnings} warnings...</p>'
         elif num_warnings == 0:
-            partial_report = f'<p><b>{file_name}:</b> <br> {num_errors} errors...'
+            partial_report = f'<p><b>{file_name} ({update_time}):</b> <br> {num_errors} errors...'
         else:
-            partial_report = f'<p><b>{file_name}:</b> <br> {num_errors} errors and {num_warnings} warnings...</p>'
+            partial_report = f'<p><b>{file_name} ({update_time}):</b> <br> {num_errors} errors and {num_warnings} warnings...</p>'
         msg += partial_report
     
     html = '''\
@@ -431,5 +444,4 @@ def main(sender_address, receiver_address, password):
 sender_address = '...'
 receiver_address = '...'
 password ='...'
-
 main(sender_address, receiver_address, password)
