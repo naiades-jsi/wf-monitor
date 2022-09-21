@@ -3,42 +3,50 @@
         {
             "scheduledAt": "09:00",
             "name": "carouge",
-            "command": "python3 main.py -w carouge" 
+            "command": "python3 main.py -w carouge",
+            "last_update": "21/09/2022 00:00:00"
         },
         {
             "scheduledAt": "09:00",
             "name": "alicante-consumption",
-            "command": "python3 main.py -w alicante-consumption"
+            "command": "python3 main.py -w alicante-consumption",
+            "last_update": "21/09/2022 00:00:00"
         },
         {
             "scheduledAt": "09:00",
             "name": "alicante-salinity", 
-            "command": "python3 main.py -w alicante-salinity" 
+            "command": "python3 main.py -w alicante-salinity",
+            "last_update": "21/09/2022 00:00:00"
         },
         {
             "scheduledAt": "09:00", 
             "name": "braila-consumption",
-            "command": "python3 main.py -w braila-consumption" 
+            "command": "python3 main.py -w braila-consumption",
+            "last_update": "21/09/2022 00:00:00"
         },
         {
             "scheduledAt": "09:00",
             "name": "braila-anomaly",
-            "command": "python3 main.py -w braila-anomaly"
+            "command": "python3 main.py -w braila-anomaly",
+            "last_update": "21/09/2022 00:00:00"
         },
         {
             "scheduledAt": "09:00", 
             "name": "braila-state-analysis",
-            "command": "python3 main.py -w braila-state-analysis"
+            "command": "python3 main.py -w braila-state-analysis",
+            "last_update": "21/09/2022 00:00:00"
         },
         {
             "scheduledAt": "09:00",
             "name": "braila-leakage",
-            "command": "python3 main.py -w braila-leakage"
+            "command": "python3 main.py -w braila-leakage",
+            "last_update": "21/09/2022 00:00:00"
         },
         {
             "scheduledAt": "12:00",
             "name": "analysis",
-            "command": "python3 analysis.py"
+            "command": "python3 analysis.py",
+            "last_update": "21/09/2022 00:00:00"
         }
     ]
 }
