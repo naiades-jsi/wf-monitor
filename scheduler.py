@@ -1,6 +1,5 @@
 import schedule
 import time
-import analysis
 import subprocess
 import os
 import logging
@@ -19,12 +18,12 @@ def main(run_time):
     for section in data["tasks"]:
         LOGGER.info("Starting: %s", section["name"])
         if run_time == section["scheduledAt"]: #convert to correct data type!!!
-            eval(section["command"])
+            subprocess.run(section["command"])
 
             # time of the last data update, write to scheduler.json
             now = datetime.now()
             current_time = now.strftime("%d/%m/%Y %H:%M:%S")
-            data["tasks"][section]["last_update"] = current_time
+            section["last_update"] = current_time
             with  open(config_file, "w") as outfile:
                 json.dump(data, outfile, ensure_ascii=False, indent=4)
 
