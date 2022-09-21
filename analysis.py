@@ -424,3 +424,12 @@ def main(sender_address, receiver_address, password):
     )
     for filename in attachments:
         os.remove(filename)
+
+
+# run main()
+# email info
+sender_address = '...'
+receiver_address = '...'
+password ='...'
+
+main(sender_address, receiver_address, password)

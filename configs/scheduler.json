@@ -1,20 +1,44 @@
 {
     "tasks": [
-        { "scheduledAt": "09:00",
-        "command": "python3 main.py -w carouge" },
-        { "scheduledAt": "09:00", 
-            "command": "python3 main.py -w alicante-consumption" },
-        { "scheduledAt": "09:00", 
-            "command": "python3 main.py -w alicante-salinity" },
-        { "scheduledAt": "09:00", 
-            "command": "python3 main.py -w braila-consumption" },
-        { "scheduledAt": "09:00", 
-            "command": "python3 main.py -w braila-anomaly" },
-        { "scheduledAt": "09:00", 
-            "command": "python3 main.py -w braila-state-analysis" },
-        { "scheduledAt": "09:00", 
-            "command": "python3 main.py -w braila-leakage" },
-        { "scheduledAt": "12:00", 
-            "command": "python3 analysis.py" }
+        {
+            "scheduledAt": "09:00",
+            "name": "carouge",
+            "command": "python3 main.py -w carouge" 
+        },
+        {
+            "scheduledAt": "09:00",
+            "name": "alicante-consumption",
+            "command": "python3 main.py -w alicante-consumption"
+        },
+        {
+            "scheduledAt": "09:00",
+            "name": "alicante-salinity", 
+            "command": "python3 main.py -w alicante-salinity" 
+        },
+        {
+            "scheduledAt": "09:00", 
+            "name": "braila-consumption",
+            "command": "python3 main.py -w braila-consumption" 
+        },
+        {
+            "scheduledAt": "09:00",
+            "name": "braila-anomaly",
+            "command": "python3 main.py -w braila-anomaly"
+        },
+        {
+            "scheduledAt": "09:00", 
+            "name": "braila-state-analysis",
+            "command": "python3 main.py -w braila-state-analysis"
+        },
+        {
+            "scheduledAt": "09:00",
+            "name": "braila-leakage",
+            "command": "python3 main.py -w braila-leakage"
+        },
+        {
+            "scheduledAt": "12:00",
+            "name": "analysis",
+            "command": "python3 analysis.py"
+        }
     ]
 }

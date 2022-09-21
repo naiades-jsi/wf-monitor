@@ -6,14 +6,10 @@ import os
 import logging
 import json
 
-# email info
-sender_address = '...'
-receiver_address = '...'
-password ='...'
-
 # logging
 LOGGER = logging.getLogger(__name__)
-def main():
+
+def main(run_time):
     config_file = os.path.join(os.getcwd(), 'configs', 'scheduler.json')
     LOGGER.info("Loading...")
     with open(config_file, "r") as json_file:
@@ -21,20 +17,27 @@ def main():
         tasks = data['tasks']
 
     for section in tasks:
-        LOGGER.info("Starting checks for: %s", section["name"])
+        LOGGER.info("Starting: %s", section["name"])
+        if run_time == section["scheduledAt"]: #convert to correct data type!!!
+            eval(section["command"])
 
+# Run main() every day at every scheduledAt time (find in scheduler.json)
+def schedule_job():
+    # get all the run times
+    times = []
+    config_file = os.path.join(os.getcwd(), 'configs', 'scheduler.json')
+    with open(config_file, "r") as json_file:
+        data = json.load(json_file)
+        tasks = data['tasks']
+    for section in tasks:
+        times.append(section["scheduledAt"])
+    
+    # schedule job
+    for run_time in times:
+        schedule.every().day.at(run_time).do(main, run_time=run_time)
 
+schedule_job()
 
-# at what time (HH:MM:SS format)?
-#run_time = '...' 
-
-#def job():
-#    subprocess.run(['./monitor.sh'])
-#    analysis.main(sender_address, receiver_address, password)
-
-# Run job every day at specific HH:MM:SS
-#schedule.every().day.at(run_time).do(job)
-
-#while True:
-#    schedule.run_pending()
-#    time.sleep(1)
+while True:
+    schedule.run_pending()
+    time.sleep(1)
