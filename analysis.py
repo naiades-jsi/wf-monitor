@@ -441,7 +441,10 @@ def main(sender_address, receiver_address, password):
 
 # run main()
 # email info
-sender_address = '...'
-receiver_address = '...'
-password ='...'
+
+with open(os.path.join(os.getcwd(), "config_mail.json"), "r") as infile:
+    data = json.read(infile)
+    sender_address = data["sender_address"]
+    receiver_address = data["receiver_address"]
+    password = data["password"]
 main(sender_address, receiver_address, password)

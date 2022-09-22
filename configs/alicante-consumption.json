@@ -76,7 +76,7 @@
             "bootstrap_servers": "localhost:9092",
             "checks": [
                 { "name": "Prediction Alipark", "topic": "predictions_alicante_Alipark_flow_w", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Prediction ERROR !!! Autobuses", "topic": "predictions_alicante_Benalua_flow_w", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Prediction Autobuses", "topic": "predictions_alicante_Autobuses_flow_w", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Prediction Benalua", "topic": "predictions_alicante_Benalua_flow_w", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Prediction Diputacion", "topic": "predictions_alicante_Diputacion_flow_w", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Prediction Mercado", "topic": "predictions_alicante_Mercado_flow_w", "alert_diff": 6, "error_diff": 24 },

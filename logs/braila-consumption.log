@@ -1,52 +1,52 @@
-2022-09-06 14:35:49,049 wf-monitor   INFO     Starting workflow monitoring tool for: braila-consumption
-2022-09-06 14:35:49,050 src.workflow INFO     Loading config: configs/braila-consumption.json
-2022-09-06 14:35:49,050 src.workflow INFO     Starting worklfow check
-2022-09-06 14:35:49,050 src.workflow INFO     Starting checks for: Naiades Historic API - WaterDemand
-2022-09-06 14:35:49,050 src.workflow INFO     Checking: Water Demand 211206H360
-2022-09-06 14:35:53,134 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-211206H360?lastN=1
-2022-09-06 14:35:53,136 src.historic INFO       Timestamp in the limits: 0.00h
-2022-09-06 14:35:53,136 src.workflow INFO     Checking: Water Demand 211306H360
-2022-09-06 14:35:53,289 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-211306H360?lastN=1
-2022-09-06 14:35:53,289 src.historic INFO       Timestamp in the limits: 1.90h
-2022-09-06 14:35:53,289 src.workflow INFO     Checking: Water Demand 318505H498
-2022-09-06 14:35:53,418 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-318505H498?lastN=1
-2022-09-06 14:35:53,418 src.historic INFO       Timestamp in the limits: 1.80h
-2022-09-06 14:35:53,418 src.workflow INFO     Starting checks for: Influx data
-2022-09-06 14:35:53,418 src.workflow INFO     Checking: Influx Flow 211206H360
-2022-09-06 14:35:53,419 src.influx   INFO       Building query
-2022-09-06 14:35:53,419 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "flow211206H360")|> last()
-2022-09-06 14:35:53,442 src.influx   INFO       Timestamp in the limits: 2.00h
-2022-09-06 14:35:53,442 src.workflow INFO     Checking: Influx Flow 211306H360
-2022-09-06 14:35:53,442 src.influx   INFO       Building query
-2022-09-06 14:35:53,442 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "flow211306H360")|> last()
-2022-09-06 14:35:53,456 src.influx   INFO       Timestamp in the limits: 1.90h
-2022-09-06 14:35:53,456 src.workflow INFO     Checking: Influx Flow 318505H498
-2022-09-06 14:35:53,457 src.influx   INFO       Building query
-2022-09-06 14:35:53,457 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "flow318505H498")|> last()
-2022-09-06 14:35:53,469 src.influx   INFO       Timestamp in the limits: 1.80h
-2022-09-06 14:35:53,469 src.workflow INFO     Starting checks for: Data Fusion on Kafka
-2022-09-06 14:35:53,469 src.workflow INFO     Checking: Features Flow 211206H360
-2022-09-06 14:35:53,469 src.kafka    INFO       Querying topic: features_braila_flow211206H360_forecasting
-2022-09-06 14:35:53,882 src.kafka    INFO       Last offset: 0
-2022-09-06 14:35:55,887 src.kafka    ERROR    No message in consumer!
-2022-09-06 14:35:55,888 src.workflow INFO     Checking: Features Flow 211306H360
-2022-09-06 14:35:55,889 src.kafka    INFO       Querying topic: features_braila_flow211306H360_forecasting
-2022-09-06 14:35:56,300 src.kafka    INFO       Last offset: 0
-2022-09-06 14:35:58,302 src.kafka    ERROR    No message in consumer!
-2022-09-06 14:35:58,303 src.workflow INFO     Checking: Features Flow 318505H498
-2022-09-06 14:35:58,303 src.kafka    INFO       Querying topic: features_braila_flow318505H498_forecasting
-2022-09-06 14:35:58,712 src.kafka    INFO       Last offset: 0
-2022-09-06 14:36:00,715 src.kafka    ERROR    No message in consumer!
-2022-09-06 14:36:00,716 src.workflow INFO     Starting checks for: Predictions on Kafka
-2022-09-06 14:36:00,716 src.workflow INFO     Checking: Prediction Flow 211206H360
-2022-09-06 14:36:00,716 src.kafka    INFO       Querying topic: predictions_braila_flow211206H360_prediction
-2022-09-06 14:36:01,128 src.kafka    INFO       Last offset: 0
-2022-09-06 14:36:03,131 src.kafka    ERROR    No message in consumer!
-2022-09-06 14:36:03,131 src.workflow INFO     Checking: Prediction Flow 211306H360
-2022-09-06 14:36:03,131 src.kafka    INFO       Querying topic: predictions_braila_flow211306H360_prediction
-2022-09-06 14:36:03,539 src.kafka    INFO       Last offset: 0
-2022-09-06 14:36:05,541 src.kafka    ERROR    No message in consumer!
-2022-09-06 14:36:05,541 src.workflow INFO     Checking: Prediction Flow 318505H498
-2022-09-06 14:36:05,542 src.kafka    INFO       Querying topic: predictions_braila_flow318505H498_prediction
-2022-09-06 14:36:05,952 src.kafka    INFO       Last offset: 0
-2022-09-06 14:36:07,953 src.kafka    ERROR    No message in consumer!
+2022-09-21 16:12:52,053 wf-monitor   INFO     Starting workflow monitoring tool for: braila-consumption
+2022-09-21 16:12:52,053 src.workflow INFO     Loading config: configs/braila-consumption.json
+2022-09-21 16:12:52,053 src.workflow INFO     Starting worklfow check
+2022-09-21 16:12:52,054 src.workflow INFO     Starting checks for: Naiades Historic API - WaterDemand
+2022-09-21 16:12:52,054 src.workflow INFO     Checking: Water Demand 211206H360
+2022-09-21 16:12:52,583 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-211206H360?lastN=1
+2022-09-21 16:12:52,584 src.historic INFO       Timestamp in the limits: 1.61h
+2022-09-21 16:12:52,585 src.workflow INFO     Checking: Water Demand 211306H360
+2022-09-21 16:12:52,713 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-211306H360?lastN=1
+2022-09-21 16:12:52,713 src.historic INFO       Timestamp in the limits: 1.51h
+2022-09-21 16:12:52,713 src.workflow INFO     Checking: Water Demand 318505H498
+2022-09-21 16:12:52,850 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-318505H498?lastN=1
+2022-09-21 16:12:52,850 src.historic INFO       Timestamp in the limits: 1.41h
+2022-09-21 16:12:52,851 src.workflow INFO     Starting checks for: Influx data
+2022-09-21 16:12:52,851 src.workflow INFO     Checking: Influx Flow 211206H360
+2022-09-21 16:12:52,851 src.influx   INFO       Building query
+2022-09-21 16:12:52,851 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "flow211206H360")|> last()
+2022-09-21 16:12:52,867 src.influx   INFO       Timestamp in the limits: 1.61h
+2022-09-21 16:12:52,867 src.workflow INFO     Checking: Influx Flow 211306H360
+2022-09-21 16:12:52,867 src.influx   INFO       Building query
+2022-09-21 16:12:52,867 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "flow211306H360")|> last()
+2022-09-21 16:12:52,880 src.influx   INFO       Timestamp in the limits: 1.51h
+2022-09-21 16:12:52,880 src.workflow INFO     Checking: Influx Flow 318505H498
+2022-09-21 16:12:52,880 src.influx   INFO       Building query
+2022-09-21 16:12:52,880 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "flow318505H498")|> last()
+2022-09-21 16:12:52,893 src.influx   INFO       Timestamp in the limits: 1.41h
+2022-09-21 16:12:52,893 src.workflow INFO     Starting checks for: Data Fusion on Kafka
+2022-09-21 16:12:52,893 src.workflow INFO     Checking: Features Flow 211206H360
+2022-09-21 16:12:52,893 src.kafka    INFO       Querying topic: features_braila_flow211206H360_forecasting
+2022-09-21 16:12:53,302 src.kafka    INFO       Last offset: 0
+2022-09-21 16:12:55,304 src.kafka    ERROR    No message in consumer!
+2022-09-21 16:12:55,304 src.workflow INFO     Checking: Features Flow 211306H360
+2022-09-21 16:12:55,305 src.kafka    INFO       Querying topic: features_braila_flow211306H360_forecasting
+2022-09-21 16:12:55,713 src.kafka    INFO       Last offset: 0
+2022-09-21 16:12:57,715 src.kafka    ERROR    No message in consumer!
+2022-09-21 16:12:57,715 src.workflow INFO     Checking: Features Flow 318505H498
+2022-09-21 16:12:57,715 src.kafka    INFO       Querying topic: features_braila_flow318505H498_forecasting
+2022-09-21 16:12:58,124 src.kafka    INFO       Last offset: 0
+2022-09-21 16:13:00,126 src.kafka    ERROR    No message in consumer!
+2022-09-21 16:13:00,126 src.workflow INFO     Starting checks for: Predictions on Kafka
+2022-09-21 16:13:00,126 src.workflow INFO     Checking: Prediction Flow 211206H360
+2022-09-21 16:13:00,126 src.kafka    INFO       Querying topic: predictions_braila_flow211206H360_prediction
+2022-09-21 16:13:00,537 src.kafka    INFO       Last offset: 0
+2022-09-21 16:13:02,539 src.kafka    ERROR    No message in consumer!
+2022-09-21 16:13:02,539 src.workflow INFO     Checking: Prediction Flow 211306H360
+2022-09-21 16:13:02,539 src.kafka    INFO       Querying topic: predictions_braila_flow211306H360_prediction
+2022-09-21 16:13:02,948 src.kafka    INFO       Last offset: 0
+2022-09-21 16:13:04,950 src.kafka    ERROR    No message in consumer!
+2022-09-21 16:13:04,950 src.workflow INFO     Checking: Prediction Flow 318505H498
+2022-09-21 16:13:04,950 src.kafka    INFO       Querying topic: predictions_braila_flow318505H498_prediction
+2022-09-21 16:13:05,358 src.kafka    INFO       Last offset: 0
+2022-09-21 16:13:07,361 src.kafka    ERROR    No message in consumer!
