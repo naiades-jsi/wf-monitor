@@ -9,7 +9,6 @@ import os
 import pandas as pd
 import logging
 import yagmail
-from pretty_html_table import build_table
 
 # logging
 LOGGER = logging.getLogger("wf-monitor")
@@ -443,8 +442,9 @@ def main(sender_address, receiver_address, password):
 # email info
 
 with open(os.path.join(os.getcwd(), "config_mail.json"), "r") as infile:
-    data = json.read(infile)
+    data = json.load(infile)
     sender_address = data["sender_address"]
     receiver_address = data["receiver_address"]
     password = data["password"]
+
 main(sender_address, receiver_address, password)
