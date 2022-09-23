@@ -17,8 +17,13 @@ def main(run_time):
 
     for section in data["tasks"]:
         LOGGER.info("Starting: %s", section["name"])
-        #if run_time == section["scheduledAt"]: #convert to correct data type!!!
-        subprocess.Popen(section["command"], shell=True)
+        #if run_time == section["scheduledAt"]:
+        if section["name"] != 'analysis':
+            file_loc = os.path.join(os.getcwd(), 'logs', f'{section["name"]}.log')
+            with open(file_loc,"wb") as out:
+                subprocess.Popen(section["command"], shell=True, stdout=out, stderr=out)
+        elif section["name"] == 'analysis':
+            subprocess.Popen(section["command"], shell=True)
 
         # time of the last data update, write to scheduler.json
         now = datetime.now()

@@ -1,134 +1,134 @@
-2022-09-21 16:12:11,609 wf-monitor   INFO     Starting workflow monitoring tool for: alicante-salinity
-2022-09-21 16:12:11,609 src.workflow INFO     Loading config: configs/salinity.json
-2022-09-21 16:12:11,610 src.workflow INFO     Starting worklfow check
-2022-09-21 16:12:11,610 src.workflow INFO     Starting checks for: Naiades Historic API - Salinity
-2022-09-21 16:12:11,610 src.workflow INFO     Checking: Level not used EA001-202
-2022-09-21 16:12:11,712 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:EA001-202-Level?lastN=1
-2022-09-21 16:12:11,713 src.historic WARNING    Timestamp bigger than limit: 21.42h
-2022-09-21 16:12:11,713 src.workflow INFO     Checking: Level EA001-36
-2022-09-21 16:12:11,872 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:EA001-36-Level?lastN=1
-2022-09-21 16:12:11,872 src.historic WARNING    Timestamp bigger than limit: 18.22h
-2022-09-21 16:12:11,872 src.workflow INFO     Checking: Level EA002-26
-2022-09-21 16:12:12,042 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:EA002-26-Conductivity?lastN=1
-2022-09-21 16:12:12,043 src.historic WARNING    Timestamp bigger than limit: 18.33h
-2022-09-21 16:12:12,043 src.workflow INFO     Checking: Level EA003-21
-2022-09-21 16:12:12,200 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:EA003-21-Conductivity?lastN=1
-2022-09-21 16:12:12,200 src.historic WARNING    Timestamp bigger than limit: 18.23h
-2022-09-21 16:12:12,200 src.workflow INFO     Checking: Level EA003-36
-2022-09-21 16:12:12,338 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:EA003-36-Conductivity?lastN=1
-2022-09-21 16:12:12,338 src.historic WARNING    Timestamp bigger than limit: 18.20h
-2022-09-21 16:12:12,338 src.workflow INFO     Checking: Level EA004-21
-2022-09-21 16:12:12,457 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:EA004-21-Conductivity?lastN=1
-2022-09-21 16:12:12,458 src.historic WARNING    Timestamp bigger than limit: 18.23h
-2022-09-21 16:12:12,458 src.workflow INFO     Checking: Level EA005-21
-2022-09-21 16:12:12,563 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:EA005-21-Conductivity?lastN=1
-2022-09-21 16:12:12,563 src.historic WARNING    Timestamp bigger than limit: 18.23h
-2022-09-21 16:12:12,564 src.workflow INFO     Checking: Level EA007-36
-2022-09-21 16:12:12,684 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:EA003-36-Conductivity?lastN=1
-2022-09-21 16:12:12,685 src.historic WARNING    Timestamp bigger than limit: 18.20h
-2022-09-21 16:12:12,685 src.workflow INFO     Checking: Level EA008-36
-2022-09-21 16:12:12,835 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:EA008-36-Conductivity?lastN=1
-2022-09-21 16:12:12,836 src.historic WARNING    Timestamp bigger than limit: 18.20h
-2022-09-21 16:12:12,836 src.workflow INFO     Starting checks for: Influx data
-2022-09-21 16:12:12,836 src.workflow INFO     Checking: Influx Level not used EA001-202
-2022-09-21 16:12:12,836 src.influx   INFO       Building query
-2022-09-21 16:12:12,836 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "salinity_EA001_202_level")|> last()
-2022-09-21 16:12:12,848 src.influx   WARNING    Timestamp bigger than limit: 21.42h
-2022-09-21 16:12:12,848 src.workflow INFO     Checking: Influx Level EA001-36
-2022-09-21 16:12:12,848 src.influx   INFO       Building query
-2022-09-21 16:12:12,848 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "salinity_EA001_36_level")|> last()
-2022-09-21 16:12:12,856 src.influx   ERROR      Timestamp bigger than limit: 42.21h
-2022-09-21 16:12:12,856 src.workflow INFO     Checking: Influx Level EA002-26
-2022-09-21 16:12:12,856 src.influx   INFO       Building query
-2022-09-21 16:12:12,856 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "salinity_EA002_26_conductivity")|> last()
-2022-09-21 16:12:12,865 src.influx   WARNING    Timestamp bigger than limit: 18.33h
-2022-09-21 16:12:12,865 src.workflow INFO     Checking: Influx Level EA003-21
-2022-09-21 16:12:12,865 src.influx   INFO       Building query
-2022-09-21 16:12:12,865 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "salinity_EA003_21_conductivity")|> last()
-2022-09-21 16:12:12,875 src.influx   WARNING    Timestamp bigger than limit: 18.23h
-2022-09-21 16:12:12,875 src.workflow INFO     Checking: Influx Level EA003-36
-2022-09-21 16:12:12,875 src.influx   INFO       Building query
-2022-09-21 16:12:12,875 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "salinity_EA003_36_conductivity")|> last()
-2022-09-21 16:12:12,885 src.influx   ERROR      Timestamp bigger than limit: 42.20h
-2022-09-21 16:12:12,885 src.workflow INFO     Checking: Influx Level EA004-21
-2022-09-21 16:12:12,885 src.influx   INFO       Building query
-2022-09-21 16:12:12,885 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "salinity_EA004_21_conductivity")|> last()
-2022-09-21 16:12:12,893 src.influx   WARNING    Timestamp bigger than limit: 18.23h
-2022-09-21 16:12:12,893 src.workflow INFO     Checking: Influx Level EA005-21
-2022-09-21 16:12:12,893 src.influx   INFO       Building query
-2022-09-21 16:12:12,893 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "salinity_EA005_21_conductivity")|> last()
-2022-09-21 16:12:12,906 src.influx   WARNING    Timestamp bigger than limit: 18.23h
-2022-09-21 16:12:12,906 src.workflow INFO     Checking: Influx Level EA007-36
-2022-09-21 16:12:12,907 src.influx   INFO       Building query
-2022-09-21 16:12:12,907 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "salinity_EA007_36_conductivity")|> last()
-2022-09-21 16:12:12,919 src.influx   WARNING    Timestamp bigger than limit: 18.20h
-2022-09-21 16:12:12,919 src.workflow INFO     Checking: Influx Level EA008-36
-2022-09-21 16:12:12,919 src.influx   INFO       Building query
-2022-09-21 16:12:12,919 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "salinity_EA008_36_conductivity")|> last()
-2022-09-21 16:12:12,928 src.influx   WARNING    Timestamp bigger than limit: 18.20h
-2022-09-21 16:12:12,928 src.workflow INFO     Starting checks for: Data Fusion on Kafka
-2022-09-21 16:12:12,929 src.workflow INFO     Checking: Fusion Level EA002-26
-2022-09-21 16:12:12,929 src.kafka    INFO       Querying topic: features_alicante_salinity_EA001_36_level
-2022-09-21 16:12:13,337 src.kafka    INFO       Last offset: 0
-2022-09-21 16:12:15,340 src.kafka    ERROR    No message in consumer!
-2022-09-21 16:12:15,340 src.workflow INFO     Checking: Fusion EA002-26
-2022-09-21 16:12:15,340 src.kafka    INFO       Querying topic: features_alicante_salinity_EA002_26_conductivity
-2022-09-21 16:12:15,748 src.kafka    INFO       Last offset: 0
-2022-09-21 16:12:17,751 src.kafka    ERROR    No message in consumer!
-2022-09-21 16:12:17,751 src.workflow INFO     Checking: Fusion EA003-36
-2022-09-21 16:12:17,751 src.kafka    INFO       Querying topic: features_alicante_salinity_EA003_36_conductivity
-2022-09-21 16:12:18,163 src.kafka    INFO       Last offset: 0
-2022-09-21 16:12:20,165 src.kafka    ERROR    No message in consumer!
-2022-09-21 16:12:20,165 src.workflow INFO     Checking: Fusion EA003-21
-2022-09-21 16:12:20,165 src.kafka    INFO       Querying topic: features_alicante_salinity_EA003_21_conductivity
-2022-09-21 16:12:20,573 src.kafka    INFO       Last offset: 0
-2022-09-21 16:12:22,576 src.kafka    ERROR    No message in consumer!
-2022-09-21 16:12:22,576 src.workflow INFO     Checking: Fusion EA004-21
-2022-09-21 16:12:22,577 src.kafka    INFO       Querying topic: features_alicante_salinity_EA004_21_conductivity
-2022-09-21 16:12:22,985 src.kafka    INFO       Last offset: 0
-2022-09-21 16:12:24,987 src.kafka    ERROR    No message in consumer!
-2022-09-21 16:12:24,987 src.workflow INFO     Checking: Fusion EA005-21
-2022-09-21 16:12:24,987 src.kafka    INFO       Querying topic: features_alicante_salinity_EA005_21_conductivity
-2022-09-21 16:12:25,395 src.kafka    INFO       Last offset: 0
-2022-09-21 16:12:27,397 src.kafka    ERROR    No message in consumer!
-2022-09-21 16:12:27,398 src.workflow INFO     Checking: Fusion EA007-36
-2022-09-21 16:12:27,398 src.kafka    INFO       Querying topic: features_alicante_salinity_EA007_36_conductivity
-2022-09-21 16:12:27,807 src.kafka    INFO       Last offset: 0
-2022-09-21 16:12:29,809 src.kafka    ERROR    No message in consumer!
-2022-09-21 16:12:29,810 src.workflow INFO     Checking: Fusion EA008-36
-2022-09-21 16:12:29,810 src.kafka    INFO       Querying topic: features_alicante_salinity_EA008_36_conductivity
-2022-09-21 16:12:30,218 src.kafka    INFO       Last offset: 0
-2022-09-21 16:12:32,220 src.kafka    ERROR    No message in consumer!
-2022-09-21 16:12:32,220 src.workflow INFO     Starting checks for: Anomalies on Kafka
-2022-09-21 16:12:32,220 src.workflow INFO     Checking: Anomalies Level EA001-36
-2022-09-21 16:12:32,220 src.kafka    INFO       Querying topic: anomalies_alicante_salinity_EA001_36_level_meta_signal
-2022-09-21 16:12:32,629 src.kafka    INFO       Last offset: 0
-2022-09-21 16:12:34,630 src.kafka    ERROR    No message in consumer!
-2022-09-21 16:12:34,631 src.workflow INFO     Checking: Anomalies EA002-26
-2022-09-21 16:12:34,631 src.kafka    INFO       Querying topic: anomalies_alicante_salinity_EA002_26_conductivity_meta_signal
-2022-09-21 16:12:35,039 src.kafka    INFO       Last offset: 0
-2022-09-21 16:12:37,041 src.kafka    ERROR    No message in consumer!
-2022-09-21 16:12:37,041 src.workflow INFO     Checking: Anomalies EA003-36
-2022-09-21 16:12:37,041 src.kafka    INFO       Querying topic: anomalies_alicante_salinity_EA003_36_conductivity_meta_signal
-2022-09-21 16:12:37,449 src.kafka    INFO       Last offset: 0
-2022-09-21 16:12:39,450 src.kafka    ERROR    No message in consumer!
-2022-09-21 16:12:39,450 src.workflow INFO     Checking: Anomalies EA003-21
-2022-09-21 16:12:39,451 src.kafka    INFO       Querying topic: anomalies_alicante_salinity_EA003_21_conductivity_meta_signal
-2022-09-21 16:12:39,859 src.kafka    INFO       Last offset: 0
-2022-09-21 16:12:41,861 src.kafka    ERROR    No message in consumer!
-2022-09-21 16:12:41,861 src.workflow INFO     Checking: Anomalies EA004-21
-2022-09-21 16:12:41,861 src.kafka    INFO       Querying topic: anomalies_alicante_salinity_EA004_21_conductivity_meta_signal
-2022-09-21 16:12:42,269 src.kafka    INFO       Last offset: 0
-2022-09-21 16:12:44,271 src.kafka    ERROR    No message in consumer!
-2022-09-21 16:12:44,271 src.workflow INFO     Checking: Anomalies EA005-21
-2022-09-21 16:12:44,271 src.kafka    INFO       Querying topic: anomalies_alicante_salinity_EA005_21_conductivity_meta_signal
-2022-09-21 16:12:44,679 src.kafka    INFO       Last offset: 0
-2022-09-21 16:12:46,681 src.kafka    ERROR    No message in consumer!
-2022-09-21 16:12:46,681 src.workflow INFO     Checking: Anomalies EA007-36
-2022-09-21 16:12:46,681 src.kafka    INFO       Querying topic: anomalies_alicante_salinity_EA007_36_conductivity_meta_signal
-2022-09-21 16:12:47,090 src.kafka    INFO       Last offset: 0
-2022-09-21 16:12:49,092 src.kafka    ERROR    No message in consumer!
-2022-09-21 16:12:49,093 src.workflow INFO     Checking: Anomalies EA008-36
-2022-09-21 16:12:49,093 src.kafka    INFO       Querying topic: anomalies_alicante_salinity_EA008_36_conductivity_meta_signal
-2022-09-21 16:12:49,501 src.kafka    INFO       Last offset: 0
-2022-09-21 16:12:51,502 src.kafka    ERROR    No message in consumer!
+2022-09-23 11:25:00,820 wf-monitor   INFO     Starting workflow monitoring tool for: alicante-salinity
+2022-09-23 11:25:00,820 src.workflow INFO     Loading config: configs/salinity.json
+2022-09-23 11:25:00,820 src.workflow INFO     Starting worklfow check
+2022-09-23 11:25:00,820 src.workflow INFO     Starting checks for: Naiades Historic API - Salinity
+2022-09-23 11:25:00,820 src.workflow INFO     Checking: Level not used EA001-202
+2022-09-23 11:25:00,903 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:EA001-202-Level?lastN=1
+2022-09-23 11:25:00,905 src.historic WARNING    Timestamp bigger than limit: 16.54h
+2022-09-23 11:25:00,905 src.workflow INFO     Checking: Level EA001-36
+2022-09-23 11:25:01,097 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:EA001-36-Level?lastN=1
+2022-09-23 11:25:01,097 src.historic WARNING    Timestamp bigger than limit: 13.43h
+2022-09-23 11:25:01,097 src.workflow INFO     Checking: Level EA002-26
+2022-09-23 11:25:01,361 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:EA002-26-Conductivity?lastN=1
+2022-09-23 11:25:01,361 src.historic WARNING    Timestamp bigger than limit: 13.43h
+2022-09-23 11:25:01,361 src.workflow INFO     Checking: Level EA003-21
+2022-09-23 11:25:01,462 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:EA003-21-Conductivity?lastN=1
+2022-09-23 11:25:01,463 src.historic WARNING    Timestamp bigger than limit: 13.44h
+2022-09-23 11:25:01,463 src.workflow INFO     Checking: Level EA003-36
+2022-09-23 11:25:01,620 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:EA003-36-Conductivity?lastN=1
+2022-09-23 11:25:01,621 src.historic WARNING    Timestamp bigger than limit: 13.42h
+2022-09-23 11:25:01,621 src.workflow INFO     Checking: Level EA004-21
+2022-09-23 11:25:01,743 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:EA004-21-Conductivity?lastN=1
+2022-09-23 11:25:01,743 src.historic WARNING    Timestamp bigger than limit: 13.44h
+2022-09-23 11:25:01,743 src.workflow INFO     Checking: Level EA005-21
+2022-09-23 11:25:01,872 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:EA005-21-Conductivity?lastN=1
+2022-09-23 11:25:01,873 src.historic WARNING    Timestamp bigger than limit: 13.44h
+2022-09-23 11:25:01,873 src.workflow INFO     Checking: Level EA007-36
+2022-09-23 11:25:02,020 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:EA003-36-Conductivity?lastN=1
+2022-09-23 11:25:02,021 src.historic WARNING    Timestamp bigger than limit: 13.42h
+2022-09-23 11:25:02,021 src.workflow INFO     Checking: Level EA008-36
+2022-09-23 11:25:02,170 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:EA008-36-Conductivity?lastN=1
+2022-09-23 11:25:02,170 src.historic WARNING    Timestamp bigger than limit: 13.42h
+2022-09-23 11:25:02,170 src.workflow INFO     Starting checks for: Influx data
+2022-09-23 11:25:02,170 src.workflow INFO     Checking: Influx Level not used EA001-202
+2022-09-23 11:25:02,171 src.influx   INFO       Building query
+2022-09-23 11:25:02,171 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "salinity_EA001_202_level")|> last()
+2022-09-23 11:25:02,182 src.influx   ERROR      No data in last week: Influx Level not used EA001-202
+2022-09-23 11:25:02,182 src.workflow INFO     Checking: Influx Level EA001-36
+2022-09-23 11:25:02,182 src.influx   INFO       Building query
+2022-09-23 11:25:02,182 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "salinity_EA001_36_level")|> last()
+2022-09-23 11:25:02,192 src.influx   WARNING    Timestamp bigger than limit: 13.43h
+2022-09-23 11:25:02,192 src.workflow INFO     Checking: Influx Level EA002-26
+2022-09-23 11:25:02,193 src.influx   INFO       Building query
+2022-09-23 11:25:02,193 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "salinity_EA002_26_conductivity")|> last()
+2022-09-23 11:25:02,201 src.influx   WARNING    Timestamp bigger than limit: 13.43h
+2022-09-23 11:25:02,201 src.workflow INFO     Checking: Influx Level EA003-21
+2022-09-23 11:25:02,201 src.influx   INFO       Building query
+2022-09-23 11:25:02,201 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "salinity_EA003_21_conductivity")|> last()
+2022-09-23 11:25:02,217 src.influx   WARNING    Timestamp bigger than limit: 13.45h
+2022-09-23 11:25:02,217 src.workflow INFO     Checking: Influx Level EA003-36
+2022-09-23 11:25:02,218 src.influx   INFO       Building query
+2022-09-23 11:25:02,218 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "salinity_EA003_36_conductivity")|> last()
+2022-09-23 11:25:02,228 src.influx   WARNING    Timestamp bigger than limit: 13.42h
+2022-09-23 11:25:02,228 src.workflow INFO     Checking: Influx Level EA004-21
+2022-09-23 11:25:02,228 src.influx   INFO       Building query
+2022-09-23 11:25:02,228 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "salinity_EA004_21_conductivity")|> last()
+2022-09-23 11:25:02,237 src.influx   WARNING    Timestamp bigger than limit: 13.45h
+2022-09-23 11:25:02,238 src.workflow INFO     Checking: Influx Level EA005-21
+2022-09-23 11:25:02,238 src.influx   INFO       Building query
+2022-09-23 11:25:02,238 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "salinity_EA005_21_conductivity")|> last()
+2022-09-23 11:25:02,247 src.influx   WARNING    Timestamp bigger than limit: 13.45h
+2022-09-23 11:25:02,247 src.workflow INFO     Checking: Influx Level EA007-36
+2022-09-23 11:25:02,247 src.influx   INFO       Building query
+2022-09-23 11:25:02,247 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "salinity_EA007_36_conductivity")|> last()
+2022-09-23 11:25:02,258 src.influx   WARNING    Timestamp bigger than limit: 13.42h
+2022-09-23 11:25:02,258 src.workflow INFO     Checking: Influx Level EA008-36
+2022-09-23 11:25:02,258 src.influx   INFO       Building query
+2022-09-23 11:25:02,258 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "salinity_EA008_36_conductivity")|> last()
+2022-09-23 11:25:02,268 src.influx   WARNING    Timestamp bigger than limit: 13.42h
+2022-09-23 11:25:02,268 src.workflow INFO     Starting checks for: Data Fusion on Kafka
+2022-09-23 11:25:02,268 src.workflow INFO     Checking: Fusion Level EA002-26
+2022-09-23 11:25:02,268 src.kafka    INFO       Querying topic: features_alicante_salinity_EA001_36_level
+2022-09-23 11:25:02,678 src.kafka    INFO       Last offset: 0
+2022-09-23 11:25:04,680 src.kafka    ERROR    No message in consumer!
+2022-09-23 11:25:04,680 src.workflow INFO     Checking: Fusion EA002-26
+2022-09-23 11:25:04,680 src.kafka    INFO       Querying topic: features_alicante_salinity_EA002_26_conductivity
+2022-09-23 11:25:05,088 src.kafka    INFO       Last offset: 0
+2022-09-23 11:25:07,091 src.kafka    ERROR    No message in consumer!
+2022-09-23 11:25:07,091 src.workflow INFO     Checking: Fusion EA003-36
+2022-09-23 11:25:07,091 src.kafka    INFO       Querying topic: features_alicante_salinity_EA003_36_conductivity
+2022-09-23 11:25:07,499 src.kafka    INFO       Last offset: 0
+2022-09-23 11:25:09,501 src.kafka    ERROR    No message in consumer!
+2022-09-23 11:25:09,501 src.workflow INFO     Checking: Fusion EA003-21
+2022-09-23 11:25:09,501 src.kafka    INFO       Querying topic: features_alicante_salinity_EA003_21_conductivity
+2022-09-23 11:25:09,909 src.kafka    INFO       Last offset: 0
+2022-09-23 11:25:11,911 src.kafka    ERROR    No message in consumer!
+2022-09-23 11:25:11,911 src.workflow INFO     Checking: Fusion EA004-21
+2022-09-23 11:25:11,911 src.kafka    INFO       Querying topic: features_alicante_salinity_EA004_21_conductivity
+2022-09-23 11:25:12,319 src.kafka    INFO       Last offset: 0
+2022-09-23 11:25:14,321 src.kafka    ERROR    No message in consumer!
+2022-09-23 11:25:14,321 src.workflow INFO     Checking: Fusion EA005-21
+2022-09-23 11:25:14,321 src.kafka    INFO       Querying topic: features_alicante_salinity_EA005_21_conductivity
+2022-09-23 11:25:14,730 src.kafka    INFO       Last offset: 0
+2022-09-23 11:25:16,731 src.kafka    ERROR    No message in consumer!
+2022-09-23 11:25:16,731 src.workflow INFO     Checking: Fusion EA007-36
+2022-09-23 11:25:16,731 src.kafka    INFO       Querying topic: features_alicante_salinity_EA007_36_conductivity
+2022-09-23 11:25:17,139 src.kafka    INFO       Last offset: 0
+2022-09-23 11:25:19,142 src.kafka    ERROR    No message in consumer!
+2022-09-23 11:25:19,142 src.workflow INFO     Checking: Fusion EA008-36
+2022-09-23 11:25:19,142 src.kafka    INFO       Querying topic: features_alicante_salinity_EA008_36_conductivity
+2022-09-23 11:25:19,550 src.kafka    INFO       Last offset: 0
+2022-09-23 11:25:21,551 src.kafka    ERROR    No message in consumer!
+2022-09-23 11:25:21,552 src.workflow INFO     Starting checks for: Anomalies on Kafka
+2022-09-23 11:25:21,552 src.workflow INFO     Checking: Anomalies Level EA001-36
+2022-09-23 11:25:21,552 src.kafka    INFO       Querying topic: anomalies_alicante_salinity_EA001_36_level_meta_signal
+2022-09-23 11:25:21,959 src.kafka    INFO       Last offset: 0
+2022-09-23 11:25:23,962 src.kafka    ERROR    No message in consumer!
+2022-09-23 11:25:23,962 src.workflow INFO     Checking: Anomalies EA002-26
+2022-09-23 11:25:23,962 src.kafka    INFO       Querying topic: anomalies_alicante_salinity_EA002_26_conductivity_meta_signal
+2022-09-23 11:25:24,371 src.kafka    INFO       Last offset: 0
+2022-09-23 11:25:26,373 src.kafka    ERROR    No message in consumer!
+2022-09-23 11:25:26,373 src.workflow INFO     Checking: Anomalies EA003-36
+2022-09-23 11:25:26,373 src.kafka    INFO       Querying topic: anomalies_alicante_salinity_EA003_36_conductivity_meta_signal
+2022-09-23 11:25:26,781 src.kafka    INFO       Last offset: 0
+2022-09-23 11:25:28,784 src.kafka    ERROR    No message in consumer!
+2022-09-23 11:25:28,784 src.workflow INFO     Checking: Anomalies EA003-21
+2022-09-23 11:25:28,784 src.kafka    INFO       Querying topic: anomalies_alicante_salinity_EA003_21_conductivity_meta_signal
+2022-09-23 11:25:29,193 src.kafka    INFO       Last offset: 0
+2022-09-23 11:25:31,195 src.kafka    ERROR    No message in consumer!
+2022-09-23 11:25:31,195 src.workflow INFO     Checking: Anomalies EA004-21
+2022-09-23 11:25:31,195 src.kafka    INFO       Querying topic: anomalies_alicante_salinity_EA004_21_conductivity_meta_signal
+2022-09-23 11:25:31,603 src.kafka    INFO       Last offset: 0
+2022-09-23 11:25:33,605 src.kafka    ERROR    No message in consumer!
+2022-09-23 11:25:33,605 src.workflow INFO     Checking: Anomalies EA005-21
+2022-09-23 11:25:33,606 src.kafka    INFO       Querying topic: anomalies_alicante_salinity_EA005_21_conductivity_meta_signal
+2022-09-23 11:25:34,012 src.kafka    INFO       Last offset: 0
+2022-09-23 11:25:36,014 src.kafka    ERROR    No message in consumer!
+2022-09-23 11:25:36,014 src.workflow INFO     Checking: Anomalies EA007-36
+2022-09-23 11:25:36,014 src.kafka    INFO       Querying topic: anomalies_alicante_salinity_EA007_36_conductivity_meta_signal
+2022-09-23 11:25:36,423 src.kafka    INFO       Last offset: 0
+2022-09-23 11:25:38,425 src.kafka    ERROR    No message in consumer!
+2022-09-23 11:25:38,425 src.workflow INFO     Checking: Anomalies EA008-36
+2022-09-23 11:25:38,425 src.kafka    INFO       Querying topic: anomalies_alicante_salinity_EA008_36_conductivity_meta_signal
+2022-09-23 11:25:38,833 src.kafka    INFO       Last offset: 0
+2022-09-23 11:25:40,835 src.kafka    ERROR    No message in consumer!

@@ -402,9 +402,9 @@ def create_attachments():
     for filename in os.listdir('logs'):
         file = os.path.join('logs', filename)
         df = to_df(file)
-        df = find_problems(df)
-        df = analyse_df(df)
-        df = correct_type(df)[1]
+        #df = find_problems(df)
+        #df = analyse_df(df)
+        #df = correct_type(df)[1]
         if len(df) != 0:
             file_name = filename.strip('.log') + '.xlsx'
             df.to_excel(file_name)
