@@ -8,10 +8,10 @@
                 "Content-Type": "application/json"
             },
             "checks": [
-                { "name": "Noise sensor 2182", "device": "Noise-2182", "alert_diff": 24, "error_diff": 36 },
-                { "name": "Noise sensor 5980", "device": "Noise-5980", "alert_diff": 24, "error_diff": 36 },
-                { "name": "Noise sensor 5981", "device": "Noise-5981", "alert_diff": 24, "error_diff": 36 },
-                { "name": "Noise sensor 5982", "device": "Noise-5982", "alert_diff": 24, "error_diff": 36 }
+                { "name": "Noise sensor 2182", "device": "Noise-2182", "alert_diff": 2, "error_diff": 3 },
+                { "name": "Noise sensor 5980", "device": "Noise-5980", "alert_diff": 2, "error_diff": 3 },
+                { "name": "Noise sensor 5981", "device": "Noise-5981", "alert_diff": 2, "error_diff": 3 },
+                { "name": "Noise sensor 5982", "device": "Noise-5982", "alert_diff": 2, "error_diff": 3 }
             ]
         },
         {

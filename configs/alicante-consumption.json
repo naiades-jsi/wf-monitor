@@ -10,13 +10,13 @@
                 "Content-Type": "application/json"
             },
             "checks": [
-                { "name": "Alipark Flow", "device": "Alipark-Flow", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Autobuses Flow", "device": "Autobuses-Flow", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Benalua Flow", "device": "Benalua-Flow", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Diputacion Flow", "device": "Diputacion-Flow", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Mercado Flow", "device": "Mercado-Flow", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Montaneta Flow", "device": "Montaneta-Flow", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Rambla Flow", "device": "Rambla-Flow", "alert_diff": 6, "error_diff": 24 }
+                { "name": "Alipark Flow", "device": "Alipark-Flow", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Autobuses Flow", "device": "Autobuses-Flow", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Benalua Flow", "device": "Benalua-Flow", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Diputacion Flow", "device": "Diputacion-Flow", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Mercado Flow", "device": "Mercado-Flow", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Montaneta Flow", "device": "Montaneta-Flow", "alert_diff": 31, "error_diff": 32 },
+                { "name": "Rambla Flow", "device": "Rambla-Flow", "alert_diff": 13, "error_diff": 14 }
             ]
         },
         {
@@ -29,7 +29,7 @@
                 "Content-Type": "application/json"
             },
             "checks": [
-                { "name": "Weather Observed 1", "device": "WeatherObserved-1", "alert_diff": 6, "error_diff": 24 }
+                { "name": "Weather Observed 1", "device": "WeatherObserved-1", "alert_diff": 3, "error_diff": 6 }
             ]
         },
         {
