@@ -202,11 +202,8 @@ def correct_type(df):
     new_df : pandas dataframe \n
     Presents error and warning counts for each location, as well as description of the problem.
     '''
-
+    # check if API time delays are in the limits (based on sensor and df)
     for i, row in df.iterrows():
-        if df['Action'][i] == 'API':
-            sensor = df['Location'][i]
-
         if df['Action'][i] != 'API':
             time = df['Time_spent'][i]
             if pd.isna(time) or time < -1 or time > 1:
@@ -272,7 +269,7 @@ def count_errors(df, column_name):
     return sum
 
 #testing
-for file_name in ['alicante-salinity.log', 'braila-anomaly.log', 'braila-consumption.log', 'braila-leakage.log', 'braila-state-analysis.log', 'carouge.log']:
+for file_name in ['alicante-salinity.log', 'alicante-consumption', 'braila-anomaly.log', 'braila-consumption.log', 'braila-leakage.log', 'braila-state-analysis.log', 'carouge.log']:
     example_file = os.path.join(os.getcwd(), 'logs', file_name)
     df = to_df(example_file)
     df = find_problems(df)
@@ -407,11 +404,11 @@ def create_attachments():
         df = to_df(file)
         df = find_problems(df)
         df = analyse_df(df)
-        #df = correct_type(df)[1]
-        #if len(df) != 0:
-        file_name = filename.strip('.log') + '.xlsx'
-        df.to_excel(file_name)
-        attachments.append(file_name)
+        df = correct_type(df)[1]
+        if len(df) != 0:
+            file_name = filename.strip('.log') + '.xlsx'
+            df.to_excel(file_name)
+            attachments.append(file_name)
     return attachments
 
 
