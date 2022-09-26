@@ -1,52 +1,52 @@
 {
     "tasks": [
         {
-            "scheduledAt": "09:00",
+            "scheduledAt": "12:00",
             "name": "carouge",
             "command": "python3 main.py -w carouge &> logs/carouge.log",
-            "last_update": "23/09/2022 11:25:00"
+            "last_update": "26/09/2022 10:00:00"
         },
         {
-            "scheduledAt": "08:57",
+            "scheduledAt": "10:00",
             "name": "alicante-consumption",
             "command": "python3 main.py -w alicante-consumption &> logs/alicante-consumption.log",
-            "last_update": "23/09/2022 11:25:00"
+            "last_update": "26/09/2022 10:00:00"
         },
         {
-            "scheduledAt": "09:12",
+            "scheduledAt": "10:00",
             "name": "alicante-salinity",
             "command": "python3 main.py -w alicante-salinity &> logs/alicante-salinity.log",
-            "last_update": "23/09/2022 11:25:00"
+            "last_update": "26/09/2022 10:00:00"
         },
         {
-            "scheduledAt": "09:00",
+            "scheduledAt": "11:00",
             "name": "braila-consumption",
             "command": "python3 main.py -w braila-consumption &> logs/braila-consumption.log",
-            "last_update": "23/09/2022 11:25:00"
+            "last_update": "26/09/2022 10:00:00"
         },
         {
-            "scheduledAt": "09:00",
+            "scheduledAt": "06:00",
             "name": "braila-anomaly",
             "command": "python3 main.py -w braila-anomaly &> logs/braila-anomaly.log",
-            "last_update": "23/09/2022 11:25:00"
+            "last_update": "26/09/2022 10:00:00"
         },
         {
-            "scheduledAt": "09:00",
+            "scheduledAt": "11:00",
             "name": "braila-state-analysis",
             "command": "python3 main.py -w braila-state-analysis &> logs/braila-state-analysis.log",
-            "last_update": "23/09/2022 11:25:00"
+            "last_update": "26/09/2022 10:00:00"
         },
         {
-            "scheduledAt": "08:23",
+            "scheduledAt": "12:00",
             "name": "braila-leakage",
             "command": "python3 main.py -w braila-leakage &> logs/braila-leakage.log",
-            "last_update": "23/09/2022 11:25:00"
+            "last_update": "26/09/2022 10:00:00"
         },
         {
-            "scheduledAt": "08:22",
+            "scheduledAt": "12:00",
             "name": "analysis",
             "command": "python3 analysis.py",
-            "last_update": "23/09/2022 11:25:00"
+            "last_update": "26/09/2022 10:00:30"
         }
     ]
 }

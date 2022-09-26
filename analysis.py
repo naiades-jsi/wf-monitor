@@ -405,10 +405,10 @@ def create_attachments():
         #df = find_problems(df)
         #df = analyse_df(df)
         #df = correct_type(df)[1]
-        if len(df) != 0:
-            file_name = filename.strip('.log') + '.xlsx'
-            df.to_excel(file_name)
-            attachments.append(file_name)
+        #if len(df) != 0:
+        file_name = filename.strip('.log') + '.xlsx'
+        df.to_excel(file_name)
+        attachments.append(file_name)
     return attachments
 
 
