@@ -204,6 +204,9 @@ def correct_type(df):
     '''
 
     for i, row in df.iterrows():
+        if df['Action'][i] == 'API':
+            sensor = df['Location'][i]
+
         if df['Action'][i] != 'API':
             time = df['Time_spent'][i]
             if pd.isna(time) or time < -1 or time > 1:
@@ -214,7 +217,7 @@ def correct_type(df):
     locations = []
     warning_count = []
     error_count = []
-    problems = [] #list of lists of problems for each location
+    problems = [] # list of lists of problems for each location
     for i, row in df.iterrows():
         current_location = df['Location'][i]
         current_type = df['Type'][i]
@@ -402,8 +405,8 @@ def create_attachments():
     for filename in os.listdir('logs'):
         file = os.path.join('logs', filename)
         df = to_df(file)
-        #df = find_problems(df)
-        #df = analyse_df(df)
+        df = find_problems(df)
+        df = analyse_df(df)
         #df = correct_type(df)[1]
         #if len(df) != 0:
         file_name = filename.strip('.log') + '.xlsx'
