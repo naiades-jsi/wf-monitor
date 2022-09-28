@@ -75,6 +75,31 @@
                 { "name": "Anomalies EA007-36", "topic": "anomalies_alicante_salinity_EA007_36_conductivity_meta_signal", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Anomalies EA008-36", "topic": "anomalies_alicante_salinity_EA008_36_conductivity_meta_signal", "alert_diff": 6, "error_diff": 24 }
             ]
+        },
+        {
+            "name": "Naiades Alicante Metasignal",
+            "type": "naiades_upload",
+            "url": "http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:Device:RO-{0}-MetaSignal/?metadata=dateModified,timestamp",
+            "headers": {
+                "Fiware-Service": "alicante"
+            },
+            "checks": [
+                { "name": "Metasignal EA001_36_level 7d ", "device": "EA001_36_level", "alert_diff": 24, "error_diff": 48 },
+                { "name": "Metasignal EA002_26_conductivity 7d", "device": "EA002_26_conductivity", "alert_diff": 24, "error_diff": 48 },
+                { "name": "Metasignal EA003_21_conductivity 7d", "device": "EA003_21_conductivity", "alert_diff": 24, "error_diff": 48 },
+                { "name": "Metasignal EA003_36_conductivity 7d", "device": "EA003_36_conductivity", "alert_diff": 24, "error_diff": 48 },
+                { "name": "Metasignal EA004_21_conductivity 7d", "device": "EA004_21_conductivity", "alert_diff": 24, "error_diff": 48 },
+                { "name": "Metasignal EA005_21_conductivity 7d", "device": "EA005_21_conductivity", "alert_diff": 24, "error_diff": 48 },
+                { "name": "Metasignal EA007_36_conductivity 7d", "device": "EA007_36_conductivity", "alert_diff": 24, "error_diff": 48 },
+                { "name": "Metasignal EA008_36_conductivity 7d", "device": "EA008_36_conductivity", "alert_diff": 24, "error_diff": 48 },
+                { "name": "Metasignal EA002_26_conductivity_up 7d", "device": "EA002_26_conductivity_up", "alert_diff": 24, "error_diff": 48 },
+                { "name": "Metasignal EA003_21_conductivity_up 7d", "device": "EA003_21_conductivity_up", "alert_diff": 24, "error_diff": 48 },
+                { "name": "Metasignal EA003_36_conductivity_up 7d", "device": "EA003_36_conductivity_up", "alert_diff": 24, "error_diff": 48 },
+                { "name": "Metasignal EA004_21_conductivity_up 7d", "device": "EA004_21_conductivity_up", "alert_diff": 24, "error_diff": 48 },
+                { "name": "Metasignal EA005_21_conductivity_up 7d", "device": "EA005_21_conductivity_up", "alert_diff": 24, "error_diff": 48 },
+                { "name": "Metasignal EA007_36_conductivity_up 7d", "device": "EA007_36_conductivity_up", "alert_diff": 24, "error_diff": 48 },
+                { "name": "Metasignal EA008_36_conductivity_up 7d", "device": "EA008_36_conductivity_up", "alert_diff": 24, "error_diff": 48 }
+            ]
         }
     ]
 }

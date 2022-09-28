@@ -117,6 +117,23 @@
                 { "name": "Prediction Montaneta", "topic": "predictions_alicante_montaneta_flow", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Prediction Rambla", "topic": "predictions_alicante_rambla_flow", "alert_diff": 6, "error_diff": 24 }
             ]
+        },
+        {
+            "name": "Naiades Alicante Consumption Prediction",
+            "type": "naiades_upload",
+            "url": "http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:WaterConsumption:Spain-Alicante-{0}",
+            "headers": {
+                "Fiware-Service": "alicante"
+            },
+            "checks": [
+                { "name": "Alipark Consumption 7d", "device": "alipark_7d", "alert_diff": 0, "error_diff": -24 },
+                { "name": "Autobuses Consumption 7d ", "device": "autobuses_7d", "alert_diff": 0, "error_diff": -24 },
+                { "name": "Benalua Consumption 7d", "device": "benalua_7d", "alert_diff": 0, "error_diff": -24 },
+                { "name": "Diputacion Consumption 7d", "device": "diputacion_7d", "alert_diff": 0, "error_diff": -24 },
+                { "name": "Mercado Consumption 7d", "device": "mercado_7d", "alert_diff": 0, "error_diff": -24 },
+                { "name": "Montaneta Consumption 7d", "device": "montaneta_7d", "alert_diff": 0, "error_diff": -24 },
+                { "name": "Rambla Consumption 7d", "device": "rambla_7d", "alert_diff": 0, "error_diff": -24 }
+            ]
         }
     ]
 }

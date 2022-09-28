@@ -51,6 +51,21 @@
                 { "name": "Prediction Flow 211306H360", "topic": "predictions_braila_flow211306H360_prediction", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Prediction Flow 318505H498", "topic": "predictions_braila_flow318505H498_prediction", "alert_diff": 6, "error_diff": 24 }
             ]
+        },
+        {
+            "name": "Braila Consumption Upload -- NOT WORKING - CHANGE HORIZON",
+            "type": "naiades_upload",
+            "url": "http://naiades.simavi.ro:1026/ngsi-ld/v1/entities/urn:ngsi-ld:Consumption-Romania:Romania-Braila-{0}_24h",
+            "headers": {
+                "Fiware-Service": "braila",
+                "Content-Type": "application/ld+json"
+            },
+            "checks": [
+                { "name": "Consumption flow318505H498", "device": "flow318505H498", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Consumption flow211306H360", "device": "flow211306H360", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Consumption flow211106H360", "device": "flow211106H360", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Consumption flow211206H360", "device": "flow211206H360", "alert_diff": 6, "error_diff": 24 }
+            ]
         }
     ]
 }
