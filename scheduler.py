@@ -26,12 +26,12 @@ def main(run_time):
                 time.sleep(30)
                 subprocess.Popen(section["command"], shell=True)
 
-        # time of the last data update, write to scheduler.json
-        now = datetime.now()
-        current_time = now.strftime("%d/%m/%Y %H:%M:%S")
-        section["last_update"] = current_time
-        with  open(config_file, "w") as outfile:
-            json.dump(data, outfile, ensure_ascii=False, indent=4)
+            # time of the last data update, write to scheduler.json
+            now = datetime.now()
+            current_time = now.strftime("%d/%m/%Y %H:%M:%S")
+            section["last_update"] = current_time
+    with  open(config_file, "w") as outfile:
+        json.dump(data, outfile, ensure_ascii=False, indent=4)
 
 
 # schedule (find in scheduler.json)

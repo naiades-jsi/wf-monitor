@@ -269,7 +269,7 @@ def count_errors(df, column_name):
     return sum
 
 #testing
-for file_name in ['alicante-salinity.log', 'alicante-consumption', 'braila-anomaly.log', 'braila-consumption.log', 'braila-leakage.log', 'braila-state-analysis.log', 'carouge.log']:
+for file_name in ['alicante-salinity.log', 'alicante-consumption.log', 'braila-anomaly.log', 'braila-consumption.log', 'braila-leakage.log', 'braila-state-analysis.log', 'carouge.log']:
     example_file = os.path.join(os.getcwd(), 'logs', file_name)
     df = to_df(example_file)
     df = find_problems(df)
