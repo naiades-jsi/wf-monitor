@@ -30,7 +30,7 @@ def main(run_time):
             now = datetime.now()
             current_time = now.strftime("%d/%m/%Y %H:%M:%S")
             section["last_update"] = current_time
-    
+
     with  open(config_file, "w") as outfile:
         json.dump(data, outfile, ensure_ascii=False, indent=4)
 
@@ -50,6 +50,7 @@ def schedule_job():
     for run_time in times:
         schedule.every().day.at(run_time).do(main, run_time=run_time)
 
+LOGGER.info("WF monitor started")
 schedule_job()
 
 # Run main() every day at every scheduledAt time
