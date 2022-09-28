@@ -8,6 +8,8 @@ from datetime import datetime
 
 # logging
 LOGGER = logging.getLogger(__name__)
+logging.basicConfig(
+    format="%(asctime)s %(name)-12s %(levelname)-8s %(message)s", level=logging.INFO)
 
 def main(run_time):
     config_file = os.path.join(os.getcwd(), 'configs', 'scheduler.json')

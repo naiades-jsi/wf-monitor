@@ -38,22 +38,22 @@ def to_df(infile):
             if len(line) != 0:
 
                 # 2022-08-30 15:52:17,689 src.workflow INFO     Loading config: configs/alicante-consumption.json
-                
+
                 no_time = line.split(',', 1)
                 time.append(no_time[0]) # 2022-08-30 15:52:17
                 no_time_str = no_time[1].strip() # 689 src.workflow INFO     Loading config: configs/alicante-consumption.json
-                
+
                 no_index = no_time_str.split(' ', 1)
                 no_index_str = no_index[1].strip() # src.workflow INFO     Loading config: configs/alicante-consumption.json
-                
+
                 no_file_loc = no_index_str.split(' ', 1)
                 file_loc.append(no_file_loc[0]) # src.workflow
                 no_file_loc_str = no_file_loc[1].strip() # INFO     Loading config: configs/alicante-consumption.json
-                
+
                 no_type = no_file_loc_str.split(' ', 1)
                 type.append(no_type[0]) # INFO
                 no_type_str = no_type[1] # Loading config: configs/alicante-consumption.json
-                
+
                 message.append(no_type_str) # Loading config: configs/alicante-consumption.json
 
     df = pd.DataFrame(data={'Time': time, 'File_loc': file_loc, 'Type':type, 'Message': message})
@@ -88,12 +88,12 @@ def find_problems(df):
             problem.append(df['Message'][index])
 
             if df['File_loc'][index] == 'src.historic':
-                action.append('API')               
+                action.append('API')
             elif df['File_loc'][index] == 'src.influx':
                 action.append('Influx')
             else: #df['file_loc'][index] == 'src.kafka'
                 action.append('Kafka')
-            
+
             i=index
             while df['File_loc'][i] != 'src.workflow':
                 i -= 1
@@ -139,8 +139,8 @@ def previous_time(df, i):
 
     if df['Action'][i] == 'API':
         return 0
-    
-    location = df['Location'][i].split(' ')[-1]   
+
+    location = df['Location'][i].split(' ')[-1]
 
     index = i
     while index!=0:
@@ -173,7 +173,7 @@ def analyse_df(df):
     Returns
     -------
     df : pandas datafram \n
-    Copy of the original df but with an added column (calculated time spent for a task) 
+    Copy of the original df but with an added column (calculated time spent for a task)
     '''
 
     time_spent = []
@@ -260,7 +260,7 @@ def count_errors(df, column_name):
     Returns
     -------
     int : Sum of the cells in 'column_name' column.
-    '''    
+    '''
 
     sum = 0
     for i, row in df.iterrows():
@@ -308,7 +308,7 @@ def create_msg_tables():
         df = find_problems(df)
         df = analyse_df(df)
         df = correct_type(df)[1]
-        
+
         file_name = filename.strip('.log').upper()
         table = df.to_html(index=False, justify='center')
         if len(df) == 0:
@@ -316,7 +316,7 @@ def create_msg_tables():
         else:
             partial_report = f'<p><b>{file_name}:</b> <br> {table}</p>'
         msg += partial_report
-    
+
     html = '''\
     <html>
         <head></head>
@@ -345,7 +345,7 @@ def create_msg():
     config_file = os.path.join(os.getcwd(), 'configs', 'scheduler.json')
     with open(config_file, "r") as json_file:
         data = json.load(json_file)
-    
+
     msg = ''
     for filename in os.listdir('logs'):
         file = os.path.join('logs', filename)
@@ -353,7 +353,7 @@ def create_msg():
         df = find_problems(df)
         df = analyse_df(df)
         df = correct_type(df)[1]
-        
+
         file_name = filename.strip('.log').upper()
         num_errors = count_errors(df, 'Error')
         num_warnings = count_errors(df, 'Warning')
@@ -373,7 +373,7 @@ def create_msg():
         else:
             partial_report = f'<p><b>{file_name} ({update_time}):</b> <br> {num_errors} errors and {num_warnings} warnings...</p>'
         msg += partial_report
-    
+
     html = '''\
     <html>
         <head></head>
@@ -418,7 +418,7 @@ def main(sender_address, receiver_address, password):
     ----------
     sender_address: Email address from which the email report is sent \n
     receiver_address: Email address of the receiver \n
-    password: Password of the sender_address. '2-Step Verification': Go to the Google account (https://myaccount.google.com/), click 'Security' and then enable '2-Step Verification'. After that go to back to 'App Passwords' and follow the instructions to create a new password (you will get a 16-character code). This is the required password. 
+    password: Password of the sender_address. '2-Step Verification': Go to the Google account (https://myaccount.google.com/), click 'Security' and then enable '2-Step Verification'. After that go to back to 'App Passwords' and follow the instructions to create a new password (you will get a 16-character code). This is the required password.
 
     Returns
     -------
