@@ -7,6 +7,7 @@ from src.historic import HistoricCheck
 from src.influx import InfluxCheck
 from src.kafka import KafkaCheck
 from src.sat import StateAnalysisCheck
+from src.prediction import PredictionCheck
 
 # logging
 LOGGER = logging.getLogger(__name__)
@@ -63,4 +64,7 @@ class Workflow:
             myCheck.run()
         if (section["type"] == "stateanalysis"):
             myCheck = StateAnalysisCheck(section, check)
+            myCheck.run()
+        if (section["type"] == "naiades_prediction"):
+            myCheck = PredictionCheck(section, check)
             myCheck.run()

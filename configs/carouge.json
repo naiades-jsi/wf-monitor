@@ -85,6 +85,27 @@
                 { "name": "Prediction FlowerBed 7", "topic": "device_1f02_pred_output", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Prediction FlowerBed 8", "topic": "device_1efe_pred_output", "alert_diff": 6, "error_diff": 24 }
             ]
+        },
+        {
+            "name": "Naiades Prediction API - Carouge",
+            "type": "naiades_prediction",
+            "subtype": "prediction-watering",
+            "url": "http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:FlowerBed:FlowerBed-8?lastN=1",
+            "headers": {
+                "Fiware-Service": "carouge",
+                "Fiware-ServicePath": "/",
+                "Content-Type": "application/json"
+            },
+            "checks": [
+                { "name": "FlowerBed 1", "device": "FlowerBed-1", "alert_diff": 1, "error_diff": 2 },
+                { "name": "FlowerBed 2", "device": "Device-1f08", "alert_diff": 1, "error_diff": 2 },
+                { "name": "FlowerBed 3", "device": "Device-1f10", "alert_diff": 1, "error_diff": 2 },
+                { "name": "FlowerBed 4", "device": "Device-1f06", "alert_diff": 1, "error_diff": 2 },
+                { "name": "FlowerBed 5", "device": "Device-1efd", "alert_diff": 1, "error_diff": 2 },
+                { "name": "FlowerBed 6", "device": "Device-1eff", "alert_diff": 1, "error_diff": 2 },
+                { "name": "FlowerBed 7", "device": "Device-1f02", "alert_diff": 1, "error_diff": 2 },
+                { "name": "FlowerBed 8", "device": "Device-1efe", "alert_diff": 1, "error_diff": 2 }
+            ]
         }
     ]
 }
