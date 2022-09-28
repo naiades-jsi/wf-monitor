@@ -30,6 +30,7 @@ def main(run_time):
             now = datetime.now()
             current_time = now.strftime("%d/%m/%Y %H:%M:%S")
             section["last_update"] = current_time
+    
     with  open(config_file, "w") as outfile:
         json.dump(data, outfile, ensure_ascii=False, indent=4)
 

@@ -10,15 +10,15 @@
                 "Content-Type": "application/json"
             },
             "checks": [
-                { "name": "Level not used EA001-202", "device": "EA001-202-Level", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Level EA001-36", "device": "EA001-36-Level", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Level EA002-26", "device": "EA002-26-Conductivity", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Level EA003-21", "device": "EA003-21-Conductivity", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Level EA003-36", "device": "EA003-36-Conductivity", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Level EA004-21", "device": "EA004-21-Conductivity", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Level EA005-21", "device": "EA005-21-Conductivity", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Level EA007-36", "device": "EA003-36-Conductivity", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Level EA008-36", "device": "EA008-36-Conductivity", "alert_diff": 6, "error_diff": 24 }
+                { "name": "Level not used EA001-202", "device": "EA001-202-Level", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Level EA001-36", "device": "EA001-36-Level", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Level EA002-26", "device": "EA002-26-Conductivity", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Level EA003-21", "device": "EA003-21-Conductivity", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Level EA003-36", "device": "EA003-36-Conductivity", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Level EA004-21", "device": "EA004-21-Conductivity", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Level EA005-21", "device": "EA005-21-Conductivity", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Level EA007-36", "device": "EA003-36-Conductivity", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Level EA008-36", "device": "EA008-36-Conductivity", "alert_diff": 13, "error_diff": 14 }
             ]
         },
         {
