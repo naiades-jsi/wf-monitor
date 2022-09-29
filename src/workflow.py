@@ -65,6 +65,6 @@ class Workflow:
         if (section["type"] == "stateanalysis"):
             myCheck = StateAnalysisCheck(section, check)
             myCheck.run()
-        if (section["type"] == "naiades_upload"):
+        if (section["type"] == "naiades_context"):
             myCheck = ContextCheck(section, check)
             myCheck.run()

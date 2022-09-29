@@ -8,6 +8,8 @@ from datetime import datetime
 
 # logging
 LOGGER = logging.getLogger(__name__)
+logging.basicConfig(
+    format="%(asctime)s %(name)-12s %(levelname)-8s %(message)s", level=logging.INFO)
 
 def main(run_time):
     config_file = os.path.join(os.getcwd(), 'configs', 'scheduler.json')
@@ -26,12 +28,13 @@ def main(run_time):
                 time.sleep(30)
                 subprocess.Popen(section["command"], shell=True)
 
-        # time of the last data update, write to scheduler.json
-        now = datetime.now()
-        current_time = now.strftime("%d/%m/%Y %H:%M:%S")
-        section["last_update"] = current_time
-        with  open(config_file, "w") as outfile:
-            json.dump(data, outfile, ensure_ascii=False, indent=4)
+            # time of the last data update, write to scheduler.json
+            now = datetime.now()
+            current_time = now.strftime("%d/%m/%Y %H:%M:%S")
+            section["last_update"] = current_time
+
+    with  open(config_file, "w") as outfile:
+        json.dump(data, outfile, ensure_ascii=False, indent=4)
 
 
 # schedule (find in scheduler.json)
@@ -49,6 +52,7 @@ def schedule_job():
     for run_time in times:
         schedule.every().day.at(run_time).do(main, run_time=run_time)
 
+LOGGER.info("WF monitor started")
 schedule_job()
 
 # Run main() every day at every scheduledAt time

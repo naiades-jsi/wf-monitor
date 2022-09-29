@@ -87,16 +87,16 @@
             ]
         },
         {
-            
-            "name": "Naiades Watering Forecast",
+            "name": "Naiades Context API - Watering Forecast",
             "type": "naiades_upload",
+            "subtype": "watering",
             "url": "http://5.53.108.182:1026/v2/entities/urn:ngsi-ld:FlowerBed:{0}",
             "headers": {
                 "Fiware-Service": "carouge"
             },
             "checks": [
                 { "name": "FlowerBed 1 Watering Forecast", "device": "FlowerBed-1", "alert_diff": 0, "error_diff": -24 },
-                { "name": "FlowerBed 2 Watering Forecast ", "device": "FlowerBed-2", "alert_diff": 0, "error_diff": -24 },
+                { "name": "FlowerBed 2 Watering Forecast", "device": "FlowerBed-2", "alert_diff": 0, "error_diff": -24 },
                 { "name": "FlowerBed 3 Watering Forecast", "device": "FlowerBed-3", "alert_diff": 0, "error_diff": -24 },
                 { "name": "FlowerBed 4 Watering Forecast", "device": "FlowerBed-4", "alert_diff": 0, "error_diff": -24 },
                 { "name": "FlowerBed 5 Watering Forecast", "device": "FlowerBed-5", "alert_diff": 0, "error_diff": -24 },

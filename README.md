@@ -5,7 +5,8 @@ Monitoring of workflows for NAIADES.
 
 In WF_MONITOR create a file config_mail.json (look at config_mail_example.json). To get the password (16-character code), you have to go through [2-Step Verification](https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome). Then go to [App Passwords](https://myaccount.google.com/u/1/apppasswords) and create a new password.
 The script is run with the following command `python3 scheduler.py`.
-A mail reporting ... is sent to the receiver specified in the config_mail.json file.
+A mail reporting ... is sent to the receiver specified in the `configs/config_mail.json` file.
+An example file is located in `configs/config_mail_example.json`.
 
 ### Other
 
