@@ -77,6 +77,40 @@
                 { "name": "Anomalies Flow 211306H360", "topic": "anomalies_braila_flow211306H360_meta_signal", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Anomalies Flow 318505H498", "topic": "anomalies_braila_flow318505H498_meta_signal", "alert_diff": 6, "error_diff": 24 }
             ]
+        },
+        {
+            "name": "Braila Anomaly Upload",
+            "type": "naiades_upload",
+            "url": "http://naiades.simavi.ro:1026/ngsi-ld/v1/entities/urn:ngsi-ld:Alert:RO-Braila-{0}",
+            "headers": {
+                "Content-Type": "application/json",
+                "Fiware-Service": "braila"
+            },
+            "datetime_locator": ["dateIssued","value","@value", ":"],
+            "checks": [
+                { "name": "Anomaly flow_211106H360", "device": "flow_211106H360", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Anomaly flow_211206H360", "device": "flow_211206H360", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Anomaly flow_211306H360", "device": "flow_211306H360", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Anomaly flow_318505H498", "device": "flow_318505H498", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Anomaly pressure_5770", "device": "pressure_5770", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Anomaly pressure_5771", "device": "pressure_5771", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Anomaly pressure_5772", "device": "pressure_5772", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Anomaly pressure_5773", "device": "pressure_5773", "alert_diff": 6, "error_diff": 24 }
+            ]
+        },
+        {
+            "name": "Braila Anomaly Metasignal Upload",
+            "type": "naiades_upload",
+            "url": "http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:Device:RO-{0}-MetaSignal/?metadata=dateModified,timestamp",
+            "headers": {
+                "Fiware-Service": "braila"
+            },
+            "checks": [
+                { "name": "Anomaly metasignal flow_211106H360", "device": "211106H360", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Anomaly metasignal flow_211206H360", "device": "211206H360", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Anomaly metasignal flow_211306H360", "device": "211306H360", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Anomaly metasignal flow_318505H498", "device": "318505H498", "alert_diff": 6, "error_diff": 24 }
+            ]
         }
     ]
 }

@@ -87,25 +87,23 @@
             ]
         },
         {
-            "name": "Naiades Prediction API - Carouge",
-            "type": "naiades_prediction",
-            "subtype": "prediction-watering",
-            "url": "http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:FlowerBed:FlowerBed-8?lastN=1",
+            "name": "Naiades Context API - Watering Forecast",
+            "type": "naiades_upload",
+            "subtype": "watering",
+            "url": "http://5.53.108.182:1026/v2/entities/urn:ngsi-ld:FlowerBed:{0}",
             "headers": {
-                "Fiware-Service": "carouge",
-                "Fiware-ServicePath": "/",
-                "Content-Type": "application/json"
+                "Fiware-Service": "carouge"
             },
             "checks": [
-                { "name": "FlowerBed 1", "device": "FlowerBed-1", "alert_diff": 1, "error_diff": 2 },
-                { "name": "FlowerBed 2", "device": "Device-1f08", "alert_diff": 1, "error_diff": 2 },
-                { "name": "FlowerBed 3", "device": "Device-1f10", "alert_diff": 1, "error_diff": 2 },
-                { "name": "FlowerBed 4", "device": "Device-1f06", "alert_diff": 1, "error_diff": 2 },
-                { "name": "FlowerBed 5", "device": "Device-1efd", "alert_diff": 1, "error_diff": 2 },
-                { "name": "FlowerBed 6", "device": "Device-1eff", "alert_diff": 1, "error_diff": 2 },
-                { "name": "FlowerBed 7", "device": "Device-1f02", "alert_diff": 1, "error_diff": 2 },
-                { "name": "FlowerBed 8", "device": "Device-1efe", "alert_diff": 1, "error_diff": 2 }
-            ]
+                { "name": "FlowerBed 1 Watering Forecast", "device": "FlowerBed-1", "alert_diff": 0, "error_diff": -24 },
+                { "name": "FlowerBed 2 Watering Forecast", "device": "FlowerBed-2", "alert_diff": 0, "error_diff": -24 },
+                { "name": "FlowerBed 3 Watering Forecast", "device": "FlowerBed-3", "alert_diff": 0, "error_diff": -24 },
+                { "name": "FlowerBed 4 Watering Forecast", "device": "FlowerBed-4", "alert_diff": 0, "error_diff": -24 },
+                { "name": "FlowerBed 5 Watering Forecast", "device": "FlowerBed-5", "alert_diff": 0, "error_diff": -24 },
+                { "name": "FlowerBed 6 Watering Forecast", "device": "FlowerBed-6", "alert_diff": 0, "error_diff": -24 },
+                { "name": "FlowerBed 7 Watering Forecast", "device": "FlowerBed-7", "alert_diff": 0, "error_diff": -24 },
+                { "name": "FlowerBed 8 Watering Forecast", "device": "FlowerBed-8", "alert_diff": 0, "error_diff": -24 }
+            ]  
         }
     ]
 }
