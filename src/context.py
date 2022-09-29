@@ -39,29 +39,6 @@ class ContextCheck:
         for locator in locators:
             tempDateValue = tempDateValue[locator]
 
-        """
-        if self.section["subtype"] == "Naiades Watering Forecast": # Carouge waterbeds watering prediction
-            date_string = rJSON["nextWateringDeadline"]["value"]
-        elif self.section["subtype"] == "Naiades Alicante Consumption Prediction":
-            date_string = rJSON["consumptionTo"]["value"]
-        elif self.section["subtype"] == "Naiades Alicante Metasignal":
-            date_string = rJSON["description"]["metadata"]["dateModified"]["value"]
-        elif self.section["subtype"] == "Braila Anomaly Upload":
-            date_string = rJSON["dateIssued"]["value"]["@value"]
-        elif self.section["name"] == "Braila Anomaly Metasignal Upload":
-            date_string = rJSON["https://uri.etsi.org/ngsi-ld/description"]["metadata"]["dateModified"]["value"]
-        elif self.section["name"] == "Braila Consumption Upload -- NOT WORKING - CHANGE HORIZON":
-            date_string = ""
-            pass
-        elif self.section["name"] == "Braila Leakage Upload -- NOT WORKING - ADD DATE ISSUED":
-            date_string = ""
-            pass
-        elif self.section["name"] == "Naiades Alicante Salinity -- NOT WORKING - CHECK URL":
-            date_string = ""
-            pass
-        elif self.section["name"] == "Naiades Braila Streamstory":
-            date_string = rJSON["https://uri.etsi.org/ngsi-ld/default-context/dateIssued"]["metadata"]["dateModified"]["value"]
-        """
         try:
             # extracting last timestamp from data
             datetime_pattern = re.compile(r'(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})')
@@ -74,14 +51,21 @@ class ContextCheck:
 
             if (self.subtype == "watering"):
                 # implement checks for watering - carouge
-                """
+                soilMoisture = rJSON["soilMoisture"]["value"]
+                nextWateringDeadline = ts
+                lastWateringDate = rJSON["dateLastWatering"]["value"]
+                datetime_string = datetime_pattern.search(lastWateringDate).group()
+                last_dt = datetime.strptime(datetime_string, '%Y-%m-%dT%H:%M:%S')
+                
                 if soilMoisture > 24:
                     pass
-                if (soilMoisture < 24) and (nextWateringDeadline < today at 00:00):
-                    Alarm
-                if noAlarm and (soilMoisture < 24) and (nextWateringDeadline < lastWateringDate at 00:00)
-                    Warning
-                """
+                ### soil is dry but no watering recommendation
+                elif (soilMoisture < 24) and (nextWateringDeadline < datetime.timestamp(datetime.date.today())):
+                    LOGGER.error("Low soil moisture but no new watering deadline")
+                ### sometimes soil is watered inbetween deadlines and could cause confusion
+                elif (soilMoisture < 24) and (nextWateringDeadline < datetime.timestamp(last_dt.date())):
+                    LOGGER.warning("Soil has been watered despite no prediction.")
+                
             else:
                 # check timestamp of now
                 if diff_hrs > self.check["error_diff"]:

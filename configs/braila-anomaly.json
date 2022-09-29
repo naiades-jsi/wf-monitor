@@ -80,7 +80,16 @@
         },
         {
             "name": "Braila Anomaly Upload",
-            "type": "naiades_upload",
+            "type": "naiades_context",
+            "subtype": "braila_anomaly",
+            "dateExtraction": {
+                "path": [
+                    "dateIssued",
+                    "value",
+                    "@value"
+                ],
+                "type": "string"
+            },
             "url": "http://naiades.simavi.ro:1026/ngsi-ld/v1/entities/urn:ngsi-ld:Alert:RO-Braila-{0}",
             "headers": {
                 "Content-Type": "application/json",
@@ -100,7 +109,17 @@
         },
         {
             "name": "Braila Anomaly Metasignal Upload",
-            "type": "naiades_upload",
+            "type": "naiades_context",
+            "subtype": "braila_ms",
+            "dateExtraction": {
+                "path": [
+                    "https://uri.etsi.org/ngsi-ld/description",
+                    "metadata",
+                    "dateModified",
+                    "value"
+                ],
+                "type": "string"
+            },
             "url": "http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:Device:RO-{0}-MetaSignal/?metadata=dateModified,timestamp",
             "headers": {
                 "Fiware-Service": "braila"

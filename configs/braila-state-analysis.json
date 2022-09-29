@@ -28,7 +28,17 @@
         },
         {
             "name": "Naiades Braila Streamstory",
-            "type": "naiades_upload",
+            "type": "naiades_context",
+            "subtype": "braila_streamstory",
+            "dateExtraction": {
+                "path": [
+                    "https://uri.etsi.org/ngsi-ld/default-context/dateIssued",
+                    "metadata",
+                    "dateModified",
+                    "value"
+                ],
+                "type": "string"
+            },
             "url": "http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:Alert:RO-Braila-{0}-state-analysis-tool?metadata=dateModified,timestamp",
             "headers": {
                 "Fiware-Service": "braila"
