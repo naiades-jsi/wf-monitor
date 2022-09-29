@@ -53,6 +53,11 @@ class ContextCheck:
         elif self.section["name"] == "Braila Leakage Upload -- NOT WORKING - ADD DATE ISSUED":
             date_string = ""
             pass
+        elif self.section["name"] == "Naiades Alicante Salinity -- NOT WORKING - CHECK URL":
+            date_string = ""
+            pass
+        elif self.section["name"] == "Naiades Braila Streamstory":
+            date_string = rJSON["https://uri.etsi.org/ngsi-ld/default-context/dateIssued"]["metadata"]["dateModified"]["value"]
         try:
             print(date_string)
             # extracting last timestamp from data

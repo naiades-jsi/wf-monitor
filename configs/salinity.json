@@ -100,6 +100,21 @@
                 { "name": "Metasignal EA007_36_conductivity_up 7d", "device": "EA007_36_conductivity_up", "alert_diff": 24, "error_diff": 48 },
                 { "name": "Metasignal EA008_36_conductivity_up 7d", "device": "EA008_36_conductivity_up", "alert_diff": 24, "error_diff": 48 }
             ]
+        },
+        {
+            "name": "Naiades Alicante Salinity -- NOT WORKING - CHECK URL",
+            "type": "naiades_upload",
+            "url": "http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:Alert:ES-Alicante-{0}",
+            "headers": {
+                "Fiware-Service": "alicante"
+            },
+            "checks": [
+                { "name": "Alicante salinity salinity_EA001_36_level ", "device": "salinity_EA001_36_level", "alert_diff": 24, "error_diff": 48 },
+                { "name": "Alicante salinity salinity_EA001_36_level_duration", "device": "salinity_EA001_36_level_duration", "alert_diff": 24, "error_diff": 48 },
+                { "name": "Alicante salinity salinity_EA003_conductivity", "device": "salinity_EA003_36_conductivity", "alert_diff": 24, "error_diff": 48 },
+                { "name": "Alicante salinity salinity_EA003_conductivity_daily", "device": "salinity_EA003_36_conductivity_daily", "alert_diff": 24, "error_diff": 48 },
+                { "name": "Alicante salinity salinity_EA003_conductivity_hourly", "device": "salinity_EA003_36_conductivity_hourly", "alert_diff": 24, "error_diff": 48 }
+            ]
         }
     ]
 }

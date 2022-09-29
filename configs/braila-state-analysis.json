@@ -25,6 +25,20 @@
                 { "name": "Water Demand 211306H360", "device": "flow211306H360", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Water Demand 318505H498", "device": "flow318505H498", "alert_diff": 6, "error_diff": 24 }
             ]
+        },
+        {
+            "name": "Naiades Braila Streamstory",
+            "type": "naiades_upload",
+            "url": "http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:Alert:RO-Braila-{0}-state-analysis-tool?metadata=dateModified,timestamp",
+            "headers": {
+                "Fiware-Service": "braila"
+            },
+            "checks": [
+                { "name": "Braila Streamstory flow_211106H360", "device": "211106H360", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Braila Streamstory flow_211206H360", "device": "211206H360", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Braila Streamstory flow_211306H360", "device": "211306H360", "alert_diff": 6, "error_diff": 24 },
+                { "name": "Braila Streamstory flow_318505H498", "device": "318505H498", "alert_diff": 6, "error_diff": 24 }
+            ]
         }
     ]
 }
