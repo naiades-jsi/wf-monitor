@@ -88,8 +88,15 @@
         },
         {
             "name": "Naiades Context API - Watering Forecast",
-            "type": "naiades_upload",
+            "type": "naiades_context",
             "subtype": "watering",
+            "dateExtraction": {
+                "path": [
+                    "nextWateringDeadline",
+                    "value"
+                ],
+                "type": "string"
+            },
             "url": "http://5.53.108.182:1026/v2/entities/urn:ngsi-ld:FlowerBed:{0}",
             "headers": {
                 "Fiware-Service": "carouge"
@@ -103,7 +110,7 @@
                 { "name": "FlowerBed 6 Watering Forecast", "device": "FlowerBed-6", "alert_diff": 0, "error_diff": -24 },
                 { "name": "FlowerBed 7 Watering Forecast", "device": "FlowerBed-7", "alert_diff": 0, "error_diff": -24 },
                 { "name": "FlowerBed 8 Watering Forecast", "device": "FlowerBed-8", "alert_diff": 0, "error_diff": -24 }
-            ]  
+            ]
         }
     ]
 }

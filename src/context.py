@@ -27,23 +27,26 @@ class ContextCheck:
             rJSON = response.json()
             if (self.check_last_ts(rJSON) == False):
                 LOGGER.error("")
-
         except HTTPError as http_e:
             LOGGER.error(f'  HTTP error occurred: {http_e}')
         except Exception as e:
             LOGGER.error(f'  Other error occurred: {e}')
-        # this might be misleading for the user if any errors happen through checking
-        # else:
-        #    LOGGER.info("HTTP Request successful.")
 
     def check_last_ts(self, rJSON: dict) -> bool:
-        if self.section["name"] == "Naiades Watering Forecast": # Carouge waterbeds watering prediction
+        # extracting data string
+        locators = self.section["dateExtraction"]["path"]
+        tempDateValue = rJSON
+        for locator in locators:
+            tempDateValue = tempDateValue[locator]
+
+        """
+        if self.section["subtype"] == "Naiades Watering Forecast": # Carouge waterbeds watering prediction
             date_string = rJSON["nextWateringDeadline"]["value"]
-        elif self.section["name"] == "Naiades Alicante Consumption Prediction":
+        elif self.section["subtype"] == "Naiades Alicante Consumption Prediction":
             date_string = rJSON["consumptionTo"]["value"]
-        elif self.section["name"] == "Naiades Alicante Metasignal":
+        elif self.section["subtype"] == "Naiades Alicante Metasignal":
             date_string = rJSON["description"]["metadata"]["dateModified"]["value"]
-        elif self.section["name"] == "Braila Anomaly Upload":
+        elif self.section["subtype"] == "Braila Anomaly Upload":
             date_string = rJSON["dateIssued"]["value"]["@value"]
         elif self.section["name"] == "Braila Anomaly Metasignal Upload":
             date_string = rJSON["https://uri.etsi.org/ngsi-ld/description"]["metadata"]["dateModified"]["value"]
@@ -58,23 +61,34 @@ class ContextCheck:
             pass
         elif self.section["name"] == "Naiades Braila Streamstory":
             date_string = rJSON["https://uri.etsi.org/ngsi-ld/default-context/dateIssued"]["metadata"]["dateModified"]["value"]
+        """
         try:
-            print(date_string)
             # extracting last timestamp from data
             datetime_pattern = re.compile(r'(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})')
-            datetime_string = datetime_pattern.search(date_string).group()
+            datetime_string = datetime_pattern.search(tempDateValue).group()
             dt = datetime.strptime(datetime_string, '%Y-%m-%dT%H:%M:%S')
             # extracting difference from now
             ts = datetime.timestamp(dt)
             nowts = datetime.timestamp(datetime.now())
             diff_hrs = (nowts - ts) / 60 / 60
 
-            # check timestamp of now
-            if diff_hrs > self.check["error_diff"]:
-                LOGGER.error("  Timestamp bigger than limit: %.2fh", diff_hrs)
-            elif diff_hrs > self.check["alert_diff"]:
-                LOGGER.warning("  Timestamp bigger than limit: %.2fh", diff_hrs)
+            if (self.subtype == "watering"):
+                # implement checks for watering - carouge
+                """
+                if soilMoisture > 24:
+                    pass
+                if (soilMoisture < 24) and (nextWateringDeadline < today at 00:00):
+                    Alarm
+                if noAlarm and (soilMoisture < 24) and (nextWateringDeadline < lastWateringDate at 00:00)
+                    Warning
+                """
             else:
-                LOGGER.info("  Timestamp in the limits: %.2fh", diff_hrs)
+                # check timestamp of now
+                if diff_hrs > self.check["error_diff"]:
+                    LOGGER.error("  Timestamp bigger than limit: %.2fh", diff_hrs)
+                elif diff_hrs > self.check["alert_diff"]:
+                    LOGGER.warning("  Timestamp bigger than limit: %.2fh", diff_hrs)
+                else:
+                    LOGGER.info("  Timestamp in the limits: %.2fh", diff_hrs)
         except Exception as e:
             LOGGER.error(f'  Time checking error: {e}')

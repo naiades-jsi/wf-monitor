@@ -83,7 +83,7 @@ next > today at 0:00
 
 if soilMoisture > 24:
     pass
-if (soilMoisture < 25) and (nextWateringDeadline < today at 00:00):
+if (soilMoisture < 24) and (nextWateringDeadline < today at 00:00):
     Alarm
 if noAlarm and (soilMoisture < 24) and (nextWateringDeadline < lastWateringDate at 00:00)
     Warning
