@@ -211,6 +211,7 @@ def correct_type(df):
             else:
                 df.at[i, 'Type'] = 'INFO'
 
+    actions = []
     locations = []
     warning_count = []
     error_count = []
@@ -228,11 +229,13 @@ def correct_type(df):
                 problems[j].append(df['Problem'][i])
         else:
             if current_type == 'ERROR':
+                actions.append(df['Action'][i])
                 locations.append(current_location)
                 error_count.append(1)
                 warning_count.append(0)
                 problems.append([df['Problem'][i]])
             elif current_type == 'WARNING':
+                actions.append(df['Action'][i])
                 locations.append(current_location)
                 error_count.append(0)
                 warning_count.append(1)
@@ -245,7 +248,7 @@ def correct_type(df):
         for problem in problem_list:
             problem_str += '; ' + problem
         problems_str.append(problem_str[2:])
-    new_df = pd.DataFrame(data = {'Location': locations, 'Error': error_count, 'Warning': warning_count, 'problem': problems_str})
+    new_df = pd.DataFrame(data = {'Action': actions, 'Location': locations, 'Error': error_count, 'Warning': warning_count, 'problem': problems_str})
 
     return df, new_df
 
@@ -364,14 +367,33 @@ def create_msg():
             if section["name"].upper() == file_name:
                 update_time = section["last_update"]
 
+        # all errors
         if len(df) == 0:
             partial_report = f'<p><b>{file_name} ({update_time}):</b> <br> No errors...</p>'
-        elif num_errors == 0:
-            partial_report = f'<p><b>{file_name} ({update_time}):</b> <br> {num_warnings} warnings...</p>'
-        elif num_warnings == 0:
-            partial_report = f'<p><b>{file_name} ({update_time}):</b> <br> {num_errors} errors...'
+
         else:
-            partial_report = f'<p><b>{file_name} ({update_time}):</b> <br> {num_errors} errors and {num_warnings} warnings...</p>'
+            if num_errors == 0:
+                partial_report = f'<p><b>{file_name} ({update_time}):</b> <br> {num_warnings} warnings...</p>'
+            if num_warnings == 0:
+                partial_report = f'<p><b>{file_name} ({update_time}):</b> <br> {num_errors} errors...</p>'
+            else:
+                partial_report = f'<p><b>{file_name} ({update_time}):</b> <br> {num_errors} errors and {num_warnings} warnings...</p>'
+            
+            # new line
+            partial_report += '<br> --> '
+
+            # errors for which action type
+            dict = {}
+            for i,row in df.iterrows():
+                if row["Action"] not in dict:
+                    dict[row["Action"]] = row["Error"]+row["Warning"]
+                else:
+                    dict[row["Action"]] += (row["Error"]+row["Warning"])
+
+            for key in dict.keys():
+                partial_report += f'{key}: {dict[key]}, '
+
+            partial_report = partial_report[:-2]
         msg += partial_report
 
     html = '''\
