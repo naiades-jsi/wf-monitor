@@ -25,7 +25,7 @@
                 { "name": "Noise sensor 2182", "measurement": "noise2182", "alert_diff": 24, "error_diff": 24 },
                 { "name": "Noise sensor 5980", "measurement": "noise5980", "alert_diff": 24, "error_diff": 36 },
                 { "name": "Noise sensor 5981", "measurement": "noise5981", "alert_diff": 24, "error_diff": 36 },
-                { "name": "Noise sensor 5982", "measurement": "noise5982", "alert_diff": 24, "error_diff": 36 } 
+                { "name": "Noise sensor 5982", "measurement": "noise5982", "alert_diff": 24, "error_diff": 36 }
             ]
         },
         {
@@ -57,8 +57,14 @@
             ]
         },
         {
-            "name": "Braila Leakage Upload -- NOT WORKING - ADD DATE ISSUED",
-            "type": "naiades_upload",
+            "name": "Braila Accurate Leakage Upload -- NOT WORKING - ADD DATE ISSUED",
+            "type": "naiades_context",
+            "subtype": "braila_leakage_accurate",
+            "dateExtraction": {
+                "path": [
+                ],
+                "type": "string"
+            },
             "url": "http://naiades.simavi.ro:1026/ngsi-ld/v1/entities/urn:ngsi-ld:Noise:{0}",
             "headers": {
                 "Fiware-Service": "braila",
@@ -72,5 +78,4 @@
             ]
         }
     ]
-
 }

@@ -54,7 +54,13 @@
         },
         {
             "name": "Braila Consumption Upload -- NOT WORKING - CHANGE HORIZON",
-            "type": "naiades_upload",
+            "type": "naiades_context",
+            "subtype": "braila_consumption",
+            "dateExtraction": {
+                "path": [
+                ],
+                "type": "string"
+            },
             "url": "http://naiades.simavi.ro:1026/ngsi-ld/v1/entities/urn:ngsi-ld:Consumption-Romania:Romania-Braila-{0}_24h",
             "headers": {
                 "Fiware-Service": "braila",
