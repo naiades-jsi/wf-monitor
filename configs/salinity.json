@@ -78,7 +78,17 @@
         },
         {
             "name": "Naiades Alicante Metasignal",
-            "type": "naiades_upload",
+            "type": "naiades_context",
+            "subtype": "alicante_ms",
+            "dateExtraction": {
+                "path": [
+                    "description",
+                    "metadata",
+                    "dateModified",
+                    "value"
+                ],
+                "type": "string"
+            },
             "url": "http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:Device:RO-{0}-MetaSignal/?metadata=dateModified,timestamp",
             "headers": {
                 "Fiware-Service": "alicante"
@@ -103,7 +113,13 @@
         },
         {
             "name": "Naiades Alicante Salinity -- NOT WORKING - CHECK URL",
-            "type": "naiades_upload",
+            "type": "naiades_context",
+            "subtype": "alicante_salinity",
+            "dateExtraction": {
+                "path": [
+                ],
+                "type": "string"
+            },
             "url": "http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:Alert:ES-Alicante-{0}",
             "headers": {
                 "Fiware-Service": "alicante"

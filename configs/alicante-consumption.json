@@ -120,7 +120,15 @@
         },
         {
             "name": "Naiades Alicante Consumption Prediction",
-            "type": "naiades_upload",
+            "type": "naiades_context",
+            "subtype": "alicante_consumption",
+            "dateExtraction": {
+                "path": [
+                    "consumptionTo",
+                    "value"
+                ],
+                "type": "string"
+            },
             "url": "http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:WaterConsumption:Spain-Alicante-{0}",
             "headers": {
                 "Fiware-Service": "alicante"
