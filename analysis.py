@@ -248,7 +248,7 @@ def correct_type(df):
         for problem in problem_list:
             problem_str += '; ' + problem
         problems_str.append(problem_str[2:])
-    new_df = pd.DataFrame(data = {'Action': actions, 'Location': locations, 'Error': error_count, 'Warning': warning_count, 'problem': problems_str})
+    new_df = pd.DataFrame(data = {'Action': actions, 'Location': locations, 'Error': error_count, 'Warning': warning_count, 'Problem': problems_str})
 
     return df, new_df
 
@@ -333,6 +333,52 @@ def create_msg_tables():
     return html
 
 
+def create_table(filename):
+    '''
+    Parameters
+    ----------
+    str: name of .log file
+
+    Returns
+    -------
+    str: HTML table presenting errors for given .log file
+    '''
+
+    file = os.path.join('logs', filename)
+    df = to_df(file)
+    df = find_problems(df)
+    df = analyse_df(df)
+    df = correct_type(df)[1]
+    if len(df) == 0:
+        return None
+
+    problems = ''
+    for i,row in df.iterrows():
+        current_row = '''
+        <tr>
+            <td> {location} </td>
+            <td> {error} </td>
+            <td> {warning} </td>
+            <td> {problem} </td>
+        </tr>
+        '''.format(location = row['Location'], error = row['Error'], warning = row['Warning'], problem = row['Problem'])
+        problems += current_row
+    
+    table = '''
+    <table>
+        <tr>
+            <th> Location </th>
+            <th> Error </th>
+            <th> Warning </th>
+            <th> Problem </th>
+        </tr>
+        {problems}
+    </table>
+    '''.format(problems = problems)
+    
+    return table
+
+
 def create_msg():
     '''
     Parameters
@@ -394,6 +440,14 @@ def create_msg():
                 partial_report += f'{key}: {dict[key]}, '
 
             partial_report = partial_report[:-2]
+
+            # add html table
+            table_part = '''
+            <br>
+            {table}
+            '''.format(table = create_table(filename))
+            partial_report += table_part
+
         msg += partial_report
 
     html = '''\
