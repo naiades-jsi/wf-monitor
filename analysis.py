@@ -274,14 +274,14 @@ def count_errors(df, column_name):
     return sum
 
 #testing
-for file_name in ['alicante-salinity.log', 'alicante-consumption.log', 'braila-anomaly.log', 'braila-consumption.log', 'braila-leakage.log', 'braila-state-analysis.log', 'carouge.log']:
-    example_file = os.path.join(os.getcwd(), 'logs', file_name)
-    df = to_df(example_file)
-    df = find_problems(df)
-    df = analyse_df(df)
-    print(df.head(50))
-    df = correct_type(df)
-    print(df[1].head(50))
+#for file_name in ['alicante-salinity.log', 'alicante-consumption.log', 'braila-anomaly.log', 'braila-consumption.log', 'braila-leakage.log', 'braila-state-analysis.log', 'carouge.log']:
+#    example_file = os.path.join(os.getcwd(), 'logs', file_name)
+#    df = to_df(example_file)
+#    df = find_problems(df)
+#    df = analyse_df(df)
+#    print(df.head(50))
+#    df = correct_type(df)
+#    print(df[1].head(50))
 try:
     for file_name in ['alicante-consumption.log', 'alicante-salinity.log', 'braila-anomaly.log', 'braila-consumption.log', 'braila-leakage.log', 'braila-state-analysis.log', 'carouge.log']:
         example_file = os.path.join(os.getcwd(), 'logs', file_name)
@@ -500,7 +500,8 @@ def main(sender_address, receiver_address, password):
     '''
 
     msg = create_msg()
-    attachments = create_attachments()
+    #attachments = create_attachments()
+    attachments = []
     yag = yagmail.SMTP(sender_address, password)
     yag.send(
         to = receiver_address,
