@@ -222,10 +222,12 @@ def correct_type(df):
         if current_location in locations:
             j = locations.index(current_location)
             if current_type == 'ERROR':
-                error_count[j] += 1
+                #error_count[j] += 1
+                error_count[j] = 1
                 problems[j].append(df['Problem'][i])
             elif current_type == 'WARNING':
-                warning_count[j] += 1
+                #warning_count[j] += 1
+                warning_count[j] = 1
                 problems[j].append(df['Problem'][i])
         else:
             if current_type == 'ERROR':
@@ -268,7 +270,7 @@ def count_errors(df, column_name):
     sum = 0
     for i, row in df.iterrows():
         n = int(df[column_name][i])
-        sum += n
+        sum+=n
     return sum
 
 #testing
@@ -355,7 +357,7 @@ def create_table(filename):
     problems = ''
     for i,row in df.iterrows():
         current_row = '''
-        <tr>
+        <tr style='cellspacing:0; border: solid 1px #DDEEEE; border-spacing: 0; border-collapse: collapse; color: #333; padding: 0px'>
             <td> {location} </td>
             <td> {error} </td>
             <td> {warning} </td>
@@ -365,8 +367,8 @@ def create_table(filename):
         problems += current_row
     
     table = '''
-    <table>
-        <tr>
+    <table style='cellspacing:0; width:50%; border: solid 1px #DDEEEE; border-spacing: 0; border-collapse: collapse'>
+        <tr style='background-color: #DDEFEF; color: #336B6B; padding: 0px; text-shadow: 1px 1px 1px #fff'>
             <th> Location </th>
             <th> Error </th>
             <th> Warning </th>
@@ -443,21 +445,17 @@ def create_msg():
 
             # add html table
             table_part = '''
-            <br>
             {table}
             '''.format(table = create_table(filename))
             partial_report += table_part
 
         msg += partial_report
 
-    html = '''\
+    html = '''
     <html>
-        <head></head>
-        <body>
-            <p>...Report...<br>
-                {msg}
-            </p>
-        </body>
+    <p>...Report...<br>
+        {msg}
+    </p>
     </html>
     '''.format(msg = msg)
     return html
