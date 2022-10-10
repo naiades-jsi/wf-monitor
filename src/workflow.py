@@ -44,7 +44,7 @@ class Workflow:
 
     def check(self) -> None:
         """Starting the workflow check"""
-        LOGGER.info("Starting worklfow check")
+        LOGGER.info("Starting workflow check")
 
         for section in self.config["workflow"]:
             LOGGER.info("Starting checks for: %s", section["name"])
