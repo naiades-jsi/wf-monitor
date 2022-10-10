@@ -283,8 +283,8 @@ def count_errors(df, column_name):
 #    df = correct_type(df)
 #    print(df[1].head(50))
 try:
-    for file_name in ['alicante-consumption.log', 'alicante-salinity.log', 'braila-anomaly.log', 'braila-consumption.log', 'braila-leakage.log', 'braila-state-analysis.log', 'carouge.log']:
-        example_file = os.path.join(os.getcwd(), 'logs', file_name)
+    for file_name in os.listdir('logs'):
+        example_file = os.path.join('logs', file_name)
         df = to_df(example_file)
         df = find_problems(df)
         df = analyse_df(df)
