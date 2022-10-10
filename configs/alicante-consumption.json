@@ -40,14 +40,14 @@
             "organisation": "naiades",
             "bucket": "alicante",
             "checks": [
-                { "name": "Influx Alipark Flow", "measurement": "alipark_flow", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx Autobuses Flow", "measurement": "autobuses_flow", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx Benalua Flow", "measurement": "benalua_flow", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx Diputacion Flow", "measurement": "diputacion_flow", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx Mercado Flow", "measurement": "mercado_flow", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx Montaneta Flow", "measurement": "montaneta_flow", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx Rambla Flow", "measurement": "rambla_flow", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx Weather Observed 1", "measurement": "weather_observed1", "alert_diff": 6, "error_diff": 24 }
+                { "name": "Influx Alipark Flow", "measurement": "alipark_flow", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Influx Autobuses Flow", "measurement": "autobuses_flow", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Influx Benalua Flow", "measurement": "benalua_flow", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Influx Diputacion Flow", "measurement": "diputacion_flow", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Influx Mercado Flow", "measurement": "mercado_flow", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Influx Montaneta Flow", "measurement": "montaneta_flow", "alert_diff": 31, "error_diff": 32 },
+                { "name": "Influx Rambla Flow", "measurement": "rambla_flow", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Influx Weather Observed 1", "measurement": "weather_observed1", "alert_diff": 13, "error_diff": 14 }
             ]
         },
         {
@@ -58,13 +58,13 @@
             "groupid": "wf-monitor-",
             "bootstrap_servers": "localhost:9092",
             "checks": [
-                { "name": "Fusion Alipark", "topic": "features_alicante_alipark_forecasting_w", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Fusion Autobuses", "topic": "features_alicante_autobuses_forecasting_w", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Fusion Benalua", "topic": "features_alicante_benalua_forecasting_w", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Fusion Diputacion", "topic": "features_alicante_diputacion_forecasting_w", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Fusion Mercado", "topic": "features_alicante_mercado_forecasting_w", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Fusion Montaneta", "topic": "features_alicante_montaneta_forecasting_w", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Fusion Rambla", "topic": "features_alicante_rambla_forecasting_w", "alert_diff": 6, "error_diff": 24 }
+                { "name": "Fusion Alipark", "topic": "features_alicante_alipark_forecasting_w", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Fusion Autobuses", "topic": "features_alicante_autobuses_forecasting_w", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Fusion Benalua", "topic": "features_alicante_benalua_forecasting_w", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Fusion Diputacion", "topic": "features_alicante_diputacion_forecasting_w", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Fusion Mercado", "topic": "features_alicante_mercado_forecasting_w", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Fusion Montaneta", "topic": "features_alicante_montaneta_forecasting_w", "alert_diff": 31, "error_diff": 32 },
+                { "name": "Fusion Rambla", "topic": "features_alicante_rambla_forecasting_w", "alert_diff": 13, "error_diff": 14 }
             ]
         },
         {
@@ -75,13 +75,13 @@
             "groupid": "wf-monitor-",
             "bootstrap_servers": "localhost:9092",
             "checks": [
-                { "name": "Prediction Alipark", "topic": "predictions_alicante_Alipark_flow_w", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Prediction Autobuses", "topic": "predictions_alicante_Autobuses_flow_w", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Prediction Benalua", "topic": "predictions_alicante_Benalua_flow_w", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Prediction Diputacion", "topic": "predictions_alicante_Diputacion_flow_w", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Prediction Mercado", "topic": "predictions_alicante_Mercado_flow_w", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Prediction Montaneta", "topic": "predictions_alicante_Montaneta_flow_w", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Prediction Rambla", "topic": "predictions_alicante_Rambla_flow_w", "alert_diff": 6, "error_diff": 24 }
+                { "name": "Prediction Alipark", "topic": "predictions_alicante_Alipark_flow_w", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Prediction Autobuses", "topic": "predictions_alicante_Autobuses_flow_w", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Prediction Benalua", "topic": "predictions_alicante_Benalua_flow_w", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Prediction Diputacion", "topic": "predictions_alicante_Diputacion_flow_w", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Prediction Mercado", "topic": "predictions_alicante_Mercado_flow_w", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Prediction Montaneta", "topic": "predictions_alicante_Montaneta_flow_w", "alert_diff": 31, "error_diff": 32 },
+                { "name": "Prediction Rambla", "topic": "predictions_alicante_Rambla_flow_w", "alert_diff": 13, "error_diff": 14 }
             ]
         },
         {
@@ -92,13 +92,13 @@
             "groupid": "wf-monitor-",
             "bootstrap_servers": "localhost:9092",
             "checks": [
-                { "name": "Fusion Alipark", "topic": "features_alicante_alipark_flow_forecasting", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Fusion Autobuses", "topic": "features_alicante_autobuses_flow_forecasting", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Fusion Benalua", "topic": "features_alicante_benalua_flow_forecasting", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Fusion Diputacion", "topic": "features_alicante_diputacion_flow_forecasting", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Fusion Mercado", "topic": "features_alicante_mercado_flow_forecasting", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Fusion Montaneta", "topic": "features_alicante_montaneta_flow_forecasting", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Fusion Rambla", "topic": "features_alicante_rambla_flow_forecasting", "alert_diff": 6, "error_diff": 24 }
+                { "name": "Fusion Alipark", "topic": "features_alicante_alipark_flow_forecasting", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Fusion Autobuses", "topic": "features_alicante_autobuses_flow_forecasting", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Fusion Benalua", "topic": "features_alicante_benalua_flow_forecasting", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Fusion Diputacion", "topic": "features_alicante_diputacion_flow_forecasting", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Fusion Mercado", "topic": "features_alicante_mercado_flow_forecasting", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Fusion Montaneta", "topic": "features_alicante_montaneta_flow_forecasting", "alert_diff": 31, "error_diff": 32 },
+                { "name": "Fusion Rambla", "topic": "features_alicante_rambla_flow_forecasting", "alert_diff": 13, "error_diff": 14 }
             ]
         },
         {
@@ -109,13 +109,13 @@
             "groupid": "wf-monitor-",
             "bootstrap_servers": "localhost:9092",
             "checks": [
-                { "name": "Prediction Alipark", "topic": "predictions_alicante_alipark_flow", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Prediction Autobuses", "topic": "predictions_alicante_autobuses_flow", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Prediction Benalua", "topic": "predictions_alicante_benalua_flow", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Prediction Diputacion", "topic": "predictions_alicante_diputacion_flow", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Prediction Mercado", "topic": "predictions_alicante_mercado_flow", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Prediction Montaneta", "topic": "predictions_alicante_montaneta_flow", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Prediction Rambla", "topic": "predictions_alicante_rambla_flow", "alert_diff": 6, "error_diff": 24 }
+                { "name": "Prediction Alipark", "topic": "predictions_alicante_alipark_flow", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Prediction Autobuses", "topic": "predictions_alicante_autobuses_flow", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Prediction Benalua", "topic": "predictions_alicante_benalua_flow", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Prediction Diputacion", "topic": "predictions_alicante_diputacion_flow", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Prediction Mercado", "topic": "predictions_alicante_mercado_flow", "alert_diff": 13, "error_diff": 14 },
+                { "name": "Prediction Montaneta", "topic": "predictions_alicante_montaneta_flow", "alert_diff": 31, "error_diff": 32 },
+                { "name": "Prediction Rambla", "topic": "predictions_alicante_rambla_flow", "alert_diff": 13, "error_diff": 14 }
             ]
         },
         {
