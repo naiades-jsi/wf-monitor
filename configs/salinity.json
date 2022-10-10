@@ -10,15 +10,15 @@
                 "Content-Type": "application/json"
             },
             "checks": [
-                { "name": "Level not used EA001-202", "device": "EA001-202-Level", "alert_diff": 13, "error_diff": 14 },
-                { "name": "Level EA001-36", "device": "EA001-36-Level", "alert_diff": 13, "error_diff": 14 },
-                { "name": "Level EA002-26", "device": "EA002-26-Conductivity", "alert_diff": 13, "error_diff": 14 },
-                { "name": "Level EA003-21", "device": "EA003-21-Conductivity", "alert_diff": 13, "error_diff": 14 },
-                { "name": "Level EA003-36", "device": "EA003-36-Conductivity", "alert_diff": 13, "error_diff": 14 },
-                { "name": "Level EA004-21", "device": "EA004-21-Conductivity", "alert_diff": 13, "error_diff": 14 },
-                { "name": "Level EA005-21", "device": "EA005-21-Conductivity", "alert_diff": 13, "error_diff": 14 },
-                { "name": "Level EA007-36", "device": "EA003-36-Conductivity", "alert_diff": 13, "error_diff": 14 },
-                { "name": "Level EA008-36", "device": "EA008-36-Conductivity", "alert_diff": 13, "error_diff": 14 }
+                { "name": "Level not used EA001-202", "device": "EA001-202-Level", "alert_diff": 16, "error_diff": 17 },
+                { "name": "Level EA001-36", "device": "EA001-36-Level", "alert_diff": 16, "error_diff": 17 },
+                { "name": "Level EA003-36", "device": "EA003-36-Conductivity", "alert_diff": 16, "error_diff": 17 },
+                { "name": "Level EA004-21", "device": "EA004-21-Conductivity", "alert_diff": 16, "error_diff": 17 },
+                { "name": "Level EA005-21", "device": "EA005-21-Conductivity", "alert_diff": 16, "error_diff": 17 },
+                { "name": "Level EA007-36", "device": "EA003-36-Conductivity", "alert_diff": 16, "error_diff": 17 },
+                { "name": "Level EA008-36", "device": "EA008-36-Conductivity", "alert_diff": 16, "error_diff": 17 }
+                { "name": "Level EA003-21", "device": "EA003-21-Conductivity", "alert_diff": 16, "error_diff": 17 },
+                { "name": "Level EA002-26", "device": "EA002-26-Conductivity", "alert_diff": 16, "error_diff": 17 },
             ]
         },
         {
@@ -29,15 +29,15 @@
             "organisation": "naiades",
             "bucket": "alicante",
             "checks": [
-                { "name": "Influx Level not used EA001-202", "measurement": "salinity_EA001_202_level", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx Level EA001-36", "measurement": "salinity_EA001_36_level", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx Level EA002-26", "measurement": "salinity_EA002_26_conductivity", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx Level EA003-21", "measurement": "salinity_EA003_21_conductivity", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx Level EA003-36", "measurement": "salinity_EA003_36_conductivity", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx Level EA004-21", "measurement": "salinity_EA004_21_conductivity", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx Level EA005-21", "measurement": "salinity_EA005_21_conductivity", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx Level EA007-36", "measurement": "salinity_EA007_36_conductivity", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx Level EA008-36", "measurement": "salinity_EA008_36_conductivity", "alert_diff": 6, "error_diff": 24 }
+                { "name": "Influx Level not used EA001-202", "measurement": "salinity_EA001_202_level", "alert_diff": 16, "error_diff": 17 },
+                { "name": "Influx Level EA001-36", "measurement": "salinity_EA001_36_level", "alert_diff": 16, "error_diff": 17 },
+                { "name": "Influx Level EA003-21", "measurement": "salinity_EA003_21_conductivity", "alert_diff": 16, "error_diff": 17 },
+                { "name": "Influx Level EA003-36", "measurement": "salinity_EA003_36_conductivity", "alert_diff": 16, "error_diff": 17 },
+                { "name": "Influx Level EA008-36", "measurement": "salinity_EA008_36_conductivity", "alert_diff": 16, "error_diff": 17 }
+                { "name": "Influx Level EA004-21", "measurement": "salinity_EA004_21_conductivity", "alert_diff": 16, "error_diff": 17 },
+                { "name": "Influx Level EA005-21", "measurement": "salinity_EA005_21_conductivity", "alert_diff": 16, "error_diff": 17 },
+                { "name": "Influx Level EA002-26", "measurement": "salinity_EA002_26_conductivity", "alert_diff": 16, "error_diff": 17 },
+                { "name": "Influx Level EA007-36", "measurement": "salinity_EA007_36_conductivity", "alert_diff": 16, "error_diff": 17 },
             ]
         },
         {
@@ -48,14 +48,14 @@
             "groupid": "wf-monitor-",
             "bootstrap_servers": "localhost:9092",
             "checks": [
-                { "name": "Fusion Level EA002-26", "topic": "features_alicante_salinity_EA001_36_level", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Fusion EA002-26", "topic": "features_alicante_salinity_EA002_26_conductivity", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Fusion EA003-36", "topic": "features_alicante_salinity_EA003_36_conductivity", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Fusion EA003-21", "topic": "features_alicante_salinity_EA003_21_conductivity", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Fusion EA004-21", "topic": "features_alicante_salinity_EA004_21_conductivity", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Fusion EA005-21", "topic": "features_alicante_salinity_EA005_21_conductivity", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Fusion EA007-36", "topic": "features_alicante_salinity_EA007_36_conductivity", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Fusion EA008-36", "topic": "features_alicante_salinity_EA008_36_conductivity", "alert_diff": 6, "error_diff": 24 }
+                { "name": "Fusion Level EA002-26", "topic": "features_alicante_salinity_EA001_36_level", "alert_diff": 16, "error_diff": 17 },
+                { "name": "Fusion EA003-21", "topic": "features_alicante_salinity_EA003_21_conductivity", "alert_diff": 16, "error_diff": 17 },
+                { "name": "Fusion EA003-36", "topic": "features_alicante_salinity_EA003_36_conductivity", "alert_diff": 16, "error_diff": 17 },
+                { "name": "Fusion EA002-26", "topic": "features_alicante_salinity_EA002_26_conductivity", "alert_diff": 16, "error_diff": 17 },
+                { "name": "Fusion EA004-21", "topic": "features_alicante_salinity_EA004_21_conductivity", "alert_diff": 16, "error_diff": 17 },
+                { "name": "Fusion EA005-21", "topic": "features_alicante_salinity_EA005_21_conductivity", "alert_diff": 16, "error_diff": 17 },
+                { "name": "Fusion EA007-36", "topic": "features_alicante_salinity_EA007_36_conductivity", "alert_diff": 16, "error_diff": 17 },
+                { "name": "Fusion EA008-36", "topic": "features_alicante_salinity_EA008_36_conductivity", "alert_diff": 16, "error_diff": 17 }
             ]
         },
         {
@@ -66,19 +66,29 @@
             "groupid": "wf-monitor-",
             "bootstrap_servers": "localhost:9092",
             "checks": [
-                { "name": "Anomalies Level EA001-36", "topic": "anomalies_alicante_salinity_EA001_36_level_meta_signal", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Anomalies EA002-26", "topic": "anomalies_alicante_salinity_EA002_26_conductivity_meta_signal", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Anomalies EA003-36", "topic": "anomalies_alicante_salinity_EA003_36_conductivity_meta_signal", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Anomalies EA003-21", "topic": "anomalies_alicante_salinity_EA003_21_conductivity_meta_signal", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Anomalies EA004-21", "topic": "anomalies_alicante_salinity_EA004_21_conductivity_meta_signal", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Anomalies EA005-21", "topic": "anomalies_alicante_salinity_EA005_21_conductivity_meta_signal", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Anomalies EA007-36", "topic": "anomalies_alicante_salinity_EA007_36_conductivity_meta_signal", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Anomalies EA008-36", "topic": "anomalies_alicante_salinity_EA008_36_conductivity_meta_signal", "alert_diff": 6, "error_diff": 24 }
+                { "name": "Anomalies Level EA001-36", "topic": "anomalies_alicante_salinity_EA001_36_level_meta_signal", "alert_diff": 16, "error_diff": 17 },
+                { "name": "Anomalies EA003-36", "topic": "anomalies_alicante_salinity_EA003_36_conductivity_meta_signal", "alert_diff": 16, "error_diff": 17 },
+                { "name": "Anomalies EA003-21", "topic": "anomalies_alicante_salinity_EA003_21_conductivity_meta_signal", "alert_diff": 16, "error_diff": 17 },
+                { "name": "Anomalies EA004-21", "topic": "anomalies_alicante_salinity_EA004_21_conductivity_meta_signal", "alert_diff": 16, "error_diff": 17 },
+                { "name": "Anomalies EA005-21", "topic": "anomalies_alicante_salinity_EA005_21_conductivity_meta_signal", "alert_diff": 16, "error_diff": 17 },
+                { "name": "Anomalies EA008-36", "topic": "anomalies_alicante_salinity_EA008_36_conductivity_meta_signal", "alert_diff": 16, "error_diff": 17 }
+                { "name": "Anomalies EA002-26", "topic": "anomalies_alicante_salinity_EA002_26_conductivity_meta_signal", "alert_diff": 16, "error_diff": 17 },
+                { "name": "Anomalies EA007-36", "topic": "anomalies_alicante_salinity_EA007_36_conductivity_meta_signal", "alert_diff": 16, "error_diff": 17 },
             ]
         },
         {
             "name": "Naiades Alicante Metasignal",
-            "type": "naiades_upload",
+            "type": "naiades_context",
+            "subtype": "alicante_ms",
+            "dateExtraction": {
+                "path": [
+                    "description",
+                    "metadata",
+                    "dateModified",
+                    "value"
+                ],
+                "type": "string"
+            },
             "url": "http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:Device:RO-{0}-MetaSignal/?metadata=dateModified,timestamp",
             "headers": {
                 "Fiware-Service": "alicante"
@@ -103,7 +113,13 @@
         },
         {
             "name": "Naiades Alicante Salinity -- NOT WORKING - CHECK URL",
-            "type": "naiades_upload",
+            "type": "naiades_context",
+            "subtype": "alicante_salinity",
+            "dateExtraction": {
+                "path": [
+                ],
+                "type": "string"
+            },
             "url": "http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:Alert:ES-Alicante-{0}",
             "headers": {
                 "Fiware-Service": "alicante"

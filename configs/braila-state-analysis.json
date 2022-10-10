@@ -21,14 +21,24 @@
                 "Content-Type": "application/json"
             },
             "checks": [
-                { "name": "Water Demand 211206H360", "device": "flow211206H360", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Water Demand 211306H360", "device": "flow211306H360", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Water Demand 318505H498", "device": "flow318505H498", "alert_diff": 6, "error_diff": 24 }
+                { "name": "Water Demand 211206H360", "device": "flow211206H360", "alert_diff": 1, "error_diff": 2 },
+                { "name": "Water Demand 211306H360", "device": "flow211306H360", "alert_diff": 1, "error_diff": 2 },
+                { "name": "Water Demand 318505H498", "device": "flow318505H498", "alert_diff": 1, "error_diff": 2 }
             ]
         },
         {
             "name": "Naiades Braila Streamstory",
-            "type": "naiades_upload",
+            "type": "naiades_context",
+            "subtype": "braila_streamstory",
+            "dateExtraction": {
+                "path": [
+                    "https://uri.etsi.org/ngsi-ld/default-context/dateIssued",
+                    "metadata",
+                    "dateModified",
+                    "value"
+                ],
+                "type": "string"
+            },
             "url": "http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:Alert:RO-Braila-{0}-state-analysis-tool?metadata=dateModified,timestamp",
             "headers": {
                 "Fiware-Service": "braila"

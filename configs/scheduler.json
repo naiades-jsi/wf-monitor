@@ -13,7 +13,7 @@
             "last_update": "28/09/2022 12:01:00"
         },
         {
-            "scheduledAt": "10:00",
+            "scheduledAt": "01:00",
             "name": "alicante-salinity",
             "command": "python3 main.py -w alicante-salinity &> logs/alicante-salinity.log",
             "last_update": "28/09/2022 12:01:00"
@@ -22,12 +22,6 @@
             "scheduledAt": "11:00",
             "name": "braila-consumption",
             "command": "python3 main.py -w braila-consumption &> logs/braila-consumption.log",
-            "last_update": "28/09/2022 12:01:00"
-        },
-        {
-            "scheduledAt": "06:00",
-            "name": "braila-anomaly",
-            "command": "python3 main.py -w braila-anomaly &> logs/braila-anomaly.log",
             "last_update": "28/09/2022 12:01:00"
         },
         {

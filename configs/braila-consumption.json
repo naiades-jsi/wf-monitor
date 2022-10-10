@@ -21,9 +21,9 @@
             "organisation": "naiades",
             "bucket": "braila",
             "checks": [
-                { "name": "Influx Flow 211206H360", "measurement": "flow211206H360", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx Flow 211306H360", "measurement": "flow211306H360", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Influx Flow 318505H498", "measurement": "flow318505H498", "alert_diff": 6, "error_diff": 24 }
+                { "name": "Influx Flow 211206H360", "measurement": "flow211206H360", "alert_diff": 1, "error_diff": 2 },
+                { "name": "Influx Flow 211306H360", "measurement": "flow211306H360", "alert_diff": 1, "error_diff": 2 },
+                { "name": "Influx Flow 318505H498", "measurement": "flow318505H498", "alert_diff": 1, "error_diff": 2 }
             ]
         },
         {
@@ -34,9 +34,9 @@
             "groupid": "wf-monitor-",
             "bootstrap_servers": "localhost:9092",
             "checks": [
-                { "name": "Features Flow 211206H360", "topic": "features_braila_flow211206H360_forecasting", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Features Flow 211306H360", "topic": "features_braila_flow211306H360_forecasting", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Features Flow 318505H498", "topic": "features_braila_flow318505H498_forecasting", "alert_diff": 6, "error_diff": 24 }
+                { "name": "Features Flow 211206H360", "topic": "features_braila_flow211206H360_forecasting", "alert_diff": 1, "error_diff": 2 },
+                { "name": "Features Flow 211306H360", "topic": "features_braila_flow211306H360_forecasting", "alert_diff": 1, "error_diff": 2 },
+                { "name": "Features Flow 318505H498", "topic": "features_braila_flow318505H498_forecasting", "alert_diff": 1, "error_diff": 2 }
             ]
         },
         {
@@ -47,14 +47,20 @@
             "groupid": "wf-monitor-",
             "bootstrap_servers": "localhost:9092",
             "checks": [
-                { "name": "Prediction Flow 211206H360", "topic": "predictions_braila_flow211206H360_prediction", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Prediction Flow 211306H360", "topic": "predictions_braila_flow211306H360_prediction", "alert_diff": 6, "error_diff": 24 },
-                { "name": "Prediction Flow 318505H498", "topic": "predictions_braila_flow318505H498_prediction", "alert_diff": 6, "error_diff": 24 }
+                { "name": "Prediction Flow 211206H360", "topic": "predictions_braila_flow211206H360_prediction", "alert_diff": 1, "error_diff": 2 },
+                { "name": "Prediction Flow 211306H360", "topic": "predictions_braila_flow211306H360_prediction", "alert_diff": 1, "error_diff": 2 },
+                { "name": "Prediction Flow 318505H498", "topic": "predictions_braila_flow318505H498_prediction", "alert_diff": 1, "error_diff": 2 }
             ]
         },
         {
             "name": "Braila Consumption Upload -- NOT WORKING - CHANGE HORIZON",
-            "type": "naiades_upload",
+            "type": "naiades_context",
+            "subtype": "braila_consumption",
+            "dateExtraction": {
+                "path": [
+                ],
+                "type": "string"
+            },
             "url": "http://naiades.simavi.ro:1026/ngsi-ld/v1/entities/urn:ngsi-ld:Consumption-Romania:Romania-Braila-{0}_24h",
             "headers": {
                 "Fiware-Service": "braila",

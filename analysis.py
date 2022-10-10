@@ -222,10 +222,12 @@ def correct_type(df):
         if current_location in locations:
             j = locations.index(current_location)
             if current_type == 'ERROR':
-                error_count[j] += 1
+                #error_count[j] += 1
+                error_count[j] = 1
                 problems[j].append(df['Problem'][i])
             elif current_type == 'WARNING':
-                warning_count[j] += 1
+                #warning_count[j] += 1
+                warning_count[j] = 1
                 problems[j].append(df['Problem'][i])
         else:
             if current_type == 'ERROR':
@@ -248,7 +250,7 @@ def correct_type(df):
         for problem in problem_list:
             problem_str += '; ' + problem
         problems_str.append(problem_str[2:])
-    new_df = pd.DataFrame(data = {'Action': actions, 'Location': locations, 'Error': error_count, 'Warning': warning_count, 'problem': problems_str})
+    new_df = pd.DataFrame(data = {'Action': actions, 'Location': locations, 'Error': error_count, 'Warning': warning_count, 'Problem': problems_str})
 
     return df, new_df
 
@@ -268,21 +270,21 @@ def count_errors(df, column_name):
     sum = 0
     for i, row in df.iterrows():
         n = int(df[column_name][i])
-        sum += n
+        sum+=n
     return sum
 
 #testing
-for file_name in ['alicante-salinity.log', 'alicante-consumption.log', 'braila-anomaly.log', 'braila-consumption.log', 'braila-leakage.log', 'braila-state-analysis.log', 'carouge.log']:
-    example_file = os.path.join(os.getcwd(), 'logs', file_name)
-    df = to_df(example_file)
-    df = find_problems(df)
-    df = analyse_df(df)
-    print(df.head(50))
-    df = correct_type(df)
-    print(df[1].head(50))
+#for file_name in ['alicante-salinity.log', 'alicante-consumption.log', 'braila-anomaly.log', 'braila-consumption.log', 'braila-leakage.log', 'braila-state-analysis.log', 'carouge.log']:
+#    example_file = os.path.join(os.getcwd(), 'logs', file_name)
+#    df = to_df(example_file)
+#    df = find_problems(df)
+#    df = analyse_df(df)
+#    print(df.head(50))
+#    df = correct_type(df)
+#    print(df[1].head(50))
 try:
-    for file_name in ['alicante-consumption.log', 'alicante-salinity.log', 'braila-anomaly.log', 'braila-consumption.log', 'braila-leakage.log', 'braila-state-analysis.log', 'carouge.log']:
-        example_file = os.path.join(os.getcwd(), 'logs', file_name)
+    for file_name in os.listdir('logs'):
+        example_file = os.path.join('logs', file_name)
         df = to_df(example_file)
         df = find_problems(df)
         df = analyse_df(df)
@@ -331,6 +333,52 @@ def create_msg_tables():
     </html>
     '''.format(msg = msg)
     return html
+
+
+def create_table(filename):
+    '''
+    Parameters
+    ----------
+    str: name of .log file
+
+    Returns
+    -------
+    str: HTML table presenting errors for given .log file
+    '''
+
+    file = os.path.join('logs', filename)
+    df = to_df(file)
+    df = find_problems(df)
+    df = analyse_df(df)
+    df = correct_type(df)[1]
+    if len(df) == 0:
+        return None
+
+    problems = ''
+    for i,row in df.iterrows():
+        current_row = '''
+        <tr style='cellspacing:0; border: solid 1px #DDEEEE; border-spacing: 0; border-collapse: collapse; color: #333; padding: 0px'>
+            <td> {location} </td>
+            <td> {error} </td>
+            <td> {warning} </td>
+            <td> {problem} </td>
+        </tr>
+        '''.format(location = row['Location'], error = row['Error'], warning = row['Warning'], problem = row['Problem'])
+        problems += current_row
+    
+    table = '''
+    <table style='cellspacing:0; width:50%; border: solid 1px #DDEEEE; border-spacing: 0; border-collapse: collapse'>
+        <tr style='background-color: #DDEFEF; color: #336B6B; padding: 0px; text-shadow: 1px 1px 1px #fff'>
+            <th> Location </th>
+            <th> Error </th>
+            <th> Warning </th>
+            <th> Problem </th>
+        </tr>
+        {problems}
+    </table>
+    '''.format(problems = problems)
+    
+    return table
 
 
 def create_msg():
@@ -394,16 +442,20 @@ def create_msg():
                 partial_report += f'{key}: {dict[key]}, '
 
             partial_report = partial_report[:-2]
+
+            # add html table
+            table_part = '''
+            {table}
+            '''.format(table = create_table(filename))
+            partial_report += table_part
+
         msg += partial_report
 
-    html = '''\
+    html = '''
     <html>
-        <head></head>
-        <body>
-            <p>...Report...<br>
-                {msg}
-            </p>
-        </body>
+    <p>...Report...<br>
+        {msg}
+    </p>
     </html>
     '''.format(msg = msg)
     return html
@@ -448,7 +500,8 @@ def main(sender_address, receiver_address, password):
     '''
 
     msg = create_msg()
-    attachments = create_attachments()
+    #attachments = create_attachments()
+    attachments = []
     yag = yagmail.SMTP(sender_address, password)
     yag.send(
         to = receiver_address,

@@ -17,16 +17,12 @@ do
     python3 main.py -w braila-consumption &> logs/braila-consumption.log
 
     TIMESTAMP=$(date +"%F %T")
-    echo $TIMESTAMP "Running Braila Anomaly Monitor"
-    python3 main.py -w braila-anomaly &> logs/braila-anomaly.log
-
-    TIMESTAMP=$(date +"%F %T")
     echo $TIMESTAMP "Running Braila State Analysis Monitor"
     python3 main.py -w braila-state-analysis &> logs/braila-state-analysis.log
 
     TIMESTAMP=$(date +"%F %T")
     echo $TIMESTAMP "Running Braila Leakage Monitor"
-    python3 main.py -w braila-leakage &> logs/braila-leakage.log
+    python3 main.py -w braila-leakage-accurate &> logs/braila-leakage-accurate.log
 
     TIMESTAMP=$(date +"%F %T")
     echo $TIMESTAMP "Running Monitor Analysis and Report Tool"
