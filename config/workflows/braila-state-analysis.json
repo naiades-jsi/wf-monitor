@@ -44,7 +44,6 @@
                 "Fiware-Service": "braila"
             },
             "checks": [
-                { "name": "Braila Streamstory flow_211106H360", "device": "211106H360", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Braila Streamstory flow_211206H360", "device": "211206H360", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Braila Streamstory flow_211306H360", "device": "211306H360", "alert_diff": 6, "error_diff": 24 },
                 { "name": "Braila Streamstory flow_318505H498", "device": "318505H498", "alert_diff": 6, "error_diff": 24 }
