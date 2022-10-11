@@ -32,13 +32,13 @@
         },
         {
             "scheduledAt": "12:00",
-            "name": "braila-leakage",
+            "name": "braila-leakage-approximate",
             "command": "python3 main.py -w braila-leakage-approximate &> logs/braila-leakage-approximate.log",
             "last_update": "28/09/2022 12:01:00"
         },
         {
             "scheduledAt": "12:00",
-            "name": "braila-leakage",
+            "name": "braila-leakage-accurate",
             "command": "python3 main.py -w braila-leakage-accurate &> logs/braila-leakage-accurate.log",
             "last_update": "28/09/2022 12:01:00"
         },
