@@ -1,65 +1,65 @@
-2022-10-11 13:02:10,719 wf-monitor   INFO     Starting workflow monitoring tool for: braila-consumption
-2022-10-11 13:02:10,720 src.workflow INFO     Loading config: config/workflows/braila-consumption.json
-2022-10-11 13:02:10,720 src.workflow INFO     Starting worklfow check
-2022-10-11 13:02:10,720 src.workflow INFO     Starting checks for: Naiades Historic API - WaterDemand
-2022-10-11 13:02:10,720 src.workflow INFO     Checking: Water Demand 211206H360
-2022-10-11 13:02:10,877 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-211206H360?lastN=1
-2022-10-11 13:02:10,879 src.historic INFO       Timestamp in the limits: 0.44h
-2022-10-11 13:02:10,880 src.workflow INFO     Checking: Water Demand 211306H360
-2022-10-11 13:02:11,037 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-211306H360?lastN=1
-2022-10-11 13:02:11,037 src.historic INFO       Timestamp in the limits: 0.34h
-2022-10-11 13:02:11,037 src.workflow INFO     Checking: Water Demand 318505H498
-2022-10-11 13:02:11,200 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-318505H498?lastN=1
-2022-10-11 13:02:11,200 src.historic INFO       Timestamp in the limits: 0.24h
-2022-10-11 13:02:11,200 src.workflow INFO     Starting checks for: Influx data
-2022-10-11 13:02:11,200 src.workflow INFO     Checking: Influx Flow 211206H360
-2022-10-11 13:02:11,200 src.influx   INFO       Building query
-2022-10-11 13:02:11,200 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "flow211206H360")|> last()
-2022-10-11 13:02:11,223 src.influx   ERROR      Timestamp bigger than limit: 8.94h
-2022-10-11 13:02:11,224 src.workflow INFO     Checking: Influx Flow 211306H360
-2022-10-11 13:02:11,224 src.influx   INFO       Building query
-2022-10-11 13:02:11,224 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "flow211306H360")|> last()
-2022-10-11 13:02:11,245 src.influx   ERROR      Timestamp bigger than limit: 8.17h
-2022-10-11 13:02:11,245 src.workflow INFO     Checking: Influx Flow 318505H498
-2022-10-11 13:02:11,246 src.influx   INFO       Building query
-2022-10-11 13:02:11,246 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "flow318505H498")|> last()
-2022-10-11 13:02:11,268 src.influx   ERROR      Timestamp bigger than limit: 9.09h
-2022-10-11 13:02:11,268 src.workflow INFO     Starting checks for: Data Fusion on Kafka
-2022-10-11 13:02:11,268 src.workflow INFO     Checking: Features Flow 211206H360
-2022-10-11 13:02:11,268 src.kafka    INFO       Querying topic: features_braila_flow211206H360_forecasting
-2022-10-11 13:02:11,676 src.kafka    INFO       Last offset: 708
-2022-10-11 13:02:13,684 src.kafka    ERROR      Timestamp bigger than limit: 8.85h
-2022-10-11 13:02:13,684 src.workflow INFO     Checking: Features Flow 211306H360
-2022-10-11 13:02:13,684 src.kafka    INFO       Querying topic: features_braila_flow211306H360_forecasting
-2022-10-11 13:02:14,092 src.kafka    INFO       Last offset: 781
-2022-10-11 13:02:16,098 src.kafka    ERROR      Timestamp bigger than limit: 7.85h
-2022-10-11 13:02:16,098 src.workflow INFO     Checking: Features Flow 318505H498
-2022-10-11 13:02:16,098 src.kafka    INFO       Querying topic: features_braila_flow318505H498_forecasting
-2022-10-11 13:02:16,506 src.kafka    INFO       Last offset: 619
-2022-10-11 13:02:18,513 src.kafka    ERROR      Timestamp bigger than limit: 8.85h
-2022-10-11 13:02:18,513 src.workflow INFO     Starting checks for: Predictions on Kafka
-2022-10-11 13:02:18,513 src.workflow INFO     Checking: Prediction Flow 211206H360
-2022-10-11 13:02:18,513 src.kafka    INFO       Querying topic: predictions_braila_flow211206H360_prediction
-2022-10-11 13:02:18,920 src.kafka    INFO       Last offset: 709
-2022-10-11 13:02:20,928 src.kafka    ERROR      Timestamp bigger than limit: 8.85h
-2022-10-11 13:02:20,928 src.workflow INFO     Checking: Prediction Flow 211306H360
-2022-10-11 13:02:20,928 src.kafka    INFO       Querying topic: predictions_braila_flow211306H360_prediction
-2022-10-11 13:02:21,335 src.kafka    INFO       Last offset: 781
-2022-10-11 13:02:23,345 src.kafka    ERROR      Timestamp bigger than limit: 7.85h
-2022-10-11 13:02:23,345 src.workflow INFO     Checking: Prediction Flow 318505H498
-2022-10-11 13:02:23,345 src.kafka    INFO       Querying topic: predictions_braila_flow318505H498_prediction
-2022-10-11 13:02:23,753 src.kafka    INFO       Last offset: 619
-2022-10-11 13:02:25,762 src.kafka    ERROR      Timestamp bigger than limit: 8.85h
-2022-10-11 13:02:25,762 src.workflow INFO     Starting checks for: Braila Consumption Upload -- NOT WORKING - CHANGE HORIZON
-2022-10-11 13:02:25,762 src.workflow INFO     Checking: Consumption flow318505H498
-2022-10-11 13:02:25,884 src.context  INFO       Trying: http://naiades.simavi.ro:1026/ngsi-ld/v1/entities/urn:ngsi-ld:Consumption-Romania:Romania-Braila-flow318505H498_24h
-2022-10-11 13:02:25,884 src.context  ERROR      Time checking error: expected string or bytes-like object
-2022-10-11 13:02:25,884 src.workflow INFO     Checking: Consumption flow211306H360
-2022-10-11 13:02:26,003 src.context  INFO       Trying: http://naiades.simavi.ro:1026/ngsi-ld/v1/entities/urn:ngsi-ld:Consumption-Romania:Romania-Braila-flow211306H360_24h
-2022-10-11 13:02:26,003 src.context  ERROR      Time checking error: expected string or bytes-like object
-2022-10-11 13:02:26,003 src.workflow INFO     Checking: Consumption flow211106H360
-2022-10-11 13:02:26,123 src.context  INFO       Trying: http://naiades.simavi.ro:1026/ngsi-ld/v1/entities/urn:ngsi-ld:Consumption-Romania:Romania-Braila-flow211106H360_24h
-2022-10-11 13:02:26,123 src.context  ERROR      Time checking error: expected string or bytes-like object
-2022-10-11 13:02:26,124 src.workflow INFO     Checking: Consumption flow211206H360
-2022-10-11 13:02:26,243 src.context  INFO       Trying: http://naiades.simavi.ro:1026/ngsi-ld/v1/entities/urn:ngsi-ld:Consumption-Romania:Romania-Braila-flow211206H360_24h
-2022-10-11 13:02:26,243 src.context  ERROR      Time checking error: expected string or bytes-like object
+2022-10-11 13:32:20,941 wf-monitor   INFO     Starting workflow monitoring tool for: braila-consumption
+2022-10-11 13:32:20,941 src.workflow INFO     Loading config: config/workflows/braila-consumption.json
+2022-10-11 13:32:20,941 src.workflow INFO     Starting worklfow check
+2022-10-11 13:32:20,941 src.workflow INFO     Starting checks for: Naiades Historic API - WaterDemand
+2022-10-11 13:32:20,941 src.workflow INFO     Checking: Water Demand 211206H360
+2022-10-11 13:32:21,108 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-211206H360?lastN=1
+2022-10-11 13:32:21,115 src.historic INFO       Timestamp in the limits: 0.94h
+2022-10-11 13:32:21,116 src.workflow INFO     Checking: Water Demand 211306H360
+2022-10-11 13:32:21,273 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-211306H360?lastN=1
+2022-10-11 13:32:21,273 src.historic INFO       Timestamp in the limits: 0.84h
+2022-10-11 13:32:21,273 src.workflow INFO     Checking: Water Demand 318505H498
+2022-10-11 13:32:21,430 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-318505H498?lastN=1
+2022-10-11 13:32:21,431 src.historic INFO       Timestamp in the limits: 0.74h
+2022-10-11 13:32:21,431 src.workflow INFO     Starting checks for: Influx data
+2022-10-11 13:32:21,431 src.workflow INFO     Checking: Influx Flow 211206H360
+2022-10-11 13:32:21,431 src.influx   INFO       Building query
+2022-10-11 13:32:21,431 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "flow211206H360")|> last()
+2022-10-11 13:32:21,454 src.influx   ERROR      Timestamp bigger than limit: 3.44h
+2022-10-11 13:32:21,454 src.workflow INFO     Checking: Influx Flow 211306H360
+2022-10-11 13:32:21,454 src.influx   INFO       Building query
+2022-10-11 13:32:21,454 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "flow211306H360")|> last()
+2022-10-11 13:32:21,476 src.influx   ERROR      Timestamp bigger than limit: 2.67h
+2022-10-11 13:32:21,476 src.workflow INFO     Checking: Influx Flow 318505H498
+2022-10-11 13:32:21,476 src.influx   INFO       Building query
+2022-10-11 13:32:21,476 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "flow318505H498")|> last()
+2022-10-11 13:32:21,497 src.influx   ERROR      Timestamp bigger than limit: 3.59h
+2022-10-11 13:32:21,497 src.workflow INFO     Starting checks for: Data Fusion on Kafka
+2022-10-11 13:32:21,497 src.workflow INFO     Checking: Features Flow 211206H360
+2022-10-11 13:32:21,497 src.kafka    INFO       Querying topic: features_braila_flow211206H360_forecasting
+2022-10-11 13:32:21,907 src.kafka    INFO       Last offset: 708
+2022-10-11 13:32:23,914 src.kafka    ERROR      Timestamp bigger than limit: 9.36h
+2022-10-11 13:32:23,914 src.workflow INFO     Checking: Features Flow 211306H360
+2022-10-11 13:32:23,914 src.kafka    INFO       Querying topic: features_braila_flow211306H360_forecasting
+2022-10-11 13:32:24,321 src.kafka    INFO       Last offset: 781
+2022-10-11 13:32:26,328 src.kafka    ERROR      Timestamp bigger than limit: 8.36h
+2022-10-11 13:32:26,328 src.workflow INFO     Checking: Features Flow 318505H498
+2022-10-11 13:32:26,328 src.kafka    INFO       Querying topic: features_braila_flow318505H498_forecasting
+2022-10-11 13:32:26,736 src.kafka    INFO       Last offset: 619
+2022-10-11 13:32:28,743 src.kafka    ERROR      Timestamp bigger than limit: 9.36h
+2022-10-11 13:32:28,743 src.workflow INFO     Starting checks for: Predictions on Kafka
+2022-10-11 13:32:28,743 src.workflow INFO     Checking: Prediction Flow 211206H360
+2022-10-11 13:32:28,743 src.kafka    INFO       Querying topic: predictions_braila_flow211206H360_prediction
+2022-10-11 13:32:29,150 src.kafka    INFO       Last offset: 709
+2022-10-11 13:32:31,158 src.kafka    ERROR      Timestamp bigger than limit: 9.36h
+2022-10-11 13:32:31,158 src.workflow INFO     Checking: Prediction Flow 211306H360
+2022-10-11 13:32:31,159 src.kafka    INFO       Querying topic: predictions_braila_flow211306H360_prediction
+2022-10-11 13:32:31,567 src.kafka    INFO       Last offset: 781
+2022-10-11 13:32:33,576 src.kafka    ERROR      Timestamp bigger than limit: 8.36h
+2022-10-11 13:32:33,577 src.workflow INFO     Checking: Prediction Flow 318505H498
+2022-10-11 13:32:33,577 src.kafka    INFO       Querying topic: predictions_braila_flow318505H498_prediction
+2022-10-11 13:32:33,984 src.kafka    INFO       Last offset: 619
+2022-10-11 13:32:35,992 src.kafka    ERROR      Timestamp bigger than limit: 9.36h
+2022-10-11 13:32:35,992 src.workflow INFO     Starting checks for: Braila Consumption Upload -- NOT WORKING - CHANGE HORIZON
+2022-10-11 13:32:35,992 src.workflow INFO     Checking: Consumption flow318505H498
+2022-10-11 13:32:36,111 src.context  INFO       Trying: http://naiades.simavi.ro:1026/ngsi-ld/v1/entities/urn:ngsi-ld:Consumption-Romania:Romania-Braila-flow318505H498_24h
+2022-10-11 13:32:36,112 src.context  ERROR      Time checking error: expected string or bytes-like object
+2022-10-11 13:32:36,112 src.workflow INFO     Checking: Consumption flow211306H360
+2022-10-11 13:32:36,231 src.context  INFO       Trying: http://naiades.simavi.ro:1026/ngsi-ld/v1/entities/urn:ngsi-ld:Consumption-Romania:Romania-Braila-flow211306H360_24h
+2022-10-11 13:32:36,231 src.context  ERROR      Time checking error: expected string or bytes-like object
+2022-10-11 13:32:36,231 src.workflow INFO     Checking: Consumption flow211106H360
+2022-10-11 13:32:36,351 src.context  INFO       Trying: http://naiades.simavi.ro:1026/ngsi-ld/v1/entities/urn:ngsi-ld:Consumption-Romania:Romania-Braila-flow211106H360_24h
+2022-10-11 13:32:36,351 src.context  ERROR      Time checking error: expected string or bytes-like object
+2022-10-11 13:32:36,351 src.workflow INFO     Checking: Consumption flow211206H360
+2022-10-11 13:32:36,481 src.context  INFO       Trying: http://naiades.simavi.ro:1026/ngsi-ld/v1/entities/urn:ngsi-ld:Consumption-Romania:Romania-Braila-flow211206H360_24h
+2022-10-11 13:32:36,481 src.context  ERROR      Time checking error: expected string or bytes-like object
