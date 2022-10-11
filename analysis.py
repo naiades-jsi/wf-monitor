@@ -453,7 +453,8 @@ def create_msg():
 
     html = '''
     <html>
-    <p>...Report...<br>
+    <h1>Report NAIADES ecosystem</h1>
+    <p>
         {msg}
     </p>
     </html>
@@ -500,6 +501,12 @@ def main(sender_address, receiver_address, password):
     '''
 
     msg = create_msg()
+    # wirte message to the disk
+    with open("analysis.html", "w") as f:
+        f.write(msg)
+    # remove new lines \n from msg as it is being converted to <br> in an e-mail
+    msg = msg.replace("\n", "")
+
     #attachments = create_attachments()
     attachments = []
     yag = yagmail.SMTP(sender_address, password)
