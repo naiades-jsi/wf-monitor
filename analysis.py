@@ -428,7 +428,7 @@ def create_msg():
                 partial_report = f'<p><b>{file_name} ({update_time}):</b> <br> {num_errors} errors and {num_warnings} warnings...</p>'
 
             # new line
-            partial_report += '<br> --> '
+            partial_report += 'Issues: '
 
             # errors for which action type
             dict = {}
@@ -444,8 +444,8 @@ def create_msg():
             partial_report = partial_report[:-2]
 
             # add html table
-            table_part = '''
-            {table}
+            table_part = '''<br><br>
+            {table}<br><br>
             '''.format(table = create_table(filename))
             partial_report += table_part
 

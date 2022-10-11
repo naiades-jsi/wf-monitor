@@ -10,7 +10,6 @@
                 "Content-Type": "application/json"
             },
             "checks": [
-                { "name": "Level not used EA001-202", "device": "EA001-202-Level", "alert_diff": 16, "error_diff": 17 },
                 { "name": "Level EA001-36", "device": "EA001-36-Level", "alert_diff": 16, "error_diff": 17 },
                 { "name": "Level EA003-36", "device": "EA003-36-Conductivity", "alert_diff": 16, "error_diff": 17 },
                 { "name": "Level EA004-21", "device": "EA004-21-Conductivity", "alert_diff": 16, "error_diff": 17 },
@@ -29,7 +28,6 @@
             "organisation": "naiades",
             "bucket": "alicante",
             "checks": [
-                { "name": "Influx Level not used EA001-202", "measurement": "salinity_EA001_202_level", "alert_diff": 16, "error_diff": 17 },
                 { "name": "Influx Level EA001-36", "measurement": "salinity_EA001_36_level", "alert_diff": 16, "error_diff": 17 },
                 { "name": "Influx Level EA003-21", "measurement": "salinity_EA003_21_conductivity", "alert_diff": 16, "error_diff": 17 },
                 { "name": "Influx Level EA003-36", "measurement": "salinity_EA003_36_conductivity", "alert_diff": 16, "error_diff": 17 },
@@ -48,7 +46,6 @@
             "groupid": "wf-monitor-",
             "bootstrap_servers": "localhost:9092",
             "checks": [
-                { "name": "Fusion Level EA002-26", "topic": "features_alicante_salinity_EA001_36_level", "alert_diff": 16, "error_diff": 17 },
                 { "name": "Fusion EA003-21", "topic": "features_alicante_salinity_EA003_21_conductivity", "alert_diff": 16, "error_diff": 17 },
                 { "name": "Fusion EA003-36", "topic": "features_alicante_salinity_EA003_36_conductivity", "alert_diff": 16, "error_diff": 17 },
                 { "name": "Fusion EA002-26", "topic": "features_alicante_salinity_EA002_26_conductivity", "alert_diff": 16, "error_diff": 17 },
@@ -66,7 +63,6 @@
             "groupid": "wf-monitor-",
             "bootstrap_servers": "localhost:9092",
             "checks": [
-                { "name": "Anomalies Level EA001-36", "topic": "anomalies_alicante_salinity_EA001_36_level_meta_signal", "alert_diff": 16, "error_diff": 17 },
                 { "name": "Anomalies EA003-36", "topic": "anomalies_alicante_salinity_EA003_36_conductivity_meta_signal", "alert_diff": 16, "error_diff": 17 },
                 { "name": "Anomalies EA003-21", "topic": "anomalies_alicante_salinity_EA003_21_conductivity_meta_signal", "alert_diff": 16, "error_diff": 17 },
                 { "name": "Anomalies EA004-21", "topic": "anomalies_alicante_salinity_EA004_21_conductivity_meta_signal", "alert_diff": 16, "error_diff": 17 },
@@ -94,7 +90,6 @@
                 "Fiware-Service": "alicante"
             },
             "checks": [
-                { "name": "Metasignal EA001_36_level 7d ", "device": "EA001_36_level", "alert_diff": 24, "error_diff": 48 },
                 { "name": "Metasignal EA002_26_conductivity 7d", "device": "EA002_26_conductivity", "alert_diff": 24, "error_diff": 48 },
                 { "name": "Metasignal EA003_21_conductivity 7d", "device": "EA003_21_conductivity", "alert_diff": 24, "error_diff": 48 },
                 { "name": "Metasignal EA003_36_conductivity 7d", "device": "EA003_36_conductivity", "alert_diff": 24, "error_diff": 48 },
@@ -109,27 +104,6 @@
                 { "name": "Metasignal EA005_21_conductivity_up 7d", "device": "EA005_21_conductivity_up", "alert_diff": 24, "error_diff": 48 },
                 { "name": "Metasignal EA007_36_conductivity_up 7d", "device": "EA007_36_conductivity_up", "alert_diff": 24, "error_diff": 48 },
                 { "name": "Metasignal EA008_36_conductivity_up 7d", "device": "EA008_36_conductivity_up", "alert_diff": 24, "error_diff": 48 }
-            ]
-        },
-        {
-            "name": "Naiades Alicante Salinity -- NOT WORKING - CHECK URL",
-            "type": "naiades_context",
-            "subtype": "alicante_salinity",
-            "dateExtraction": {
-                "path": [
-                ],
-                "type": "string"
-            },
-            "url": "http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:Alert:ES-Alicante-{0}",
-            "headers": {
-                "Fiware-Service": "alicante"
-            },
-            "checks": [
-                { "name": "Alicante salinity salinity_EA001_36_level ", "device": "salinity_EA001_36_level", "alert_diff": 24, "error_diff": 48 },
-                { "name": "Alicante salinity salinity_EA001_36_level_duration", "device": "salinity_EA001_36_level_duration", "alert_diff": 24, "error_diff": 48 },
-                { "name": "Alicante salinity salinity_EA003_conductivity", "device": "salinity_EA003_36_conductivity", "alert_diff": 24, "error_diff": 48 },
-                { "name": "Alicante salinity salinity_EA003_conductivity_daily", "device": "salinity_EA003_36_conductivity_daily", "alert_diff": 24, "error_diff": 48 },
-                { "name": "Alicante salinity salinity_EA003_conductivity_hourly", "device": "salinity_EA003_36_conductivity_hourly", "alert_diff": 24, "error_diff": 48 }
             ]
         }
     ]
