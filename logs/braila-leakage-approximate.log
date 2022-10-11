@@ -1,0 +1,26 @@
+2022-10-11 13:02:49,948 wf-monitor   INFO     Starting workflow monitoring tool for: braila-leakage-approximate
+2022-10-11 13:02:49,949 src.workflow INFO     Loading config: config/workflows/braila-leakage-approximate.json
+2022-10-11 13:02:49,949 src.workflow INFO     Starting worklfow check
+2022-10-11 13:02:49,949 src.workflow INFO     Starting checks for: Naiades Historic API - WaterDemand
+2022-10-11 13:02:49,949 src.workflow INFO     Checking: Water Demand 211206H360
+2022-10-11 13:02:50,109 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-211206H360?lastN=1
+2022-10-11 13:02:50,110 src.historic INFO       Timestamp in the limits: 0.45h
+2022-10-11 13:02:50,111 src.workflow INFO     Checking: Water Demand 211306H360
+2022-10-11 13:02:50,269 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-211306H360?lastN=1
+2022-10-11 13:02:50,269 src.historic INFO       Timestamp in the limits: 0.35h
+2022-10-11 13:02:50,269 src.workflow INFO     Checking: Water Demand 318505H498
+2022-10-11 13:02:50,426 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-318505H498?lastN=1
+2022-10-11 13:02:50,426 src.historic INFO       Timestamp in the limits: 0.25h
+2022-10-11 13:02:50,426 src.workflow INFO     Starting checks for: Naiades Historic API - Pressure
+2022-10-11 13:02:50,426 src.workflow INFO     Checking: Pressure 5770
+2022-10-11 13:02:50,565 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:Pressure:Pressure-5770?lastN=1
+2022-10-11 13:02:50,565 src.historic WARNING    Timestamp bigger than limit: 7.77h
+2022-10-11 13:02:50,565 src.workflow INFO     Checking: Pressure 5771
+2022-10-11 13:02:50,709 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:Pressure:Pressure-5771?lastN=1
+2022-10-11 13:02:50,709 src.historic WARNING    Timestamp bigger than limit: 7.74h
+2022-10-11 13:02:50,709 src.workflow INFO     Checking: Pressure 5772
+2022-10-11 13:02:50,848 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:Pressure:Pressure-5772?lastN=1
+2022-10-11 13:02:50,848 src.historic WARNING    Timestamp bigger than limit: 7.72h
+2022-10-11 13:02:50,848 src.workflow INFO     Checking: Pressure 5773
+2022-10-11 13:02:50,985 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:Pressure:Pressure-5773?lastN=1
+2022-10-11 13:02:50,985 src.historic WARNING    Timestamp bigger than limit: 7.69h
