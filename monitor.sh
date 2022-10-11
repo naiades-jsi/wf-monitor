@@ -21,8 +21,12 @@ do
     python3 main.py -w braila-state-analysis &> logs/braila-state-analysis.log
 
     TIMESTAMP=$(date +"%F %T")
-    echo $TIMESTAMP "Running Braila Leakage Monitor"
+    echo $TIMESTAMP "Running Braila Leakage Accurate Monitor"
     python3 main.py -w braila-leakage-accurate &> logs/braila-leakage-accurate.log
+
+    TIMESTAMP=$(date +"%F %T")
+    echo $TIMESTAMP "Running Braila Leakage Approximate Monitor"
+    python3 main.py -w braila-leakage-approximate &> logs/braila-leakage-approximate.log
 
     TIMESTAMP=$(date +"%F %T")
     echo $TIMESTAMP "Running Monitor Analysis and Report Tool"

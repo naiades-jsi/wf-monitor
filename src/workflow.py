@@ -16,7 +16,7 @@ class Workflow:
     """Managing a particular workflow for NAIADES project."""
 
     def __init__(self, workflow: str = "carouge") -> None:
-        config_directory = "configs"
+        config_directory = "config/workflows"
 
         # differentiate between different workflows
         if (workflow == "carouge"):

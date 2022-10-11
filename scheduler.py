@@ -12,8 +12,8 @@ logging.basicConfig(
     format="%(asctime)s %(name)-12s %(levelname)-8s %(message)s", level=logging.INFO)
 
 def main(run_time):
-    config_file = os.path.join(os.getcwd(), 'configs', 'scheduler.json')
-    LOGGER.info("Loading...")
+    config_file = os.path.join(os.getcwd(), 'config', 'scheduler.json')
+    LOGGER.info("Loading ...")
     with open(config_file, "r") as json_file:
         data = json.load(json_file)
 
