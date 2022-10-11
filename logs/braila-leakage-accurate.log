@@ -1,84 +1,92 @@
-2022-10-06 14:32:37,088 wf-monitor   INFO     Starting workflow monitoring tool for: braila-leakage
-2022-10-06 14:32:37,088 src.workflow INFO     Loading config: configs/braila-leakage.json
-2022-10-06 14:32:37,088 src.workflow INFO     Starting worklfow check
-2022-10-06 14:32:37,088 src.workflow INFO     Starting checks for: Naiades Historic API - Noise sensors
-2022-10-06 14:32:37,088 src.workflow INFO     Checking: Noise sensor 2182
-2022-10-06 14:32:37,201 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:Noise:Noise-2182?lastN=1
-2022-10-06 14:32:37,203 src.historic ERROR      Timestamp bigger than limit: 3.54h
-2022-10-06 14:32:37,204 src.workflow INFO     Checking: Noise sensor 5980
-2022-10-06 14:32:37,314 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:Noise:Noise-5980?lastN=1
-2022-10-06 14:32:37,314 src.historic ERROR      Timestamp bigger than limit: 3.54h
-2022-10-06 14:32:37,315 src.workflow INFO     Checking: Noise sensor 5981
-2022-10-06 14:32:37,429 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:Noise:Noise-5981?lastN=1
-2022-10-06 14:32:37,429 src.historic ERROR      Timestamp bigger than limit: 3.54h
-2022-10-06 14:32:37,429 src.workflow INFO     Checking: Noise sensor 5982
-2022-10-06 14:32:37,536 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:Noise:Noise-5982?lastN=1
-2022-10-06 14:32:37,537 src.historic ERROR      Timestamp bigger than limit: 3.54h
-2022-10-06 14:32:37,537 src.workflow INFO     Starting checks for: Influx data
-2022-10-06 14:32:37,537 src.workflow INFO     Checking: Noise sensor 2182
-2022-10-06 14:32:37,537 src.influx   INFO       Building query
-2022-10-06 14:32:37,537 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "noise2182")|> last()
-2022-10-06 14:32:37,548 src.influx   INFO       Timestamp in the limits: 3.54h
-2022-10-06 14:32:37,548 src.workflow INFO     Checking: Noise sensor 5980
-2022-10-06 14:32:37,549 src.influx   INFO       Building query
-2022-10-06 14:32:37,549 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "noise5980")|> last()
-2022-10-06 14:32:37,559 src.influx   INFO       Timestamp in the limits: 3.54h
-2022-10-06 14:32:37,559 src.workflow INFO     Checking: Noise sensor 5981
-2022-10-06 14:32:37,559 src.influx   INFO       Building query
-2022-10-06 14:32:37,560 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "noise5981")|> last()
-2022-10-06 14:32:37,568 src.influx   INFO       Timestamp in the limits: 3.54h
-2022-10-06 14:32:37,569 src.workflow INFO     Checking: Noise sensor 5982
-2022-10-06 14:32:37,569 src.influx   INFO       Building query
-2022-10-06 14:32:37,569 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "noise5982")|> last()
-2022-10-06 14:32:37,577 src.influx   INFO       Timestamp in the limits: 3.54h
-2022-10-06 14:32:37,577 src.workflow INFO     Starting checks for: Data Fusion on Kafka
-2022-10-06 14:32:37,577 src.workflow INFO     Checking: Measurements Noise 2182
-2022-10-06 14:32:37,577 src.kafka    INFO       Querying topic: measurements_node_braila_noise2182
-2022-10-06 14:32:37,985 src.kafka    INFO       Last offset: 61
-2022-10-06 14:32:37,990 src.kafka    ERROR    'timestamp'
-2022-10-06 14:32:37,990 src.kafka    ERROR    'timestamp'
-2022-10-06 14:32:37,990 src.kafka    ERROR    'timestamp'
-2022-10-06 14:32:39,992 src.kafka    ERROR    No message in consumer!
-2022-10-06 14:32:39,993 src.workflow INFO     Checking: Measurements Noise 5980
-2022-10-06 14:32:39,993 src.kafka    INFO       Querying topic: measurements_node_braila_noise5980
-2022-10-06 14:32:40,402 src.kafka    INFO       Last offset: 61
-2022-10-06 14:32:40,406 src.kafka    ERROR    'timestamp'
-2022-10-06 14:32:40,406 src.kafka    ERROR    'timestamp'
-2022-10-06 14:32:40,406 src.kafka    ERROR    'timestamp'
-2022-10-06 14:32:42,408 src.kafka    ERROR    No message in consumer!
-2022-10-06 14:32:42,408 src.workflow INFO     Checking: Measurements Noise 5981
-2022-10-06 14:32:42,409 src.kafka    INFO       Querying topic: measurements_node_braila_noise5981
-2022-10-06 14:32:42,819 src.kafka    INFO       Last offset: 61
-2022-10-06 14:32:42,824 src.kafka    ERROR    'timestamp'
-2022-10-06 14:32:42,824 src.kafka    ERROR    'timestamp'
-2022-10-06 14:32:42,824 src.kafka    ERROR    'timestamp'
-2022-10-06 14:32:44,827 src.kafka    ERROR    No message in consumer!
-2022-10-06 14:32:44,827 src.workflow INFO     Checking: Measurements Noise 5982
-2022-10-06 14:32:44,827 src.kafka    INFO       Querying topic: measurements_node_braila_noise5982
-2022-10-06 14:32:45,235 src.kafka    INFO       Last offset: 61
-2022-10-06 14:32:45,242 src.kafka    ERROR    'timestamp'
-2022-10-06 14:32:45,242 src.kafka    ERROR    'timestamp'
-2022-10-06 14:32:45,242 src.kafka    ERROR    'timestamp'
-2022-10-06 14:32:47,244 src.kafka    ERROR    No message in consumer!
-2022-10-06 14:32:47,244 src.workflow INFO     Starting checks for: Predictions on Kafka
-2022-10-06 14:32:47,244 src.workflow INFO     Checking: Predicted Location 2182
-2022-10-06 14:32:47,244 src.kafka    INFO       Querying topic: braila_leakage_position2182
-2022-10-06 14:32:47,652 src.kafka    INFO       Last offset: 0
-2022-10-06 14:32:49,655 src.kafka    ERROR    No message in consumer!
-2022-10-06 14:32:49,655 src.workflow INFO     Checking: Predicted Location 5980
-2022-10-06 14:32:49,655 src.kafka    INFO       Querying topic: braila_leakage_position5980
-2022-10-06 14:32:50,063 src.kafka    INFO       Last offset: 0
-2022-10-06 14:32:52,066 src.kafka    ERROR    No message in consumer!
-2022-10-06 14:32:52,066 src.workflow INFO     Checking: Predicted Location 5981
-2022-10-06 14:32:52,066 src.kafka    INFO       Querying topic: braila_leakage_position5981
-2022-10-06 14:32:52,474 src.kafka    INFO       Last offset: 0
-2022-10-06 14:32:54,476 src.kafka    ERROR    No message in consumer!
-2022-10-06 14:32:54,476 src.workflow INFO     Checking: Predicted Location 5982
-2022-10-06 14:32:54,476 src.kafka    INFO       Querying topic: braila_leakage_position5982
-2022-10-06 14:32:54,887 src.kafka    INFO       Last offset: 0
-2022-10-06 14:32:56,888 src.kafka    ERROR    No message in consumer!
-2022-10-06 14:32:56,889 src.workflow INFO     Starting checks for: Braila Leakage Upload -- NOT WORKING - ADD DATE ISSUED
-2022-10-06 14:32:56,889 src.workflow INFO     Checking: Noise sensor 2182 upload
-2022-10-06 14:32:56,889 src.workflow INFO     Checking: Noise sensor 5980 upload
-2022-10-06 14:32:56,889 src.workflow INFO     Checking: Noise sensor 5981 upload
-2022-10-06 14:32:56,889 src.workflow INFO     Checking: Noise sensor 5982 upload
+2022-10-11 13:02:28,998 wf-monitor   INFO     Starting workflow monitoring tool for: braila-leakage-accurate
+2022-10-11 13:02:28,998 src.workflow INFO     Loading config: config/workflows/braila-leakage-accurate.json
+2022-10-11 13:02:28,998 src.workflow INFO     Starting worklfow check
+2022-10-11 13:02:28,998 src.workflow INFO     Starting checks for: Naiades Historic API - Noise sensors
+2022-10-11 13:02:28,998 src.workflow INFO     Checking: Noise sensor 2182
+2022-10-11 13:02:29,138 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:Noise:Noise-2182?lastN=1
+2022-10-11 13:02:29,140 src.historic WARNING    Timestamp bigger than limit: 2.04h
+2022-10-11 13:02:29,140 src.workflow INFO     Checking: Noise sensor 5980
+2022-10-11 13:02:29,277 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:Noise:Noise-5980?lastN=1
+2022-10-11 13:02:29,277 src.historic WARNING    Timestamp bigger than limit: 2.04h
+2022-10-11 13:02:29,277 src.workflow INFO     Checking: Noise sensor 5981
+2022-10-11 13:02:29,414 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:Noise:Noise-5981?lastN=1
+2022-10-11 13:02:29,414 src.historic WARNING    Timestamp bigger than limit: 2.04h
+2022-10-11 13:02:29,414 src.workflow INFO     Checking: Noise sensor 5982
+2022-10-11 13:02:29,551 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:Noise:Noise-5982?lastN=1
+2022-10-11 13:02:29,551 src.historic WARNING    Timestamp bigger than limit: 2.04h
+2022-10-11 13:02:29,551 src.workflow INFO     Starting checks for: Influx data
+2022-10-11 13:02:29,552 src.workflow INFO     Checking: Noise sensor 2182
+2022-10-11 13:02:29,552 src.influx   INFO       Building query
+2022-10-11 13:02:29,552 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "noise2182")|> last()
+2022-10-11 13:02:29,566 src.influx   WARNING    Timestamp bigger than limit: 2.04h
+2022-10-11 13:02:29,566 src.workflow INFO     Checking: Noise sensor 5980
+2022-10-11 13:02:29,567 src.influx   INFO       Building query
+2022-10-11 13:02:29,567 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "noise5980")|> last()
+2022-10-11 13:02:29,578 src.influx   WARNING    Timestamp bigger than limit: 2.04h
+2022-10-11 13:02:29,578 src.workflow INFO     Checking: Noise sensor 5981
+2022-10-11 13:02:29,578 src.influx   INFO       Building query
+2022-10-11 13:02:29,578 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "noise5981")|> last()
+2022-10-11 13:02:29,589 src.influx   WARNING    Timestamp bigger than limit: 2.04h
+2022-10-11 13:02:29,589 src.workflow INFO     Checking: Noise sensor 5982
+2022-10-11 13:02:29,589 src.influx   INFO       Building query
+2022-10-11 13:02:29,589 src.influx   INFO       Running query: from(bucket: "braila")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "noise5982")|> last()
+2022-10-11 13:02:29,599 src.influx   WARNING    Timestamp bigger than limit: 2.04h
+2022-10-11 13:02:29,600 src.workflow INFO     Starting checks for: Data Fusion on Kafka
+2022-10-11 13:02:29,600 src.workflow INFO     Checking: Measurements Noise 2182
+2022-10-11 13:02:29,600 src.kafka    INFO       Querying topic: measurements_node_braila_noise2182
+2022-10-11 13:02:30,007 src.kafka    INFO       Last offset: 66
+2022-10-11 13:02:30,012 src.kafka    ERROR    'timestamp'
+2022-10-11 13:02:30,012 src.kafka    ERROR    'timestamp'
+2022-10-11 13:02:30,012 src.kafka    ERROR    'timestamp'
+2022-10-11 13:02:32,013 src.kafka    ERROR    No message in consumer!
+2022-10-11 13:02:32,014 src.workflow INFO     Checking: Measurements Noise 5980
+2022-10-11 13:02:32,014 src.kafka    INFO       Querying topic: measurements_node_braila_noise5980
+2022-10-11 13:02:32,421 src.kafka    INFO       Last offset: 66
+2022-10-11 13:02:32,425 src.kafka    ERROR    'timestamp'
+2022-10-11 13:02:32,425 src.kafka    ERROR    'timestamp'
+2022-10-11 13:02:32,425 src.kafka    ERROR    'timestamp'
+2022-10-11 13:02:34,427 src.kafka    ERROR    No message in consumer!
+2022-10-11 13:02:34,428 src.workflow INFO     Checking: Measurements Noise 5981
+2022-10-11 13:02:34,428 src.kafka    INFO       Querying topic: measurements_node_braila_noise5981
+2022-10-11 13:02:34,836 src.kafka    INFO       Last offset: 66
+2022-10-11 13:02:34,841 src.kafka    ERROR    'timestamp'
+2022-10-11 13:02:34,841 src.kafka    ERROR    'timestamp'
+2022-10-11 13:02:34,842 src.kafka    ERROR    'timestamp'
+2022-10-11 13:02:36,843 src.kafka    ERROR    No message in consumer!
+2022-10-11 13:02:36,844 src.workflow INFO     Checking: Measurements Noise 5982
+2022-10-11 13:02:36,844 src.kafka    INFO       Querying topic: measurements_node_braila_noise5982
+2022-10-11 13:02:37,251 src.kafka    INFO       Last offset: 66
+2022-10-11 13:02:37,255 src.kafka    ERROR    'timestamp'
+2022-10-11 13:02:37,255 src.kafka    ERROR    'timestamp'
+2022-10-11 13:02:37,255 src.kafka    ERROR    'timestamp'
+2022-10-11 13:02:39,258 src.kafka    ERROR    No message in consumer!
+2022-10-11 13:02:39,258 src.workflow INFO     Starting checks for: Predictions on Kafka
+2022-10-11 13:02:39,258 src.workflow INFO     Checking: Predicted Location 2182
+2022-10-11 13:02:39,258 src.kafka    INFO       Querying topic: braila_leakage_position2182
+2022-10-11 13:02:39,665 src.kafka    INFO       Last offset: 0
+2022-10-11 13:02:41,667 src.kafka    ERROR    No message in consumer!
+2022-10-11 13:02:41,667 src.workflow INFO     Checking: Predicted Location 5980
+2022-10-11 13:02:41,667 src.kafka    INFO       Querying topic: braila_leakage_position5980
+2022-10-11 13:02:42,074 src.kafka    INFO       Last offset: 0
+2022-10-11 13:02:44,077 src.kafka    ERROR    No message in consumer!
+2022-10-11 13:02:44,077 src.workflow INFO     Checking: Predicted Location 5981
+2022-10-11 13:02:44,077 src.kafka    INFO       Querying topic: braila_leakage_position5981
+2022-10-11 13:02:44,485 src.kafka    INFO       Last offset: 0
+2022-10-11 13:02:46,487 src.kafka    ERROR    No message in consumer!
+2022-10-11 13:02:46,487 src.workflow INFO     Checking: Predicted Location 5982
+2022-10-11 13:02:46,487 src.kafka    INFO       Querying topic: braila_leakage_position5982
+2022-10-11 13:02:46,895 src.kafka    INFO       Last offset: 0
+2022-10-11 13:02:48,897 src.kafka    ERROR    No message in consumer!
+2022-10-11 13:02:48,898 src.workflow INFO     Starting checks for: Braila Accurate Leakage Upload -- NOT WORKING - ADD DATE ISSUED
+2022-10-11 13:02:48,898 src.workflow INFO     Checking: Noise sensor 2182 upload
+2022-10-11 13:02:49,018 src.context  INFO       Trying: http://naiades.simavi.ro:1026/ngsi-ld/v1/entities/urn:ngsi-ld:Noise:Noise-2182
+2022-10-11 13:02:49,018 src.context  ERROR      Time checking error: expected string or bytes-like object
+2022-10-11 13:02:49,018 src.workflow INFO     Checking: Noise sensor 5980 upload
+2022-10-11 13:02:49,138 src.context  INFO       Trying: http://naiades.simavi.ro:1026/ngsi-ld/v1/entities/urn:ngsi-ld:Noise:Noise-5980
+2022-10-11 13:02:49,138 src.context  ERROR      Time checking error: expected string or bytes-like object
+2022-10-11 13:02:49,138 src.workflow INFO     Checking: Noise sensor 5981 upload
+2022-10-11 13:02:49,260 src.context  INFO       Trying: http://naiades.simavi.ro:1026/ngsi-ld/v1/entities/urn:ngsi-ld:Noise:Noise-5981
+2022-10-11 13:02:49,260 src.context  ERROR      Time checking error: expected string or bytes-like object
+2022-10-11 13:02:49,260 src.workflow INFO     Checking: Noise sensor 5982 upload
+2022-10-11 13:02:49,379 src.context  INFO       Trying: http://naiades.simavi.ro:1026/ngsi-ld/v1/entities/urn:ngsi-ld:Noise:Noise-5982
+2022-10-11 13:02:49,379 src.context  ERROR      Time checking error: expected string or bytes-like object

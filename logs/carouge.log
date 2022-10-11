@@ -1,176 +1,170 @@
-2022-10-06 14:29:13,671 wf-monitor   INFO     Starting workflow monitoring tool for: carouge
-2022-10-06 14:29:13,672 src.workflow INFO     Loading config: configs/carouge.json
-2022-10-06 14:29:13,672 src.workflow INFO     Starting worklfow check
-2022-10-06 14:29:13,672 src.workflow INFO     Starting checks for: Naiades Historic API - Carouge
-2022-10-06 14:29:13,672 src.workflow INFO     Checking: FlowerBed 1
-2022-10-06 14:29:13,769 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Device-1f0d?attrs=deviceState,owner,value&lastN=1
-2022-10-06 14:29:13,771 src.historic INFO       Timestamp in the limits: 0.04h
-2022-10-06 14:29:13,771 src.workflow INFO     Checking: FlowerBed 2
-2022-10-06 14:29:13,852 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Device-1f08?attrs=deviceState,owner,value&lastN=1
-2022-10-06 14:29:13,852 src.historic ERROR      Timestamp bigger than limit: 219.75h
-2022-10-06 14:29:13,852 src.workflow INFO     Checking: FlowerBed 3
-2022-10-06 14:29:13,945 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Device-1f10?attrs=deviceState,owner,value&lastN=1
-2022-10-06 14:29:13,945 src.historic INFO       Timestamp in the limits: 0.30h
-2022-10-06 14:29:13,946 src.workflow INFO     Checking: FlowerBed 4
-2022-10-06 14:29:14,035 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Device-1f06?attrs=deviceState,owner,value&lastN=1
-2022-10-06 14:29:14,035 src.historic INFO       Timestamp in the limits: 0.61h
-2022-10-06 14:29:14,035 src.workflow INFO     Checking: FlowerBed 5
-2022-10-06 14:29:14,126 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Device-1efd?attrs=deviceState,owner,value&lastN=1
-2022-10-06 14:29:14,126 src.historic INFO       Timestamp in the limits: 0.19h
-2022-10-06 14:29:14,126 src.workflow INFO     Checking: FlowerBed 6
-2022-10-06 14:29:14,208 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Device-1eff?attrs=deviceState,owner,value&lastN=1
-2022-10-06 14:29:14,208 src.historic INFO       Timestamp in the limits: 0.03h
-2022-10-06 14:29:14,208 src.workflow INFO     Checking: FlowerBed 7
-2022-10-06 14:29:14,297 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Device-1f02?attrs=deviceState,owner,value&lastN=1
-2022-10-06 14:29:14,298 src.historic INFO       Timestamp in the limits: 0.27h
-2022-10-06 14:29:14,298 src.workflow INFO     Checking: FlowerBed 8
-2022-10-06 14:29:14,375 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Device-1efe?attrs=deviceState,owner,value&lastN=1
-2022-10-06 14:29:14,375 src.historic INFO       Timestamp in the limits: 0.03h
-2022-10-06 14:29:14,376 src.workflow INFO     Starting checks for: Naiades Historic API Environmental
-2022-10-06 14:29:14,376 src.workflow INFO     Checking: SuisseMeteo Weather Observation
-2022-10-06 14:29:14,462 src.historic INFO       Trying: http://test.naiades-project.eu:8668/v2/entities/urn:ngsi-ld:WeatherObserved:WeatherObserved?lastN=1
-2022-10-06 14:29:14,462 src.historic INFO       Timestamp in the limits: -1.51h
-2022-10-06 14:29:14,462 src.workflow INFO     Starting checks for: Influx data
-2022-10-06 14:29:14,462 src.workflow INFO     Checking: Influx FlowerBed 1
-2022-10-06 14:29:14,463 src.influx   INFO       Building query
-2022-10-06 14:29:14,463 src.influx   INFO       Running query: from(bucket: "carouge")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "device_1f0d")|> last()
-2022-10-06 14:29:14,475 src.influx   INFO       Timestamp in the limits: 1.04h
-2022-10-06 14:29:14,475 src.workflow INFO     Checking: Influx FlowerBed 2
-2022-10-06 14:29:14,475 src.influx   INFO       Building query
-2022-10-06 14:29:14,475 src.influx   INFO       Running query: from(bucket: "carouge")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "device_1f08")|> last()
-2022-10-06 14:29:14,483 src.influx   ERROR      No data in last week: Influx FlowerBed 2
-2022-10-06 14:29:14,484 src.workflow INFO     Checking: Influx FlowerBed 3
-2022-10-06 14:29:14,484 src.influx   INFO       Building query
-2022-10-06 14:29:14,484 src.influx   INFO       Running query: from(bucket: "carouge")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "device_1f10")|> last()
-2022-10-06 14:29:14,492 src.influx   INFO       Timestamp in the limits: 0.97h
-2022-10-06 14:29:14,492 src.workflow INFO     Checking: Influx FlowerBed 4
-2022-10-06 14:29:14,492 src.influx   INFO       Building query
-2022-10-06 14:29:14,492 src.influx   INFO       Running query: from(bucket: "carouge")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "device_1f06")|> last()
-2022-10-06 14:29:14,501 src.influx   INFO       Timestamp in the limits: 1.61h
-2022-10-06 14:29:14,501 src.workflow INFO     Checking: Influx FlowerBed 5
-2022-10-06 14:29:14,501 src.influx   INFO       Building query
-2022-10-06 14:29:14,501 src.influx   INFO       Running query: from(bucket: "carouge")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "device_1efd")|> last()
-2022-10-06 14:29:14,509 src.influx   INFO       Timestamp in the limits: 0.86h
-2022-10-06 14:29:14,509 src.workflow INFO     Checking: Influx FlowerBed 6
-2022-10-06 14:29:14,509 src.influx   INFO       Building query
-2022-10-06 14:29:14,509 src.influx   INFO       Running query: from(bucket: "carouge")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "device_1eff")|> last()
-2022-10-06 14:29:14,517 src.influx   INFO       Timestamp in the limits: 0.69h
-2022-10-06 14:29:14,517 src.workflow INFO     Checking: Influx FlowerBed 7
-2022-10-06 14:29:14,517 src.influx   INFO       Building query
-2022-10-06 14:29:14,517 src.influx   INFO       Running query: from(bucket: "carouge")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "device_1f02")|> last()
-2022-10-06 14:29:14,526 src.influx   INFO       Timestamp in the limits: 0.94h
-2022-10-06 14:29:14,526 src.workflow INFO     Checking: Influx FlowerBed 8
-2022-10-06 14:29:14,526 src.influx   INFO       Building query
-2022-10-06 14:29:14,526 src.influx   INFO       Running query: from(bucket: "carouge")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "device_1efe")|> last()
-2022-10-06 14:29:14,534 src.influx   INFO       Timestamp in the limits: 1.03h
-2022-10-06 14:29:14,534 src.workflow INFO     Checking: Influx Weather Oserved
-2022-10-06 14:29:14,534 src.influx   INFO       Building query
-2022-10-06 14:29:14,534 src.influx   INFO       Running query: from(bucket: "carouge")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "weather_observed")|> last()
-2022-10-06 14:29:14,543 src.influx   INFO       Timestamp in the limits: 0.49h
-2022-10-06 14:29:14,543 src.workflow INFO     Starting checks for: Data Fusion on Kafka
-2022-10-06 14:29:14,543 src.workflow INFO     Checking: Fusion FlowerBed 1
-2022-10-06 14:29:14,543 src.kafka    INFO       Querying topic: features_carouge_flowerbed1
-2022-10-06 14:29:14,952 src.kafka    INFO       Last offset: 1026
-2022-10-06 14:29:16,959 src.kafka    INFO       Timestamp in the limits: 0.18h
-2022-10-06 14:29:16,959 src.workflow INFO     Checking: Fusion FlowerBed 2
-2022-10-06 14:29:16,959 src.kafka    INFO       Querying topic: features_carouge_flowerbed2
-2022-10-06 14:29:17,369 src.kafka    INFO       Last offset: 810
-2022-10-06 14:29:19,376 src.kafka    ERROR      Timestamp bigger than limit: 220.18h
-2022-10-06 14:29:19,376 src.workflow INFO     Checking: Fusion FlowerBed 3
-2022-10-06 14:29:19,376 src.kafka    INFO       Querying topic: features_carouge_flowerbed3
-2022-10-06 14:29:19,784 src.kafka    INFO       Last offset: 1047
-2022-10-06 14:29:21,790 src.kafka    INFO       Timestamp in the limits: 0.19h
-2022-10-06 14:29:21,790 src.workflow INFO     Checking: Fusion FlowerBed 4
-2022-10-06 14:29:21,790 src.kafka    INFO       Querying topic: features_carouge_flowerbed4
-2022-10-06 14:29:22,198 src.kafka    INFO       Last offset: 782
-2022-10-06 14:29:24,205 src.kafka    INFO       Timestamp in the limits: 2.19h
-2022-10-06 14:29:24,205 src.workflow INFO     Checking: Fusion FlowerBed 5
-2022-10-06 14:29:24,205 src.kafka    INFO       Querying topic: features_carouge_flowerbed5
-2022-10-06 14:29:24,613 src.kafka    INFO       Last offset: 1043
-2022-10-06 14:29:26,620 src.kafka    INFO       Timestamp in the limits: 0.19h
-2022-10-06 14:29:26,620 src.workflow INFO     Checking: Fusion FlowerBed 6
-2022-10-06 14:29:26,620 src.kafka    INFO       Querying topic: features_carouge_flowerbed6
-2022-10-06 14:29:27,029 src.kafka    INFO       Last offset: 1048
-2022-10-06 14:29:29,036 src.kafka    INFO       Timestamp in the limits: 0.19h
-2022-10-06 14:29:29,037 src.workflow INFO     Checking: Fusion FlowerBed 7
-2022-10-06 14:29:29,037 src.kafka    INFO       Querying topic: features_carouge_flowerbed7
-2022-10-06 14:29:29,445 src.kafka    INFO       Last offset: 1047
-2022-10-06 14:29:31,451 src.kafka    INFO       Timestamp in the limits: 0.19h
-2022-10-06 14:29:31,451 src.workflow INFO     Checking: Fusion FlowerBed 8
-2022-10-06 14:29:31,451 src.kafka    INFO       Querying topic: features_carouge_flowerbed8
-2022-10-06 14:29:31,860 src.kafka    INFO       Last offset: 1047
-2022-10-06 14:29:33,867 src.kafka    INFO       Timestamp in the limits: 1.19h
-2022-10-06 14:29:33,867 src.workflow INFO     Starting checks for: Predictions on Kafka
-2022-10-06 14:29:33,867 src.workflow INFO     Checking: Prediction FlowerBed 1
-2022-10-06 14:29:33,867 src.kafka    INFO       Querying topic: device_1f0d_pred_output
-2022-10-06 14:29:34,276 src.kafka    INFO       Last offset: 2
-2022-10-06 14:29:36,283 src.kafka    WARNING    No watering time was given!
-2022-10-06 14:29:36,283 src.kafka    WARNING    No watering amount was given!
-2022-10-06 14:29:36,283 src.kafka    WARNING    Timestamp bigger than limit: 7.49h
-2022-10-06 14:29:36,283 src.workflow INFO     Checking: Prediction FlowerBed 2
-2022-10-06 14:29:36,283 src.kafka    INFO       Querying topic: device_1f08_pred_output
-2022-10-06 14:29:36,693 src.kafka    INFO       Last offset: 2
-2022-10-06 14:29:38,699 src.kafka    WARNING    No watering time was given!
-2022-10-06 14:29:38,699 src.kafka    WARNING    No watering amount was given!
-2022-10-06 14:29:38,699 src.kafka    WARNING    Timestamp bigger than limit: 7.49h
-2022-10-06 14:29:38,700 src.workflow INFO     Checking: Prediction FlowerBed 3
-2022-10-06 14:29:38,700 src.kafka    INFO       Querying topic: device_1f10_pred_output
-2022-10-06 14:29:39,108 src.kafka    INFO       Last offset: 2
-2022-10-06 14:29:41,115 src.kafka    WARNING    No watering time was given!
-2022-10-06 14:29:41,115 src.kafka    WARNING    No watering amount was given!
-2022-10-06 14:29:41,115 src.kafka    WARNING    Timestamp bigger than limit: 7.49h
-2022-10-06 14:29:41,115 src.workflow INFO     Checking: Prediction FlowerBed 4
-2022-10-06 14:29:41,115 src.kafka    INFO       Querying topic: device_1f06_pred_output
-2022-10-06 14:29:41,525 src.kafka    INFO       Last offset: 2
-2022-10-06 14:29:43,533 src.kafka    WARNING    No watering time was given!
-2022-10-06 14:29:43,533 src.kafka    WARNING    No watering amount was given!
-2022-10-06 14:29:43,533 src.kafka    WARNING    Timestamp bigger than limit: 7.50h
-2022-10-06 14:29:43,533 src.workflow INFO     Checking: Prediction FlowerBed 5
-2022-10-06 14:29:43,533 src.kafka    INFO       Querying topic: device_1efd_pred_output
-2022-10-06 14:29:43,943 src.kafka    INFO       Last offset: 2
-2022-10-06 14:29:45,949 src.kafka    WARNING    No watering time was given!
-2022-10-06 14:29:45,949 src.kafka    WARNING    No watering amount was given!
-2022-10-06 14:29:45,949 src.kafka    WARNING    Timestamp bigger than limit: 7.50h
-2022-10-06 14:29:45,949 src.workflow INFO     Checking: Prediction FlowerBed 6
-2022-10-06 14:29:45,949 src.kafka    INFO       Querying topic: device_1eff_pred_output
-2022-10-06 14:29:46,359 src.kafka    INFO       Last offset: 2
-2022-10-06 14:29:48,370 src.kafka    WARNING    No watering time was given!
-2022-10-06 14:29:48,370 src.kafka    WARNING    No watering amount was given!
-2022-10-06 14:29:48,370 src.kafka    WARNING    Timestamp bigger than limit: 7.50h
-2022-10-06 14:29:48,370 src.workflow INFO     Checking: Prediction FlowerBed 7
-2022-10-06 14:29:48,370 src.kafka    INFO       Querying topic: device_1f02_pred_output
-2022-10-06 14:29:48,778 src.kafka    INFO       Last offset: 2
-2022-10-06 14:29:50,784 src.kafka    WARNING    No watering time was given!
-2022-10-06 14:29:50,785 src.kafka    WARNING    No watering amount was given!
-2022-10-06 14:29:50,785 src.kafka    WARNING    Timestamp bigger than limit: 7.50h
-2022-10-06 14:29:50,785 src.workflow INFO     Checking: Prediction FlowerBed 8
-2022-10-06 14:29:50,785 src.kafka    INFO       Querying topic: device_1efe_pred_output
-2022-10-06 14:29:51,193 src.kafka    INFO       Last offset: 2
-2022-10-06 14:29:53,199 src.kafka    WARNING    No watering time was given!
-2022-10-06 14:29:53,199 src.kafka    WARNING    No watering amount was given!
-2022-10-06 14:29:53,199 src.kafka    WARNING    Timestamp bigger than limit: 7.50h
-2022-10-06 14:29:53,199 src.workflow INFO     Starting checks for: Naiades Context API - Watering Forecast
-2022-10-06 14:29:53,199 src.workflow INFO     Checking: FlowerBed 1 Watering Forecast
-2022-10-06 14:29:53,251 src.context  INFO       Trying: http://5.53.108.182:1026/v2/entities/urn:ngsi-ld:FlowerBed:FlowerBed-1
-2022-10-06 14:29:53,251 src.context  ERROR      Time checking error: 'ContextCheck' object has no attribute 'subtype'
-2022-10-06 14:29:53,251 src.workflow INFO     Checking: FlowerBed 2 Watering Forecast
-2022-10-06 14:29:53,301 src.context  INFO       Trying: http://5.53.108.182:1026/v2/entities/urn:ngsi-ld:FlowerBed:FlowerBed-2
-2022-10-06 14:29:53,301 src.context  ERROR      Time checking error: 'ContextCheck' object has no attribute 'subtype'
-2022-10-06 14:29:53,301 src.workflow INFO     Checking: FlowerBed 3 Watering Forecast
-2022-10-06 14:29:53,351 src.context  INFO       Trying: http://5.53.108.182:1026/v2/entities/urn:ngsi-ld:FlowerBed:FlowerBed-3
-2022-10-06 14:29:53,351 src.context  ERROR      Time checking error: 'ContextCheck' object has no attribute 'subtype'
-2022-10-06 14:29:53,351 src.workflow INFO     Checking: FlowerBed 4 Watering Forecast
-2022-10-06 14:29:53,402 src.context  INFO       Trying: http://5.53.108.182:1026/v2/entities/urn:ngsi-ld:FlowerBed:FlowerBed-4
-2022-10-06 14:29:53,402 src.context  ERROR      Time checking error: 'ContextCheck' object has no attribute 'subtype'
-2022-10-06 14:29:53,402 src.workflow INFO     Checking: FlowerBed 5 Watering Forecast
-2022-10-06 14:29:53,450 src.context  INFO       Trying: http://5.53.108.182:1026/v2/entities/urn:ngsi-ld:FlowerBed:FlowerBed-5
-2022-10-06 14:29:53,451 src.context  ERROR      Time checking error: 'ContextCheck' object has no attribute 'subtype'
-2022-10-06 14:29:53,451 src.workflow INFO     Checking: FlowerBed 6 Watering Forecast
-2022-10-06 14:29:53,500 src.context  INFO       Trying: http://5.53.108.182:1026/v2/entities/urn:ngsi-ld:FlowerBed:FlowerBed-6
-2022-10-06 14:29:53,500 src.context  ERROR      Time checking error: 'ContextCheck' object has no attribute 'subtype'
-2022-10-06 14:29:53,500 src.workflow INFO     Checking: FlowerBed 7 Watering Forecast
-2022-10-06 14:29:53,549 src.context  INFO       Trying: http://5.53.108.182:1026/v2/entities/urn:ngsi-ld:FlowerBed:FlowerBed-7
-2022-10-06 14:29:53,549 src.context  ERROR      Time checking error: 'ContextCheck' object has no attribute 'subtype'
-2022-10-06 14:29:53,549 src.workflow INFO     Checking: FlowerBed 8 Watering Forecast
-2022-10-06 14:29:53,598 src.context  INFO       Trying: http://5.53.108.182:1026/v2/entities/urn:ngsi-ld:FlowerBed:FlowerBed-8
-2022-10-06 14:29:53,598 src.context  ERROR      Time checking error: 'ContextCheck' object has no attribute 'subtype'
+2022-10-11 12:59:37,340 wf-monitor   INFO     Starting workflow monitoring tool for: carouge
+2022-10-11 12:59:37,340 src.workflow INFO     Loading config: config/workflows/carouge.json
+2022-10-11 12:59:37,340 src.workflow INFO     Starting worklfow check
+2022-10-11 12:59:37,340 src.workflow INFO     Starting checks for: Naiades Historic API - Carouge
+2022-10-11 12:59:37,340 src.workflow INFO     Checking: FlowerBed 1
+2022-10-11 12:59:37,447 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Device-1f0d?attrs=deviceState,owner,value&lastN=1
+2022-10-11 12:59:37,448 src.historic INFO       Timestamp in the limits: 0.21h
+2022-10-11 12:59:37,448 src.workflow INFO     Checking: FlowerBed 2
+2022-10-11 12:59:37,535 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Device-1f08?attrs=deviceState,owner,value&lastN=1
+2022-10-11 12:59:37,536 src.historic ERROR      Timestamp bigger than limit: 95.76h
+2022-10-11 12:59:37,536 src.workflow INFO     Checking: FlowerBed 3
+2022-10-11 12:59:37,622 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Device-1f10?attrs=deviceState,owner,value&lastN=1
+2022-10-11 12:59:37,622 src.historic INFO       Timestamp in the limits: 0.14h
+2022-10-11 12:59:37,622 src.workflow INFO     Checking: FlowerBed 4
+2022-10-11 12:59:37,725 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Device-1f06?attrs=deviceState,owner,value&lastN=1
+2022-10-11 12:59:37,725 src.historic INFO       Timestamp in the limits: 0.11h
+2022-10-11 12:59:37,725 src.workflow INFO     Checking: FlowerBed 5
+2022-10-11 12:59:37,814 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Device-1efd?attrs=deviceState,owner,value&lastN=1
+2022-10-11 12:59:37,815 src.historic INFO       Timestamp in the limits: 0.03h
+2022-10-11 12:59:37,815 src.workflow INFO     Checking: FlowerBed 6
+2022-10-11 12:59:37,904 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Device-1eff?attrs=deviceState,owner,value&lastN=1
+2022-10-11 12:59:37,904 src.historic INFO       Timestamp in the limits: 0.20h
+2022-10-11 12:59:37,904 src.workflow INFO     Checking: FlowerBed 7
+2022-10-11 12:59:37,992 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Device-1f02?attrs=deviceState,owner,value&lastN=1
+2022-10-11 12:59:37,992 src.historic INFO       Timestamp in the limits: 0.11h
+2022-10-11 12:59:37,992 src.workflow INFO     Checking: FlowerBed 8
+2022-10-11 12:59:38,068 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Device-1efe?attrs=deviceState,owner,value&lastN=1
+2022-10-11 12:59:38,068 src.historic INFO       Timestamp in the limits: 0.20h
+2022-10-11 12:59:38,068 src.workflow INFO     Starting checks for: Naiades Historic API Environmental
+2022-10-11 12:59:38,068 src.workflow INFO     Checking: SuisseMeteo Weather Observation
+2022-10-11 12:59:38,148 src.historic INFO       Trying: http://test.naiades-project.eu:8668/v2/entities/urn:ngsi-ld:WeatherObserved:WeatherObserved?lastN=1
+2022-10-11 12:59:38,148 src.historic INFO       Timestamp in the limits: -2.01h
+2022-10-11 12:59:38,148 src.workflow INFO     Starting checks for: Influx data
+2022-10-11 12:59:38,148 src.workflow INFO     Checking: Influx FlowerBed 1
+2022-10-11 12:59:38,149 src.influx   INFO       Building query
+2022-10-11 12:59:38,149 src.influx   INFO       Running query: from(bucket: "carouge")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "device_1f0d")|> last()
+2022-10-11 12:59:38,161 src.influx   INFO       Timestamp in the limits: 0.21h
+2022-10-11 12:59:38,161 src.workflow INFO     Checking: Influx FlowerBed 2
+2022-10-11 12:59:38,161 src.influx   INFO       Building query
+2022-10-11 12:59:38,162 src.influx   INFO       Running query: from(bucket: "carouge")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "device_1f08")|> last()
+2022-10-11 12:59:38,172 src.influx   ERROR      Timestamp bigger than limit: 95.76h
+2022-10-11 12:59:38,172 src.workflow INFO     Checking: Influx FlowerBed 3
+2022-10-11 12:59:38,172 src.influx   INFO       Building query
+2022-10-11 12:59:38,172 src.influx   INFO       Running query: from(bucket: "carouge")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "device_1f10")|> last()
+2022-10-11 12:59:38,182 src.influx   INFO       Timestamp in the limits: 0.47h
+2022-10-11 12:59:38,182 src.workflow INFO     Checking: Influx FlowerBed 4
+2022-10-11 12:59:38,182 src.influx   INFO       Building query
+2022-10-11 12:59:38,182 src.influx   INFO       Running query: from(bucket: "carouge")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "device_1f06")|> last()
+2022-10-11 12:59:38,193 src.influx   WARNING    Timestamp bigger than limit: 1.11h
+2022-10-11 12:59:38,193 src.workflow INFO     Checking: Influx FlowerBed 5
+2022-10-11 12:59:38,193 src.influx   INFO       Building query
+2022-10-11 12:59:38,193 src.influx   INFO       Running query: from(bucket: "carouge")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "device_1efd")|> last()
+2022-10-11 12:59:38,204 src.influx   INFO       Timestamp in the limits: 0.36h
+2022-10-11 12:59:38,204 src.workflow INFO     Checking: Influx FlowerBed 6
+2022-10-11 12:59:38,204 src.influx   INFO       Building query
+2022-10-11 12:59:38,204 src.influx   INFO       Running query: from(bucket: "carouge")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "device_1eff")|> last()
+2022-10-11 12:59:38,215 src.influx   INFO       Timestamp in the limits: 0.20h
+2022-10-11 12:59:38,215 src.workflow INFO     Checking: Influx FlowerBed 7
+2022-10-11 12:59:38,215 src.influx   INFO       Building query
+2022-10-11 12:59:38,215 src.influx   INFO       Running query: from(bucket: "carouge")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "device_1f02")|> last()
+2022-10-11 12:59:38,227 src.influx   INFO       Timestamp in the limits: 0.45h
+2022-10-11 12:59:38,227 src.workflow INFO     Checking: Influx FlowerBed 8
+2022-10-11 12:59:38,227 src.influx   INFO       Building query
+2022-10-11 12:59:38,227 src.influx   INFO       Running query: from(bucket: "carouge")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "device_1efe")|> last()
+2022-10-11 12:59:38,237 src.influx   INFO       Timestamp in the limits: 0.20h
+2022-10-11 12:59:38,237 src.workflow INFO     Checking: Influx Weather Oserved
+2022-10-11 12:59:38,237 src.influx   INFO       Building query
+2022-10-11 12:59:38,237 src.influx   INFO       Running query: from(bucket: "carouge")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "weather_observed")|> last()
+2022-10-11 12:59:38,253 src.influx   INFO       Timestamp in the limits: 0.99h
+2022-10-11 12:59:38,254 src.workflow INFO     Starting checks for: Data Fusion on Kafka
+2022-10-11 12:59:38,254 src.workflow INFO     Checking: Fusion FlowerBed 1
+2022-10-11 12:59:38,254 src.kafka    INFO       Querying topic: features_carouge_flowerbed1
+2022-10-11 12:59:38,661 src.kafka    INFO       Last offset: 1168
+2022-10-11 12:59:40,668 src.kafka    INFO       Timestamp in the limits: 0.58h
+2022-10-11 12:59:40,668 src.workflow INFO     Checking: Fusion FlowerBed 2
+2022-10-11 12:59:40,668 src.kafka    INFO       Querying topic: features_carouge_flowerbed2
+2022-10-11 12:59:41,077 src.kafka    INFO       Last offset: 812
+2022-10-11 12:59:43,084 src.kafka    ERROR      Timestamp bigger than limit: 337.69h
+2022-10-11 12:59:43,084 src.workflow INFO     Checking: Fusion FlowerBed 3
+2022-10-11 12:59:43,084 src.kafka    INFO       Querying topic: features_carouge_flowerbed3
+2022-10-11 12:59:43,493 src.kafka    INFO       Last offset: 1187
+2022-10-11 12:59:45,499 src.kafka    WARNING    Timestamp bigger than limit: 1.58h
+2022-10-11 12:59:45,499 src.workflow INFO     Checking: Fusion FlowerBed 4
+2022-10-11 12:59:45,499 src.kafka    INFO       Querying topic: features_carouge_flowerbed4
+2022-10-11 12:59:45,907 src.kafka    INFO       Last offset: 891
+2022-10-11 12:59:47,913 src.kafka    WARNING    Timestamp bigger than limit: 1.58h
+2022-10-11 12:59:47,914 src.workflow INFO     Checking: Fusion FlowerBed 5
+2022-10-11 12:59:47,914 src.kafka    INFO       Querying topic: features_carouge_flowerbed5
+2022-10-11 12:59:48,321 src.kafka    INFO       Last offset: 1187
+2022-10-11 12:59:50,327 src.kafka    INFO       Timestamp in the limits: 0.58h
+2022-10-11 12:59:50,327 src.workflow INFO     Checking: Fusion FlowerBed 6
+2022-10-11 12:59:50,327 src.kafka    INFO       Querying topic: features_carouge_flowerbed6
+2022-10-11 12:59:50,735 src.kafka    INFO       Last offset: 1188
+2022-10-11 12:59:52,742 src.kafka    INFO       Timestamp in the limits: 0.58h
+2022-10-11 12:59:52,742 src.workflow INFO     Checking: Fusion FlowerBed 7
+2022-10-11 12:59:52,742 src.kafka    INFO       Querying topic: features_carouge_flowerbed7
+2022-10-11 12:59:53,150 src.kafka    INFO       Last offset: 1188
+2022-10-11 12:59:55,157 src.kafka    INFO       Timestamp in the limits: 0.58h
+2022-10-11 12:59:55,157 src.workflow INFO     Checking: Fusion FlowerBed 8
+2022-10-11 12:59:55,157 src.kafka    INFO       Querying topic: features_carouge_flowerbed8
+2022-10-11 12:59:55,565 src.kafka    INFO       Last offset: 1187
+2022-10-11 12:59:57,574 src.kafka    INFO       Timestamp in the limits: 0.58h
+2022-10-11 12:59:57,574 src.workflow INFO     Starting checks for: Predictions on Kafka
+2022-10-11 12:59:57,574 src.workflow INFO     Checking: Prediction FlowerBed 1
+2022-10-11 12:59:57,574 src.kafka    INFO       Querying topic: device_1f0d_pred_output
+2022-10-11 12:59:57,982 src.kafka    INFO       Last offset: 7
+2022-10-11 12:59:59,989 src.kafka    ERROR      Timestamp bigger than limit: 6.00h
+2022-10-11 12:59:59,989 src.workflow INFO     Checking: Prediction FlowerBed 2
+2022-10-11 12:59:59,989 src.kafka    INFO       Querying topic: device_1f08_pred_output
+2022-10-11 13:00:00,397 src.kafka    INFO       Last offset: 7
+2022-10-11 13:00:02,403 src.kafka    WARNING    No watering time was given!
+2022-10-11 13:00:02,403 src.kafka    WARNING    No watering amount was given!
+2022-10-11 13:00:02,403 src.kafka    ERROR      Timestamp bigger than limit: 6.00h
+2022-10-11 13:00:02,403 src.workflow INFO     Checking: Prediction FlowerBed 3
+2022-10-11 13:00:02,403 src.kafka    INFO       Querying topic: device_1f10_pred_output
+2022-10-11 13:00:02,814 src.kafka    INFO       Last offset: 7
+2022-10-11 13:00:04,821 src.kafka    WARNING    No watering time was given!
+2022-10-11 13:00:04,821 src.kafka    WARNING    No watering amount was given!
+2022-10-11 13:00:04,821 src.kafka    ERROR      Timestamp bigger than limit: 6.00h
+2022-10-11 13:00:04,821 src.workflow INFO     Checking: Prediction FlowerBed 4
+2022-10-11 13:00:04,821 src.kafka    INFO       Querying topic: device_1f06_pred_output
+2022-10-11 13:00:05,229 src.kafka    INFO       Last offset: 7
+2022-10-11 13:00:07,236 src.kafka    WARNING    Watering amount was 0.0!
+2022-10-11 13:00:07,236 src.kafka    ERROR      Timestamp bigger than limit: 6.00h
+2022-10-11 13:00:07,236 src.workflow INFO     Checking: Prediction FlowerBed 5
+2022-10-11 13:00:07,236 src.kafka    INFO       Querying topic: device_1efd_pred_output
+2022-10-11 13:00:07,645 src.kafka    INFO       Last offset: 7
+2022-10-11 13:00:09,651 src.kafka    ERROR      Timestamp bigger than limit: 6.00h
+2022-10-11 13:00:09,651 src.workflow INFO     Checking: Prediction FlowerBed 6
+2022-10-11 13:00:09,652 src.kafka    INFO       Querying topic: device_1eff_pred_output
+2022-10-11 13:00:10,060 src.kafka    INFO       Last offset: 7
+2022-10-11 13:00:12,070 src.kafka    WARNING    No watering time was given!
+2022-10-11 13:00:12,070 src.kafka    WARNING    No watering amount was given!
+2022-10-11 13:00:12,070 src.kafka    ERROR      Timestamp bigger than limit: 6.00h
+2022-10-11 13:00:12,071 src.workflow INFO     Checking: Prediction FlowerBed 7
+2022-10-11 13:00:12,071 src.kafka    INFO       Querying topic: device_1f02_pred_output
+2022-10-11 13:00:12,479 src.kafka    INFO       Last offset: 7
+2022-10-11 13:00:14,485 src.kafka    WARNING    No watering time was given!
+2022-10-11 13:00:14,485 src.kafka    WARNING    No watering amount was given!
+2022-10-11 13:00:14,485 src.kafka    ERROR      Timestamp bigger than limit: 6.00h
+2022-10-11 13:00:14,486 src.workflow INFO     Checking: Prediction FlowerBed 8
+2022-10-11 13:00:14,486 src.kafka    INFO       Querying topic: device_1efe_pred_output
+2022-10-11 13:00:14,893 src.kafka    INFO       Last offset: 7
+2022-10-11 13:00:16,900 src.kafka    WARNING    Watering amount was 0.0!
+2022-10-11 13:00:16,900 src.kafka    ERROR      Timestamp bigger than limit: 6.00h
+2022-10-11 13:00:16,900 src.workflow INFO     Starting checks for: Naiades Context API - Watering Forecast
+2022-10-11 13:00:16,900 src.workflow INFO     Checking: FlowerBed 1 Watering Forecast
+2022-10-11 13:00:16,948 src.context  INFO       Trying: http://5.53.108.182:1026/v2/entities/urn:ngsi-ld:FlowerBed:FlowerBed-1
+2022-10-11 13:00:16,948 src.context  ERROR      Time checking error: 'ContextCheck' object has no attribute 'subtype'
+2022-10-11 13:00:16,948 src.workflow INFO     Checking: FlowerBed 2 Watering Forecast
+2022-10-11 13:00:16,996 src.context  INFO       Trying: http://5.53.108.182:1026/v2/entities/urn:ngsi-ld:FlowerBed:FlowerBed-2
+2022-10-11 13:00:16,996 src.context  ERROR      Time checking error: 'ContextCheck' object has no attribute 'subtype'
+2022-10-11 13:00:16,996 src.workflow INFO     Checking: FlowerBed 3 Watering Forecast
+2022-10-11 13:00:17,043 src.context  INFO       Trying: http://5.53.108.182:1026/v2/entities/urn:ngsi-ld:FlowerBed:FlowerBed-3
+2022-10-11 13:00:17,043 src.context  ERROR      Time checking error: 'ContextCheck' object has no attribute 'subtype'
+2022-10-11 13:00:17,043 src.workflow INFO     Checking: FlowerBed 4 Watering Forecast
+2022-10-11 13:00:17,094 src.context  INFO       Trying: http://5.53.108.182:1026/v2/entities/urn:ngsi-ld:FlowerBed:FlowerBed-4
+2022-10-11 13:00:17,094 src.context  ERROR      Time checking error: 'ContextCheck' object has no attribute 'subtype'
+2022-10-11 13:00:17,094 src.workflow INFO     Checking: FlowerBed 5 Watering Forecast
+2022-10-11 13:00:17,141 src.context  INFO       Trying: http://5.53.108.182:1026/v2/entities/urn:ngsi-ld:FlowerBed:FlowerBed-5
+2022-10-11 13:00:17,141 src.context  ERROR      Time checking error: 'ContextCheck' object has no attribute 'subtype'
+2022-10-11 13:00:17,141 src.workflow INFO     Checking: FlowerBed 6 Watering Forecast
+2022-10-11 13:00:17,194 src.context  INFO       Trying: http://5.53.108.182:1026/v2/entities/urn:ngsi-ld:FlowerBed:FlowerBed-6
+2022-10-11 13:00:17,194 src.context  ERROR      Time checking error: 'ContextCheck' object has no attribute 'subtype'
+2022-10-11 13:00:17,194 src.workflow INFO     Checking: FlowerBed 7 Watering Forecast
+2022-10-11 13:00:17,246 src.context  INFO       Trying: http://5.53.108.182:1026/v2/entities/urn:ngsi-ld:FlowerBed:FlowerBed-7
+2022-10-11 13:00:17,246 src.context  ERROR      Time checking error: 'ContextCheck' object has no attribute 'subtype'
+2022-10-11 13:00:17,246 src.workflow INFO     Checking: FlowerBed 8 Watering Forecast
+2022-10-11 13:00:17,295 src.context  INFO       Trying: http://5.53.108.182:1026/v2/entities/urn:ngsi-ld:FlowerBed:FlowerBed-8
+2022-10-11 13:00:17,295 src.context  ERROR      Time checking error: 'ContextCheck' object has no attribute 'subtype'

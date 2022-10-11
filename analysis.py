@@ -37,24 +37,24 @@ def to_df(infile):
             # parsing log lines; only if length is bigger than 0
             if len(line) != 0:
 
-                # 2022-08-30 15:52:17,689 src.workflow INFO     Loading config: configs/alicante-consumption.json
+                # 2022-08-30 15:52:17,689 src.workflow INFO     Loading config: config/workflows/alicante-consumption.json
 
                 no_time = line.split(',', 1)
                 time.append(no_time[0]) # 2022-08-30 15:52:17
-                no_time_str = no_time[1].strip() # 689 src.workflow INFO     Loading config: configs/alicante-consumption.json
+                no_time_str = no_time[1].strip() # 689 src.workflow INFO     Loading config: config/workflows/alicante-consumption.json
 
                 no_index = no_time_str.split(' ', 1)
-                no_index_str = no_index[1].strip() # src.workflow INFO     Loading config: configs/alicante-consumption.json
+                no_index_str = no_index[1].strip() # src.workflow INFO     Loading config: config/workflows/alicante-consumption.json
 
                 no_file_loc = no_index_str.split(' ', 1)
                 file_loc.append(no_file_loc[0]) # src.workflow
-                no_file_loc_str = no_file_loc[1].strip() # INFO     Loading config: configs/alicante-consumption.json
+                no_file_loc_str = no_file_loc[1].strip() # INFO     Loading config: config/workflows/alicante-consumption.json
 
                 no_type = no_file_loc_str.split(' ', 1)
                 type.append(no_type[0]) # INFO
-                no_type_str = no_type[1] # Loading config: configs/alicante-consumption.json
+                no_type_str = no_type[1] # Loading config: config/workflows/alicante-consumption.json
 
-                message.append(no_type_str) # Loading config: configs/alicante-consumption.json
+                message.append(no_type_str) # Loading config: config/workflows/alicante-consumption.json
 
     df = pd.DataFrame(data={'Time': time, 'File_loc': file_loc, 'Type':type, 'Message': message})
     return df
@@ -365,7 +365,7 @@ def create_table(filename):
         </tr>
         '''.format(location = row['Location'], error = row['Error'], warning = row['Warning'], problem = row['Problem'])
         problems += current_row
-    
+
     table = '''
     <table style='cellspacing:0; width:50%; border: solid 1px #DDEEEE; border-spacing: 0; border-collapse: collapse'>
         <tr style='background-color: #DDEFEF; color: #336B6B; padding: 0px; text-shadow: 1px 1px 1px #fff'>
@@ -377,7 +377,7 @@ def create_table(filename):
         {problems}
     </table>
     '''.format(problems = problems)
-    
+
     return table
 
 
@@ -393,7 +393,7 @@ def create_msg():
     '''
 
     # get data from scheduler.json
-    config_file = os.path.join(os.getcwd(), 'configs', 'scheduler.json')
+    config_file = os.path.join(os.getcwd(), 'config', 'scheduler.json')
     with open(config_file, "r") as json_file:
         data = json.load(json_file)
 
@@ -426,7 +426,7 @@ def create_msg():
                 partial_report = f'<p><b>{file_name} ({update_time}):</b> <br> {num_errors} errors...</p>'
             else:
                 partial_report = f'<p><b>{file_name} ({update_time}):</b> <br> {num_errors} errors and {num_warnings} warnings...</p>'
-            
+
             # new line
             partial_report += '<br> --> '
 
@@ -516,7 +516,7 @@ def main(sender_address, receiver_address, password):
 # run main()
 # email info
 
-with open(os.path.join(os.getcwd(), "configs", "config_mail.json"), "r") as infile:
+with open(os.path.join(os.getcwd(), "config", "config_mail.json"), "r") as infile:
     data = json.load(infile)
     sender_address = data["sender_address"]
     receiver_address = data["receiver_address"]

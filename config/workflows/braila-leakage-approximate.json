@@ -21,10 +21,10 @@
                 "Content-Type": "application/json"
             },
             "checks": [
-                { "name": "Pressure 5770", "device": "Pressure-5770", "alert_diff": 1, "error_diff": 2 },
-                { "name": "Pressure 5771", "device": "Pressure-5771", "alert_diff": 1, "error_diff": 2 },
-                { "name": "Pressure 5772", "device": "Pressure-5772", "alert_diff": 1, "error_diff": 2 },
-                { "name": "Pressure 5773", "device": "Pressure-5773", "alert_diff": 1, "error_diff": 2 }
+                { "name": "Pressure 5770", "device": "Pressure-5770", "alert_diff": 7, "error_diff": 8 },
+                { "name": "Pressure 5771", "device": "Pressure-5771", "alert_diff": 7, "error_diff": 8 },
+                { "name": "Pressure 5772", "device": "Pressure-5772", "alert_diff": 7, "error_diff": 8 },
+                { "name": "Pressure 5773", "device": "Pressure-5773", "alert_diff": 7, "error_diff": 8 }
             ]
         }
     ]

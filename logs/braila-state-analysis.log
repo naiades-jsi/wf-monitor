@@ -1,28 +1,36 @@
-2022-10-06 14:32:35,068 wf-monitor   INFO     Starting workflow monitoring tool for: braila-state-analysis
-2022-10-06 14:32:35,068 src.workflow INFO     Loading config: configs/braila-state-analysis.json
-2022-10-06 14:32:35,068 src.workflow INFO     Starting worklfow check
-2022-10-06 14:32:35,068 src.workflow INFO     Starting checks for: Naiades Historic API - WaterDemand
-2022-10-06 14:32:35,069 src.workflow INFO     Checking: Water Demand 211206H360
-2022-10-06 14:32:35,649 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-211206H360?lastN=1
-2022-10-06 14:32:35,651 src.historic INFO       Timestamp in the limits: 0.01h
-2022-10-06 14:32:35,651 src.workflow INFO     Checking: Water Demand 211306H360
-2022-10-06 14:32:35,774 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-211306H360?lastN=1
-2022-10-06 14:32:35,775 src.historic WARNING    Timestamp bigger than limit: 1.84h
-2022-10-06 14:32:35,775 src.workflow INFO     Checking: Water Demand 318505H498
-2022-10-06 14:32:35,902 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-318505H498?lastN=1
-2022-10-06 14:32:35,902 src.historic WARNING    Timestamp bigger than limit: 1.74h
-2022-10-06 14:32:35,902 src.workflow INFO     Starting checks for: StreamStory Data API - WaterDemand
-2022-10-06 14:32:35,902 src.workflow INFO     Checking: Water Demand 211206H360
-2022-10-06 14:32:36,122 src.sat      INFO       Trying: http://atena.ijs.si:8081/braila-flow211206H360/series/last
-2022-10-06 14:32:36,122 src.sat      INFO       Timestamp in the limits: 1.94h
-2022-10-06 14:32:36,122 src.workflow INFO     Checking: Water Demand 211306H360
-2022-10-06 14:32:36,320 src.sat      INFO       Trying: http://atena.ijs.si:8081/braila-flow211306H360/series/last
-2022-10-06 14:32:36,320 src.sat      INFO       Timestamp in the limits: 1.84h
-2022-10-06 14:32:36,320 src.workflow INFO     Checking: Water Demand 318505H498
-2022-10-06 14:32:36,520 src.sat      INFO       Trying: http://atena.ijs.si:8081/braila-flow318505H498/series/last
-2022-10-06 14:32:36,520 src.sat      INFO       Timestamp in the limits: 1.74h
-2022-10-06 14:32:36,520 src.workflow INFO     Starting checks for: Naiades Braila Streamstory
-2022-10-06 14:32:36,520 src.workflow INFO     Checking: Braila Streamstory flow_211106H360
-2022-10-06 14:32:36,520 src.workflow INFO     Checking: Braila Streamstory flow_211206H360
-2022-10-06 14:32:36,520 src.workflow INFO     Checking: Braila Streamstory flow_211306H360
-2022-10-06 14:32:36,520 src.workflow INFO     Checking: Braila Streamstory flow_318505H498
+2022-10-11 13:02:26,808 wf-monitor   INFO     Starting workflow monitoring tool for: braila-state-analysis
+2022-10-11 13:02:26,808 src.workflow INFO     Loading config: config/workflows/braila-state-analysis.json
+2022-10-11 13:02:26,808 src.workflow INFO     Starting worklfow check
+2022-10-11 13:02:26,808 src.workflow INFO     Starting checks for: Naiades Historic API - WaterDemand
+2022-10-11 13:02:26,808 src.workflow INFO     Checking: Water Demand 211206H360
+2022-10-11 13:02:26,979 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-211206H360?lastN=1
+2022-10-11 13:02:26,981 src.historic INFO       Timestamp in the limits: 0.44h
+2022-10-11 13:02:26,981 src.workflow INFO     Checking: Water Demand 211306H360
+2022-10-11 13:02:27,137 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-211306H360?lastN=1
+2022-10-11 13:02:27,138 src.historic INFO       Timestamp in the limits: 0.34h
+2022-10-11 13:02:27,138 src.workflow INFO     Checking: Water Demand 318505H498
+2022-10-11 13:02:27,293 src.historic INFO       Trying: http://naiades.simavi.ro:8668/v2/entities/urn:ngsi-ld:WaterDemand:WaterDemand-318505H498?lastN=1
+2022-10-11 13:02:27,293 src.historic INFO       Timestamp in the limits: 0.24h
+2022-10-11 13:02:27,293 src.workflow INFO     Starting checks for: StreamStory Data API - WaterDemand
+2022-10-11 13:02:27,294 src.workflow INFO     Checking: Water Demand 211206H360
+2022-10-11 13:02:27,532 src.sat      INFO       Trying: http://atena.ijs.si:8081/braila-flow211206H360/series/last
+2022-10-11 13:02:27,533 src.sat      INFO       Timestamp in the limits: 0.44h
+2022-10-11 13:02:27,533 src.workflow INFO     Checking: Water Demand 211306H360
+2022-10-11 13:02:27,761 src.sat      INFO       Trying: http://atena.ijs.si:8081/braila-flow211306H360/series/last
+2022-10-11 13:02:27,761 src.sat      INFO       Timestamp in the limits: 0.34h
+2022-10-11 13:02:27,761 src.workflow INFO     Checking: Water Demand 318505H498
+2022-10-11 13:02:27,977 src.sat      INFO       Trying: http://atena.ijs.si:8081/braila-flow318505H498/series/last
+2022-10-11 13:02:27,977 src.sat      INFO       Timestamp in the limits: 0.27h
+2022-10-11 13:02:27,978 src.workflow INFO     Starting checks for: Naiades Braila Streamstory
+2022-10-11 13:02:27,978 src.workflow INFO     Checking: Braila Streamstory flow_211106H360
+2022-10-11 13:02:28,098 src.context  INFO       Trying: http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:Alert:RO-Braila-211106H360-state-analysis-tool?metadata=dateModified,timestamp
+2022-10-11 13:02:28,098 src.context  ERROR      Time checking error: 'ContextCheck' object has no attribute 'subtype'
+2022-10-11 13:02:28,098 src.workflow INFO     Checking: Braila Streamstory flow_211206H360
+2022-10-11 13:02:28,218 src.context  INFO       Trying: http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:Alert:RO-Braila-211206H360-state-analysis-tool?metadata=dateModified,timestamp
+2022-10-11 13:02:28,218 src.context  ERROR      Time checking error: 'ContextCheck' object has no attribute 'subtype'
+2022-10-11 13:02:28,218 src.workflow INFO     Checking: Braila Streamstory flow_211306H360
+2022-10-11 13:02:28,337 src.context  INFO       Trying: http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:Alert:RO-Braila-211306H360-state-analysis-tool?metadata=dateModified,timestamp
+2022-10-11 13:02:28,337 src.context  ERROR      Time checking error: 'ContextCheck' object has no attribute 'subtype'
+2022-10-11 13:02:28,337 src.workflow INFO     Checking: Braila Streamstory flow_318505H498
+2022-10-11 13:02:28,456 src.context  INFO       Trying: http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:Alert:RO-Braila-318505H498-state-analysis-tool?metadata=dateModified,timestamp
+2022-10-11 13:02:28,456 src.context  ERROR      Time checking error: 'ContextCheck' object has no attribute 'subtype'
