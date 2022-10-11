@@ -41,7 +41,7 @@ def main(run_time):
 def schedule_job():
     # get all the run times
     times = []
-    config_file = os.path.join(os.getcwd(), 'configs', 'scheduler.json')
+    config_file = os.path.join(os.getcwd(), 'config', 'scheduler.json')
     with open(config_file, "r") as json_file:
         data = json.load(json_file)
         tasks = data['tasks']
