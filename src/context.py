@@ -49,7 +49,7 @@ class ContextCheck:
             nowts = datetime.timestamp(datetime.now())
             diff_hrs = (nowts - ts) / 60 / 60
 
-            if (self.subtype == "watering"):
+            if (self.section["subtype"] == "watering"):
                 # implement checks for watering - carouge
                 soilMoisture = rJSON["soilMoisture"]["value"]
                 nextWateringDeadline = ts
