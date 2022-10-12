@@ -367,7 +367,7 @@ def create_table(filename):
         problems += current_row
 
     table = '''
-    <table style='cellspacing:0; width:50%; border: solid 1px #DDEEEE; border-spacing: 0; border-collapse: collapse'>
+    <table style='cellspacing:0; width:100%; border: solid 1px #DDEEEE; border-spacing: 0; border-collapse: collapse'>
         <tr style='background-color: #DDEFEF; color: #336B6B; padding: 0px; text-shadow: 1px 1px 1px #fff'>
             <th> Location </th>
             <th> Error </th>

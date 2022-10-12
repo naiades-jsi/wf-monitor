@@ -12,27 +12,32 @@ logging.basicConfig(
     format="%(asctime)s %(name)-12s %(levelname)-8s %(message)s", level=logging.INFO)
 
 def main(run_time):
+    # open json (get data)
     config_file = os.path.join(os.getcwd(), 'config', 'scheduler.json')
     LOGGER.info("Loading ...")
     with open(config_file, "r") as json_file:
         data = json.load(json_file)
 
+    # read one task at a time
     for section in data["tasks"]:
         LOGGER.info("Starting: %s", section["name"])
+        # if scheduled at the time, call command (to update data)
         if run_time == section["scheduledAt"]:
             if section["name"] != 'analysis':
                 file_loc = os.path.join(os.getcwd(), 'logs', f'{section["name"]}.log')
                 with open(file_loc,"wb") as out:
                     subprocess.Popen(section["command"], shell=True, stdout=out, stderr=out)
+            # if the task is analysis, analysis.py is run (gather all the data, and send an email)
             elif section["name"] == 'analysis':
                 time.sleep(30)
                 subprocess.Popen(section["command"], shell=True)
 
-            # time of the last data update, write to scheduler.json
+            # write the time of the last data update to scheduler.json
             now = datetime.now()
             current_time = now.strftime("%d/%m/%Y %H:%M:%S")
             section["last_update"] = current_time
 
+    # update json
     with  open(config_file, "w") as outfile:
         json.dump(data, outfile, ensure_ascii=False, indent=4)
 
