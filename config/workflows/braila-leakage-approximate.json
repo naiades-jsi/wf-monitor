@@ -8,9 +8,9 @@
                 "Content-Type": "application/json"
             },
             "checks": [
-                { "name": "Water Demand 211206H360", "device": "WaterDemand-211206H360", "alert_diff": 1, "error_diff": 2 },
-                { "name": "Water Demand 211306H360", "device": "WaterDemand-211306H360", "alert_diff": 1, "error_diff": 2 },
-                { "name": "Water Demand 318505H498", "device": "WaterDemand-318505H498", "alert_diff": 1, "error_diff": 2 }
+                { "name": "Water Demand 211206H360", "device": "WaterDemand-211206H360", "alert_diff": 2, "error_diff": 3 },
+                { "name": "Water Demand 211306H360", "device": "WaterDemand-211306H360", "alert_diff": 2, "error_diff": 3 },
+                { "name": "Water Demand 318505H498", "device": "WaterDemand-318505H498", "alert_diff": 2, "error_diff": 3 }
             ]
         },
         {
@@ -21,10 +21,10 @@
                 "Content-Type": "application/json"
             },
             "checks": [
-                { "name": "Pressure 5770", "device": "Pressure-5770", "alert_diff": 7, "error_diff": 8 },
-                { "name": "Pressure 5771", "device": "Pressure-5771", "alert_diff": 7, "error_diff": 8 },
-                { "name": "Pressure 5772", "device": "Pressure-5772", "alert_diff": 7, "error_diff": 8 },
-                { "name": "Pressure 5773", "device": "Pressure-5773", "alert_diff": 7, "error_diff": 8 }
+                { "name": "Pressure 5770", "device": "Pressure-5770", "alert_diff": 1, "error_diff": 2 },
+                { "name": "Pressure 5771", "device": "Pressure-5771", "alert_diff": 1, "error_diff": 2 },
+                { "name": "Pressure 5772", "device": "Pressure-5772", "alert_diff": 1, "error_diff": 2 },
+                { "name": "Pressure 5773", "device": "Pressure-5773", "alert_diff": 1, "error_diff": 2 }
             ]
         }
     ]
