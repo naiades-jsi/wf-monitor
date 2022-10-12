@@ -1,200 +1,142 @@
-2022-10-11 13:30:27,970 wf-monitor   INFO     Starting workflow monitoring tool for: alicante-consumption
-2022-10-11 13:30:27,970 src.workflow INFO     Loading config: config/workflows/alicante-consumption.json
-2022-10-11 13:30:27,970 src.workflow INFO     Starting worklfow check
-2022-10-11 13:30:27,970 src.workflow INFO     Starting checks for: Naiades Historic API
-2022-10-11 13:30:27,971 src.workflow INFO     Checking: Alipark Flow
-2022-10-11 13:30:28,057 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Alipark-Flow?lastN=1
-2022-10-11 13:30:28,058 src.historic ERROR      Timestamp bigger than limit: 16.01h
-2022-10-11 13:30:28,059 src.workflow INFO     Checking: Autobuses Flow
-2022-10-11 13:30:28,215 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Autobuses-Flow?lastN=1
-2022-10-11 13:30:28,215 src.historic ERROR      Timestamp bigger than limit: 15.51h
-2022-10-11 13:30:28,215 src.workflow INFO     Checking: Benalua Flow
-2022-10-11 13:30:28,362 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Benalua-Flow?lastN=1
-2022-10-11 13:30:28,363 src.historic ERROR      Timestamp bigger than limit: 15.51h
-2022-10-11 13:30:28,363 src.workflow INFO     Checking: Diputacion Flow
-2022-10-11 13:30:28,432 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Diputacion-Flow?lastN=1
-2022-10-11 13:30:28,432 src.historic ERROR      Timestamp bigger than limit: 16.01h
-2022-10-11 13:30:28,433 src.workflow INFO     Checking: Mercado Flow
-2022-10-11 13:30:28,505 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Mercado-Flow?lastN=1
-2022-10-11 13:30:28,505 src.historic ERROR      Timestamp bigger than limit: 16.01h
-2022-10-11 13:30:28,505 src.workflow INFO     Checking: Montaneta Flow
-2022-10-11 13:30:28,582 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Montaneta-Flow?lastN=1
-2022-10-11 13:30:28,583 src.historic INFO       Timestamp in the limits: 16.01h
-2022-10-11 13:30:28,583 src.workflow INFO     Checking: Rambla Flow
-2022-10-11 13:30:28,746 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Rambla-Flow?lastN=1
-2022-10-11 13:30:28,746 src.historic ERROR      Timestamp bigger than limit: 15.52h
-2022-10-11 13:30:28,746 src.workflow INFO     Starting checks for: Naiades Historic API - Weather
-2022-10-11 13:30:28,746 src.workflow INFO     Checking: Weather Observed 1
-2022-10-11 13:30:28,819 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:WeatherObserved:WeatherObserved-1?lastN=1
-2022-10-11 13:30:28,819 src.historic INFO       Timestamp in the limits: 1.51h
-2022-10-11 13:30:28,819 src.workflow INFO     Starting checks for: Influx data
-2022-10-11 13:30:28,819 src.workflow INFO     Checking: Influx Alipark Flow
-2022-10-11 13:30:28,820 src.influx   INFO       Building query
-2022-10-11 13:30:28,820 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "alipark_flow")|> last()
-2022-10-11 13:30:28,832 src.influx   ERROR      Timestamp bigger than limit: 16.01h
-2022-10-11 13:30:28,832 src.workflow INFO     Checking: Influx Autobuses Flow
-2022-10-11 13:30:28,833 src.influx   INFO       Building query
-2022-10-11 13:30:28,833 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "autobuses_flow")|> last()
-2022-10-11 13:30:28,843 src.influx   ERROR      Timestamp bigger than limit: 15.51h
-2022-10-11 13:30:28,843 src.workflow INFO     Checking: Influx Benalua Flow
-2022-10-11 13:30:28,843 src.influx   INFO       Building query
-2022-10-11 13:30:28,843 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "benalua_flow")|> last()
-2022-10-11 13:30:28,853 src.influx   ERROR      Timestamp bigger than limit: 15.51h
-2022-10-11 13:30:28,853 src.workflow INFO     Checking: Influx Diputacion Flow
-2022-10-11 13:30:28,854 src.influx   INFO       Building query
-2022-10-11 13:30:28,854 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "diputacion_flow")|> last()
-2022-10-11 13:30:28,864 src.influx   ERROR      Timestamp bigger than limit: 16.01h
-2022-10-11 13:30:28,864 src.workflow INFO     Checking: Influx Mercado Flow
-2022-10-11 13:30:28,864 src.influx   INFO       Building query
-2022-10-11 13:30:28,864 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "mercado_flow")|> last()
-2022-10-11 13:30:28,874 src.influx   ERROR      Timestamp bigger than limit: 16.01h
-2022-10-11 13:30:28,874 src.workflow INFO     Checking: Influx Montaneta Flow
-2022-10-11 13:30:28,874 src.influx   INFO       Building query
-2022-10-11 13:30:28,874 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "montaneta_flow")|> last()
-2022-10-11 13:30:28,883 src.influx   INFO       Timestamp in the limits: 16.01h
-2022-10-11 13:30:28,883 src.workflow INFO     Checking: Influx Rambla Flow
-2022-10-11 13:30:28,884 src.influx   INFO       Building query
-2022-10-11 13:30:28,884 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "rambla_flow")|> last()
-2022-10-11 13:30:28,893 src.influx   ERROR      Timestamp bigger than limit: 15.52h
-2022-10-11 13:30:28,893 src.workflow INFO     Checking: Influx Weather Observed 1
-2022-10-11 13:30:28,893 src.influx   INFO       Building query
-2022-10-11 13:30:28,893 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "weather_observed1")|> last()
-2022-10-11 13:30:28,907 src.influx   INFO       Timestamp in the limits: 1.51h
-2022-10-11 13:30:28,907 src.workflow INFO     Starting checks for: Data Fusion on Kafka - Weather
-2022-10-11 13:30:28,907 src.workflow INFO     Checking: Fusion Alipark
-2022-10-11 13:30:28,907 src.kafka    INFO       Querying topic: features_alicante_alipark_forecasting_w
-2022-10-11 13:30:29,316 src.kafka    INFO       Last offset: 0
-2022-10-11 13:30:31,318 src.kafka    ERROR    No message in consumer!
-2022-10-11 13:30:31,319 src.workflow INFO     Checking: Fusion Autobuses
-2022-10-11 13:30:31,319 src.kafka    INFO       Querying topic: features_alicante_autobuses_forecasting_w
-2022-10-11 13:30:31,727 src.kafka    INFO       Last offset: 0
-2022-10-11 13:30:33,730 src.kafka    ERROR    No message in consumer!
-2022-10-11 13:30:33,730 src.workflow INFO     Checking: Fusion Benalua
-2022-10-11 13:30:33,730 src.kafka    INFO       Querying topic: features_alicante_benalua_forecasting_w
-2022-10-11 13:30:34,138 src.kafka    INFO       Last offset: 0
-2022-10-11 13:30:36,140 src.kafka    ERROR    No message in consumer!
-2022-10-11 13:30:36,140 src.workflow INFO     Checking: Fusion Diputacion
-2022-10-11 13:30:36,140 src.kafka    INFO       Querying topic: features_alicante_diputacion_forecasting_w
-2022-10-11 13:30:36,548 src.kafka    INFO       Last offset: 0
-2022-10-11 13:30:38,550 src.kafka    ERROR    No message in consumer!
-2022-10-11 13:30:38,550 src.workflow INFO     Checking: Fusion Mercado
-2022-10-11 13:30:38,550 src.kafka    INFO       Querying topic: features_alicante_mercado_forecasting_w
-2022-10-11 13:30:38,958 src.kafka    INFO       Last offset: 0
-2022-10-11 13:30:40,960 src.kafka    ERROR    No message in consumer!
-2022-10-11 13:30:40,960 src.workflow INFO     Checking: Fusion Montaneta
-2022-10-11 13:30:40,960 src.kafka    INFO       Querying topic: features_alicante_montaneta_forecasting_w
-2022-10-11 13:30:41,369 src.kafka    INFO       Last offset: 0
-2022-10-11 13:30:43,370 src.kafka    ERROR    No message in consumer!
-2022-10-11 13:30:43,371 src.workflow INFO     Checking: Fusion Rambla
-2022-10-11 13:30:43,371 src.kafka    INFO       Querying topic: features_alicante_rambla_forecasting_w
-2022-10-11 13:30:43,778 src.kafka    INFO       Last offset: 0
-2022-10-11 13:30:45,780 src.kafka    ERROR    No message in consumer!
-2022-10-11 13:30:45,780 src.workflow INFO     Starting checks for: Predictions on Kafka - Weather
-2022-10-11 13:30:45,780 src.workflow INFO     Checking: Prediction Alipark
-2022-10-11 13:30:45,780 src.kafka    INFO       Querying topic: predictions_alicante_Alipark_flow_w
-2022-10-11 13:30:46,188 src.kafka    INFO       Last offset: 0
-2022-10-11 13:30:48,190 src.kafka    ERROR    No message in consumer!
-2022-10-11 13:30:48,191 src.workflow INFO     Checking: Prediction Autobuses
-2022-10-11 13:30:48,191 src.kafka    INFO       Querying topic: predictions_alicante_Autobuses_flow_w
-2022-10-11 13:30:48,598 src.kafka    INFO       Last offset: 0
-2022-10-11 13:30:50,600 src.kafka    ERROR    No message in consumer!
-2022-10-11 13:30:50,600 src.workflow INFO     Checking: Prediction Benalua
-2022-10-11 13:30:50,600 src.kafka    INFO       Querying topic: predictions_alicante_Benalua_flow_w
-2022-10-11 13:30:51,008 src.kafka    INFO       Last offset: 0
-2022-10-11 13:30:53,010 src.kafka    ERROR    No message in consumer!
-2022-10-11 13:30:53,010 src.workflow INFO     Checking: Prediction Diputacion
-2022-10-11 13:30:53,010 src.kafka    INFO       Querying topic: predictions_alicante_Diputacion_flow_w
-2022-10-11 13:30:53,418 src.kafka    INFO       Last offset: 0
-2022-10-11 13:30:55,421 src.kafka    ERROR    No message in consumer!
-2022-10-11 13:30:55,421 src.workflow INFO     Checking: Prediction Mercado
-2022-10-11 13:30:55,421 src.kafka    INFO       Querying topic: predictions_alicante_Mercado_flow_w
-2022-10-11 13:30:55,828 src.kafka    INFO       Last offset: 0
-2022-10-11 13:30:57,830 src.kafka    ERROR    No message in consumer!
-2022-10-11 13:30:57,830 src.workflow INFO     Checking: Prediction Montaneta
-2022-10-11 13:30:57,830 src.kafka    INFO       Querying topic: predictions_alicante_Montaneta_flow_w
-2022-10-11 13:30:58,238 src.kafka    INFO       Last offset: 0
-2022-10-11 13:31:00,239 src.kafka    ERROR    No message in consumer!
-2022-10-11 13:31:00,240 src.workflow INFO     Checking: Prediction Rambla
-2022-10-11 13:31:00,240 src.kafka    INFO       Querying topic: predictions_alicante_Rambla_flow_w
-2022-10-11 13:31:00,647 src.kafka    INFO       Last offset: 0
-2022-10-11 13:31:02,649 src.kafka    ERROR    No message in consumer!
-2022-10-11 13:31:02,649 src.workflow INFO     Starting checks for: Data Fusion on Kafka - NO Weather
-2022-10-11 13:31:02,649 src.workflow INFO     Checking: Fusion Alipark
-2022-10-11 13:31:02,649 src.kafka    INFO       Querying topic: features_alicante_alipark_flow_forecasting
-2022-10-11 13:31:03,056 src.kafka    INFO       Last offset: 15245
-2022-10-11 13:31:05,063 src.kafka    ERROR      Timestamp bigger than limit: 15.68h
-2022-10-11 13:31:05,063 src.workflow INFO     Checking: Fusion Autobuses
-2022-10-11 13:31:05,064 src.kafka    INFO       Querying topic: features_alicante_autobuses_flow_forecasting
-2022-10-11 13:31:05,471 src.kafka    INFO       Last offset: 19032
-2022-10-11 13:31:07,478 src.kafka    ERROR      Timestamp bigger than limit: 15.18h
-2022-10-11 13:31:07,478 src.workflow INFO     Checking: Fusion Benalua
-2022-10-11 13:31:07,478 src.kafka    INFO       Querying topic: features_alicante_benalua_flow_forecasting
-2022-10-11 13:31:07,886 src.kafka    INFO       Last offset: 19036
-2022-10-11 13:31:09,894 src.kafka    ERROR      Timestamp bigger than limit: 15.18h
-2022-10-11 13:31:09,894 src.workflow INFO     Checking: Fusion Diputacion
-2022-10-11 13:31:09,894 src.kafka    INFO       Querying topic: features_alicante_diputacion_flow_forecasting
-2022-10-11 13:31:10,302 src.kafka    INFO       Last offset: 15225
-2022-10-11 13:31:12,307 src.kafka    ERROR      Timestamp bigger than limit: 15.68h
-2022-10-11 13:31:12,308 src.workflow INFO     Checking: Fusion Mercado
-2022-10-11 13:31:12,308 src.kafka    INFO       Querying topic: features_alicante_mercado_flow_forecasting
-2022-10-11 13:31:12,716 src.kafka    INFO       Last offset: 5362
-2022-10-11 13:31:14,722 src.kafka    ERROR      Timestamp bigger than limit: 15.68h
-2022-10-11 13:31:14,722 src.workflow INFO     Checking: Fusion Montaneta
-2022-10-11 13:31:14,722 src.kafka    INFO       Querying topic: features_alicante_montaneta_flow_forecasting
-2022-10-11 13:31:15,130 src.kafka    INFO       Last offset: 18269
-2022-10-11 13:31:17,137 src.kafka    INFO       Timestamp in the limits: 15.68h
-2022-10-11 13:31:17,137 src.workflow INFO     Checking: Fusion Rambla
-2022-10-11 13:31:17,137 src.kafka    INFO       Querying topic: features_alicante_rambla_flow_forecasting
-2022-10-11 13:31:17,544 src.kafka    INFO       Last offset: 19062
-2022-10-11 13:31:19,552 src.kafka    ERROR      Timestamp bigger than limit: 15.19h
-2022-10-11 13:31:19,552 src.workflow INFO     Starting checks for: Predictions on Kafka - NO Weather
-2022-10-11 13:31:19,552 src.workflow INFO     Checking: Prediction Alipark
-2022-10-11 13:31:19,552 src.kafka    INFO       Querying topic: predictions_alicante_alipark_flow
-2022-10-11 13:31:19,960 src.kafka    INFO       Last offset: 620
-2022-10-11 13:31:21,968 src.kafka    ERROR      Timestamp bigger than limit: 15.69h
-2022-10-11 13:31:21,968 src.workflow INFO     Checking: Prediction Autobuses
-2022-10-11 13:31:21,968 src.kafka    INFO       Querying topic: predictions_alicante_autobuses_flow
-2022-10-11 13:31:22,377 src.kafka    INFO       Last offset: 815
-2022-10-11 13:31:24,385 src.kafka    ERROR      Timestamp bigger than limit: 15.19h
-2022-10-11 13:31:24,385 src.workflow INFO     Checking: Prediction Benalua
-2022-10-11 13:31:24,385 src.kafka    INFO       Querying topic: predictions_alicante_benalua_flow
-2022-10-11 13:31:24,793 src.kafka    INFO       Last offset: 815
-2022-10-11 13:31:26,801 src.kafka    ERROR      Timestamp bigger than limit: 15.19h
-2022-10-11 13:31:26,801 src.workflow INFO     Checking: Prediction Diputacion
-2022-10-11 13:31:26,801 src.kafka    INFO       Querying topic: predictions_alicante_diputacion_flow
-2022-10-11 13:31:27,208 src.kafka    INFO       Last offset: 601
-2022-10-11 13:31:29,215 src.kafka    ERROR      Timestamp bigger than limit: 15.69h
-2022-10-11 13:31:29,215 src.workflow INFO     Checking: Prediction Mercado
-2022-10-11 13:31:29,215 src.kafka    INFO       Querying topic: predictions_alicante_mercado_flow
-2022-10-11 13:31:29,623 src.kafka    INFO       Last offset: 620
-2022-10-11 13:31:31,630 src.kafka    ERROR      Timestamp bigger than limit: 15.69h
-2022-10-11 13:31:31,631 src.workflow INFO     Checking: Prediction Montaneta
-2022-10-11 13:31:31,631 src.kafka    INFO       Querying topic: predictions_alicante_montaneta_flow
-2022-10-11 13:31:32,039 src.kafka    INFO       Last offset: 620
-2022-10-11 13:31:34,046 src.kafka    INFO       Timestamp in the limits: 15.69h
-2022-10-11 13:31:34,046 src.workflow INFO     Checking: Prediction Rambla
-2022-10-11 13:31:34,046 src.kafka    INFO       Querying topic: predictions_alicante_rambla_flow
-2022-10-11 13:31:34,453 src.kafka    INFO       Last offset: 815
-2022-10-11 13:31:36,461 src.kafka    ERROR      Timestamp bigger than limit: 15.19h
-2022-10-11 13:31:36,461 src.workflow INFO     Starting checks for: Naiades Alicante Consumption Prediction
-2022-10-11 13:31:36,461 src.workflow INFO     Checking: Alipark Consumption 7d
-2022-10-11 13:31:36,585 src.context  INFO       Trying: http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:WaterConsumption:Spain-Alicante-alipark_7d
-2022-10-11 13:31:36,586 src.context  ERROR      Time checking error: 'ContextCheck' object has no attribute 'subtype'
-2022-10-11 13:31:36,586 src.workflow INFO     Checking: Autobuses Consumption 7d 
-2022-10-11 13:31:36,707 src.context  INFO       Trying: http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:WaterConsumption:Spain-Alicante-autobuses_7d
-2022-10-11 13:31:36,707 src.context  ERROR      Time checking error: 'ContextCheck' object has no attribute 'subtype'
-2022-10-11 13:31:36,707 src.workflow INFO     Checking: Benalua Consumption 7d
-2022-10-11 13:31:36,828 src.context  INFO       Trying: http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:WaterConsumption:Spain-Alicante-benalua_7d
-2022-10-11 13:31:36,828 src.context  ERROR      Time checking error: 'ContextCheck' object has no attribute 'subtype'
-2022-10-11 13:31:36,828 src.workflow INFO     Checking: Diputacion Consumption 7d
-2022-10-11 13:31:36,949 src.context  INFO       Trying: http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:WaterConsumption:Spain-Alicante-diputacion_7d
-2022-10-11 13:31:36,950 src.context  ERROR      Time checking error: 'ContextCheck' object has no attribute 'subtype'
-2022-10-11 13:31:36,950 src.workflow INFO     Checking: Mercado Consumption 7d
-2022-10-11 13:31:37,071 src.context  INFO       Trying: http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:WaterConsumption:Spain-Alicante-mercado_7d
-2022-10-11 13:31:37,071 src.context  ERROR      Time checking error: 'ContextCheck' object has no attribute 'subtype'
-2022-10-11 13:31:37,071 src.workflow INFO     Checking: Montaneta Consumption 7d
-2022-10-11 13:31:37,191 src.context  INFO       Trying: http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:WaterConsumption:Spain-Alicante-montaneta_7d
-2022-10-11 13:31:37,191 src.context  ERROR      Time checking error: 'ContextCheck' object has no attribute 'subtype'
-2022-10-11 13:31:37,191 src.workflow INFO     Checking: Rambla Consumption 7d
-2022-10-11 13:31:37,311 src.context  INFO       Trying: http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:WaterConsumption:Spain-Alicante-rambla_7d
-2022-10-11 13:31:37,312 src.context  ERROR      Time checking error: 'ContextCheck' object has no attribute 'subtype'
+2022-10-12 13:15:51,190 wf-monitor   INFO     Starting workflow monitoring tool for: alicante-consumption
+2022-10-12 13:15:51,191 src.workflow INFO     Loading config: config/workflows/alicante-consumption.json
+2022-10-12 13:15:51,191 src.workflow INFO     Starting workflow check
+2022-10-12 13:15:51,191 src.workflow INFO     Starting checks for: Naiades Historic API
+2022-10-12 13:15:51,191 src.workflow INFO     Checking: Alipark Flow
+2022-10-12 13:15:51,373 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Alipark-Flow?lastN=1
+2022-10-12 13:15:51,375 src.historic ERROR      Timestamp bigger than limit: 15.76h
+2022-10-12 13:15:51,375 src.workflow INFO     Checking: Autobuses Flow
+2022-10-12 13:15:51,563 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Autobuses-Flow?lastN=1
+2022-10-12 13:15:51,563 src.historic ERROR      Timestamp bigger than limit: 15.27h
+2022-10-12 13:15:51,563 src.workflow INFO     Checking: Benalua Flow
+2022-10-12 13:15:51,688 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Benalua-Flow?lastN=1
+2022-10-12 13:15:51,688 src.historic ERROR      Timestamp bigger than limit: 15.27h
+2022-10-12 13:15:51,688 src.workflow INFO     Checking: Diputacion Flow
+2022-10-12 13:15:51,781 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Diputacion-Flow?lastN=1
+2022-10-12 13:15:51,781 src.historic ERROR      Timestamp bigger than limit: 15.76h
+2022-10-12 13:15:51,781 src.workflow INFO     Checking: Mercado Flow
+2022-10-12 13:15:51,898 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Mercado-Flow?lastN=1
+2022-10-12 13:15:51,898 src.historic ERROR      Timestamp bigger than limit: 15.76h
+2022-10-12 13:15:51,898 src.workflow INFO     Checking: Montaneta Flow
+2022-10-12 13:15:51,971 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Montaneta-Flow?lastN=1
+2022-10-12 13:15:51,971 src.historic INFO       Timestamp in the limits: 15.76h
+2022-10-12 13:15:51,971 src.workflow INFO     Checking: Rambla Flow
+2022-10-12 13:15:52,106 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:Device:Rambla-Flow?lastN=1
+2022-10-12 13:15:52,106 src.historic ERROR      Timestamp bigger than limit: 15.28h
+2022-10-12 13:15:52,106 src.workflow INFO     Starting checks for: Naiades Historic API - Weather
+2022-10-12 13:15:52,106 src.workflow INFO     Checking: Weather Observed 1
+2022-10-12 13:15:52,182 src.historic INFO       Trying: http://5.53.108.182:8668/v2/entities/urn:ngsi-ld:WeatherObserved:WeatherObserved-1?lastN=1
+2022-10-12 13:15:52,182 src.historic INFO       Timestamp in the limits: 1.26h
+2022-10-12 13:15:52,183 src.workflow INFO     Starting checks for: Influx data
+2022-10-12 13:15:52,184 src.workflow INFO     Checking: Influx Alipark Flow
+2022-10-12 13:15:52,185 src.influx   INFO       Building query
+2022-10-12 13:15:52,185 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "alipark_flow")|> last()
+2022-10-12 13:15:52,213 src.influx   ERROR      Timestamp bigger than limit: 15.76h
+2022-10-12 13:15:52,214 src.workflow INFO     Checking: Influx Autobuses Flow
+2022-10-12 13:15:52,214 src.influx   INFO       Building query
+2022-10-12 13:15:52,214 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "autobuses_flow")|> last()
+2022-10-12 13:15:52,239 src.influx   ERROR      Timestamp bigger than limit: 15.27h
+2022-10-12 13:15:52,239 src.workflow INFO     Checking: Influx Benalua Flow
+2022-10-12 13:15:52,239 src.influx   INFO       Building query
+2022-10-12 13:15:52,239 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "benalua_flow")|> last()
+2022-10-12 13:15:52,258 src.influx   ERROR      Timestamp bigger than limit: 15.27h
+2022-10-12 13:15:52,258 src.workflow INFO     Checking: Influx Diputacion Flow
+2022-10-12 13:15:52,258 src.influx   INFO       Building query
+2022-10-12 13:15:52,258 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "diputacion_flow")|> last()
+2022-10-12 13:15:52,270 src.influx   ERROR      Timestamp bigger than limit: 15.76h
+2022-10-12 13:15:52,270 src.workflow INFO     Checking: Influx Mercado Flow
+2022-10-12 13:15:52,276 src.influx   INFO       Building query
+2022-10-12 13:15:52,276 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "mercado_flow")|> last()
+2022-10-12 13:15:52,296 src.influx   ERROR      Timestamp bigger than limit: 15.76h
+2022-10-12 13:15:52,297 src.workflow INFO     Checking: Influx Montaneta Flow
+2022-10-12 13:15:52,297 src.influx   INFO       Building query
+2022-10-12 13:15:52,297 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "montaneta_flow")|> last()
+2022-10-12 13:15:52,322 src.influx   INFO       Timestamp in the limits: 15.76h
+2022-10-12 13:15:52,322 src.workflow INFO     Checking: Influx Rambla Flow
+2022-10-12 13:15:52,322 src.influx   INFO       Building query
+2022-10-12 13:15:52,323 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "rambla_flow")|> last()
+2022-10-12 13:15:52,346 src.influx   ERROR      Timestamp bigger than limit: 15.28h
+2022-10-12 13:15:52,347 src.workflow INFO     Checking: Influx Weather Observed 1
+2022-10-12 13:15:52,348 src.influx   INFO       Building query
+2022-10-12 13:15:52,349 src.influx   INFO       Running query: from(bucket: "alicante")|> range(start:-1w, stop:-0h)|> filter(fn: (r) => r._measurement == "weather_observed1")|> last()
+2022-10-12 13:15:52,377 src.influx   INFO       Timestamp in the limits: 1.26h
+2022-10-12 13:15:52,377 src.workflow INFO     Starting checks for: Data Fusion on Kafka - NO Weather
+2022-10-12 13:15:52,377 src.workflow INFO     Checking: Fusion Alipark
+2022-10-12 13:15:52,377 src.kafka    INFO       Querying topic: features_alicante_alipark_flow_forecasting
+2022-10-12 13:15:52,802 src.kafka    INFO       Last offset: 15293
+2022-10-12 13:15:54,823 src.kafka    ERROR      Timestamp bigger than limit: 15.43h
+2022-10-12 13:15:54,823 src.workflow INFO     Checking: Fusion Autobuses
+2022-10-12 13:15:54,824 src.kafka    INFO       Querying topic: features_alicante_autobuses_flow_forecasting
+2022-10-12 13:15:55,245 src.kafka    INFO       Last offset: 19128
+2022-10-12 13:15:57,251 src.kafka    ERROR      Timestamp bigger than limit: 14.93h
+2022-10-12 13:15:57,251 src.workflow INFO     Checking: Fusion Benalua
+2022-10-12 13:15:57,251 src.kafka    INFO       Querying topic: features_alicante_benalua_flow_forecasting
+2022-10-12 13:15:57,747 src.kafka    INFO       Last offset: 19132
+2022-10-12 13:15:59,849 src.kafka    ERROR      Timestamp bigger than limit: 14.93h
+2022-10-12 13:15:59,849 src.workflow INFO     Checking: Fusion Diputacion
+2022-10-12 13:15:59,849 src.kafka    INFO       Querying topic: features_alicante_diputacion_flow_forecasting
+2022-10-12 13:16:00,263 src.kafka    INFO       Last offset: 15273
+2022-10-12 13:16:02,276 src.kafka    ERROR      Timestamp bigger than limit: 15.43h
+2022-10-12 13:16:02,276 src.workflow INFO     Checking: Fusion Mercado
+2022-10-12 13:16:02,276 src.kafka    INFO       Querying topic: features_alicante_mercado_flow_forecasting
+2022-10-12 13:16:02,731 src.kafka    INFO       Last offset: 5410
+2022-10-12 13:16:04,739 src.kafka    ERROR      Timestamp bigger than limit: 15.43h
+2022-10-12 13:16:04,739 src.workflow INFO     Checking: Fusion Montaneta
+2022-10-12 13:16:04,739 src.kafka    INFO       Querying topic: features_alicante_montaneta_flow_forecasting
+2022-10-12 13:16:05,166 src.kafka    INFO       Last offset: 18317
+2022-10-12 13:16:07,235 src.kafka    INFO       Timestamp in the limits: 15.43h
+2022-10-12 13:16:07,235 src.workflow INFO     Checking: Fusion Rambla
+2022-10-12 13:16:07,235 src.kafka    INFO       Querying topic: features_alicante_rambla_flow_forecasting
+2022-10-12 13:16:07,653 src.kafka    INFO       Last offset: 19158
+2022-10-12 13:16:09,676 src.kafka    ERROR      Timestamp bigger than limit: 14.93h
+2022-10-12 13:16:09,676 src.workflow INFO     Starting checks for: Predictions on Kafka - NO Weather
+2022-10-12 13:16:09,676 src.workflow INFO     Checking: Prediction Alipark
+2022-10-12 13:16:09,676 src.kafka    INFO       Querying topic: predictions_alicante_alipark_flow
+2022-10-12 13:16:10,129 src.kafka    INFO       Last offset: 668
+2022-10-12 13:16:12,150 src.kafka    ERROR      Timestamp bigger than limit: 15.44h
+2022-10-12 13:16:12,150 src.workflow INFO     Checking: Prediction Autobuses
+2022-10-12 13:16:12,150 src.kafka    INFO       Querying topic: predictions_alicante_autobuses_flow
+2022-10-12 13:16:12,619 src.kafka    INFO       Last offset: 911
+2022-10-12 13:16:14,638 src.kafka    ERROR      Timestamp bigger than limit: 14.94h
+2022-10-12 13:16:14,638 src.workflow INFO     Checking: Prediction Benalua
+2022-10-12 13:16:14,638 src.kafka    INFO       Querying topic: predictions_alicante_benalua_flow
+2022-10-12 13:16:15,053 src.kafka    INFO       Last offset: 911
+2022-10-12 13:16:17,062 src.kafka    ERROR      Timestamp bigger than limit: 14.94h
+2022-10-12 13:16:17,062 src.workflow INFO     Checking: Prediction Diputacion
+2022-10-12 13:16:17,062 src.kafka    INFO       Querying topic: predictions_alicante_diputacion_flow
+2022-10-12 13:16:17,516 src.kafka    INFO       Last offset: 649
+2022-10-12 13:16:19,535 src.kafka    ERROR      Timestamp bigger than limit: 15.44h
+2022-10-12 13:16:19,536 src.workflow INFO     Checking: Prediction Mercado
+2022-10-12 13:16:19,536 src.kafka    INFO       Querying topic: predictions_alicante_mercado_flow
+2022-10-12 13:16:19,989 src.kafka    INFO       Last offset: 668
+2022-10-12 13:16:22,010 src.kafka    ERROR      Timestamp bigger than limit: 15.44h
+2022-10-12 13:16:22,010 src.workflow INFO     Checking: Prediction Montaneta
+2022-10-12 13:16:22,010 src.kafka    INFO       Querying topic: predictions_alicante_montaneta_flow
+2022-10-12 13:16:22,502 src.kafka    INFO       Last offset: 668
+2022-10-12 13:16:24,512 src.kafka    INFO       Timestamp in the limits: 15.44h
+2022-10-12 13:16:24,512 src.workflow INFO     Checking: Prediction Rambla
+2022-10-12 13:16:24,512 src.kafka    INFO       Querying topic: predictions_alicante_rambla_flow
+2022-10-12 13:16:24,925 src.kafka    INFO       Last offset: 911
+2022-10-12 13:16:26,957 src.kafka    ERROR      Timestamp bigger than limit: 14.94h
+2022-10-12 13:16:26,957 src.workflow INFO     Starting checks for: Naiades Alicante Consumption Prediction
+2022-10-12 13:16:26,957 src.workflow INFO     Checking: Alipark Consumption 7d
+2022-10-12 13:16:27,152 src.context  INFO       Trying: http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:WaterConsumption:Spain-Alicante-alipark_7d
+2022-10-12 13:16:27,152 src.context  INFO       Timestamp in the limits: -106.73h
+2022-10-12 13:16:27,152 src.workflow INFO     Checking: Autobuses Consumption 7d 
+2022-10-12 13:16:27,285 src.context  INFO       Trying: http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:WaterConsumption:Spain-Alicante-autobuses_7d
+2022-10-12 13:16:27,285 src.context  INFO       Timestamp in the limits: -58.73h
+2022-10-12 13:16:27,285 src.workflow INFO     Checking: Benalua Consumption 7d
+2022-10-12 13:16:27,415 src.context  INFO       Trying: http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:WaterConsumption:Spain-Alicante-benalua_7d
+2022-10-12 13:16:27,415 src.context  ERROR      Timestamp bigger than limit: -10.73h
+2022-10-12 13:16:27,415 src.workflow INFO     Checking: Diputacion Consumption 7d
+2022-10-12 13:16:27,538 src.context  INFO       Trying: http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:WaterConsumption:Spain-Alicante-diputacion_7d
+2022-10-12 13:16:27,539 src.context  INFO       Timestamp in the limits: -106.73h
+2022-10-12 13:16:27,539 src.workflow INFO     Checking: Mercado Consumption 7d
+2022-10-12 13:16:27,670 src.context  INFO       Trying: http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:WaterConsumption:Spain-Alicante-mercado_7d
+2022-10-12 13:16:27,670 src.context  INFO       Timestamp in the limits: -106.73h
+2022-10-12 13:16:27,670 src.workflow INFO     Checking: Montaneta Consumption 7d
+2022-10-12 13:16:27,796 src.context  INFO       Trying: http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:WaterConsumption:Spain-Alicante-montaneta_7d
+2022-10-12 13:16:27,799 src.context  INFO       Timestamp in the limits: -34.73h
+2022-10-12 13:16:27,800 src.workflow INFO     Checking: Rambla Consumption 7d
+2022-10-12 13:16:27,928 src.context  INFO       Trying: http://naiades.simavi.ro:1026/v2/entities/urn:ngsi-ld:WaterConsumption:Spain-Alicante-rambla_7d
+2022-10-12 13:16:27,928 src.context  INFO       Timestamp in the limits: -34.73h

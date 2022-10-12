@@ -58,13 +58,16 @@ class KafkaCheck:
         for message in self.consumer:
             # LOGGER.info(message)
             try:
-                ts = message.value["timestamp"]
+                if self.section["subtype"] == "features-fiware":
+                    ts = message.value["time"]
+                else:
+                    ts = message.value["timestamp"]
                 if self.section["subtype"] == "prediction-watering":
                     t_value = message.value["T"]
                     wa_value = message.value["WA"]
                 # LOGGER.info(message.value)
             except Exception as e:
-                LOGGER.error(e)
+                LOGGER.error("Error reading timestamp: %s", str(e))
             # LOGGER.info("  %s key=%s value=%s" % (message.topic, message.key, message.value))
         self.consumer.close()
 
@@ -88,6 +91,8 @@ class KafkaCheck:
             if self.section["subtype"] == "fusion":
                 ts = ts / 1000
             if "time" in self.section:
+                if self.section["time"] == "micro":
+                    ts = ts
                 if self.section["time"] == "nano":
                     ts = ts / 1000
                 if self.section["time"] == "pico":

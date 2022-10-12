@@ -31,8 +31,8 @@
         {
             "name": "Data Fusion on Kafka",
             "type": "kafka",
-            "subtype": "features",
-            "time": "nano",
+            "subtype": "features-fiware",
+            "time": "micro",
             "groupid": "wf-monitor-",
             "bootstrap_servers": "localhost:9092",
             "checks": [
