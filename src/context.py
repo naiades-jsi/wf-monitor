@@ -40,8 +40,6 @@ class ContextCheck:
         for locator in locators:
             tempDateValue = tempDateValue[locator]
 
-        LOGGER.info(tempDateValue)
-
         try:
             # extracting last timestamp from data
             datetime_pattern = re.compile(r'(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})')
@@ -61,12 +59,13 @@ class ContextCheck:
                 last_dt = datetime.strptime(datetime_string, '%Y-%m-%dT%H:%M:%S')
 
                 if soilMoisture > 24:
+                    LOGGER.info("  Soil is moist enough, no watering needed.")
                     pass
                 # soil is dry but no watering recommendation
-                elif (soilMoisture < 24) and (nextWateringDeadline < datetime.timestamp(datetime.date.today())):
+                elif (soilMoisture < 24) and (nextWateringDeadline < datetime.timestamp(datetime.combine(last_dt, datetime.min.time()))):
                     LOGGER.error("  Low soil moisture but no new watering deadline")
                 # sometimes soil is watered inbetween deadlines and could cause confusion
-                elif (soilMoisture < 24) and (nextWateringDeadline < datetime.timestamp(last_dt.date())):
+                elif (soilMoisture < 24) and (nextWateringDeadline < datetime.timestamp(last_dt)):
                     LOGGER.warning("  Soil has been watered despite no prediction.")
                 else:
                     LOGGER.info("  Timestamp in the limits: %.2fh", diff_hrs)

@@ -99,7 +99,8 @@
             },
             "url": "http://5.53.108.182:1026/v2/entities/urn:ngsi-ld:FlowerBed:{0}",
             "headers": {
-                "Fiware-Service": "carouge"
+                "Fiware-Service": "carouge",
+                "Fiware-ServicePath": "/"
             },
             "checks": [
                 { "name": "FlowerBed 1 Watering Forecast", "device": "FlowerBed-1", "alert_diff": 0, "error_diff": -24 },
