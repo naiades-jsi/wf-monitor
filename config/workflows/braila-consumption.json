@@ -21,9 +21,9 @@
             "organisation": "naiades",
             "bucket": "braila",
             "checks": [
-                { "name": "Influx Flow 211206H360", "measurement": "flow211206H360", "alert_diff": 5, "error_diff": 10 },
-                { "name": "Influx Flow 211306H360", "measurement": "flow211306H360", "alert_diff": 5, "error_diff": 10 },
-                { "name": "Influx Flow 318505H498", "measurement": "flow318505H498", "alert_diff": 5, "error_diff": 10 }
+                { "name": "Influx Flow 211206H360", "measurement": "flow211206H360", "alert_diff": 7, "error_diff": 10 },
+                { "name": "Influx Flow 211306H360", "measurement": "flow211306H360", "alert_diff": 7, "error_diff": 10 },
+                { "name": "Influx Flow 318505H498", "measurement": "flow318505H498", "alert_diff": 7, "error_diff": 10 }
             ]
         },
         {
