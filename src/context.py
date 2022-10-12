@@ -28,9 +28,9 @@ class ContextCheck:
             if (self.check_last_ts(rJSON) == False):
                 LOGGER.error("")
         except HTTPError as http_e:
-            LOGGER.error(f'  HTTP error occurred: {http_e}')
+            LOGGER.error(""  HTTP error occurred: %s", http_e)
         except Exception as e:
-            LOGGER.error(f'  Other error occurred: {e}')
+            LOGGER.error("  Other error occurred: %s", %e)
 
     def check_last_ts(self, rJSON: dict) -> bool:
         # extracting data string
@@ -61,10 +61,10 @@ class ContextCheck:
                     pass
                 # soil is dry but no watering recommendation
                 elif (soilMoisture < 24) and (nextWateringDeadline < datetime.timestamp(datetime.date.today())):
-                    LOGGER.error("Low soil moisture but no new watering deadline")
+                    LOGGER.error("  Low soil moisture but no new watering deadline")
                 # sometimes soil is watered inbetween deadlines and could cause confusion
                 elif (soilMoisture < 24) and (nextWateringDeadline < datetime.timestamp(last_dt.date())):
-                    LOGGER.warning("Soil has been watered despite no prediction.")
+                    LOGGER.warning("  Soil has been watered despite no prediction.")
 
             else:
                 # check timestamp of now
@@ -75,4 +75,4 @@ class ContextCheck:
                 else:
                     LOGGER.info("  Timestamp in the limits: %.2fh", diff_hrs)
         except Exception as e:
-            LOGGER.error(f'  Time checking error: {e}')
+            LOGGER.error("  Time checking error: %s", e)
