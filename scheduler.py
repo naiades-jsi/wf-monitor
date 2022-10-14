@@ -1,15 +1,22 @@
-import schedule
-import time
-import subprocess
 import os
-import logging
 import json
+import time
+import logging
+import requests
+import schedule
+import subprocess
 from datetime import datetime
 
 # logging
 LOGGER = logging.getLogger(__name__)
 logging.basicConfig(
     format="%(asctime)s %(name)-12s %(levelname)-8s %(message)s", level=logging.INFO)
+
+
+def ping():
+    ping_response = requests.get('https://betteruptime.com/api/v1/heartbeat/wkndZC6mD8MSTm2bN27hNwXz')
+    LOGGER.info("Ping to betteruptime was sent. Received reponse with status code " + str(ping_response.status_code))
+
 
 def main(run_time):
     # open json (get data)
@@ -25,7 +32,7 @@ def main(run_time):
         if run_time == section["scheduledAt"]:
             if section["name"] != 'analysis':
                 file_loc = os.path.join(os.getcwd(), 'logs', f'{section["name"]}.log')
-                with open(file_loc,"wb") as out:
+                with open(file_loc, "wb") as out:
                     subprocess.Popen(section["command"], shell=True, stdout=out, stderr=out)
             # if the task is analysis, analysis.py is run (gather all the data, and send an email)
             elif section["name"] == 'analysis':
@@ -38,7 +45,7 @@ def main(run_time):
             section["last_update"] = current_time
 
     # update json
-    with  open(config_file, "w") as outfile:
+    with open(config_file, "w") as outfile:
         json.dump(data, outfile, ensure_ascii=False, indent=4)
 
 
@@ -57,6 +64,10 @@ def schedule_job():
     for run_time in times:
         schedule.every().day.at(run_time).do(main, run_time=run_time)
 
+    # add ping job to be executed every 5 minutes
+    schedule.every(5).minutes.do(ping)
+
+
 LOGGER.info("WF monitor started")
 schedule_job()
 
@@ -64,4 +75,3 @@ schedule_job()
 while True:
     schedule.run_pending()
     time.sleep(1)
-
