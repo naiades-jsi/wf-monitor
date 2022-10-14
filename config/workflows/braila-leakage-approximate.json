@@ -26,6 +26,65 @@
                 { "name": "Pressure 5772", "device": "Pressure-5772", "alert_diff": 1, "error_diff": 2 },
                 { "name": "Pressure 5773", "device": "Pressure-5773", "alert_diff": 1, "error_diff": 2 }
             ]
+        },
+        {
+            "name": "Influx data",
+            "type": "influx",
+            "token": "ZykEIhhYe0KRjleAAjFX9LhEm_H7SeLiLe6Kc71f1452Lps7U6MECvOHw9UooSanWwm7SKqe0kTXDnOhoAMNNA==",
+            "url": "http://localhost:8086",
+            "organisation": "naiades",
+            "bucket": "braila",
+            "checks": [
+                { "name": "Influx pressure 5770", "measurement": "pressure5770", "alert_diff": 3, "error_diff": 5 },
+                { "name": "Influx pressure 5771", "measurement": "pressure5771", "alert_diff": 3, "error_diff": 5 },
+                { "name": "Influx pressure 5772", "measurement": "pressure5772", "alert_diff": 3, "error_diff": 5 },
+                { "name": "Influx pressure 5773", "measurement": "pressure5773", "alert_diff": 3, "error_diff": 5 },
+                { "name": "Influx Flow 211206H360", "measurement": "flow211206H360", "alert_diff": 7, "error_diff": 10 },
+                { "name": "Influx Flow 211306H360", "measurement": "flow211306H360", "alert_diff": 7, "error_diff": 10 },
+                { "name": "Influx Flow 318505H498", "measurement": "flow318505H498", "alert_diff": 7, "error_diff": 10 }
+            ]
+        },
+        {
+            "name": "Data Fusion on Kafka",
+            "type": "kafka",
+            "subtype": "features-fiware",
+            "time": "micro",
+            "groupid": "wf-monitor-",
+            "bootstrap_servers": "localhost:9092",
+            "checks": [
+                { "name": "Features leakage detection", "topic": "features_braila_leakage_detection_updated", "alert_diff": 3, "error_diff": 5 }
+            ]
+        },
+        {
+            "name": "Predictions on Kafka",
+            "type": "kafka",
+            "subtype": "prediction",
+            "time": "nano",
+            "groupid": "wf-monitor-",
+            "bootstrap_servers": "localhost:9092",
+            "checks": [
+                { "name": "Leakage groups", "topic": "braila_leakage_groups", "alert_diff": 3, "error_diff": 5 }
+            ]
+        },
+        {
+            "name": "Braila Approximate Leakage Upload",
+            "type": "naiades_context",
+            "subtype": "braila_leakage_approximate",
+            "dateExtraction": {
+                "path": [
+                    "dateIssued",
+                    "value",
+                    "@value"
+                ],
+                "type": "string"
+            },
+            "url": "http://naiades.simavi.ro:1026/ngsi-ld/v1/entities/urn:ngsi-ld:Alert:RO-Braila-{0}",
+            "headers": {
+                "Fiware-Service": "braila"
+            },
+            "checks": [
+                { "name": "Leakage Groups Upload", "device": "leakageGroup", "alert_diff": 24, "error_diff": 36 }
+            ]
         }
     ]
 }
