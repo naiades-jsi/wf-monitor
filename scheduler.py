@@ -13,8 +13,8 @@ logging.basicConfig(
     format="%(asctime)s %(name)-12s %(levelname)-8s %(message)s", level=logging.INFO)
 
 
-def ping():
-    ping_response = requests.get('https://betteruptime.com/api/v1/heartbeat/wkndZC6mD8MSTm2bN27hNwXz')
+def ping(ping_url: str):
+    ping_response = requests.get(ping_url)
     LOGGER.info("Ping to betteruptime was sent. Received reponse with status code " + str(ping_response.status_code))
 
 
@@ -65,7 +65,7 @@ def schedule_job():
         schedule.every().day.at(run_time).do(main, run_time=run_time)
 
     # add ping job to be executed every 5 minutes
-    schedule.every(5).minutes.do(ping)
+    schedule.every(5).minutes.do(ping, ping_url=data['better_uptime_url'])
 
 
 LOGGER.info("WF monitor started")
