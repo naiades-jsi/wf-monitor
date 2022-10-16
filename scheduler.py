@@ -24,9 +24,13 @@ def main(run_time):
         # if scheduled at the time, call command (to update data)
         if run_time == section["scheduledAt"]:
             if section["name"] != 'analysis':
-                file_loc = os.path.join(os.getcwd(), 'logs', f'{section["name"]}.log')
-                with open(file_loc,"wb") as out:
-                    subprocess.Popen(section["command"], shell=True, stdout=out, stderr=out)
+                # check if config file exists
+                current_config_file = f'{section["name"]}.json'
+                if current_config_file in os.listdir(os.getcwd(), 'config' 'workflows'):
+                    file_loc = os.path.join(os.getcwd(), 'logs', f'{section["name"]}.log')
+                    with open(file_loc,"wb") as out:
+                        subprocess.Popen(section["command"], shell=True, stdout=out, stderr=out)
+
             # if the task is analysis, analysis.py is run (gather all the data, and send an email)
             elif section["name"] == 'analysis':
                 time.sleep(30)
