@@ -26,7 +26,8 @@ def main(run_time):
             if section["name"] != 'analysis':
                 # check if config file exists
                 current_config_file = f'{section["name"]}.json'
-                if current_config_file in os.listdir(os.getcwd(), 'config' 'workflows'):
+                workflows = os.path.join(os.getcwd(), 'config', 'workflows')
+                if current_config_file in os.listdir(workflows):
                     file_loc = os.path.join(os.getcwd(), 'logs', f'{section["name"]}.log')
                     with open(file_loc,"wb") as out:
                         subprocess.Popen(section["command"], shell=True, stdout=out, stderr=out)
@@ -37,13 +38,11 @@ def main(run_time):
                 subprocess.Popen(section["command"], shell=True)
 
             # write the time of the last data update to scheduler.json
-            now = datetime.now()
-            current_time = now.strftime("%d/%m/%Y %H:%M:%S")
-            section["last_update"] = current_time
-
-    # update json
-    with  open(config_file, "w") as outfile:
-        json.dump(data, outfile, ensure_ascii=False, indent=4)
+            with  open(config_file, "w") as outfile:
+                now = datetime.now()
+                current_time = now.strftime("%d/%m/%Y %H:%M:%S")
+                section["last_update"] = current_time
+                json.dump(data, outfile, ensure_ascii=False, indent=4)
 
 
 # schedule (find in scheduler.json)
