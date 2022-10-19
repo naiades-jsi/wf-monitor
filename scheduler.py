@@ -11,6 +11,20 @@ LOGGER = logging.getLogger(__name__)
 logging.basicConfig(
     format="%(asctime)s %(name)-12s %(levelname)-8s %(message)s", level=logging.INFO)
 
+# check for missing config files
+LOGGER.info('Checking config files...')
+config_file = os.path.join(os.getcwd(), 'config', 'scheduler.json')
+with open(config_file, "r") as json_file:
+    data = json.load(json_file)
+workflows = os.path.join(os.getcwd(), 'config', 'workflows')
+for section in data['tasks']:
+    file_name = section['name'] + '.json'
+    if file_name != 'analysis.json':
+        if file_name == 'alicante-salinity.json':
+            file_name = 'salinity.json'
+        if file_name not in os.listdir(workflows):
+            LOGGER.info(f'Missing {file_name} file!')
+
 def main(run_time):
     # open json (get data)
     config_file = os.path.join(os.getcwd(), 'config', 'scheduler.json')
