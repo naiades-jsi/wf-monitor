@@ -1,9 +1,10 @@
-import schedule
-import time
-import subprocess
 import os
-import logging
 import json
+import time
+import logging
+import requests
+import schedule
+import subprocess
 from datetime import datetime
 
 # logging
@@ -25,6 +26,11 @@ for section in data['tasks']:
         if file_name not in os.listdir(workflows):
             LOGGER.info(f'Missing {file_name} file!')
 
+# pinging betteruptime service
+def ping(ping_url: str):
+    ping_response = requests.get(ping_url)
+    LOGGER.info("Ping to betteruptime was sent. Received reponse with status code " + str(ping_response.status_code))
+
 def main(run_time):
     # open json (get data)
     config_file = os.path.join(os.getcwd(), 'config', 'scheduler.json')
@@ -45,7 +51,6 @@ def main(run_time):
                     file_loc = os.path.join(os.getcwd(), 'logs', f'{section["name"]}.log')
                     with open(file_loc,"wb") as out:
                         subprocess.Popen(section["command"], shell=True, stdout=out, stderr=out)
-
             # if the task is analysis, analysis.py is run (gather all the data, and send an email)
             elif section["name"] == 'analysis':
                 time.sleep(30)
@@ -57,7 +62,6 @@ def main(run_time):
                 current_time = now.strftime("%d/%m/%Y %H:%M:%S")
                 section["last_update"] = current_time
                 json.dump(data, outfile, ensure_ascii=False, indent=4)
-
 
 # schedule (find in scheduler.json)
 def schedule_job():
@@ -74,6 +78,10 @@ def schedule_job():
     for run_time in times:
         schedule.every().day.at(run_time).do(main, run_time=run_time)
 
+    # add ping job to be executed every 5 minutes
+    schedule.every(5).minutes.do(ping, ping_url=data['better_uptime_url'])
+
+
 LOGGER.info("WF monitor started")
 schedule_job()
 
@@ -81,4 +89,3 @@ schedule_job()
 while True:
     schedule.run_pending()
     time.sleep(1)
-
