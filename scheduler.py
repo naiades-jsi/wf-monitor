@@ -12,11 +12,24 @@ LOGGER = logging.getLogger(__name__)
 logging.basicConfig(
     format="%(asctime)s %(name)-12s %(levelname)-8s %(message)s", level=logging.INFO)
 
+# check for missing config files
+LOGGER.info('Checking config files...')
+config_file = os.path.join(os.getcwd(), 'config', 'scheduler.json')
+with open(config_file, "r") as json_file:
+    data = json.load(json_file)
+workflows = os.path.join(os.getcwd(), 'config', 'workflows')
+for section in data['tasks']:
+    file_name = section['name'] + '.json'
+    if file_name != 'analysis.json':
+        if file_name == 'alicante-salinity.json':
+            file_name = 'salinity.json'
+        if file_name not in os.listdir(workflows):
+            LOGGER.info(f'Missing {file_name} file!')
 
+# pinging betteruptime service
 def ping(ping_url: str):
     ping_response = requests.get(ping_url)
     LOGGER.info("Ping to betteruptime was sent. Received reponse with status code " + str(ping_response.status_code))
-
 
 def main(run_time):
     # open json (get data)
@@ -31,23 +44,24 @@ def main(run_time):
         # if scheduled at the time, call command (to update data)
         if run_time == section["scheduledAt"]:
             if section["name"] != 'analysis':
-                file_loc = os.path.join(os.getcwd(), 'logs', f'{section["name"]}.log')
-                with open(file_loc, "wb") as out:
-                    subprocess.Popen(section["command"], shell=True, stdout=out, stderr=out)
+                # check if config file exists
+                current_config_file = f'{section["name"]}.json'
+                workflows = os.path.join(os.getcwd(), 'config', 'workflows')
+                if current_config_file in os.listdir(workflows):
+                    file_loc = os.path.join(os.getcwd(), 'logs', f'{section["name"]}.log')
+                    with open(file_loc,"wb") as out:
+                        subprocess.Popen(section["command"], shell=True, stdout=out, stderr=out)
             # if the task is analysis, analysis.py is run (gather all the data, and send an email)
             elif section["name"] == 'analysis':
                 time.sleep(30)
                 subprocess.Popen(section["command"], shell=True)
 
             # write the time of the last data update to scheduler.json
-            now = datetime.now()
-            current_time = now.strftime("%d/%m/%Y %H:%M:%S")
-            section["last_update"] = current_time
-
-    # update json
-    with open(config_file, "w") as outfile:
-        json.dump(data, outfile, ensure_ascii=False, indent=4)
-
+            with  open(config_file, "w") as outfile:
+                now = datetime.now()
+                current_time = now.strftime("%d/%m/%Y %H:%M:%S")
+                section["last_update"] = current_time
+                json.dump(data, outfile, ensure_ascii=False, indent=4)
 
 # schedule (find in scheduler.json)
 def schedule_job():

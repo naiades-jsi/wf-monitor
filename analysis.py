@@ -9,6 +9,7 @@ import os
 import pandas as pd
 import logging
 import yagmail
+from datetime import datetime
 
 # logging
 LOGGER = logging.getLogger("wf-monitor")
@@ -401,6 +402,7 @@ def create_msg():
     with open(config_file, "r") as json_file:
         data = json.load(json_file)
 
+    no_config_file = ''
     msg = ''
     for filename in os.listdir('logs'):
         file = os.path.join('logs', filename)
@@ -413,12 +415,16 @@ def create_msg():
         num_errors = count_errors(df, 'Error')
         num_warnings = count_errors(df, 'Warning')
 
-        # get time of last update, if not foun->update_time="???"
+        # get time of last update, if not found->update_time="???"
         update_time = "???"
         for section in data["tasks"]:
             if section["name"].upper() == file_name:
                 update_time = section["last_update"]
 
+                # check if the last update is from today, else config file is missing
+                if update_time[:2] != datetime.now().strftime("%d"):
+                    no_config_file += f"<p><b>{file_name} data is not up to date. Missing config file.</p>"
+        
         # all errors
         if len(df) == 0:
             partial_report = f'<p><b>{file_name} ({update_time}):</b> <br> No errors...</p>'
@@ -454,7 +460,7 @@ def create_msg():
             partial_report += table_part
 
         msg += partial_report
-
+    msg = no_config_file+msg
     html = '''
     <html>
     <h1>Report NAIADES ecosystem</h1>
@@ -505,7 +511,7 @@ def main(sender_address, receiver_address, password):
     '''
 
     msg = create_msg()
-    # wirte message to the disk
+    # write message to the disk
     with open("analysis.html", "w") as f:
         f.write(msg)
     # remove new lines \n from msg as it is being converted to <br> in an e-mail
