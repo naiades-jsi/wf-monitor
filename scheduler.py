@@ -5,6 +5,7 @@ import logging
 import requests
 import schedule
 import subprocess
+import numpy as np
 from datetime import datetime
 
 # logging
@@ -71,8 +72,13 @@ def schedule_job():
     with open(config_file, "r") as json_file:
         data = json.load(json_file)
         tasks = data['tasks']
+    # extract times from the config file
     for section in tasks:
         times.append(section["scheduledAt"])
+    # these times have multiple entries for the same hour, which breaks the execution
+    # make times[] values unique
+    times = np.unique(times)
+
     # times = ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"]
     # schedule job
     for run_time in times:
