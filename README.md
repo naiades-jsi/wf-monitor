@@ -29,6 +29,10 @@ Cronograph is running on IRCAI, where you can monitor Influx data.
 
 ## API times
 
+* **update** time: time when data arrives. It is possible that 'update times' of some sensors gradually change over time.
+* **scheduled**: time when data is scheduled to pe updated (in scheduler.py)
+* **expected delay**: difference between scheduled and update times. If a greater delay is registered, it is considered an error.
+
 **Braila**
 
 |API update		        |Update time	        |Scheduled      |Expected delay |
