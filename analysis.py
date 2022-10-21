@@ -141,12 +141,16 @@ def previous_time(df, i):
     if df['Action'][i] == 'API':
         return 0
 
-    location = df['Location'][i].split(' ')[-1]
+    # get name of sensor
+    location = df['Location'][i].lower()
+    for word in ['watering', 'fusion', 'forecast', 'prediction', 'consumption', 'influx', 'flow']:
+        if word in location:
+            location = location.replace(word,'').strip()
 
     index = i
     while index!=0:
         index -= 1
-        if location in df['Location'][index]:
+        if location in df['Location'][index].lower():
             if df['Location'][i] == 'Kafka': #specifically for alicante-consumption.log because there are two fusion-prediction pairs
                 if 'Prediction' in location:
                     if 'Prediction' not in df['Location'][index]:
@@ -275,7 +279,7 @@ def count_errors(df, column_name):
     return sum
 
 #testing
-#for file_name in ['alicante-salinity.log', 'alicante-consumption.log', 'braila-anomaly.log', 'braila-consumption.log', 'braila-leakage.log', 'braila-state-analysis.log', 'carouge.log']:
+#for file_name in os.listdir('logs'): #['alicante-salinity.log', 'alicante-consumption.log', 'braila-anomaly.log', 'braila-consumption.log', 'braila-leakage.log', 'braila-state-analysis.log', 'carouge.log']:
 #    example_file = os.path.join(os.getcwd(), 'logs', file_name)
 #    df = to_df(example_file)
 #    df = find_problems(df)
